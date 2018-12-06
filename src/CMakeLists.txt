@@ -1,13 +1,13 @@
 #
-# Build executable
+# Provide translations
 #
-
 
 qt5_add_translation(qm_files
   addHoursAndMinutes_de.ts
   )
 add_custom_target(translations DEPENDS ${qm_files})
 configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translations.qrc COPYONLY)
+
 
 #
 # Set up target for executable
@@ -26,4 +26,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::QuickWid
 # Install things
 #
 
-#install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})

@@ -1,0 +1,14 @@
+Source: ellipticcurve
+Maintainer: Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
+Section: education
+Priority: optional
+Standards-Version: 3.9.3
+Build-Depends: cmake, debhelper (>= 9), libqt5svg5-dev, qtbase5-dev, qttools5-dev, qttools5-dev-tools
+
+Package: ellipticcurve
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Sketches elliptic curves and illustrates their group law.
+ The Elliptic Curve Plotter is a graphical application that illustrates the
+ mathematical concept of an elliptic curve. Users can exeriment with elliptic
+ curves and their group law.

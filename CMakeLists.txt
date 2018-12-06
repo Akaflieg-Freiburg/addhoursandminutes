@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 
 # Basic information about our project
-project(addHoursAndMinutes VERSION 1.0.0)
+project(addHoursAndMinutes VERSION 0.9.0)
 set(PROJECT_DATE 2018-12-05)
 add_definitions(-DPROJECT_VERSION="${PROJECT_VERSION}")
 
@@ -20,7 +20,23 @@ if(ANDROID)
   message(FATAL_ERROR "Android development is not supported in the CMakeList.txt. Please use the qmake file provided.")
 endif()
 
+# Find GIT commit for the TAG given by the ${PROJECT_VERSION}, if git is
+# available and if we are working in a git source tree
+if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
+  find_package(Git)
+  if(Git_FOUND)
+    message("Building inside a GIT directory, git found at ${GIT_EXECUTABLE}")
+    execute_process(COMMAND git rev-list -n1 ${PROJECT_VERSION}
+      OUTPUT_VARIABLE TAG_COMMIT
+      OUTPUT_STRIP_TRAILING_WHITESPACE
+      )
+    message("Git Tag ${PROJECT_VERSION} = Commit ${TAG_COMMIT}")
+  else()
+    message("Git not found.")
+  endif()
+endif()
+
 # Subdirectories
 ADD_SUBDIRECTORY(metadata)
-#ADD_SUBDIRECTORY(packaging)
+ADD_SUBDIRECTORY(packaging)
 add_subdirectory(src)

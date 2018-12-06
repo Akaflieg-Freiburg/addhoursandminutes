@@ -1,0 +1,28 @@
+{
+    "app-id": "de.unifreiburg.ellipticcurve",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.11",
+    "sdk": "org.kde.Sdk",
+    "command": "addHoursAndMinutes",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri"
+    ],
+    "modules": [
+        {
+            "name": "addHoursAndMinutes",
+            "buildsystem": "cmake-ninja",
+            "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.com/kebekus/addHoursAndMinutes.git",
+                    "tag": "${PROJECT_VERSION}",
+                    "commit": "${TAG_COMMIT}"
+                }
+            ]
+        }
+    ]
+}
