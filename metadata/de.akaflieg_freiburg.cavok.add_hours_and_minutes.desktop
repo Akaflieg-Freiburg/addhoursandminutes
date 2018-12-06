@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=${PROJECT_VERSION}
+Name=Add Hours and Minutes
+GenericName=Add Hours and Minutes
+GenericName[de]=Rechner für Stunden und Minuten
+Comment=Simple calculator for adding hours and minutes
+Comment[de]=Einfacher Rechner zum Addieren mit Stunden und Minuten
+Icon=de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg
+TryExec=addHoursAndMinutes
+Exec=addHoursAndMinutes
+Terminal=false
+Categories=Utility;Calculator;
+StartupNotify=true

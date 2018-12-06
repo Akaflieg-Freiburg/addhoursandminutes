@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>de.akaflieg_freiburg.cavok.add_hours_and_minutes</id>
+  <launchable type="desktop-id">de.akaflieg_freiburg.cavok.add_hours_and_minutes.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Add Hours and Minutes</name>
+  <name xml:lang="de">Rechner für Stunden und Minuten</name>
+  <summary>Simple calculator for adding hours and minutes</summary>
+  <summary xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</summary>
+  <description>
+    <p>This calculator adds times given in hours and minutes.  It helps with the
+    recording of machine running times, with the addition of flight times for
+    pilots' flight logs, or driving times of truck drivers.</p>
+  </description>
+  <description xml:lang="de">
+    <p>Dieser Rechner addiert Zeiten, die in Stunden und Minuten gegeben sind.
+    Er hilft bei der Erfassung von Maschinenlaufzeiten, beim Zusammenrechnen von
+    Flugzeiten für die Flugbücher von Piloten, oder bei Lenkzeiten von
+    LKW-Fahrern.</p>
+  </description>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="${PROJECT_VERSION}" date="${PROJECT_DATE}"/>
+  </releases>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://cplx.vm.uni-freiburg.de/wp-content/uploads/2016/02/ellipticcurve-en.png</image>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>Utility</category>
+    <category>Calculator</category>
+  </categories>
+  <url type="homepage">https://cplx.vm.uni-freiburg.de/en/ecp-en</url>
+  <project_group>Flatpak</project_group>
+  <update_contact>stefan.kebekus@math.uni-freiburg.de</update_contact>
+  <provides>
+    <binary>addHoursAndMinutes</binary>
+  </provides>
+</component>
