@@ -27,10 +27,10 @@ import "./info"
 ApplicationWindow {
     id: window
     visible: true
-    width: 300
-    height: Qt.application.font.pixelSize*10
-    minimumWidth: 300
-//    minimumHeight: 300    
+    width: Qt.application.font.pixelSize*18
+    height: Qt.application.font.pixelSize*20
+    minimumWidth: Qt.application.font.pixelSize*18
+    minimumHeight: Qt.application.font.pixelSize*20
 
     PageIndicator {
       id: indicator
