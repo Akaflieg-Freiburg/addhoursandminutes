@@ -27,13 +27,16 @@ ScrollView {
     clip: true
     contentWidth: width
     property string text
-     
+
+    
     Label {
         text: view.text
 
         anchors {
             left: parent.left
             right: parent.right
+            leftMargin:  Qt.application.font.pixelSize/2
+            rightMargin: Qt.application.font.pixelSize/2
         }
 
         wrapMode: Text.WordWrap
