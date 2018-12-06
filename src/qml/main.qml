@@ -28,9 +28,9 @@ ApplicationWindow {
     id: window
     visible: true
     width: 300
-    height: 400
+    height: Qt.application.font.pixelSize*10
     minimumWidth: 300
-    minimumHeight: 300    
+//    minimumHeight: 300    
 
     PageIndicator {
       id: indicator

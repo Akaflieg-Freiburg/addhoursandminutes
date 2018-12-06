@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
   app.installTranslator(&Qt_translator);
 
   // Set application parameters
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
   QCoreApplication::setOrganizationName("Akaflieg Freiburg");
   QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
   QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
