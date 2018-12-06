@@ -50,8 +50,7 @@ int main(int argc, char *argv[])
 #if defined(Q_OS_LINUX)
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
-  
-  
+    
   // Set font size, depending on platform
   QFont stdFont = app.font();
 #warning Muss noch testen!
