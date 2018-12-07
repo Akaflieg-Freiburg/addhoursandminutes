@@ -1,7 +1,7 @@
 #
-# spec file for package ellipticcurve (Version ${PROJECT_VERSION})
+# spec file for package ${PROJECT_NAME} (Version ${PROJECT_VERSION})
 #
-# Copyright (c) ${COPYRIGHTYEAR} Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
+# Copyright (c) 2018 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
 #
 #   This file is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@
 # Please submit bugfixes or comments to stefan.kebekus@math.uni-freiburg.de
 #
 
-Name:           ellipticcurve
+Name:           ${PROJECT_NAME}
 
 BuildRequires:  cmake gcc-c++
 %if %{defined suse_version}
@@ -34,20 +34,20 @@ BuildRequires:  libqt5-qtbase-devel libqt5-qtsvg-devel libqt5-linguist libqt5-li
 %endif
 
 License:        GPLv3+
-Group:          Amusements/Teaching/Mathematics
-Summary:        Sketches elliptic curves and allows to experiment with their group law
+Group:          Utility/Calculator
+Summary:        Simple calculator for adding hours and minutes
 Version:        ${PROJECT_VERSION}
 Release:        1.0
-Url:            https://cplx.vm.uni-freiburg.de/en/ecp-en
+Url:            https://cplx.vm.uni-freiburg.de/en/add-hours-and-minutes
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%version.tar.gz
 
 
 
-%description 
-The Elliptic Curve Plotter is a graphical application that allows the user to
-play and experiment with elliptic curves and their group law.
-
+%description
+This calculator adds times given in hours and minutes.  It helps with the
+recording of machine running times, with the addition of flight times for
+pilots' flight logs, or driving times of truck drivers.
     
 %prep 
 %setup -q 
@@ -88,12 +88,10 @@ rm -rf $RPM_BUILD_ROOT
 %files 
 %defattr(-,root,root)
 /usr/bin/ellipticcurve
-/usr/share/applications/de.unifreiburg.ellipticcurve.desktop
-/usr/share/metainfo/de.unifreiburg.ellipticcurve.appdata.xml
+/usr/share/applications/${APP_ID}.desktop
+/usr/share/metainfo/${APP_ID}.xml
 /usr/share/icons/hicolor/scalable
-/usr/share/man/man1/*
 
 %changelog
 * Sun Oct 28 2018 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de> ${PROJECT_VERSION}-1.0
 - RPM Release
-

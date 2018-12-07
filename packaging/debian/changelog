@@ -1,4 +1,4 @@
-ellipticcurve (${PROJECT_VERSION}-1) UNRELEASED; urgency=medium
+addhoursandminutes (${PROJECT_VERSION}-1) UNRELEASED; urgency=medium
 
   * Initial release.
 
