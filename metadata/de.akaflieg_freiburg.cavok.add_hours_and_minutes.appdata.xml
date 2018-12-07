@@ -25,14 +25,14 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image type="source">https://cplx.vm.uni-freiburg.de/wp-content/uploads/2016/02/ellipticcurve-en.png</image>
+      <image type="source">https://cplx.vm.uni-freiburg.de/wp-content/uploads/2018/12/addHoursAndMinutes.png</image>
     </screenshot>
   </screenshots>
   <categories>
     <category>Utility</category>
     <category>Calculator</category>
   </categories>
-  <url type="homepage">https://cplx.vm.uni-freiburg.de/en/ecp-en</url>
+  <url type="homepage">https://cplx.vm.uni-freiburg.de/en/add-hours-and-minutes</url>
   <project_group>Flatpak</project_group>
   <update_contact>stefan.kebekus@math.uni-freiburg.de</update_contact>
   <provides>
