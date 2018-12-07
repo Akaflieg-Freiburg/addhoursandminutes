@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 
 # Basic information about our project
-project(addHoursAndMinutes VERSION 0.9.0)
-set(PROJECT_DATE 2018-12-05)
-add_definitions(-DPROJECT_VERSION="${PROJECT_VERSION}")
+project(addHoursAndMinutes VERSION 0.9.1)
+set(PROJECT_DATE 2018-12-07)
+set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
+
 
 # Include external packages and modules
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

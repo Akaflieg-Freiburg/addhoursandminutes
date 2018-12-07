@@ -1,5 +1,5 @@
 {
-    "app-id": "de.unifreiburg.ellipticcurve",
+    "app-id": "${APP_ID}",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.11",
     "sdk": "org.kde.Sdk",

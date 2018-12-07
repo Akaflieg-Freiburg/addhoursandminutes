@@ -4,7 +4,7 @@ if (UNIX)
   #
   
   if (DEFINED TAG_COMMIT)
-    configure_file(flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json)
+    configure_file(flatpak/${APP_ID}.json flatpak/${APP_ID}.json)
   else()
     message("Not building inside a GIT directory, or git command not available. Flatpak manifest will not be generated.")
   endif()
