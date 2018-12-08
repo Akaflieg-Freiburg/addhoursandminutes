@@ -28,9 +28,9 @@ BuildRequires:  cmake gcc-c++
 BuildRequires:  update-desktop-files
 %endif
 %if %{defined fedora_version}
-BuildRequires:  qt5-qtbase-devel qt5-qtsvg-devel qt5-linguist
+BuildRequires:  qt5-qtbase-devel qt5-qtsvg-devel qt5-linguist qt5-qtquickcontrols2-devel
 %else
-BuildRequires:  libqt5-qtbase-devel libqt5-qtsvg-devel libqt5-linguist libqt5-linguist-devel libqt5-qttools
+BuildRequires:  libqt5-qtbase-devel libqt5-qtsvg-devel libqt5-linguist libqt5-linguist-devel libqt5-qttools libqt5-qtdeclarative-devel
 %endif
 
 License:        GPLv3+
@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files 
 %defattr(-,root,root)
-/usr/bin/ellipticcurve
+/usr/bin/${PROJECT_NAME}
 /usr/share/applications/${APP_ID}.desktop
 /usr/share/metainfo/${APP_ID}.xml
 /usr/share/icons/hicolor/scalable
