@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
-Version=${PROJECT_VERSION}
+Version=1.1
 Name=Add Hours and Minutes
 GenericName=Add Hours and Minutes
 GenericName[de]=Rechner für Stunden und Minuten
 Comment=Simple calculator for adding hours and minutes
 Comment[de]=Einfacher Rechner zum Addieren mit Stunden und Minuten
-Icon=${APP_ID}.svg
+Icon=${APP_ID}
 TryExec=${PROJECT_NAME}
 Exec=${PROJECT_NAME}
 Terminal=false

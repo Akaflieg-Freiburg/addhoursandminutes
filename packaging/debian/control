@@ -3,9 +3,9 @@ Maintainer: Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
 Section: Utility/Calculator
 Priority: optional
 Standards-Version: 3.9.3
-Build-Depends: cmake, debhelper (>= 9), libqt5svg5-dev, qtbase5-dev, qttools5-dev, qttools5-dev-tools
+Build-Depends: cmake, debhelper (>= 9), libqt5svg5-dev, qtbase5-dev, qttools5-dev, qttools5-dev-tools, qtdeclarative5-dev
 
-Package: addHoursAndMinutes
+Package: addhoursandminutes
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Simple calculator for adding hours and minutes.
