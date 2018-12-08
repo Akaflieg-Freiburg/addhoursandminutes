@@ -64,7 +64,7 @@ make
 cd build
 make install
 %if %{defined suse_version}
-%suse_update_desktop_file de.unifreiburg.ellipticcurve Math
+%suse_update_desktop_file ${APP_ID} Math
 %endif
 
 
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 /usr/bin/${PROJECT_NAME}
 /usr/share/applications/${APP_ID}.desktop
-/usr/share/metainfo/${APP_ID}.xml
+/usr/share/metainfo/${APP_ID}.appdata.xml
 /usr/share/icons/hicolor/scalable
 
 %changelog
