@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 
 # Basic information about our project
-project(addhoursandminutes VERSION 0.9.3)
+project(addhoursandminutes VERSION 0.9.4)
 set(PROJECT_DATE 2018-12-07)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 
