@@ -8,19 +8,28 @@
 
 * C++ compiler
 
+
 ## Compilation
 
 ### Linux
 
-The Elliptic Curve Plotter uses the standard qmake cmake system, so compilation
-is straightforward. Once the compilation terminates, you'll find a binary in the
-build directory.
+This app standard cmake system, so compilation is straightforward. Once the
+compilation terminates, you'll find a binary in the build directory.
 
-### Windows
 
-The cmake files provided can be used to cross-compile a static binary for
-windows, using the MXE (M cross environment, https://mxe.cc) cross compiler
-unter Linux.
+### Android
+
+The app can be cross-compiled on linux, using the Android NDK and an appropriate
+pre-compiled version of Qt. On the author's computer, the following command
+lines will do the trick.
+
+mkdir build-android
+cd build-android
+cmake \
+-DCMAKE_FIND_ROOT_PATH=/home/kebekus/Software/buildsystems/Qt/5.11.2/android_armv7 \
+-DCMAKE_TOOLCHAIN_FILE=/home/kebekus/Software/buildsystems/android/android-ndk-r18b/build/cmake/android.toolchain.cmake \
+..
+make
 
 
 ## Installation

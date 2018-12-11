@@ -13,11 +13,16 @@ configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translatio
 # Set up target for executable
 #
 
-add_executable(${PROJECT_NAME}
-  main.cpp
-  addHoursAndMinutes.qrc
-  ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
+set(SOURCES
+    main.cpp
+    addHoursAndMinutes.qrc
+    ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
   )
+if(ANDROID)
+  add_library(${PROJECT_NAME} SHARED ${SOURCES})
+else(ANDROID)
+  add_executable(${PROJECT_NAME} ${SOURCES})
+endif(ANDROID)
 add_dependencies(${PROJECT_NAME} translations)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::QuickWidgets Qt5::Widgets)
 

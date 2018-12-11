@@ -18,10 +18,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Core LinguistTools Quick QuickWidgets Widgets REQUIRED )
 include(GNUInstallDirs)
 
-if(ANDROID)
-  message(FATAL_ERROR "Android development is not supported in the CMakeList.txt. Please use the qmake file provided.")
-endif()
-
 # Find GIT commit for the TAG given by the ${PROJECT_VERSION}, if git is
 # available and if we are working in a git source tree
 if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
