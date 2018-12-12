@@ -1,4 +1,6 @@
-if (UNIX)
+add_custom_target(packaging)
+
+if (UNIX AND NOT ANDROID)
   #
   # Prepare flatpack manifest
   #
@@ -18,7 +20,7 @@ if (UNIX)
   add_custom_target(packaging-rpm
     COMMAND curl -s -o ${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz https://gitlab.com/kebekus/${PROJECT_NAME}/-/archive/${PROJECT_VERSION}/${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz
     WORKING_DIRECTORY RPM
-    COMMENT "Downloading tarball and for RPM package"
+    COMMENT "Downloading tarball for RPM package"
     )
   
   
@@ -50,10 +52,22 @@ if (UNIX)
   #
   # Add target that include  both RPM and Debian packages
   #
+  add_dependencies(packaging packaging-debian packaging-rpm)
+endif (UNIX AND NOT ANDROID)
+
+if (ANDROID)
+
+  #
+  # Prepare Android APK
+  #
+  add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME})
+
+    
+  #
+  # Add target that includes Android packages
+  #
+
+  add_dependencies(packaging ${PROJECT_NAME}_apk)
   
-  add_custom_target(packaging
-    DEPENDS packaging-debian
-    DEPENDS packaging-rpm
-    )
+endif (ANDROID)
   
-endif (UNIX)
