@@ -4,7 +4,7 @@
 ## Linux
 
 The CMakeFiles include a special target, "packaging", that helps to produce
-packages for various software distribution systems under linux:
+packages for various software distribution systems under linux.
 
 
 ### flatpak
