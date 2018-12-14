@@ -30,19 +30,20 @@ Rectangle {
     property string hoursEntered: ""
     property int totalMinutes: 0
     property int maxNumDigits: 6
-    
-    property int fontpixelsize: Qt.application.font.pixelSize
-    
+
+    property int fontpixelsize: Qt.application.font.pixelSize*1.5
+    property real formfactor: 2.51
+
     SequentialAnimation {
         id: blinkAnimation
-        
+
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "red"; duration: 50}
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
     }
 
     SequentialAnimation {
         id: clearAnimation
-        
+
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "teal"; duration: 50}
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
     }
@@ -81,7 +82,7 @@ Rectangle {
 
     function printCurrentLine() {
         var result = ""
-        
+
         if (hoursEntered !== "") {
             result = result + parseInt(hoursEntered).toLocaleString() + ":"
             if (minutesEntered.length === 0) {
@@ -251,10 +252,11 @@ Rectangle {
         } else if (event.key === Qt.Key_Backspace) {
             backSpace()
         }
-	    event.accepted = true
+        event.accepted = true
     }
 
     ColumnLayout {
+        spacing: 0
         anchors.fill: parent
 
         ListView {
@@ -263,7 +265,7 @@ Rectangle {
             Layout.fillWidth: true
             Layout.preferredHeight: 160
             Layout.preferredWidth: 110
-            
+
             delegate: Item {
                 height: fontpixelsize*1.2
                 width: parent.width
@@ -272,12 +274,14 @@ Rectangle {
                     x: 6
                     color: "teal"
                     text: model.operator
+                    font.pixelSize: fontpixelsize
                 }
                 Text {
                     id: operand
                     anchors.right: parent.right
                     anchors.rightMargin: 22
                     text: model.operand
+                    font.pixelSize: fontpixelsize
                 }
             }
 
@@ -289,6 +293,14 @@ Rectangle {
             }
         }
 
+        Rectangle {
+            height: 1
+            Layout.fillWidth: true
+            color: "black"
+            Layout.preferredHeight: 1
+            Layout.rowSpan: 1
+        }
+
         GridLayout {
             columnSpacing: 0
             rowSpacing: 0
@@ -298,25 +310,25 @@ Rectangle {
             Button {
                 id: button7
                 text: "7"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("7")
             }
-            
+
             Button {
                 id: button8
                 text: "8"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("8")
             }
-            
+
             Button {
                 id: button9
                 text: "9"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("9")
@@ -326,7 +338,7 @@ Rectangle {
                 id: buttonClear
                 palette { button: "teal"; buttonText: "white"}
                 text: "C"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.backSpace()
@@ -336,7 +348,7 @@ Rectangle {
             Button {
                 id: button4
                 text: "4"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("4")
@@ -345,7 +357,7 @@ Rectangle {
             Button {
                 id: button5
                 text: "5"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("5")
@@ -354,7 +366,7 @@ Rectangle {
             Button {
                 id: button6
                 text: "6"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("6")
@@ -364,16 +376,16 @@ Rectangle {
                 id: buttonMinus
                 palette { button: "teal"; buttonText: "white"}
                 text: "-"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("-")
             }
-            
+
             Button {
                 id: button1
                 text: "1"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("1")
@@ -382,7 +394,7 @@ Rectangle {
             Button {
                 id: button2
                 text: "2"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("2")
@@ -391,7 +403,7 @@ Rectangle {
             Button {
                 id: button3
                 text: "3"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("3")
@@ -401,7 +413,7 @@ Rectangle {
                 id: buttonPlus
                 palette { button: "teal"; buttonText: "white"}
                 text: "+"
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("+")
@@ -411,7 +423,7 @@ Rectangle {
                 id: button0
                 text: "0"
                 Layout.columnSpan: 3
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("0")
@@ -421,7 +433,7 @@ Rectangle {
                 id: buttonEquals
                 palette { button: "teal"; buttonText: "white"}
                 text: "="
-                Layout.minimumHeight: 2.0*fontpixelsize
+                Layout.minimumHeight: formfactor*fontpixelsize
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("=")
@@ -429,3 +441,8 @@ Rectangle {
         }
     }
 }
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

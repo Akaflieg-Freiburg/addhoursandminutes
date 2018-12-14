@@ -30,7 +30,7 @@ mkdir build-android
 cd build-android
 
 cmake \
--DCMAKE_FIND_ROOT_PATH=/home/kebekus/Software/buildsystems/Qt/5.11.2/android_armv7 \
+-DCMAKE_FIND_ROOT_PATH=/home/kebekus/Software/buildsystems/Qt/5.12.0/android_armv7 \
 -DCMAKE_TOOLCHAIN_FILE=/home/kebekus/Software/buildsystems/android/android-ndk-r18b/build/cmake/android.toolchain.cmake \
 -DANDROID_PLATFORM=android-22 \
 -DANDROID_STL_SHARED_LIBRARIES=c++_shared \
