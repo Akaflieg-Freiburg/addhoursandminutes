@@ -28,7 +28,7 @@ ApplicationWindow {
     id: window
     visible: true
     width: Qt.application.font.pixelSize*18*1.5
-    height: Qt.application.font.pixelSize*22*1.5
+    height: Qt.application.font.pixelSize*24*1.5
     minimumWidth: Qt.application.font.pixelSize*18*1.5
     minimumHeight: Qt.application.font.pixelSize*20*1.5
 

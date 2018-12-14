@@ -51,18 +51,6 @@ int main(int argc, char *argv[])
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
     
-  // Set font size, depending on platform
-  QFont stdFont = app.font();
-#warning Muss noch testen!
-  /*
-#ifdef Q_OS_ANDROID
-  stdFont.setPointSizeF(stdFont.pointSizeF()*2.0);
-#else
-  stdFont.setPointSizeF(stdFont.pointSizeF()*1.2);
-#endif  
-  */
-  app.setFont(stdFont);
-  
   // Load large strings from files, in order to make them available to QML
   QFile file(":text/info.html");
   file.open(QIODevice::ReadOnly);

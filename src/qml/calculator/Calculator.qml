@@ -296,7 +296,7 @@ Rectangle {
         Rectangle {
             height: 1
             Layout.fillWidth: true
-            color: "black"
+            color: "gray"
             Layout.preferredHeight: 1
             Layout.rowSpan: 1
         }
