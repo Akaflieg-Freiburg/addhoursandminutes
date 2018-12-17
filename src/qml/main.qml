@@ -64,23 +64,9 @@ ApplicationWindow {
             focus: true
         }
 
-        Flickable {
-            id: flickable1
-            clip: true
-            contentWidth: view.width
-            contentHeight: text1.height
-            
-            Text {
-                id: text1
-                text: infoText
-                width: view.width
-                wrapMode: Text.Wrap
-                leftPadding: Qt.application.font.pixelSize*0.5
-                rightPadding: Qt.application.font.pixelSize*0.5
-                onLinkActivated: Qt.openUrlExternally(link)
-            }
+        Info {
+            text: infoText
         }
-    
     }
         
     Shortcut {

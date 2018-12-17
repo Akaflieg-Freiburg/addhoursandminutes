@@ -223,36 +223,50 @@ Rectangle {
     Keys.onPressed: {
         if (event.key === Qt.Key_0) {
             button0.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_1) {
             button1.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_2) {
             button2.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_3) {
             button3.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_4) {
             button4.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_5) {
             button5.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_6) {
             button6.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_7) {
             button7.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_8) {
             button8.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_9) {
             button9.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_Plus) {
             buttonPlus.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_Minus) {
             buttonMinus.clicked()
+            event.accepted = true
         } else if ((event.key === Qt.Key_Equals || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
             buttonEquals.clicked()
+            event.accepted = true
         } else if (event.key === Qt.Key_Delete || event.key === Qt.Key_C) {
             hoursAndMinutes.clear()
+            event.accepted = true
         } else if (event.key === Qt.Key_Backspace) {
             backSpace()
+            event.accepted = true
         }
-        event.accepted = true
     }
 
     ColumnLayout {

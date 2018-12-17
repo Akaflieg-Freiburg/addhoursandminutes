@@ -24,22 +24,19 @@ import QtQuick.Controls 2.2
 
 ScrollView {
     id: view
-    clip: true
-    contentWidth: width
     property string text
 
-    
-    Label {
-        text: view.text
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            leftMargin:  Qt.application.font.pixelSize/2
-            rightMargin: Qt.application.font.pixelSize/2
+    Flickable {
+        clip: true
+        contentWidth: parent.width
+        
+        Text {
+            text: view.text
+            width: parent.width
+            wrapMode: Text.Wrap
+            leftPadding: Qt.application.font.pixelSize*0.5
+            rightPadding: Qt.application.font.pixelSize*0.5
+            onLinkActivated: Qt.openUrlExternally(link)
         }
-
-        wrapMode: Text.WordWrap
-        onLinkActivated: Qt.openUrlExternally(link)
     }
 }
