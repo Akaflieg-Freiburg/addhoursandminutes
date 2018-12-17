@@ -24,15 +24,15 @@ pre-compiled version of Qt. On the author's computer, the following command
 lines will do the trick.
 
 export JAVA_HOME=/usr/lib/jvm/java
-export ANDROID_SDK=/home/kebekus/Software/buildsystems/android
+export ANDROID_SDK=/home/kebekus/Software/buildsystems/Android-SDK
 
 mkdir build-android
 cd build-android
 
 cmake \
 -DCMAKE_FIND_ROOT_PATH=/home/kebekus/Software/buildsystems/Qt/5.12.0/android_armv7 \
--DCMAKE_TOOLCHAIN_FILE=/home/kebekus/Software/buildsystems/android/android-ndk-r18b/build/cmake/android.toolchain.cmake \
--DANDROID_PLATFORM=android-22 \
+-DCMAKE_TOOLCHAIN_FILE=/home/kebekus/Software/buildsystems//Android-SDK/ndk-bundle/build/cmake/android.toolchain.cmake \
+-DANDROID_PLATFORM=android-16 \
 -DANDROID_STL_SHARED_LIBRARIES=c++_shared \
 ..
 
