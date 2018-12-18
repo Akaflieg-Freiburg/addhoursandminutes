@@ -29,6 +29,8 @@ ScrollView {
     Flickable {
         clip: true
         contentWidth: parent.width
+        boundsBehavior: Flickable.StopAtBounds
+        flickableDirection: Flickable.VerticalFlick
         
         Text {
             text: view.text

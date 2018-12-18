@@ -60,14 +60,33 @@ if (ANDROID)
   #
   # Prepare Android APK
   #
-  add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME})
 
-    
+  configure_file(android/AndroidManifest.xml android-working/AndroidManifest.xml)
+
+  add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME}
+    PACKAGE_SOURCES android-working
+    )
+  
+  add_custom_target(icons
+    COMMAND ${CMAKE_COMMAND} -E make_directory android-working/res/drawable-xxxhdpi
+    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-working/res/drawable-xxxhdpi/icon.png -h 192 -w 192
+    COMMAND ${CMAKE_COMMAND} -E make_directory android-working/res/drawable-xxhdpi
+    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-working/res/drawable-xxhdpi/icon.png -h 144 -w 144
+    COMMAND ${CMAKE_COMMAND} -E make_directory android-working/res/drawable-xhdpi
+    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-working/res/drawable-xhdpi/icon.png -h 96 -w 96
+    COMMAND ${CMAKE_COMMAND} -E make_directory android-working/res/drawable-hdpi
+    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-working/res/drawable-hdpi/icon.png -h 72 -w 72
+    COMMAND ${CMAKE_COMMAND} -E make_directory android-working/res/drawable-mdpi
+    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-working/res/drawable-mdpi/icon.png -h 48 -w 48
+    COMMENT "Generate icons"
+    )
+
   #
   # Add target that includes Android packages
   #
 
   add_dependencies(packaging ${PROJECT_NAME}_apk)
+  add_dependencies(${PROJECT_NAME}_apk icons)
   
 endif (ANDROID)
   
