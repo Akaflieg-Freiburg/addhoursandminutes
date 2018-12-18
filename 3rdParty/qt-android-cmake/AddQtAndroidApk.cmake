@@ -116,7 +116,7 @@ macro(add_qt_android_apk TARGET SOURCE_TARGET)
         endif()
 
         # create a subdirectory for the extra package sources
-        set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT "${CMAKE_CURRENT_BINARY_DIR}/package")
+        set(QT_ANDROID_APP_PACKAGE_SOURCE_ROOT "${CMAKE_CURRENT_BINARY_DIR}/android-working/package")
 
         # generate a manifest from the template
         configure_file(${QT_ANDROID_SOURCE_DIR}/AndroidManifest.xml.in ${QT_ANDROID_APP_PACKAGE_SOURCE_ROOT}/AndroidManifest.xml @ONLY)
@@ -167,10 +167,10 @@ macro(add_qt_android_apk TARGET SOURCE_TARGET)
     endif()
 
     # make sure that the output directory for the Android package exists
-    file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/libs/${ANDROID_ABI})
+    file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/android-working/libs/${ANDROID_ABI})
 
     # create the configuration file that will feed androiddeployqt
-    configure_file(${QT_ANDROID_SOURCE_DIR}/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json @ONLY)
+    configure_file(${QT_ANDROID_SOURCE_DIR}/qtdeploy.json.in ${CMAKE_CURRENT_BINARY_DIR}/android-working/qtdeploy.json @ONLY)
 
     # check if the apk must be signed
     if(ARG_KEYSTORE)
@@ -193,13 +193,11 @@ macro(add_qt_android_apk TARGET SOURCE_TARGET)
     # create a custom command that will run the androiddeployqt utility to prepare the Android package
     add_custom_target(
         ${TARGET}
-        ALL
         DEPENDS ${SOURCE_TARGET}
-        COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/libs/${ANDROID_ABI} # it seems that recompiled libraries are not copied if we don't remove them first
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/libs/${ANDROID_ABI}
-        COMMAND ${CMAKE_COMMAND} -E copy ${QT_ANDROID_APP_PATH} ${CMAKE_CURRENT_BINARY_DIR}/libs/${ANDROID_ABI}
-	COMMAND echo "Hier bin ich"
-        COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt --verbose --output ${CMAKE_CURRENT_BINARY_DIR} --input ${CMAKE_CURRENT_BINARY_DIR}/qtdeploy.json --gradle ${TARGET_LEVEL_OPTIONS} ${INSTALL_OPTIONS} ${SIGN_OPTIONS}
+        COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_CURRENT_BINARY_DIR}/android-working/libs/${ANDROID_ABI} # it seems that recompiled libraries are not copied if we don't remove them first
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/android-working/libs/${ANDROID_ABI}
+        COMMAND ${CMAKE_COMMAND} -E copy ${QT_ANDROID_APP_PATH} ${CMAKE_CURRENT_BINARY_DIR}/android-working/libs/${ANDROID_ABI}
+        COMMAND ${QT_ANDROID_QT_ROOT}/bin/androiddeployqt --release --output ${CMAKE_CURRENT_BINARY_DIR}/android-working --input ${CMAKE_CURRENT_BINARY_DIR}/android-working/qtdeploy.json --gradle ${TARGET_LEVEL_OPTIONS} ${INSTALL_OPTIONS} ${SIGN_OPTIONS}
 	COMMENT "Generating APK"
     )
 
