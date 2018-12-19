@@ -83,6 +83,8 @@ if (ANDROID)
   # Generate Android package
   add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME}
     PACKAGE_SOURCES android-sources
+    PROJECT_VERSION_CODE ${VERSION_CODE}
+    PACKAGE_NAME ${APP_ID}
     )
   add_dependencies(${PROJECT_NAME}_apk icons)
 

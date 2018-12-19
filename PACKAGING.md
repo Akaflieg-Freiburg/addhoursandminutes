@@ -34,3 +34,6 @@ and that the computer is able to download files from the internet.
 The CMakeFiles include a special target, "packaging", that produces an Android
 APK file in the directory "packaging/android". The program "inkscape" is
 required to generate the necessary icons.
+
+The CMakeLists used to generate Android package have been tested under Linux,
+but not under Windows.
