@@ -1,15 +1,3 @@
-LICENSE
-
-With the exception(s) mentioned below, the scantools software suite is
-copyrighted by its authors and published under the GNU General Public License
-Version 3 or any later version.  A copy of the licencse is found below.
-
-
-
-======================================================================
-
-
-
                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

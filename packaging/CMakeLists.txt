@@ -102,3 +102,5 @@ if (ANDROID)
   add_dependencies(packaging android)
   
 endif (ANDROID)
+
+add_subdirectory(installer)
