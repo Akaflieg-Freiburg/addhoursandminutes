@@ -79,7 +79,7 @@ if (ANDROID)
     COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -e android-sources/res/drawable-mdpi/icon.png -h 48 -w 48
     COMMENT "Generate icons"
     )
-
+  
   # Generate Android package
   add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME}
     PACKAGE_SOURCES android-sources
@@ -87,18 +87,18 @@ if (ANDROID)
     PACKAGE_NAME ${APP_ID}
     )
   add_dependencies(${PROJECT_NAME}_apk icons)
-
+  
   # Copy the package to the android directory
   add_custom_target(android
-    COMMAND ${CMAKE_COMMAND} -E copy_directory android-working/build/outputs/apk/release android
+    COMMAND ${CMAKE_COMMAND} -E copy android-working/build/outputs/apk/release/android-working-release-unsigned.apk android/${APP_ID}-unsigned.apk
     )
   add_dependencies(android ${PROJECT_NAME}_apk)
   
-
+  
   #
   # Add target that includes Android packages
   #
-
+  
   add_dependencies(packaging android)
   
 endif (ANDROID)
