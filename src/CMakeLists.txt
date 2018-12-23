@@ -24,7 +24,7 @@ else(ANDROID)
   add_executable(${PROJECT_NAME} ${SOURCES})
 endif(ANDROID)
 add_dependencies(${PROJECT_NAME} translations)
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::QuickWidgets Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
 
 
 #

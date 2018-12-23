@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QApplication>
 #include <QGuiApplication>
 #include <QFile>
 #include <QFont>
@@ -31,7 +30,7 @@
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
+  QGuiApplication app(argc, argv);
   
   // Install translators
   QString locale = QLocale::system().name();
