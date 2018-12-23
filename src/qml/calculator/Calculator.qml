@@ -32,7 +32,8 @@ Rectangle {
     property int maxNumDigits: 6
 
     property int fontpixelsize: Qt.application.font.pixelSize*1.5
-    property real formfactor: 2.51
+    property real formfactor: 2.5
+    property int buttonMinHeight: fontpixelsize*formfactor
 
     SequentialAnimation {
         id: blinkAnimation
@@ -324,7 +325,7 @@ Rectangle {
             Button {
                 id: button7
                 text: "7"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("7")
@@ -333,7 +334,7 @@ Rectangle {
             Button {
                 id: button8
                 text: "8"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("8")
@@ -342,7 +343,7 @@ Rectangle {
             Button {
                 id: button9
                 text: "9"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("9")
@@ -352,7 +353,7 @@ Rectangle {
                 id: buttonClear
                 palette { button: "teal"; buttonText: "white"}
                 text: "C"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.backSpace()
@@ -362,7 +363,7 @@ Rectangle {
             Button {
                 id: button4
                 text: "4"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("4")
@@ -371,7 +372,7 @@ Rectangle {
             Button {
                 id: button5
                 text: "5"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("5")
@@ -380,7 +381,7 @@ Rectangle {
             Button {
                 id: button6
                 text: "6"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("6")
@@ -390,7 +391,7 @@ Rectangle {
                 id: buttonMinus
                 palette { button: "teal"; buttonText: "white"}
                 text: "-"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("-")
@@ -399,7 +400,7 @@ Rectangle {
             Button {
                 id: button1
                 text: "1"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("1")
@@ -408,7 +409,7 @@ Rectangle {
             Button {
                 id: button2
                 text: "2"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("2")
@@ -417,7 +418,7 @@ Rectangle {
             Button {
                 id: button3
                 text: "3"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("3")
@@ -427,7 +428,7 @@ Rectangle {
                 id: buttonPlus
                 palette { button: "teal"; buttonText: "white"}
                 text: "+"
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("+")
@@ -437,7 +438,7 @@ Rectangle {
                 id: button0
                 text: "0"
                 Layout.columnSpan: 3
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("0")
@@ -447,7 +448,7 @@ Rectangle {
                 id: buttonEquals
                 palette { button: "teal"; buttonText: "white"}
                 text: "="
-                Layout.minimumHeight: formfactor*fontpixelsize
+                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("=")
