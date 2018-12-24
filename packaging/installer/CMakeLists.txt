@@ -1,6 +1,7 @@
 
-configure_file(config/config.xml installer-working/config/config.xml)
+configure_file(config/config.xml installer-working/config/config.xml COPYONLY)
 configure_file(packages/${APP_ID}/meta/package.xml installer-working/packages/${APP_ID}/meta/package.xml)
+configure_file(packages/${APP_ID}/meta/installscript.js installer-working/packages/${APP_ID}/meta/installscript.js COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/LICENSE.md installer-working/packages/${APP_ID}/meta/license.md)
 
 find_program (BINARYCREATOR binarycreator
@@ -9,7 +10,7 @@ find_program (BINARYCREATOR binarycreator
 
 add_custom_target(installer
   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/${PROJECT_NAME}.exe installer-working/packages/${APP_ID}/data/${PROJECT_NAME}.exe
-  COMMAND windeployqt.exe installer-working/packages/${APP_ID}/data/${PROJECT_NAME}
+  COMMAND windeployqt.exe --release --qmldir ${CMAKE_SOURCE_DIR}/src/qml installer-working/packages/${APP_ID}/data/${PROJECT_NAME}.exe
   COMMAND ${BINARYCREATOR} -v -c installer-working/config/config.xml -p installer-working/packages ${PROJECT_NAME}-installer.exe
   COMMENT "Generate installer binary"
   )

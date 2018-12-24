@@ -6,6 +6,7 @@
   <Description xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</Description>
   <Version>${PROJECT_VERSION}</Version>
   <ReleaseDate>2010-09-21</ReleaseDate>
+  <Script>installscript.js</Script>
   <ForcedInstallation>true</ForcedInstallation>
   <Licenses>
     <License name="GPL v3+" file="license.md" />

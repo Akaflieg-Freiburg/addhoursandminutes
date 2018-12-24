@@ -21,8 +21,9 @@ set(SOURCES
 if(ANDROID)
   add_library(${PROJECT_NAME} SHARED ${SOURCES})
 else(ANDROID)
-  add_executable(${PROJECT_NAME} ${SOURCES})
+  add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
 endif(ANDROID)
+add_dependencies(${PROJECT_NAME} translations)
 add_dependencies(${PROJECT_NAME} translations)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
 

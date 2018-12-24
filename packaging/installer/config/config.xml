@@ -5,4 +5,5 @@
     <Title>Add Hours and Minutes -- Installer</Title>
     <Publisher>Akaflieg Freiburg</Publisher>
     <StartMenuDir>Akaflieg Freiburg</StartMenuDir>
+    <RunProgram>@TargetDir@\addhoursandminutes.exe</RunProgram>
 </Installer>
