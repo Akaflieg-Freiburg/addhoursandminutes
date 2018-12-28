@@ -317,6 +317,12 @@ Rectangle {
         }
 
         GridLayout {
+            Layout.fillHeight: false
+            Layout.fillWidth: true
+            Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
+            Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
+            Layout.preferredWidth: 4*hoursAndMinutes.buttonMinHeight
+            Layout.minimumWidth: 4*hoursAndMinutes.buttonMinHeight
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
@@ -325,6 +331,7 @@ Rectangle {
             Button {
                 id: button7
                 text: "7"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -334,6 +341,7 @@ Rectangle {
             Button {
                 id: button8
                 text: "8"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -343,6 +351,7 @@ Rectangle {
             Button {
                 id: button9
                 text: "9"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -353,6 +362,7 @@ Rectangle {
                 id: buttonClear
                 palette { button: "teal"; buttonText: "white"}
                 text: "C"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -363,6 +373,7 @@ Rectangle {
             Button {
                 id: button4
                 text: "4"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -372,6 +383,7 @@ Rectangle {
             Button {
                 id: button5
                 text: "5"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -381,6 +393,7 @@ Rectangle {
             Button {
                 id: button6
                 text: "6"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -391,6 +404,7 @@ Rectangle {
                 id: buttonMinus
                 palette { button: "teal"; buttonText: "white"}
                 text: "-"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -400,6 +414,7 @@ Rectangle {
             Button {
                 id: button1
                 text: "1"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -409,6 +424,7 @@ Rectangle {
             Button {
                 id: button2
                 text: "2"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -418,6 +434,7 @@ Rectangle {
             Button {
                 id: button3
                 text: "3"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -428,6 +445,7 @@ Rectangle {
                 id: buttonPlus
                 palette { button: "teal"; buttonText: "white"}
                 text: "+"
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -437,6 +455,7 @@ Rectangle {
             Button {
                 id: button0
                 text: "0"
+                Layout.fillHeight: true
                 Layout.columnSpan: 3
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
@@ -448,6 +467,7 @@ Rectangle {
                 id: buttonEquals
                 palette { button: "teal"; buttonText: "white"}
                 text: "="
+                Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
@@ -456,6 +476,12 @@ Rectangle {
         }
     }
 }
+
+
+
+
+
+
 
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}
