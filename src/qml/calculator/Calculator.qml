@@ -49,6 +49,10 @@ Rectangle {
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
     }
 
+    function isPortrait() {
+        return width < 1.2*height
+    }
+
     function convertToHoursAndMinutes(minutes) {
         // Compute "Hours : Minutes" representation of totalMinutes
         var result = ""
@@ -270,8 +274,12 @@ Rectangle {
         }
     }
 
-    ColumnLayout {
-        spacing: 0
+    GridLayout {
+        columnSpacing: 0
+        rowSpacing: 0
+        rows: 3
+        columns: 3
+        flow: isPortrait() ? GridLayout.TopToBottom : GridLayout.LeftToRight
         anchors.fill: parent
 
         ListView {
@@ -294,7 +302,7 @@ Rectangle {
                 Text {
                     id: operand
                     anchors.right: parent.right
-                    anchors.rightMargin: 22
+                    anchors.rightMargin: hoursAndMinutes.isPortrait() ? fontpixelsize : 2*fontpixelsize
                     text: model.operand
                     font.pixelSize: fontpixelsize
                 }
@@ -310,19 +318,24 @@ Rectangle {
 
         Rectangle {
             height: 1
-            Layout.fillWidth: true
+            width: 1
+
+            Layout.fillHeight: !hoursAndMinutes.isPortrait()
+            Layout.fillWidth: hoursAndMinutes.isPortrait()
+
             color: "gray"
-            Layout.preferredHeight: 1
-            Layout.rowSpan: 1
         }
 
         GridLayout {
-            Layout.fillHeight: false
-            Layout.fillWidth: true
+            id: keypad
+
+            Layout.fillHeight: !hoursAndMinutes.isPortrait()
+            Layout.fillWidth: hoursAndMinutes.isPortrait()
+
             Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
             Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
-            Layout.preferredWidth: 4*hoursAndMinutes.buttonMinHeight
-            Layout.minimumWidth: 4*hoursAndMinutes.buttonMinHeight
+            Layout.preferredWidth: 6*hoursAndMinutes.buttonMinHeight
+            Layout.minimumWidth: 6*hoursAndMinutes.buttonMinHeight
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
@@ -476,11 +489,6 @@ Rectangle {
         }
     }
 }
-
-
-
-
-
 
 
 /*##^## Designer {

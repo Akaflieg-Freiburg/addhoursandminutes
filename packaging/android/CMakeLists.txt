@@ -4,6 +4,7 @@ if (ANDROID)
   # Prepare Android APK
   #
 
+  math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
   configure_file(AndroidManifest.xml android-sources/AndroidManifest.xml)
 
   # Generate icons

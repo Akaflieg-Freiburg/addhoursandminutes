@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<manifest android:versionName="1" package="de.akaflieg_freiburg.cavok.add_hours_and_minutes" android:installLocation="auto" xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1">
+<manifest android:versionName="${PROJECT_VERSION}" package="de.akaflieg_freiburg.cavok.add_hours_and_minutes" android:installLocation="auto" xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="${PROJECT_VERSION_CODE}">
   <application android:label="Add Hours and Minutes"
 	       android:name="org.qtproject.qt5.android.bindings.QtApplication"
 	       android:icon="@drawable/icon">

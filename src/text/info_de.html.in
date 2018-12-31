@@ -1,6 +1,7 @@
-<h3>Stunden- und Minutenrechner</h3>
+<h3>Rechnen mit Stunden und Minuten</h3>
+<h4>Version ${PROJECT_VERSION}</h4>
 
-<p>Eine kleine Taschenrechner-App, mit denen Sie Zeiten zusammenrechnen
+<p>Dies ist eine kleine Taschenrechner-App, mit denen Sie Zeiten zusammenrechnen
   können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der
   Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.</p>
 
@@ -37,3 +38,9 @@ Sie unsere Homepage.</a></p>
   Public License V3</a> lizensiert. Eine inoffizielle Übersetzung der
   englischsprachigen Lizenz ins Deutsche finden
   Sie <a href="https://www.gnu.de/documents/gpl-3.0.de.html">hier</a>.</p>
+
+
+<h3>Danksagung</h3>
+
+<p>Dieses Programm baut auf einer reiher von open-source Programmbibliotheken
+  auf, unter Anderem auf <a href="https://www.qt.io">Qt</a>.</p>

@@ -34,7 +34,7 @@ ScrollView {
         
         Text {
             text: view.text
-            width: parent.width
+            width: view.width
             wrapMode: Text.Wrap
             leftPadding: Qt.application.font.pixelSize*0.5
             rightPadding: Qt.application.font.pixelSize*0.5

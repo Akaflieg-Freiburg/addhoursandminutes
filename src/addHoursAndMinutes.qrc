@@ -4,9 +4,5 @@
         <file>qml/calculator/Calculator.qml</file>
         <file>qml/info/Info.qml</file>
         <file>qml/main.qml</file>
-        <file>text/info.html</file>
-    </qresource>
-    <qresource lang="de">
-    	<file alias="text/info.html">text/info_de.html</file>
     </qresource>
 </RCC>

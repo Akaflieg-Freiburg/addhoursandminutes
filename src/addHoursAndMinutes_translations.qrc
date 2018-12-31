@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="/">
     <file>addHoursAndMinutes_de.qm</file>
+    <file>text/info.html</file>
+  </qresource>
+  <qresource lang="de">
+    <file alias="text/info.html">text/info_de.html</file>
   </qresource>
 </RCC>

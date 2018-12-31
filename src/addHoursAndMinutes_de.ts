@@ -6,7 +6,7 @@
     <message>
         <source>Add Hours and Minutes</source>
         <comment>Application Name</comment>
-        <translation>Rechner für Stunden und Minuten</translation>
+        <translation>Rechnen mit Stunden und Minuten</translation>
     </message>
 </context>
 <context>
