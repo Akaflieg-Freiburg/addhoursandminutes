@@ -23,6 +23,7 @@ The app can be cross-compiled on linux, using the Android NDK and an appropriate
 pre-compiled version of Qt. On the author's computer, the following command
 lines will do the trick.
 
+```shell
 export JAVA_HOME=/usr/lib/jvm/java
 export ANDROID_SDK=/home/kebekus/Software/buildsystems/Android-SDK
 
@@ -37,7 +38,7 @@ cmake \
 ..
 
 make
-
+```
 
 ## Installation
 
