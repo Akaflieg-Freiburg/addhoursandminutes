@@ -1,6 +1,16 @@
 # Packaging
 
 
+## Android
+
+The CMakeFiles include a special target, "packaging", that produces an Android
+APK file in the directory "packaging/android". The program "inkscape" is
+required to generate the necessary icons.
+
+The CMakeLists used to generate Android package have been tested under Linux,
+but not under Windows.
+
+
 ## Linux
 
 The CMakeFiles include a special target, "packaging", that helps to produce
@@ -29,11 +39,10 @@ Service. This requires that the commands "curl" and "dpkg-source" are available
 and that the computer is able to download files from the internet.
 
 
-## Android
+## Windows
 
-The CMakeFiles include a special target, "packaging", that produces an Android
-APK file in the directory "packaging/android". The program "inkscape" is
-required to generate the necessary icons.
+The CMakeFiles include a special target, "packaging", that produces an offline 
+installer file using the Qt Installer framework. To this end, the program 
+"binarycreator" is used. A hint for the location of the program is hardcoded
+into packging/installer/CMakeLists.txt
 
-The CMakeLists used to generate Android package have been tested under Linux,
-but not under Windows.
