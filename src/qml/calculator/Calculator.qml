@@ -316,14 +316,15 @@ Rectangle {
             }
         }
 
-        Rectangle {
-            height: 1
-            width: 1
+        Image {
+            id: shadow
 
-            Layout.fillHeight: !hoursAndMinutes.isPortrait()
+            Layout.fillHeight: !hoursAndMinutes.isPortrait() 
             Layout.fillWidth: hoursAndMinutes.isPortrait()
 
-            color: "gray"
+            Layout.preferredHeight: fontpixelsize*0.25|0
+            Layout.preferredWidth: fontpixelsize*0.25|0
+            source: hoursAndMinutes.isPortrait() ? "../../images/shadow_horizontal.png" : "../../images/shadow_vertical.png"
         }
 
         GridLayout {
@@ -487,8 +488,13 @@ Rectangle {
                 onClicked: hoursAndMinutes.addOperator("=")
             }
         }
+
     }
 }
+
+
+
+
 
 
 /*##^## Designer {
