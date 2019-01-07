@@ -37,7 +37,7 @@ ApplicationWindow {
 
       anchors.top: parent.top
       anchors.topMargin: 0
-        
+
       count: view.count
       currentIndex: view.currentIndex
 
