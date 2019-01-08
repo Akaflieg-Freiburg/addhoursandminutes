@@ -1,8 +1,9 @@
 <RCC>
     <qresource>
         <file alias="icon.svg">../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg</file>
-        <file>qml/calculator/Calculator.qml</file>
+	<file>qml/calculator/Calculator.qml</file>
         <file>qml/info/Info.qml</file>
+	<file>qtquickcontrols2.conf</file>
         <file>images/shadow_horizontal.png</file>
         <file>images/shadow_vertical.png</file>
         <file>qml/main.qml</file>
