@@ -493,13 +493,6 @@ Rectangle {
 
     }
 
-    Image {
-        id: shadow2
-        height: 50
-        width: 50
-        source: hoursAndMinutes.isPortrait() ? "../../images/shadow_horizontal.png" : "../../images/shadow_vertical.png"
-    }
-
 }
 
 
