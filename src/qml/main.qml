@@ -27,10 +27,10 @@ import "./info"
 ApplicationWindow {
     id: window
     visible: true
-    width: Qt.application.font.pixelSize*18*1.5
-    height: Qt.application.font.pixelSize*24*1.5
-    minimumWidth: Qt.application.font.pixelSize*18*1.5
-    minimumHeight: Qt.application.font.pixelSize*20*1.5
+    width: Qt.application.font.pixelSize*14*1.5
+    height: Qt.application.font.pixelSize*18*1.5
+    minimumWidth: Qt.application.font.pixelSize*12*1.5
+    minimumHeight: Qt.application.font.pixelSize*14*1.5
 
     PageIndicator {
       id: indicator
@@ -44,6 +44,21 @@ ApplicationWindow {
       anchors.horizontalCenter: parent.horizontalCenter
     }
 
+    Rectangle {
+        id: rect
+        
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: indicator.bottom
+        anchors.topMargin: 0
+
+        height: 1
+        color: "lightgray"
+    }
+
+    
     SwipeView {
        	id: view
         currentIndex: 0
@@ -54,7 +69,7 @@ ApplicationWindow {
         anchors.leftMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
-        anchors.top: indicator.bottom
+        anchors.top: rect.bottom
         anchors.topMargin: 0
         
         focus: true
