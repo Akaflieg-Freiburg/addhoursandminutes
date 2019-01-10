@@ -5,6 +5,7 @@
         <file>qml/info/Info.qml</file>
 	<file>qtquickcontrols2.conf</file>
         <file>images/shadow_horizontal.png</file>
+        <file>images/shadow_top.png</file>
         <file>images/shadow_vertical.png</file>
         <file>qml/main.qml</file>
     </qresource>

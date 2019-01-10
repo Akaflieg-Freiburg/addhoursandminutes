@@ -43,21 +43,7 @@ ApplicationWindow {
         
         anchors.horizontalCenter: parent.horizontalCenter
     }
-    
-    Rectangle {
-        id: rect
         
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.top: indicator.bottom
-        anchors.topMargin: 0
-        
-        height: 1
-        color: "lightgray"
-    }
-    
     SwipeView {
        	id: view
         currentIndex: 0
@@ -68,7 +54,7 @@ ApplicationWindow {
         anchors.leftMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
-        anchors.top: rect.bottom
+        anchors.top: indicator.bottom
         anchors.topMargin: 0
         
         focus: true

@@ -339,6 +339,18 @@ Rectangle {
                 visible: hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_horizontal.png"
             }
+
+            Image {
+                id: shadow1a
+                
+                anchors.top: lvContainer.top
+                anchors.left: lvContainer.left
+                anchors.right: lvContainer.right
+                height: fontpixelsize*0.25|0
+//                visible: !hoursAndMinutes.isPortrait()
+                source: "../../images/shadow_top.png"
+            }
+
             Image {
                 id: shadow2
                 
