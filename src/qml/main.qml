@@ -31,19 +31,19 @@ ApplicationWindow {
     height: Qt.application.font.pixelSize*18*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
-
+    
     PageIndicator {
-      id: indicator
-
-      anchors.top: parent.top
-      anchors.topMargin: 0
-
-      count: view.count
-      currentIndex: view.currentIndex
-
-      anchors.horizontalCenter: parent.horizontalCenter
+        id: indicator
+        
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        
+        count: view.count
+        currentIndex: view.currentIndex
+        
+        anchors.horizontalCenter: parent.horizontalCenter
     }
-
+    
     Rectangle {
         id: rect
         
@@ -53,11 +53,10 @@ ApplicationWindow {
         anchors.rightMargin: 0
         anchors.top: indicator.bottom
         anchors.topMargin: 0
-
+        
         height: 1
         color: "lightgray"
     }
-
     
     SwipeView {
        	id: view
@@ -83,7 +82,7 @@ ApplicationWindow {
             text: infoText
         }
     }
-        
+    
     Shortcut {
         sequence: StandardKey.Quit
         onActivated: Qt.quit()

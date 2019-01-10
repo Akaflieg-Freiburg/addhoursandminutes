@@ -294,6 +294,8 @@ Rectangle {
                 id: listView
 
                 anchors.fill: lvContainer
+                anchors.topMargin: 0.5*fontpixelsize
+                anchors.bottomMargin: 0.5*fontpixelsize
                 
                 clip: true
                 
@@ -302,10 +304,11 @@ Rectangle {
                     width: parent.width
                     Text {
                     id: operator
-                        x: 6
+                        anchors.left: parent.left
+                        anchors.leftMargin: hoursAndMinutes.isPortrait() ? fontpixelsize : 2*fontpixelsize
                         color: "teal"
                         text: model.operator
-                    font.pixelSize: fontpixelsize
+                        font.pixelSize: fontpixelsize
                         font.family: "Monospace"
                     }
                     Text {
@@ -368,19 +371,19 @@ Rectangle {
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
@@ -549,22 +552,22 @@ Rectangle {
                 onClicked: hoursAndMinutes.addOperator("=")
             }
 
-                        Rectangle {
+            Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-                color: "lightgray"
+                color: "#e0e0e0"
             }
 
             Rectangle {
