@@ -305,7 +305,7 @@ Rectangle {
                     Text {
                     id: operator
                         anchors.left: parent.left
-                        anchors.leftMargin: hoursAndMinutes.isPortrait() ? fontpixelsize : 2*fontpixelsize
+                        anchors.leftMargin: 2*fontpixelsize
                         color: "teal"
                         text: model.operator
                         font.pixelSize: fontpixelsize
@@ -314,7 +314,7 @@ Rectangle {
                     Text {
                         id: operand
                         anchors.right: parent.right
-                        anchors.rightMargin: hoursAndMinutes.isPortrait() ? fontpixelsize : 2*fontpixelsize
+                        anchors.rightMargin: 2*fontpixelsize
                         text: model.operand
                         font.pixelSize: fontpixelsize
                         font.family: "Monospace"
