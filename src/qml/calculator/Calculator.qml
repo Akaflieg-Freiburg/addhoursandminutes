@@ -347,7 +347,7 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: fontpixelsize*0.25|0
-//                visible: !hoursAndMinutes.isPortrait()
+                visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_top.png"
             }
 
