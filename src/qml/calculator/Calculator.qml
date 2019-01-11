@@ -205,7 +205,7 @@ Rectangle {
             listView.model.append({"operator": opCode, "operand": "0"})
         } else if (opCode === "=") {
             if (listView.model.get(i).operator !== "=") {
-                listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes)})
+                listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes), "isSum": true})
             }
         }
 
@@ -318,6 +318,7 @@ Rectangle {
                         text: model.operand
                         font.pixelSize: fontpixelsize
                         font.family: "Monospace"
+                        font.bold: model.isSum
                     }
                 }
                 
@@ -325,6 +326,7 @@ Rectangle {
                     ListElement {
                         operator: ""
                         operand: "0"
+                        isSum: false
                     }
                 }
             }
