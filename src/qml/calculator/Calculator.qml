@@ -31,7 +31,7 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property int fontpixelsize: Qt.application.font.pixelSize*1.2
+    property int fontpixelsize: Qt.application.font.pixelSize*fontScale
     property real formfactor: 2.5
     property int buttonMinHeight: fontpixelsize*formfactor
 
