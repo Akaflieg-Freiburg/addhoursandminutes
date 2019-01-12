@@ -303,7 +303,7 @@ Rectangle {
                     height: fontpixelsize*1.2
                     width: parent.width
                     Text {
-                    id: operator
+                        id: operator
                         anchors.left: parent.left
                         anchors.leftMargin: 2*fontpixelsize
                         color: "teal"
@@ -375,8 +375,8 @@ Rectangle {
 
             Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
             Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
-            Layout.preferredWidth: 6*hoursAndMinutes.buttonMinHeight
-            Layout.minimumWidth: 6*hoursAndMinutes.buttonMinHeight
+            Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
+            Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
