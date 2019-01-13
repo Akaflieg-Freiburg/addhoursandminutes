@@ -27,23 +27,23 @@ import "./info"
 ApplicationWindow {
     id: window
     visible: true
-    width: Qt.application.font.pixelSize*18*1.5
-    height: Qt.application.font.pixelSize*24*1.5
-    minimumWidth: Qt.application.font.pixelSize*18*1.5
-    minimumHeight: Qt.application.font.pixelSize*20*1.5
-
+    width: Qt.application.font.pixelSize*14*1.5
+    height: Qt.application.font.pixelSize*18*1.5
+    minimumWidth: Qt.application.font.pixelSize*12*1.5
+    minimumHeight: Qt.application.font.pixelSize*14*1.5
+    
     PageIndicator {
-      id: indicator
-
-      anchors.top: parent.top
-      anchors.topMargin: 0
+        id: indicator
         
-      count: view.count
-      currentIndex: view.currentIndex
-
-      anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        
+        count: view.count
+        currentIndex: view.currentIndex
+        
+        anchors.horizontalCenter: parent.horizontalCenter
     }
-
+        
     SwipeView {
        	id: view
         currentIndex: 0
@@ -68,7 +68,7 @@ ApplicationWindow {
             text: infoText
         }
     }
-        
+    
     Shortcut {
         sequence: StandardKey.Quit
         onActivated: Qt.quit()

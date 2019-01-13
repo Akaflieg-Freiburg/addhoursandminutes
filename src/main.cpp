@@ -30,6 +30,7 @@
 
 int main(int argc, char *argv[])
 {
+  QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
   QGuiApplication app(argc, argv);
   
   // Install translators
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
   QTranslator Qt_translator;
   Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
   app.installTranslator(&Qt_translator);
-
+  
   // Set application parameters
   QCoreApplication::setOrganizationName("Akaflieg Freiburg");
   QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
@@ -58,6 +59,12 @@ int main(int argc, char *argv[])
   // Start QML Engine
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextProperty("infoText", infoText);
+#if defined(Q_OS_ANDROID)
+  engine.rootContext()->setContextProperty("fontScale", 1.5);
+#else
+  engine.rootContext()->setContextProperty("fontScale", 1.2);
+#endif
+  
   engine.load("qrc:/qml/main.qml");
   
   return app.exec();

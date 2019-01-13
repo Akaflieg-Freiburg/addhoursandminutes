@@ -13,4 +13,4 @@ truck driver.
 
 - 100% Open Source
 
-- Written without commercial interestSimple Hour and Minute Calculator
+- Written without commercial interest

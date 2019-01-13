@@ -1,7 +1,7 @@
 <h3>Rechnen mit Stunden und Minuten</h3>
 <h4>Version ${PROJECT_VERSION}</h4>
 
-<p>Dies ist eine kleine Taschenrechner-App, mit denen Sie Zeiten zusammenrechnen
+<p>Dies ist eine kleine Taschenrechner-App, mit der Sie Zeiten zusammenrechnen
   können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der
   Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.</p>
 

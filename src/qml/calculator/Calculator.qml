@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 by Stefan Kebekus                                  *
+ *   Copyright (C) 2018-2019 by Stefan Kebekus                             *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,7 +31,7 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property int fontpixelsize: Qt.application.font.pixelSize*1.5
+    property int fontpixelsize: Qt.application.font.pixelSize*fontScale
     property real formfactor: 2.5
     property int buttonMinHeight: fontpixelsize*formfactor
 
@@ -205,7 +205,7 @@ Rectangle {
             listView.model.append({"operator": opCode, "operand": "0"})
         } else if (opCode === "=") {
             if (listView.model.get(i).operator !== "=") {
-                listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes)})
+                listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes), "isSum": true})
             }
         }
 
@@ -273,7 +273,7 @@ Rectangle {
             event.accepted = true
         }
     }
-
+    
     GridLayout {
         columnSpacing: 0
         rowSpacing: 0
@@ -282,49 +282,90 @@ Rectangle {
         flow: isPortrait() ? GridLayout.TopToBottom : GridLayout.LeftToRight
         anchors.fill: parent
 
-        ListView {
-            id: listView
+        Item {
+            id: lvContainer
+            
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.preferredHeight: 160
             Layout.preferredWidth: 110
 
-            delegate: Item {
-                height: fontpixelsize*1.2
-                width: parent.width
-                Text {
-                    id: operator
-                    x: 6
-                    color: "teal"
-                    text: model.operator
-                    font.pixelSize: fontpixelsize
+            ListView {
+                id: listView
+
+                anchors.fill: lvContainer
+                anchors.topMargin: 0.5*fontpixelsize
+                anchors.bottomMargin: 0.5*fontpixelsize
+                
+                clip: true
+                
+                delegate: Item {
+                    height: fontpixelsize*1.2
+                    width: parent.width
+                    Text {
+                        id: operator
+                        anchors.left: parent.left
+                        anchors.leftMargin: 2*fontpixelsize
+                        color: "teal"
+                        text: model.operator
+                        font.pixelSize: fontpixelsize
+                        font.family: "Monospace"
+                    }
+                    Text {
+                        id: operand
+                        anchors.right: parent.right
+                        anchors.rightMargin: 2*fontpixelsize
+                        text: model.operand
+                        font.pixelSize: fontpixelsize
+                        font.family: "Monospace"
+                        font.bold: model.isSum
+                    }
                 }
-                Text {
-                    id: operand
-                    anchors.right: parent.right
-                    anchors.rightMargin: hoursAndMinutes.isPortrait() ? fontpixelsize : 2*fontpixelsize
-                    text: model.operand
-                    font.pixelSize: fontpixelsize
+                
+                model: ListModel {
+                    ListElement {
+                        operator: ""
+                        operand: "0"
+                        isSum: false
+                    }
                 }
             }
 
-            model: ListModel {
-                ListElement {
-                    operator: ""
-                    operand: "0"
-                }
+            Image {
+                id: shadow1
+                
+                anchors.bottom: lvContainer.bottom
+                anchors.left: lvContainer.left
+                anchors.right: lvContainer.right
+                height: fontpixelsize*0.25|0
+                visible: hoursAndMinutes.isPortrait()
+                source: "../../images/shadow_horizontal.png"
             }
+
+            Image {
+                id: shadow1a
+                
+                anchors.top: lvContainer.top
+                anchors.left: lvContainer.left
+                anchors.right: lvContainer.right
+                height: fontpixelsize*0.25|0
+                visible: !hoursAndMinutes.isPortrait()
+                source: "../../images/shadow_top.png"
+            }
+
+            Image {
+                id: shadow2
+                
+                anchors.top: lvContainer.top
+                anchors.bottom: lvContainer.bottom
+                anchors.right: lvContainer.right
+                width: fontpixelsize*0.25|0
+                visible: !hoursAndMinutes.isPortrait()
+                source: "../../images/shadow_vertical.png"
+            }
+            
         }
 
-        Rectangle {
-            height: 1
-            width: 1
-
-            Layout.fillHeight: !hoursAndMinutes.isPortrait()
-            Layout.fillWidth: hoursAndMinutes.isPortrait()
-
-            color: "gray"
-        }
 
         GridLayout {
             id: keypad
@@ -334,18 +375,43 @@ Rectangle {
 
             Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
             Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
-            Layout.preferredWidth: 6*hoursAndMinutes.buttonMinHeight
-            Layout.minimumWidth: 6*hoursAndMinutes.buttonMinHeight
+            Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
+            Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
             columns: 4
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "teal"
+            }
 
             Button {
                 id: button7
                 text: "7"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("7")
@@ -356,6 +422,7 @@ Rectangle {
                 text: "8"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("8")
@@ -366,6 +433,7 @@ Rectangle {
                 text: "9"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("9")
@@ -377,6 +445,7 @@ Rectangle {
                 text: "C"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.backSpace()
@@ -388,6 +457,7 @@ Rectangle {
                 text: "4"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("4")
@@ -398,6 +468,7 @@ Rectangle {
                 text: "5"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("5")
@@ -408,6 +479,7 @@ Rectangle {
                 text: "6"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("6")
@@ -419,6 +491,7 @@ Rectangle {
                 text: "-"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("-")
@@ -429,6 +502,7 @@ Rectangle {
                 text: "1"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("1")
@@ -439,6 +513,7 @@ Rectangle {
                 text: "2"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("2")
@@ -449,6 +524,7 @@ Rectangle {
                 text: "3"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("3")
@@ -460,6 +536,7 @@ Rectangle {
                 text: "+"
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("+")
@@ -471,6 +548,7 @@ Rectangle {
                 Layout.fillHeight: true
                 Layout.columnSpan: 3
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addDigit("0")
@@ -482,13 +560,46 @@ Rectangle {
                 text: "="
                 Layout.fillHeight: true
                 Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
                 onClicked: hoursAndMinutes.addOperator("=")
             }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "#e0e0e0"
+            }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                color: "teal"
+            }
+
+
         }
+
     }
+
 }
+
+
+
+
 
 
 /*##^## Designer {
