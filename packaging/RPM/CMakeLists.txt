@@ -4,7 +4,7 @@
 
 configure_file(${PROJECT_NAME}.spec ${PROJECT_NAME}.spec)
 add_custom_target(packaging-rpm
-  COMMAND cp ../tar/${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz ${PROJECT_NAME}_${PROJECT_VERSION}.orig.tar.gz
+  COMMAND cp ../tar/${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz ${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz
   COMMENT "Copying tarball"
   )
 add_dependencies(packaging-rpm packaging-tar)

@@ -2,8 +2,6 @@
 # Provide translations
 #
 
-cmake_policy(SET CMP0071 NEW)
-
 qt5_add_translation(qm_files
   addHoursAndMinutes_de.ts
   )
@@ -17,11 +15,10 @@ configure_file(text/info_de.html.in text/info_de.html)
 # Set up target for executable
 #
 
-qtquick_compiler_add_resources(RESOURCES addHoursAndMinutes.qrc)
 set(SOURCES
-    main.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
-    ${RESOURCES}
+  main.cpp
+  addHoursAndMinutes.qrc
+  ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
   )
 if(ANDROID)
   add_library(${PROJECT_NAME} SHARED ${SOURCES})

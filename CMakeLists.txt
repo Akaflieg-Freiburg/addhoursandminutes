@@ -14,15 +14,18 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 find_package(Qt5 COMPONENTS Core LinguistTools Quick REQUIRED)
-find_package(Qt5QuickCompiler)
-include(GNUInstallDirs)
 if(ANDROID)
   include(3rdParty/qt-android-cmake/AddQtAndroidApk.cmake)
 endif()
 
+include(GNUInstallDirs)
+
+
 # Find GIT commit for the TAG given by the ${PROJECT_VERSION}, if git is
 # available and if we are working in a git source tree
+
 if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
   find_package(Git)
   if(Git_FOUND)
