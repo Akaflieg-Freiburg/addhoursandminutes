@@ -18,7 +18,6 @@ configure_file(text/info_de.html.in text/info_de.html)
 #
 
 qtquick_compiler_add_resources(RESOURCES addHoursAndMinutes.qrc)
-message(${RESOURCES})
 set(SOURCES
     main.cpp
     ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
@@ -29,7 +28,6 @@ if(ANDROID)
 else(ANDROID)
   add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
 endif(ANDROID)
-add_dependencies(${PROJECT_NAME} translations)
 add_dependencies(${PROJECT_NAME} translations)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
 
