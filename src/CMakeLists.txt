@@ -16,15 +16,19 @@ configure_file(text/info_de.html.in text/info_de.html)
 #
 
 set(SOURCES
-  main.cpp
   addHoursAndMinutes.qrc
+  androidClient.cpp
+  main.cpp
   ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
   )
+
 if(ANDROID)
   add_library(${PROJECT_NAME} SHARED ${SOURCES})
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras)
 else(ANDROID)
   add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
 endif(ANDROID)
+
 add_dependencies(${PROJECT_NAME} translations)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
 

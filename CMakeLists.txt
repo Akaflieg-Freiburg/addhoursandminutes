@@ -17,6 +17,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS Core LinguistTools Quick REQUIRED)
 if(ANDROID)
+  find_package(Qt5 COMPONENTS AndroidExtras REQUIRED)
   include(3rdParty/qt-android-cmake/AddQtAndroidApk.cmake)
 endif()
 
