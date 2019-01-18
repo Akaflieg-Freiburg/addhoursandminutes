@@ -27,7 +27,7 @@
 #include <QQuickView>
 #include <QTranslator>
 
-#include "androidClient.h"
+#include "androidAdaptor.h"
 
 int main(int argc, char *argv[])
 {
@@ -59,21 +59,23 @@ int main(int argc, char *argv[])
   
   // Start QML Engine
   QQmlApplicationEngine engine;
-  /*
-  NotificationClient *notificationClient = new NotificationClient(&engine);
-  engine.rootContext()->setContextProperty(QLatin1String("notificationClient"),
-					   notificationClient);
-  */  
-  AndroidClient *adaptor = new AndroidClient(&engine);
-  engine.rootContext()->setContextProperty("AndroidClient", adaptor);
+
+  // Make AndroidAdaptor available to QML engine
+  AndroidAdaptor *adaptor = new AndroidAdaptor(&engine);
+  engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
   
+  // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
+
+  // Make font scaling factor available to QML engine; this scaling factor
+  // depends on the platform
 #if defined(Q_OS_ANDROID)
   engine.rootContext()->setContextProperty("fontScale", 1.5);
 #else
   engine.rootContext()->setContextProperty("fontScale", 1.2);
 #endif
-  
+
+  // Now load the QML code
   engine.load("qrc:/qml/main.qml");
   
   return app.exec();

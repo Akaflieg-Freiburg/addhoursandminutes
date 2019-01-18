@@ -17,7 +17,7 @@ configure_file(text/info_de.html.in text/info_de.html)
 
 set(SOURCES
   addHoursAndMinutes.qrc
-  androidClient.cpp
+  androidAdaptor.cpp
   main.cpp
   ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
   )
@@ -39,7 +39,7 @@ if(ANDROID)
   
   math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
   configure_file(android-sources/AndroidManifest.xml android-sources/AndroidManifest.xml)
-  configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidClient.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidClient.java COPYONLY)
+  configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
   
   # Generate icons
   

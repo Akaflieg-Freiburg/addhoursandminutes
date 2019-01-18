@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 import QtQuick 2.9
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.0
@@ -142,7 +141,7 @@ Rectangle {
         if (listView.model.get(i).operator === "=") {
             listView.model.append({"operator": "", "operand": ""})
             listView.model.append({"operator": "", "operand": digit})
-            minutesEntered = digit
+            minutesEntered = ""
             hoursEntered = ""
             totalMinutes = 0
 
@@ -151,7 +150,8 @@ Rectangle {
             return
         }
 
-        // In all other cases, add the digit entered to the current lines. Shift strings around, so that "1:23" + "x" becomes "12:3x"
+        // In all other cases, add the digit entered to the current lines. Shift
+        // strings around, so that "1:23" + "x" becomes "12:3x"
         if (minutesEntered === "") {
             if (digit !== "0") {
                 minutesEntered = digit
@@ -414,7 +414,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("7")
+                onClicked: {
+                    hoursAndMinutes.addDigit("7")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -425,7 +428,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("8")
+                onClicked: {
+                    hoursAndMinutes.addDigit("8")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -436,7 +442,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("9")
+                onClicked: {
+                    hoursAndMinutes.addDigit("9")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -448,8 +457,14 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.backSpace()
-                onPressAndHold: hoursAndMinutes.clear()
+                onClicked: {
+                    hoursAndMinutes.backSpace()
+                    AndroidAdaptor.vibrateBrief()
+                }
+                onPressAndHold: {
+                    hoursAndMinutes.clear()
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -460,7 +475,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("4")
+                onClicked: {
+                    hoursAndMinutes.addDigit("4")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -471,7 +489,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("5")
+                onClicked: {
+                    hoursAndMinutes.addDigit("5")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -482,7 +503,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("6")
+                onClicked: {
+                    hoursAndMinutes.addDigit("6")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -494,7 +518,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addOperator("-")
+                onClicked: {
+                    hoursAndMinutes.addOperator("-")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -505,7 +532,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("1")
+                onClicked: {
+                    hoursAndMinutes.addDigit("1")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -516,7 +546,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("2")
+                onClicked: {
+                    hoursAndMinutes.addDigit("2")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -527,7 +560,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("3")
+                onClicked: {
+                    hoursAndMinutes.addDigit("3")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -539,7 +575,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addOperator("+")
+                onClicked: {
+                    hoursAndMinutes.addOperator("+")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Button {
@@ -553,7 +592,7 @@ Rectangle {
                 font.pixelSize: fontpixelsize
                 onClicked: {
                     hoursAndMinutes.addDigit("0")
-                    AndroidClient.vibrateBrief()
+                    AndroidAdaptor.vibrateBrief()
                 }
             }
 
@@ -566,7 +605,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addOperator("=")
+                onClicked: {
+                    hoursAndMinutes.addOperator("=")
+                    AndroidAdaptor.vibrateBrief()
+                }
             }
 
             Rectangle {
