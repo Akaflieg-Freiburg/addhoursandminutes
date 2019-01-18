@@ -34,10 +34,12 @@ void AndroidClient::buzz()
 void AndroidClient::updateAndroidNotification()
 {
 #if defined(Q_OS_ANDROID)
+  /*
   QAndroidJniObject javaNotification = QAndroidJniObject::fromString(m_notification);
-  QAndroidJniObject::callStaticMethod<void>("org/qtproject/example/notification/NotificationClient",
+  QAndroidJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidClient.java",
 					    "notify",
 					    "(Ljava/lang/String;)V",
 					    javaNotification.object<jstring>());
+  */
 #endif
 }
