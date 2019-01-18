@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 by Stefan Kebekus                                  *
+ *   Copyright (C) 2018 - 2019 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,7 @@
 #include <QQuickView>
 #include <QTranslator>
 
+#include "androidClient.h"
 
 int main(int argc, char *argv[])
 {
@@ -50,7 +51,7 @@ int main(int argc, char *argv[])
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)) && defined(Q_OS_LINUX)
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
-    
+  
   // Load large strings from files, in order to make them available to QML
   QFile file(":text/info.html");
   file.open(QIODevice::ReadOnly);
@@ -58,6 +59,14 @@ int main(int argc, char *argv[])
   
   // Start QML Engine
   QQmlApplicationEngine engine;
+  /*
+  NotificationClient *notificationClient = new NotificationClient(&engine);
+  engine.rootContext()->setContextProperty(QLatin1String("notificationClient"),
+					   notificationClient);
+  */  
+  AndroidClient *adaptor = new AndroidClient(&engine);
+  engine.rootContext()->setContextProperty("AndroidClient", adaptor);
+  
   engine.rootContext()->setContextProperty("infoText", infoText);
 #if defined(Q_OS_ANDROID)
   engine.rootContext()->setContextProperty("fontScale", 1.5);

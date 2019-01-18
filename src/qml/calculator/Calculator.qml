@@ -551,7 +551,10 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-                onClicked: hoursAndMinutes.addDigit("0")
+                onClicked: {
+                    hoursAndMinutes.addDigit("0")
+                    AndroidClient.vibrateBrief()
+                }
             }
 
             Button {

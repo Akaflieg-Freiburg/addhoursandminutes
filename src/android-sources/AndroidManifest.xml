@@ -4,7 +4,7 @@
 	       android:name="org.qtproject.qt5.android.bindings.QtApplication"
 	       android:icon="@drawable/icon">
     <activity android:label="Add Hours and Minutes"
-	      android:name="org.qtproject.qt5.android.bindings.QtActivity"
+	      android:name="de.akaflieg_freiburg.cavok.add_hours_and_minutes.AndroidClient"
 	      android:screenOrientation="unspecified"
 	      android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation">
       <intent-filter>

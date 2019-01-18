@@ -20,9 +20,11 @@ class AndroidClient : public QObject
 signals:
     void notificationChanged();
 
+public slots:
+    void vibrateBrief();
+
 private slots:
     void updateAndroidNotification();
-    void buzz();
 
 private:
     QString m_notification;
