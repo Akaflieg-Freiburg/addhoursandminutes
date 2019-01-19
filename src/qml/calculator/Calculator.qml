@@ -141,7 +141,7 @@ Rectangle {
         if (listView.model.get(i).operator === "=") {
             listView.model.append({"operator": "", "operand": ""})
             listView.model.append({"operator": "", "operand": digit})
-            minutesEntered = ""
+            minutesEntered = digit
             hoursEntered = ""
             totalMinutes = 0
 
@@ -157,7 +157,11 @@ Rectangle {
                 minutesEntered = digit
             }
         } else if (minutesEntered.length === 1) {
-            minutesEntered = minutesEntered + digit
+            if (minutesEntered === "0") {
+                minutesEntered = digit
+            } else {
+                minutesEntered = minutesEntered + digit
+            }
         } else {
             hoursEntered = hoursEntered + minutesEntered.charAt(0)
             minutesEntered = minutesEntered.charAt(1) + digit
@@ -227,49 +231,81 @@ Rectangle {
 
     Keys.onPressed: {
         if (event.key === Qt.Key_0) {
-            button0.clicked()
+            hoursAndMinutes.addDigit("0")
+            button0.down = true
+            button0Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_1) {
-            button1.clicked()
+            hoursAndMinutes.addDigit("1")
+            button1.down = true
+            button1Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_2) {
-            button2.clicked()
+            hoursAndMinutes.addDigit("2")
+            button2.down = true
+            button2Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_3) {
-            button3.clicked()
+            hoursAndMinutes.addDigit("3")
+            button3.down = true
+            button3Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_4) {
-            button4.clicked()
+            hoursAndMinutes.addDigit("4")
+            button4.down = true
+            button4Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_5) {
-            button5.clicked()
+            hoursAndMinutes.addDigit("5")
+            button5.down = true
+            button5Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_6) {
-            button6.clicked()
+            hoursAndMinutes.addDigit("6")
+            button6.down = true
+            button6Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_7) {
-            button7.clicked()
+            hoursAndMinutes.addDigit("7")
+            button7.down = true
+            button7Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_8) {
-            button8.clicked()
+            hoursAndMinutes.addDigit("8")
+            button8.down = true
+            button8Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_9) {
-            button9.clicked()
+            hoursAndMinutes.addDigit("9")
+            button9.down = true
+            button9Timer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_Plus) {
-            buttonPlus.clicked()
+            hoursAndMinutes.addOperator("+")
+            buttonPlus.down = true
+            buttonPlusTimer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_Minus) {
+            hoursAndMinutes.addOperator("-")
+            buttonMinus.down = true
+            buttonMinusTimer.running = true
             buttonMinus.clicked()
             event.accepted = true
         } else if ((event.key === Qt.Key_Equals || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
-            buttonEquals.clicked()
+            hoursAndMinutes.addOperator("=")
+            buttonEquals.down = true
+            buttonEqualsTimer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_Delete || event.key === Qt.Key_C) {
             hoursAndMinutes.clear()
+            buttonClear.down = true
+            buttonClearTimer.running = true
             event.accepted = true
         } else if (event.key === Qt.Key_Backspace) {
             backSpace()
+            buttonClear.down = true
+            buttonClearTimer.running = true
+            event.accepted = true
             event.accepted = true
         }
     }
@@ -418,6 +454,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("7")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button7Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -432,6 +474,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("8")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button8Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -446,6 +494,13 @@ Rectangle {
                     hoursAndMinutes.addDigit("9")
                     AndroidAdaptor.vibrateBrief()
                 }
+                                
+                Timer {
+                    id: button9Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
+
             }
 
             Button {
@@ -465,6 +520,13 @@ Rectangle {
                     hoursAndMinutes.clear()
                     AndroidAdaptor.vibrateBrief()
                 }
+                                
+                Timer {
+                    id: buttonClearTimer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
+
             }
 
             Button {
@@ -479,6 +541,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("4")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button4Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -493,6 +561,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("5")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button5Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -507,6 +581,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("6")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button6Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -522,6 +602,12 @@ Rectangle {
                     hoursAndMinutes.addOperator("-")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: buttonMinusTimer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -536,6 +622,13 @@ Rectangle {
                     hoursAndMinutes.addDigit("1")
                     AndroidAdaptor.vibrateBrief()
                 }
+                                
+                Timer {
+                    id: button1Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
+
             }
 
             Button {
@@ -550,6 +643,13 @@ Rectangle {
                     hoursAndMinutes.addDigit("2")
                     AndroidAdaptor.vibrateBrief()
                 }
+                                
+                Timer {
+                    id: button2Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
+
             }
 
             Button {
@@ -564,6 +664,12 @@ Rectangle {
                     hoursAndMinutes.addDigit("3")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button3Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -579,6 +685,12 @@ Rectangle {
                     hoursAndMinutes.addOperator("+")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: buttonPlusTimer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Button {
@@ -590,10 +702,18 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+
                 onClicked: {
                     hoursAndMinutes.addDigit("0")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: button0Timer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
+
             }
 
             Button {
@@ -609,6 +729,12 @@ Rectangle {
                     hoursAndMinutes.addOperator("=")
                     AndroidAdaptor.vibrateBrief()
                 }
+                
+                Timer {
+                    id: buttonEqualsTimer
+                    interval: 100;
+                    onTriggered: parent.down = undefined
+                 }
             }
 
             Rectangle {
@@ -634,20 +760,6 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "teal"
             }
-
-
         }
-
     }
-
 }
-
-
-
-
-
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/
