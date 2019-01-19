@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 by Stefan Kebekus                                  *
+ *   Copyright (C) 2018 - 2019 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *

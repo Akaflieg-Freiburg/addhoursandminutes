@@ -21,7 +21,8 @@ compilation terminates, you'll find a binary in the build directory.
 
 The app can be cross-compiled on linux, using the Android NDK and an appropriate
 pre-compiled version of Qt. On the author's computer, the following command
-lines will do the trick.
+lines will generate an Android APK package
+```build-android/src/de.akaflieg_freiburg.cavok.add_hours_and_minutes-unsigned.apk```. 
 
 ```shell
 export JAVA_HOME=/usr/lib/jvm/java
@@ -39,6 +40,11 @@ cmake \
 
 make
 ```
+
+The CMakeFiles require the program "inkscape" to generate the necessary icons.
+The CMakeLists used to generate Android package have been tested under Linux,
+but not under Windows.
+
 
 ## Installation
 
