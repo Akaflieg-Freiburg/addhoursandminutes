@@ -404,6 +404,20 @@ Rectangle {
 
 
         GridLayout {
+            Layout.fillHeight: !hoursAndMinutes.isPortrait()
+            Layout.fillWidth: hoursAndMinutes.isPortrait()
+
+            columnSpacing: 0
+            rowSpacing: 0
+            rows: 1
+            
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: hoursAndMinutes.isPortrait()
+                color: "#e0e0e0"
+            }
+
+        GridLayout {
             id: keypad
 
             Layout.fillHeight: !hoursAndMinutes.isPortrait()
@@ -413,6 +427,7 @@ Rectangle {
             Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
             Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
             Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
+            Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
@@ -450,6 +465,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("7")
                     AndroidAdaptor.vibrateBrief()
@@ -470,6 +486,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("8")
                     AndroidAdaptor.vibrateBrief()
@@ -490,6 +507,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("9")
                     AndroidAdaptor.vibrateBrief()
@@ -512,6 +530,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.backSpace()
                     AndroidAdaptor.vibrateBrief()
@@ -537,6 +556,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("4")
                     AndroidAdaptor.vibrateBrief()
@@ -557,6 +577,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("5")
                     AndroidAdaptor.vibrateBrief()
@@ -577,6 +598,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("6")
                     AndroidAdaptor.vibrateBrief()
@@ -618,6 +640,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("1")
                     AndroidAdaptor.vibrateBrief()
@@ -639,6 +662,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("2")
                     AndroidAdaptor.vibrateBrief()
@@ -660,6 +684,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("3")
                     AndroidAdaptor.vibrateBrief()
@@ -681,6 +706,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addOperator("+")
                     AndroidAdaptor.vibrateBrief()
@@ -702,12 +728,12 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
-
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addDigit("0")
                     AndroidAdaptor.vibrateBrief()
                 }
-                
+
                 Timer {
                     id: button0Timer
                     interval: 100;
@@ -725,6 +751,7 @@ Rectangle {
                 Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                 Layout.fillWidth: true
                 font.pixelSize: fontpixelsize
+                palette { button: "#e0e0e0"; buttonText: "black"}
                 onClicked: {
                     hoursAndMinutes.addOperator("=")
                     AndroidAdaptor.vibrateBrief()
@@ -761,5 +788,11 @@ Rectangle {
                 color: "teal"
             }
         }
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.fillWidth: hoursAndMinutes.isPortrait()
+                color: "teal"
+            }
+    }
     }
 }
