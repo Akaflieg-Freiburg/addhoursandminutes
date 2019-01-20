@@ -68,6 +68,60 @@ ApplicationWindow {
             text: infoText
         }
     }
+
+    Rectangle {
+        id: firstTimeInfo
+        
+        anchors.fill: parent
+        color: "teal"
+        focus: true
+        
+        Flickable {
+            id: flickable
+
+            anchors.top: parent.top
+            anchors.bottom: okButton.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            
+            clip: true
+            contentWidth: parent.width
+            boundsBehavior: Flickable.StopAtBounds
+            flickableDirection: Flickable.VerticalFlick
+        
+            Text {
+                text: "Add Hours and Minutes"
+                color: "white"
+                width: view.width
+                wrapMode: Text.Wrap
+                leftPadding: Qt.application.font.pixelSize*0.5
+                rightPadding: Qt.application.font.pixelSize*0.5
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+        }
+        
+        Button {
+            id: okButton
+            anchors.bottom: parent.bottom
+            text: "Continue"
+
+            background: Rectangle {
+                color: okButton.down ? "teal" : "teal"
+                border.color: "white"
+                border.width: 1
+                radius: 4
+            }
+
+            onClicked: {
+                firstTimeInfo.visible = false
+                view.focus = true
+            }
+            Keys.onPressed: {
+                firstTimeInfo.visible = false
+                view.focus = true
+            }
+        }
+    }
     
     Shortcut {
         sequence: StandardKey.Quit
