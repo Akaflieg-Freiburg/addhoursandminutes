@@ -53,10 +53,14 @@ int main(int argc, char *argv[])
 #endif
   
   // Load large strings from files, in order to make them available to QML
-  QFile file(":text/info.html");
-  file.open(QIODevice::ReadOnly);
-  auto infoText = file.readAll();
+  QFile file1(":text/info.html");
+  file1.open(QIODevice::ReadOnly);
+  auto infoText = file1.readAll();
   
+  QFile file2(":text/firstStart.html");
+  file2.open(QIODevice::ReadOnly);
+  auto firstStartText = file2.readAll();
+
   // Start QML Engine
   QQmlApplicationEngine engine;
 
@@ -66,6 +70,7 @@ int main(int argc, char *argv[])
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
+  engine.rootContext()->setContextProperty("firstStartText", firstStartText);
 
   // Make font scaling factor available to QML engine; this scaling factor
   // depends on the platform

@@ -83,6 +83,8 @@ ApplicationWindow {
             anchors.bottom: okButton.top
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.bottomMargin: 2*Qt.application.font.pixelSize
+            anchors.topMargin: 2*Qt.application.font.pixelSize
             
             clip: true
             contentWidth: parent.width
@@ -90,28 +92,37 @@ ApplicationWindow {
             flickableDirection: Flickable.VerticalFlick
         
             Text {
-                text: "Add Hours and Minutes"
+                text: firstStartText
                 color: "white"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
                 width: view.width
                 wrapMode: Text.Wrap
-                leftPadding: Qt.application.font.pixelSize*0.5
-                rightPadding: Qt.application.font.pixelSize*0.5
+                leftPadding: Qt.application.font.pixelSize
+                rightPadding: Qt.application.font.pixelSize
                 onLinkActivated: Qt.openUrlExternally(link)
             }
         }
         
         Button {
             id: okButton
+            
             anchors.bottom: parent.bottom
-            text: "Continue"
-
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottomMargin: 2*Qt.application.font.pixelSize
+            anchors.topMargin: 2*Qt.application.font.pixelSize
+            
+            text: qsTr("Continue")
+            
+            palette { button: "teal"; buttonText: "white"}
+            
             background: Rectangle {
                 color: okButton.down ? "teal" : "teal"
                 border.color: "white"
                 border.width: 1
                 radius: 4
-            }
-
+        }
+            
             onClicked: {
                 firstTimeInfo.visible = false
                 view.focus = true
@@ -120,6 +131,7 @@ ApplicationWindow {
                 firstTimeInfo.visible = false
                 view.focus = true
             }
+            
         }
     }
     

@@ -9,6 +9,8 @@ add_custom_target(translations DEPENDS ${qm_files})
 configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translations.qrc COPYONLY)
 configure_file(text/info.html.in text/info.html)
 configure_file(text/info_de.html.in text/info_de.html)
+configure_file(text/firstStart.html.in text/firstStart.html)
+configure_file(text/firstStart_de.html.in text/firstStart_de.html)
 
 
 #

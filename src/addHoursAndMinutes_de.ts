@@ -16,4 +16,11 @@
         <translation>Überlauf</translation>
     </message>
 </context>
+<context>
+    <name>main</name>
+    <message>
+        <source>Continue</source>
+        <translation>Weiter</translation>
+    </message>
+</context>
 </TS>

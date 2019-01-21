@@ -2,8 +2,10 @@
   <qresource prefix="/">
     <file>addHoursAndMinutes_de.qm</file>
     <file>text/info.html</file>
+    <file>text/firstStart.html</file>
   </qresource>
   <qresource lang="de">
     <file alias="text/info.html">text/info_de.html</file>
+    <file alias="text/firstStart.html">text/firstStart_de.html</file>
   </qresource>
 </RCC>
