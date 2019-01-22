@@ -20,6 +20,7 @@ configure_file(text/firstStart_de.html.in text/firstStart_de.html)
 set(SOURCES
   addHoursAndMinutes.qrc
   androidAdaptor.cpp
+  firstRunNotifier.cpp
   main.cpp
   ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
   )

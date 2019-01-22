@@ -28,6 +28,7 @@
 #include <QTranslator>
 
 #include "androidAdaptor.h"
+#include "firstRunNotifier.h"
 
 int main(int argc, char *argv[])
 {
@@ -67,6 +68,10 @@ int main(int argc, char *argv[])
   // Make AndroidAdaptor available to QML engine
   AndroidAdaptor *adaptor = new AndroidAdaptor(&engine);
   engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
+
+  // Attach FirstRunNotifier
+  FirstRunNotifier *notifier = new FirstRunNotifier(&engine);
+  engine.rootContext()->setContextProperty("FirstRunNotifier", notifier);
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
@@ -82,6 +87,19 @@ int main(int argc, char *argv[])
 
   // Now load the QML code
   engine.load("qrc:/qml/main.qml");
+
+  QList<QObject *> objects = engine.rootObjects();
+  for(int i=0; i<objects.length(); i++) {
+    qWarning() << i << objects[i]->objectName();
+    objects[i]->dumpObjectInfo();
+    objects[i]->dumpObjectTree();
+    
+    QObject *fti = objects[i]->findChild<QObject *>("firstTimeInfo");
+    if (fti) {
+      qWarning() << "found fti";
+      fti->setProperty("source", "FirstRunDialog.qml");
+    }
+  }
   
   return app.exec();
 }
