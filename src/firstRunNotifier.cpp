@@ -18,10 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QSettings>
 
 #include "firstRunNotifier.h"
 
 FirstRunNotifier::FirstRunNotifier(QObject *parent)
   : QObject(parent)
 {
+}
+
+void FirstRunNotifier::check()
+{
+  QSettings settings;
+  
+  if (settings.value("firstRun", true).toBool())
+    emit firstRun();
+  settings.setValue("firstRun", false);
 }

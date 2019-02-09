@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 
   // Attach FirstRunNotifier
   FirstRunNotifier *notifier = new FirstRunNotifier(&engine);
-  engine.rootContext()->setContextProperty("FirstRunNotifier", notifier);
+  engine.rootContext()->setContextProperty("firstRunNotifier", notifier);
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
@@ -88,18 +88,8 @@ int main(int argc, char *argv[])
   // Now load the QML code
   engine.load("qrc:/qml/main.qml");
 
-  QList<QObject *> objects = engine.rootObjects();
-  for(int i=0; i<objects.length(); i++) {
-    qWarning() << i << objects[i]->objectName();
-    objects[i]->dumpObjectInfo();
-    objects[i]->dumpObjectTree();
-    
-    QObject *fti = objects[i]->findChild<QObject *>("firstTimeInfo");
-    if (fti) {
-      qWarning() << "found fti";
-      fti->setProperty("source", "FirstRunDialog.qml");
-    }
-  }
+  // Check if this is the first run. If yes, emit a signal.
+  notifier->check();
   
   return app.exec();
 }

@@ -55,6 +55,7 @@ Rectangle {
             rightPadding: Qt.application.font.pixelSize
             onLinkActivated: Qt.openUrlExternally(link)
         }
+        
     }
         
     Button {
@@ -74,16 +75,22 @@ Rectangle {
             border.color: "white"
             border.width: 1
             radius: 4
-    }
-            
+        }
+        
         onClicked: {
             firstTimeInfo.visible = false
             view.focus = true
         }
+        
         Keys.onPressed: {
             firstTimeInfo.visible = false
             view.focus = true
-        }
-        
+        }        
     }
+
+    Keys.onPressed: {
+        firstTimeInfo.visible = false
+        view.focus = true
+    }
+
 }

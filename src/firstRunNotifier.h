@@ -30,7 +30,8 @@ class FirstRunNotifier : public QObject
   
 public:
   explicit FirstRunNotifier(QObject *parent = 0);
-
+  void check();
+  
 signals:
   void firstRun(void);
 };

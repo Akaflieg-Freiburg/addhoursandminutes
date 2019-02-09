@@ -70,15 +70,24 @@ ApplicationWindow {
 
     Loader {
         id: firstTimeInfo
-
         anchors.fill: parent
+
+        Connections {
+            target: firstRunNotifier
+
+            onFirstRun:  {
+                firstTimeInfo.source = "FirstRunDialog.qml"
+                firstTimeInfo.focus = true
+            }
+        }
     }
     
+/*
     Component.onCompleted: {
         firstTimeInfo.source = "FirstRunDialog.qml"
         firstTimeInfo.focus = true
     }
-
+*/
     Shortcut {
         sequence: StandardKey.Quit
         onActivated: Qt.quit()

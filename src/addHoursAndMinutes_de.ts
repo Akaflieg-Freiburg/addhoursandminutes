@@ -17,10 +17,17 @@
     </message>
 </context>
 <context>
-    <name>main</name>
+    <name>FirstRunDialog</name>
     <message>
         <source>Continue</source>
         <translation>Weiter</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <source>Continue</source>
+        <translation type="vanished">Weiter</translation>
     </message>
 </context>
 </TS>
