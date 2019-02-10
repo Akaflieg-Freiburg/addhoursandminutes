@@ -73,11 +73,9 @@ ApplicationWindow {
         anchors.fill: parent
 
         Connections {
-            target: firstRunNotifier
-
-            onFirstRun:  {
-                firstTimeInfo.source = "FirstRunDialog.qml"
-                firstTimeInfo.focus = true
+            target: gps
+            onStatus:  {
+                text = statusString
             }
         }
     }
