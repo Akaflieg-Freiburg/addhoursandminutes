@@ -1,0 +1,27 @@
+image: fedora:latest
+
+before_script: 
+  # Update packages
+  - dnf -y update
+
+analysisAndTest:
+  stage: build
+  script:
+    # Install compiler and analysis tools
+    - dnf install -y cmake clang clang-analyzer clazy cppcheck doxygen gcc-c++ git graphviz make
+    # Install auxiliary stuff needed to run unit tests
+    - dnf install -y qt5-qtimageformats libtiff-tools
+    # Install project dependencies
+    - dnf install -y jbig2dec-devel libjpeg-turbo-devel openjpeg2-devel poppler-qt5-devel qpdf-devel qt5-qtbase-devel tesseract-devel zlib-devel
+    # Go …
+    - ./analyze-and-test.sh
+  artifacts:
+    paths:
+      - testResults
+
+analysisAndTest:evaluate:
+  dependencies:
+    - analysisAndTest
+  script:
+    # Fail if the directory "testResults" contains anything
+    - if [ -d testResults ] ; then exit -1; fi
