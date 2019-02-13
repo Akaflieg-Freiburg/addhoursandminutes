@@ -8,11 +8,9 @@ analysisAndTest:
   stage: build
   script:
     # Install compiler and analysis tools
-    - dnf install -y cmake clang clang-analyzer clazy cppcheck doxygen gcc-c++ git graphviz make
-    # Install auxiliary stuff needed to run unit tests
-    - dnf install -y qt5-qtimageformats libtiff-tools
+    - dnf install -y cmake clang clang-analyzer clazy cppcheck gcc-c++ git make
     # Install project dependencies
-    - dnf install -y jbig2dec-devel libjpeg-turbo-devel openjpeg2-devel poppler-qt5-devel qpdf-devel qt5-qtbase-devel tesseract-devel zlib-devel
+    - dnf install -y qt5-qtbase-devel qt5-qtsvg-devel qt5-linguist qt5-qtquickcontrols2-devel
     # Go …
     - ./analyze-and-test.sh
   artifacts:
