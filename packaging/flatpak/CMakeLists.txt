@@ -3,7 +3,6 @@
 #
 
 if (DEFINED TAG_COMMIT)
-  set(PROJECT_DATE 2018-12-07)
   configure_file(${APP_ID}.json ${APP_ID}.json)
 else()
   message("Not building inside a GIT directory, or git command not available. Flatpak manifest will not be generated.")

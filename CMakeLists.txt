@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 # Basic information about our project
 project(addhoursandminutes VERSION 1.0.0)
-
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
+set(PROJECT_DATE 2018-12-07)
 
 # Include external packages and modules
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -31,11 +31,11 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
   find_package(Git)
   if(Git_FOUND)
     message("Building inside a GIT directory, git found at ${GIT_EXECUTABLE}")
-    execute_process(COMMAND git rev-list -n1 ${PROJECT_VERSION}
+    execute_process(COMMAND git log --pretty=format:'%H' -n1
       OUTPUT_VARIABLE TAG_COMMIT
       OUTPUT_STRIP_TRAILING_WHITESPACE
       )
-    message("Git Tag ${PROJECT_VERSION} = Commit ${TAG_COMMIT}")
+    message("Currently working with git Commit ${TAG_COMMIT}")
   else()
     message("Git not found.")
   endif()
