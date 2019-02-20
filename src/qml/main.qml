@@ -73,19 +73,14 @@ ApplicationWindow {
         anchors.fill: parent
 
         Connections {
-            target: gps
-            onStatus:  {
-                text = statusString
+            target: firstRunNotifier
+            onFirstRun:  {
+                firstTimeInfo.source = "FirstRunDialog.qml"
+                firstTimeInfo.focus = true
             }
         }
     }
     
-/*
-    Component.onCompleted: {
-        firstTimeInfo.source = "FirstRunDialog.qml"
-        firstTimeInfo.focus = true
-    }
-*/
     Shortcut {
         sequence: StandardKey.Quit
         onActivated: Qt.quit()
