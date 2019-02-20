@@ -29,54 +29,58 @@ ApplicationWindow {
     height: Qt.application.font.pixelSize*18*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
-    
-    PageIndicator {
-        id: indicator
-        
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        
-        count: view.count
-        currentIndex: view.currentIndex
-        
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-        
-    SwipeView {
-       	id: view
-        currentIndex: 0
 
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.top: indicator.bottom
-        anchors.topMargin: 0
-        
-        focus: true
-        contentItem.focus: true
-        
-        Calculator {
-            focus: true
-        }
-
-        Info {
-            text: infoText
-        }
-
-    }
-
-    Loader {
-        id: firstTimeInfo
+    Item {
+        id: appWinContent
         anchors.fill: parent
+        
+        PageIndicator {
+            id: indicator
+        
+            anchors.top: parent.top
+            anchors.topMargin: 0
+        
+            count: view.count
+            currentIndex: view.currentIndex
+        
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        
+        SwipeView {
+       	    id: view
+            currentIndex: 0
 
-        Connections {
-            target: firstRunNotifier
-            onFirstRun:  {
-                firstTimeInfo.source = "FirstRunDialog.qml"
-                firstTimeInfo.focus = true
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.top: indicator.bottom
+            anchors.topMargin: 0
+        
+            focus: true
+            contentItem.focus: true
+        
+            Calculator {
+                focus: true
+            }
+
+            Info {
+                text: infoText
+            }
+        }
+
+        Loader {
+            id: firstTimeInfo
+            anchors.fill: parent
+
+            Connections {
+                target: firstRunNotifier
+                onFirstRun:  {
+                    firstTimeInfo.source = "FirstRunDialog.qml"
+                    firstTimeInfo.focus = true
+                }
             }
         }
     }
