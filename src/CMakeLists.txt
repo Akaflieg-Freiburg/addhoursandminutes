@@ -43,6 +43,8 @@ if(ANDROID)
   math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
   configure_file(android-sources/AndroidManifest.xml android-sources/AndroidManifest.xml)
   configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
+  configure_file(android-sources/res/drawable/splash.xml android-sources/res/drawable/splash.xml COPYONLY)
+    configure_file(android-sources/res/values/apptheme.xml android-sources/res/values/apptheme.xml COPYONLY)
   
   # Generate icons
   
