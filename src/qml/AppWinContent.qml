@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2019 by Stefan Kebekus                           *
+ *   Copyright (C) 2019 by Stefan Kebekus                                  *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,41 +22,57 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.4
 
-ApplicationWindow {
-    id: window
-    visible: false
-    width: Qt.application.font.pixelSize*14*1.5
-    height: Qt.application.font.pixelSize*18*1.5
-    minimumWidth: Qt.application.font.pixelSize*12*1.5
-    minimumHeight: Qt.application.font.pixelSize*14*1.5
+Item {
+    id: appWinContent
+    anchors.fill: parent
+        
+    PageIndicator {
+        id: indicator
+        
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        
+        count: view.count
+        currentIndex: view.currentIndex
+        
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+        
+    SwipeView {
+       	id: view
+        currentIndex: 0
+
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: indicator.bottom
+        anchors.topMargin: 0
+        
+        focus: true
+        contentItem.focus: true
+        
+        Calculator {
+            focus: true
+        }
+
+        Info {
+            text: infoText
+        }
+    }
 
     Loader {
+        id: firstTimeInfo
         anchors.fill: parent
-        opacity: 0
-        focus: true;
-        
-        source: "AppWinContent.qml"
 
-        NumberAnimation on opacity {
-            id: opAnim
-            to: 1.0
-            duration: 200
-        }
-
-        onLoaded: {
-            window.visible = true
-            opAnim.start()
+        Connections {
+            target: firstRunNotifier
+            onFirstRun:  {
+                firstTimeInfo.source = "FirstRunDialog.qml"
+                firstTimeInfo.focus = true
+            }
         }
     }
-    
-    Shortcut {
-        sequence: StandardKey.Quit
-        onActivated: Qt.quit()
-    }
-    
-    Shortcut {
-        sequence: StandardKey.Close
-        onActivated: Qt.quit()
-    }
-
 }

@@ -44,12 +44,12 @@ if(ANDROID)
   configure_file(android-sources/AndroidManifest.xml android-sources/AndroidManifest.xml)
   configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
   configure_file(android-sources/res/drawable/splash.xml android-sources/res/drawable/splash.xml COPYONLY)
-    configure_file(android-sources/res/values/apptheme.xml android-sources/res/values/apptheme.xml COPYONLY)
+  configure_file(android-sources/res/values/apptheme.xml android-sources/res/values/apptheme.xml COPYONLY)
+
   
   # Generate icons
-  
+
   add_custom_target(icons
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e icon.png -h 512 -w 512
     COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xxxhdpi
     COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-xxxhdpi/icon.png -h 192 -w 192
     COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xxhdpi
@@ -62,6 +62,7 @@ if(ANDROID)
     COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-mdpi/icon.png -h 48 -w 48
     COMMENT "Generate icons"
     )
+
   
   # Generate Android package
   
@@ -71,6 +72,7 @@ if(ANDROID)
     PACKAGE_NAME ${APP_ID}
     )
   add_dependencies(${PROJECT_NAME}_apk icons)
+
   
   # Copy the package to the android directory
   
