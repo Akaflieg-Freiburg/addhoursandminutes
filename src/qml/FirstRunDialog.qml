@@ -79,17 +79,20 @@ Rectangle {
         
         onClicked: {
             firstTimeInfo.visible = false
+            view.visible = true
             view.focus = true
         }
         
         Keys.onPressed: {
             firstTimeInfo.visible = false
+            view.visible = true
             view.focus = true
         }        
     }
 
     Keys.onPressed: {
         firstTimeInfo.visible = false
+        view.visible = true
         view.focus = true
     }
 

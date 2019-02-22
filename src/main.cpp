@@ -25,6 +25,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickView>
+#include <QSettings>
 #include <QTranslator>
 
 #include "androidAdaptor.h"
@@ -70,8 +71,13 @@ int main(int argc, char *argv[])
   engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
 
   // Attach FirstRunNotifier
+  QSettings settings;
+  engine.rootContext()->setContextProperty("firstRun", settings.value("firstRun", true).toBool());
+  settings.setValue("firstRun", false);
+  /*
   FirstRunNotifier *notifier = new FirstRunNotifier(&engine);
   engine.rootContext()->setContextProperty("firstRunNotifier", notifier);
+  */
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
@@ -89,7 +95,7 @@ int main(int argc, char *argv[])
   engine.load("qrc:/qml/main.qml");
 
   // Check if this is the first run. If yes, emit a signal.
-  notifier->check();
+  //  notifier->check();
   
   return app.exec();
 }

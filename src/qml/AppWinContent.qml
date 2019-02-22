@@ -51,7 +51,8 @@ Item {
         anchors.top: indicator.bottom
         anchors.topMargin: 0
         
-        focus: true
+        focus: !firstRun
+        visible: !firstRun
         contentItem.focus: true
         
         Calculator {
@@ -63,16 +64,8 @@ Item {
         }
     }
 
-    Loader {
-        id: firstTimeInfo
-        anchors.fill: parent
-
-        Connections {
-            target: firstRunNotifier
-            onFirstRun:  {
-                firstTimeInfo.source = "FirstRunDialog.qml"
-                firstTimeInfo.focus = true
-            }
-        }
+    FirstRunDialog {
+        focus: true
+        visible: firstRun
     }
 }
