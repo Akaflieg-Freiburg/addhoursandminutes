@@ -29,7 +29,6 @@
 #include <QTranslator>
 
 #include "androidAdaptor.h"
-#include "firstRunNotifier.h"
 
 int main(int argc, char *argv[])
 {
@@ -74,10 +73,6 @@ int main(int argc, char *argv[])
   QSettings settings;
   engine.rootContext()->setContextProperty("firstRun", settings.value("firstRun", true).toBool());
   settings.setValue("firstRun", false);
-  /*
-  FirstRunNotifier *notifier = new FirstRunNotifier(&engine);
-  engine.rootContext()->setContextProperty("firstRunNotifier", notifier);
-  */
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
