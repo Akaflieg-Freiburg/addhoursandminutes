@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 # Basic information about our project
 project(addhoursandminutes VERSION 1.0.0)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
-set(PROJECT_DATE 2018-12-07)
+set(PROJECT_DATE 2019-02-26)
 
 # Include external packages and modules
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

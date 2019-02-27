@@ -28,6 +28,10 @@
 #include <QSettings>
 #include <QTranslator>
 
+#ifdef Q_OS_ANDROID
+#include <QtAndroid>
+#endif
+
 #include "androidAdaptor.h"
 
 int main(int argc, char *argv[])
@@ -80,17 +84,18 @@ int main(int argc, char *argv[])
 
   // Make font scaling factor available to QML engine; this scaling factor
   // depends on the platform
-#if defined(Q_OS_ANDROID)
+#ifdef Q_OS_ANDROID
   engine.rootContext()->setContextProperty("fontScale", 1.5);
 #else
   engine.rootContext()->setContextProperty("fontScale", 1.2);
 #endif
-
+  
   // Now load the QML code
   engine.load("qrc:/qml/main.qml");
-
-  // Check if this is the first run. If yes, emit a signal.
-  //  notifier->check();
+  
+#ifdef Q_OS_ANDROID
+  QtAndroid::hideSplashScreen();
+#endif
   
   return app.exec();
 }

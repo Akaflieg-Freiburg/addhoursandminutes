@@ -34,6 +34,7 @@
       
       <!-- Splash screen, shown second -->
       <meta-data android:name="android.app.splash_screen_drawable" android:resource="@drawable/splash"/>
+      <meta-data android:name="android.app.splash_screen_sticky" android:value="true"/>
       <!-- Splash screen -->
     </activity>
   </application>
