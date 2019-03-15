@@ -1,11 +1,18 @@
-QT += qml quick
-  
 CONFIG += c++11
-CONFIG += static
+CONFIG += lrelease embed_translations 
+  
+android {
+  QT += androidextras
+}
+QT += qml
+QT += quick
 
 RESOURCES += addHoursAndMinutes.qrc
-RESOURCES += addHoursAndMinutes_translations.qrc 
+#RESOURCES += addHoursAndMinutes_translations.qrc 
 
+SOURCES += androidAdaptor.cpp
 SOURCES += main.cpp
 
-TRANSLATIONS = addHoursAndMinutes_de.ts
+HEADERS += androidAdaptor.h
+
+TRANSLATIONS += addHoursAndMinutes_de.ts

@@ -2,15 +2,14 @@
 # Provide translations
 #
 
-qt5_add_translation(qm_files
-  addHoursAndMinutes_de.ts
-  )
+qt5_add_translation(qm_files addHoursAndMinutes_de.ts)
 add_custom_target(translations DEPENDS ${qm_files})
-configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translations.qrc COPYONLY)
-configure_file(text/info.html.in text/info.html)
-configure_file(text/info_de.html.in text/info_de.html)
-configure_file(text/firstStart.html.in text/firstStart.html)
-configure_file(text/firstStart_de.html.in text/firstStart_de.html)
+
+#configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translations.qrc COPYONLY)
+configure_file(text/info.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info.html)
+configure_file(text/info_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info_de.html)
+configure_file(text/firstStart.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart.html)
+configure_file(text/firstStart_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart_de.html)
 
 
 #
@@ -21,7 +20,8 @@ set(SOURCES
   addHoursAndMinutes.qrc
   androidAdaptor.cpp
   main.cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
+  #  ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
+  addHoursAndMinutes_translations.qrc
   )
 
 if(ANDROID)
