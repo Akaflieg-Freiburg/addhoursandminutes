@@ -1,5 +1,6 @@
 <RCC>
     <qresource>
+        <file>addhoursandminutes_de.qm</file>
         <file alias="icon.svg">../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg</file>
 	<file>qml/AppWinContent.qml</file>
 	<file>qml/Calculator.qml</file>	

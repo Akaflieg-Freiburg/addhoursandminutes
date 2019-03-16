@@ -1,11 +1,21 @@
 #
-# Provide translations
+# Provide translations.  For better cooperation with qmake, we save the
+# translation files in the SOURCE directory.  If we ever move to a pure cmake
+# build in the future, this should be fixed.
 #
 
-qt5_add_translation(qm_files addHoursAndMinutes_de.ts)
+set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION ${CMAKE_CURRENT_SOURCE_DIR})
+qt5_add_translation(qm_files addhoursandminutes_de.ts)
 add_custom_target(translations DEPENDS ${qm_files})
 
-#configure_file(addHoursAndMinutes_translations.qrc addHoursAndMinutes_translations.qrc COPYONLY)
+
+#
+# Configure files.  For better cooperation with qmake, we save the configured
+# files in the SOURCE directory.  If we ever move to a pure cmake build in the
+# future, this should be fixed.
+#
+
+configure_file(android-sources/AndroidManifest.xml.in ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/AndroidManifest.xml)
 configure_file(text/info.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info.html)
 configure_file(text/info_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info_de.html)
 configure_file(text/firstStart.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart.html)
@@ -13,15 +23,33 @@ configure_file(text/firstStart_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/first
 
 
 #
+# Generate android icons.  For better cooperation with qmake, we save the icons
+# in the SOURCE directory.  If we ever move to a pure cmake build in the future,
+# this should be fixed.
+#
+
+add_custom_target(icons
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxxhdpi
+  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxxhdpi/icon.png -h 192 -w 192
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxhdpi
+  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxhdpi/icon.png -h 144 -w 144
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xhdpi
+  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xhdpi/icon.png -h 96 -w 96
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-hdpi
+  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-hdpi/icon.png -h 72 -w 72
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-mdpi
+  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-mdpi/icon.png -h 48 -w 48
+  COMMENT "Generate icons"
+  )
+
+#
 # Set up source files
 #
 
 set(SOURCES
-  addHoursAndMinutes.qrc
+  addhoursandminutes.qrc
   androidAdaptor.cpp
   main.cpp
-  #  ${CMAKE_CURRENT_BINARY_DIR}/addHoursAndMinutes_translations.qrc
-  addHoursAndMinutes_translations.qrc
   )
 
 if(ANDROID)
@@ -39,15 +67,14 @@ if(ANDROID)
 
   # Configure files
   
-  math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
-  configure_file(android-sources/AndroidManifest.xml android-sources/AndroidManifest.xml)
   configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
   configure_file(android-sources/res/drawable/splash.xml android-sources/res/drawable/splash.xml COPYONLY)
   configure_file(android-sources/res/values/apptheme.xml android-sources/res/values/apptheme.xml COPYONLY)
 
-  
-  # Generate icons
 
+  #
+  # Generate android icons
+  #
   add_custom_target(icons
     COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xxxhdpi
     COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-xxxhdpi/icon.png -h 192 -w 192
