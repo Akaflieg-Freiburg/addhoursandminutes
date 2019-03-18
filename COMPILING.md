@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-* Qt5 development packages (including QtSVG and the lupdate tool)
+* Qt5 development packages
 
 * CMake build system
 
@@ -11,39 +11,29 @@
 
 ## Compilation
 
-### Linux
+The compilation process is currently a mess.  The problem is that cmake, while
+working exetremely well for desktop applications, cannot easily and reliably
+produce Android packages (as of March 2019).  Until Qt offers better cmake
+support, this project uses cmake for desktop, and an ugly mix of cmake and qmake
+for compilation under Android.
 
-This app standard cmake system, so compilation is straightforward. Once the
-compilation terminates, you'll find a binary in the build directory.
+
+### Linux/Windows
+
+This app standard cmake system, so compilation is straightforward.  Once the
+compilation terminates, you'll find a binary in the build directory.  Because of
+the cmake/qmake mix described above, cmake will store some icons and configured
+files IN THE SOURCE directory, even when doing out-of-source builds.
 
 
 ### Android
 
-The app can be cross-compiled on linux, using the Android NDK and an appropriate
-pre-compiled version of Qt. On the author's computer, the following command
-lines will generate an Android APK package
-```build-android/src/de.akaflieg_freiburg.cavok.add_hours_and_minutes-unsigned.apk```. 
-
-```shell
-export JAVA_HOME=/usr/lib/jvm/java
-export ANDROID_SDK=/home/kebekus/Software/buildsystems/Android-SDK
-
-mkdir build-android
-cd build-android
-
-cmake \
--DCMAKE_FIND_ROOT_PATH=/home/kebekus/Software/buildsystems/Qt/5.12.1/android_armv7 \
--DCMAKE_TOOLCHAIN_FILE=/home/kebekus/Software/buildsystems//Android-SDK/ndk-bundle/build/cmake/android.toolchain.cmake \
--DANDROID_PLATFORM=android-26 \
--DANDROID_STL_SHARED_LIBRARIES=c++_shared \
-..
-
-make
-```
-
-The CMakeFiles require the program "inkscape" to generate the necessary icons.
-The CMakeLists used to generate Android package have been tested under Linux,
-but not under Windows.
+The app can be cross-compiled on linux, using the Android SDK, the Android NDK
+and an appropriate pre-compiled version of Qt.  Please have a look at the script
+'buildscript-android.sh' to learn how to compile an Android App that can be
+uploaded to the Google Play service.  The CMakeFiles require the program
+"inkscape" to generate the necessary icons.  The CMakeLists used to generate
+Android package have been tested under Linux, but not under Windows.
 
 
 ## Installation
