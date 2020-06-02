@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: enroute flight navigation
+title: Add Hour and Minutes
 name: Stefan Kebekus
 email: Stefan Kebekus
 #description: >- # this means to ignore newlines until "baseurl:"
@@ -25,7 +25,7 @@ email: Stefan Kebekus
 #minimal_mistakes_skin: default
 #search: true
 
-baseurl: "enroute" # the subpath of your site, e.g. /blog
+baseurl: "addhoursandminutes" # the subpath of your site, e.g. /blog
 url: "https://akaflieg-freiburg.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 
@@ -65,12 +65,12 @@ plugins:
 footer:
   links:
     - label: "Privacy Policies"
-      url: "https://akaflieg-freiburg.github.io/enroute/privacy"
+      url: "https://akaflieg-freiburg.github.io/addhoursandminutes/privacy"
     - label: "Contact"
-      url: "https://akaflieg-freiburg.github.io/enroute/contact"
+      url: "https://akaflieg-freiburg.github.io/addhoursandminutes/contact"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/Akaflieg-Freiburg/enroute"
+      url: "https://github.com/Akaflieg-Freiburg/addhoursandminutes"
 
 defaults:
   # _posts
@@ -94,9 +94,9 @@ defaults:
 
 category_archive:
   type: liquid
-  path: /enroute/categories/
+  path: /addhoursandminutes/categories/
 tag_archive:
   type: liquid
-  path: /enroute/tags/
+  path: /addhoursandminutes/tags/
 
 theme: jekyll-theme-cayman
