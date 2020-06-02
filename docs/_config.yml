@@ -98,3 +98,5 @@ category_archive:
 tag_archive:
   type: liquid
   path: /enroute/tags/
+
+theme: jekyll-theme-cayman
