@@ -9,16 +9,14 @@ layout: splash
 header:
   overlay_image: /assets/images/teaser.jpg
   overlay_filter: rgba(0, 0, 0, 0.5)
-  caption: "Photo by Shaun Darwood on Unsplash"
+  caption: "Photo by noor Younis on Unsplash"
   actions:
     - label: "Get it on Google Play"
       url: "https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes"
       
 ---
 
-**Add Hours and Minutes**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.
-
-is a free flight navigation app for Android and other devices. Designed to be simple, functional and elegant, it takes the stress out of your next flight. The program has been written by flight enthusiasts, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
+**Add Hours and Minutes**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.  The program has been written by Stefan Kebekus, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
 
 # Not Commercial. Privacy Taken Seriously.
 
