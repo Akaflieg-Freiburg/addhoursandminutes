@@ -20,7 +20,7 @@ header:
 <div style="float: right; clear: right">
 <iframe
    src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
-   width="200" 
+   width="400" 
    height="400" 
    name="Add Hours and Minutes"
    scrolling="no"
