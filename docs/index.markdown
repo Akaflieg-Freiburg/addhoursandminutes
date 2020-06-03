@@ -16,11 +16,10 @@ header:
       
 ---
 
-<div style="float: right; width: 0px; height: 100px"></div>
-<div style="float: right; clear: right">
+<figure style="width: 350px" class="align-right">
 <iframe
    src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
-   width="400" 
+   width="350" 
    height="400" 
    name="Add Hours and Minutes"
    scrolling="no"
@@ -30,7 +29,8 @@ header:
 Sie können die eingebettete Seite über den folgenden Verweis aufrufen: 
 <a href="https://wiki.selfhtml.org/wiki/Startseite">SELFHTML</a></p>
 </iframe>
-</div>
+  <figcaption>Run directly in your web browser</figcaption>
+</figure>
 **Add Hours and Minutes**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.  The program has been written by Stefan Kebekus, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
 
 # Not Commercial. Privacy Taken Seriously.
