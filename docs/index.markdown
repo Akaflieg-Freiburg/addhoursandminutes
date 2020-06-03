@@ -23,13 +23,13 @@ header:
    height="400" 
    name="Add Hours and Minutes"
    scrolling="no"
-   frameborder="0"
+   frameborder="1"
    float="right">
    <p>Ihr Browser kann leider keine eingebetteten Frames anzeigen.
 Sie können die eingebettete Seite über den folgenden Verweis aufrufen: 
 <a href="https://wiki.selfhtml.org/wiki/Startseite">SELFHTML</a></p>
 </iframe>
-  <figcaption>Run directly in your web browser</figcaption>
+  <figcaption>The app runs directly in your web browser</figcaption>
 </figure>
 **Add Hours and Minutes**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.  The program has been written by Stefan Kebekus, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
 
