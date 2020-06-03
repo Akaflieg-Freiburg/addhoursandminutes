@@ -56,3 +56,16 @@ $Qt5_DIR_WASM/bin/qmake ../src/addhoursandminutes.pro
 $Qt5_DIR_WASM/bin/lrelease ../src/addhoursandminutes.pro
 make -j
 cp ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg qtlogo.svg
+
+
+#
+# Distribute the executable
+#
+
+echo "Copy webasm executable to 'docs' directory (y/n)?"
+read -rsn1 input
+if [ "$input" = "y" ]; then
+    echo "Copying file…"
+    cp qtloader.js qtlogo.svg addhoursandminutes.html addhoursandminutes.js ../docs/assets/webasm/
+fi
+
