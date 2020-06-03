@@ -5,13 +5,11 @@ permalink: /privacy
 toc: true
 ---
 
-# Privacy Policies for the **enroute** App
+# Privacy Policies for the app
 
-The **enroute** app has been designed to not send any data to us. We do not track our users. We do not collect data. However, note the following.
+The app **Add Hours and Minutes** has been designed to not send any data to us. We do not track our users. We do not collect data. However, note the following.
 
-- The app contains third-party software components, including map rendering software from [MapBox, Inc.](https://www.mapbox.com/)  While we have checked that no data is collected by these components, there is a chance that we overlooked something.
-
-- The app accesses the internet, for instance to download maps and to check for updates. The internet sites where the data resides may not be under our control and may keep access logs.
+- The app contains third-party software components.  While we have checked that no data is collected by these components, there is a chance that we overlooked something.
 
 ## Responsible person
 
@@ -27,18 +25,12 @@ GERMANY
 
 The Android app requires the following privileges.
 
-- WRITE_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE -- This priviege is required to store the flight map library in a globaly accessible directory. This ensures that the library persists when the app is uninstalled or reinstalled. It also ensures that other apps, such as file managers or file synchronisation software, can access the data.
-
-- ACCESS_NETWORK_STATE -- This priviege is required to update map data.
-
-- ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION -- Accessing the device's location is clearly necessary for a navigation app.
-
 - VIBRATE -- The app vibrates your device, for instance to give haptic feedback for key presses.
 
 
 # Privacy Policies for This Web Site
 
-The **enroute** website is a static site that does not track, collect, store any information, or set any cookies.  
+The website is a static site that does not track, collect, store any information, or set any cookies.  
 
 The web site is, however, provided by [Github Inc.](https://github.com/), 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.  GitHub may collect User Personal Information from visitors, including logs of visitor IP addresses, to comply with legal obligations, and to maintain the security and integrity of the Website and the Service.  Please consult GitHub's [Privacy Statment](https://help.github.com/en/github/site-policy/github-privacy-statement#github-pages) and [Global Privacy Practices](https://help.github.com/en/github/site-policy/global-privacy-practices) for details.
 
@@ -54,4 +46,3 @@ Wintererstraße 77
 79104 Freiburg
 GERMANY
 ```
-
