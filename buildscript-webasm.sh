@@ -66,6 +66,6 @@ echo "Copy webasm executable to 'docs' directory (y/n)?"
 read -rsn1 input
 if [ "$input" = "y" ]; then
     echo "Copying file…"
-    cp qtloader.js qtlogo.svg addhoursandminutes.html addhoursandminutes.js ../docs/assets/webasm/
+    cp qtloader.js qtlogo.svg addhoursandminutes.html addhoursandminutes.js addhoursandminutes.wasm ../docs/assets/webasm/
 fi
 
