@@ -67,7 +67,9 @@ sed -i 's/320/200/g' addhoursandminutes.html
 echo "Copy webasm executable to 'docs' directory (y/n)?"
 read -rsn1 input
 if [ "$input" = "y" ]; then
+    echo "Brotli compression"
+    brotli addhoursandminutes.wasm
     echo "Copying file…"
-    cp qtloader.js qtlogo.png addhoursandminutes.html addhoursandminutes.js addhoursandminutes.wasm ../docs/assets/webasm/
+    cp qtloader.js qtlogo.png addhoursandminutes.html addhoursandminutes.js addhoursandminutes.wasm.br ../docs/assets/webasm/
 fi
 
