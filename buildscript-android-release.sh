@@ -54,7 +54,7 @@ cmake .. \
       -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
       -DANDROID_SDK:PATH=$ANDROID_SDK_ROOT \
       -DANDROID_STL:STRING=c++_shared \
-      -DCMAKE_BUILD_TYPE:STRING=Release \
+      -DCMAKE_BUILD_TYPE:STRING=MinSizeRel \
       -DCMAKE_CXX_COMPILER:STRING=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ \
       -DCMAKE_CXX_FLAGS="-Werror -Wall -Wextra" \
       -DCMAKE_C_COMPILER:STRING=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang \
@@ -63,7 +63,7 @@ cmake .. \
       -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake
 
 # This is bizarrely necessary, or else 'android_deployment_settings.json'
-# will lack our custom AndroidManifest and the SSL libraries
+# will lack our custom AndroidManifest
 cmake ..
 
 
@@ -72,8 +72,11 @@ cmake ..
 #
 
 ninja
-$Qt5_DIR_ANDROID/bin/androiddeployqt --input android_deployment_settings.json --output android-build --release --apk enroute-release-unsigned.apk
-echo "Unsigned APK file is available at $PWD/enroute-release-unsigned.apk"
+ninja apk
+ninja aab
+
+#$Qt5_DIR_ANDROID/bin/androiddeployqt --input android_deployment_settings.json --output android-build --release --apk addhourandminutes-release-unsigned.apk
+echo "Unsigned APK file is available at $PWD/addhourandminutes-release-unsigned.apk"
 
 if [ -z "$ANDROID_KEYSTORE_FILE" -o -z "$ANDROID_KEYSTORE_PASS" ]
 then
@@ -83,7 +86,7 @@ else
     $ANDROID_SDK_ROOT/build-tools/28.0.3/apksigner sign \
 						   --ks $ANDROID_KEYSTORE_FILE \
 						   --ks-pass pass:$ANDROID_KEYSTORE_PASS \
-						   --in enroute-release-unsigned.apk \
-						   --out enroute-release-signed.apk
-    echo "Signed APK file is available at $PWD/enroute-release-signed.apk"
+						   --in addhourandminutes-release-unsigned.apk \
+						   --out addhourandminutes-release-signed.apk
+    echo "Signed APK file is available at $PWD/addhourandminutes-release-signed.apk"
 fi

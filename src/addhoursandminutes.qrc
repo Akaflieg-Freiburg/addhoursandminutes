@@ -1,20 +1,21 @@
 <RCC>
-    <qresource>
+    <qresource prefix="/">
         <file>addhoursandminutes_de.qm</file>
         <file alias="icon.svg">../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg</file>
-	<file>qml/AppWinContent.qml</file>
-	<file>qml/Calculator.qml</file>	
-	<file>qml/FirstRunDialog.qml</file>
+        <file>qml/AppWinContent.qml</file>
+        <file>qml/Calculator.qml</file>
+        <file>qml/FirstRunDialog.qml</file>
         <file>qml/Info.qml</file>
         <file>qml/main.qml</file>
-	<file>qtquickcontrols2.conf</file>
-	<file>text/info.html</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>text/info.html</file>
         <file>text/firstStart.html</file>
         <file>images/shadow_horizontal.png</file>
         <file>images/shadow_top.png</file>
         <file>images/shadow_vertical.png</file>
+        <file alias="icon.png">../generatedSources/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.png</file>
     </qresource>
-    <qresource lang="de">
+    <qresource lang="de" prefix="/">
         <file alias="text/info.html">text/info_de.html</file>
         <file alias="text/firstStart.html">text/firstStart_de.html</file>
     </qresource>

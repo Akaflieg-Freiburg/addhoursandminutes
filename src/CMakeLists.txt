@@ -15,32 +15,11 @@ add_custom_target(translations DEPENDS ${qm_files})
 # future, this should be fixed.
 #
 
-configure_file(android-sources/AndroidManifest.xml.in ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/AndroidManifest.xml)
 configure_file(text/info.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info.html)
 configure_file(text/info_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info_de.html)
 configure_file(text/firstStart.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart.html)
 configure_file(text/firstStart_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart_de.html)
 
-
-#
-# Generate android icons.  For better cooperation with qmake, we save the icons
-# in the SOURCE directory.  If we ever move to a pure cmake build in the future,
-# this should be fixed.
-#
-
-add_custom_target(icons
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxxhdpi
-  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxxhdpi/icon.png -h 192 -w 192
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxhdpi
-  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xxhdpi/icon.png -h 144 -w 144
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xhdpi
-  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-xhdpi/icon.png -h 96 -w 96
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-hdpi
-  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-hdpi/icon.png -h 72 -w 72
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-mdpi
-  COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e ${CMAKE_CURRENT_SOURCE_DIR}/android-sources/res/drawable-mdpi/icon.png -h 48 -w 48
-  COMMENT "Generate icons"
-  )
 
 #
 # Set up source files
@@ -54,23 +33,40 @@ set(SOURCES
 
 if(ANDROID)
 
-  #
-  # Compile C++ files for Android
-  #
+  # Generate android extra sources. This includes icons, but also a few other files
+  set(ANDROID_EXTRA_SOURCES
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xxxhdpi/icon.png
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xxhdpi/icon.png
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xhdpi/icon.png
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-hdpi/icon.png
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-mdpi/icon.png
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable/splash.xml
+    ${CMAKE_CURRENT_BINARY_DIR}/android/res/values/apptheme.xml
+    )
+  add_custom_command(
+    OUTPUT ${ANDROID_EXTRA_SOURCES}
+    DEPENDS ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg
+    COMMAND ${CMAKE_COMMAND} -E make_directory android/res/drawable-xxxhdpi
+    COMMAND rsvg-convert ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -o ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xxxhdpi/icon.png -h 384 -w 384
+    COMMAND ${CMAKE_COMMAND} -E make_directory android/res/drawable-xxhdpi
+    COMMAND rsvg-convert ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -o ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xxhdpi/icon.png -h 288 -w 288
+    COMMAND ${CMAKE_COMMAND} -E make_directory android/res/drawable-xhdpi
+    COMMAND rsvg-convert ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -o ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-xhdpi/icon.png -h 192 -w 192
+    COMMAND ${CMAKE_COMMAND} -E make_directory android/res/drawable-hdpi
+    COMMAND rsvg-convert ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -o ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-hdpi/icon.png -h 144 -w 144
+    COMMAND ${CMAKE_COMMAND} -E make_directory android/res/drawable-mdpi
+    COMMAND rsvg-convert ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -o ${CMAKE_CURRENT_BINARY_DIR}/android/res/drawable-mdpi/icon.png -h 96 -w 96
+    COMMENT "Generate android icons"
+    )
   
-  add_library(${PROJECT_NAME} SHARED ${SOURCES})
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras Qt5::Core Qt5::Quick)
+  # The android target require a few additional variables
+  set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android" CACHE INTERNAL "")
   
-  #
-  # Prepare Android APK
-  #
-
   # Configure files
-  
-  configure_file(android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android-sources/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
-  configure_file(android-sources/res/drawable/splash.xml android-sources/res/drawable/splash.xml COPYONLY)
-  configure_file(android-sources/res/values/apptheme.xml android-sources/res/values/apptheme.xml COPYONLY)
-
+  configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
+  configure_file(android/res/drawable/splash.xml android/res/drawable/splash.xml COPYONLY)
+  configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
+  configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
   #
   # Generate android icons
@@ -90,25 +86,18 @@ if(ANDROID)
     )
 
   
-  # Generate Android package
+  # The android target is a library, not an executable
+  add_library(${PROJECT_NAME} SHARED ${SOURCES} ${ANDROID_EXTRA_SOURCES})
   
-  add_qt_android_apk(${PROJECT_NAME}_apk ${PROJECT_NAME}
-    PACKAGE_SOURCES android-sources
-    PROJECT_VERSION_CODE ${VERSION_CODE}
-    PACKAGE_NAME ${APP_ID}
-    )
-  add_dependencies(${PROJECT_NAME}_apk icons)
+  # Add libraries
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras Qt5::Core Qt5::Quick Qt5::Svg)
+endif()
 
-  
-  # Copy the package to the android directory
-  
-  add_custom_target(${PROJECT_NAME}_copyAPK ALL
-    COMMAND ${CMAKE_COMMAND} -E copy android-working/build/outputs/apk/release/android-working-release-unsigned.apk ${APP_ID}-unsigned.apk
-    )
-  add_dependencies(${PROJECT_NAME}_copyAPK ${PROJECT_NAME}_apk)
-  
-else(ANDROID)
-  
+#
+# Generate unix executable
+#
+if (NOT ANDROID)
+
   #
   # For non-Android platforms, simply generate executable
   #
@@ -123,4 +112,4 @@ else(ANDROID)
   
   install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
   
-endif(ANDROID)
+endif()

@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationName("Akaflieg Freiburg");
   QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
   QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
-  QGuiApplication::setWindowIcon(QIcon(":/icon.svg"));
+  QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)) && defined(Q_OS_LINUX)
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
