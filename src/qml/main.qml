@@ -70,8 +70,7 @@ ApplicationWindow {
         anchors.centerIn: parent
         parent: Overlay.overlay
 
-//        width: Math.min(window.width-Qt.application.font.pixelSize, 40*Qt.application.font.pixelSize)
-        height: parent.height-Qt.application.font.pixelSize
+        width: Math.min(window.width-Qt.application.font.pixelSize, 40*Qt.application.font.pixelSize)
         modal: true
 
         standardButtons: DialogButtonBox.Ok
@@ -80,54 +79,20 @@ ApplicationWindow {
 
         ScrollView {
             anchors.fill: parent
+            width: helpDialog.availableWidth
 
             Label {
-                width: helpDialog.contentWidth
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
+                width: helpDialog.availableWidth
                 wrapMode: Text.Wrap
                 leftPadding: Qt.application.font.pixelSize
                 rightPadding: Qt.application.font.pixelSize
                 onLinkActivated: Qt.openUrlExternally(link)
-                textFormat: "RichText"
-                text: "<h3>Add Hours and Minutes</h3><h4>Welcome</h4><p>In order to enter the time '1 hour and 23 minutes', simply press the keys '1', '2' and '3'.</p><p>To reset the calculator app, press and hold the key 'C'.</p><h4>Enjoy!</h4>"
+                textFormat: Text.RichText
+                text: "<h4>Enter times</h4><p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p><h4>Reset</h4><p>To reset the calculator, press and hold the key <strong>C</strong>.</p>"
             }
 
         } // ScrollView
     }
-
-/*
-        Flickable {
-
-            id: flickable
-
-            anchors.top: parent.top
-            anchors.bottom: okButton.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottomMargin: 2*Qt.application.font.pixelSize
-            anchors.topMargin: 2*Qt.application.font.pixelSize
-
-            clip: true
-            contentWidth: parent.width
-            boundsBehavior: Flickable.StopAtBounds
-            flickableDirection: Flickable.VerticalFlick
-
-            Text {
-                text: firstStartText
-                color: "white"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                width: view.width
-                wrapMode: Text.Wrap
-                leftPadding: Qt.application.font.pixelSize
-                rightPadding: Qt.application.font.pixelSize
-                onLinkActivated: Qt.openUrlExternally(link)
-            }
-
-        }
-    }
-    */
 
     Shortcut {
         sequence: StandardKey.Quit

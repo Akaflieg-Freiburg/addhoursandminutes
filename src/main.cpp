@@ -43,10 +43,10 @@ int main(int argc, char *argv[])
   QString locale = QLocale::system().name();
   QTranslator translator;
   translator.load(QString(":addHoursAndMinutes_") + locale.left(2));
-  app.installTranslator(&translator);
+  QGuiApplication::installTranslator(&translator);
   QTranslator Qt_translator;
   Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-  app.installTranslator(&Qt_translator);
+  QGuiApplication::installTranslator(&Qt_translator);
   
   // Set application parameters
   QCoreApplication::setOrganizationName("Akaflieg Freiburg");
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
   QQmlApplicationEngine engine;
 
   // Make AndroidAdaptor available to QML engine
-  AndroidAdaptor *adaptor = new AndroidAdaptor(&engine);
+  auto *adaptor = new AndroidAdaptor(&engine);
   engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
 
   // Attach FirstRunNotifier
@@ -97,5 +97,5 @@ int main(int argc, char *argv[])
   QtAndroid::hideSplashScreen();
 #endif
   
-  return app.exec();
+  return QGuiApplication::exec();
 }
