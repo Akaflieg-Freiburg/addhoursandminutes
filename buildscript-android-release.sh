@@ -86,7 +86,7 @@ else
     $ANDROID_SDK_ROOT/build-tools/28.0.3/apksigner sign \
 						   --ks $ANDROID_KEYSTORE_FILE \
 						   --ks-pass pass:$ANDROID_KEYSTORE_PASS \
-						   --in addhourandminutes-release-unsigned.apk \
+						   --in android-build/addhoursandminutes.apk \
 						   --out addhourandminutes-release-signed.apk
     echo "Signed APK file is available at $PWD/addhourandminutes-release-signed.apk"
 fi

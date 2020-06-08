@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2019 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2020 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-import QtQuick 2.9
-import QtQuick.Controls 2.3
-import QtQuick.Layouts 1.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 Rectangle {
     id: hoursAndMinutes
@@ -385,7 +385,7 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: fontpixelsize*0.25|0
-                visible: !hoursAndMinutes.isPortrait()
+//                visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_top.png"
             }
 

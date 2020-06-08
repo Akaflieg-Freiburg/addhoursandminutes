@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>addhoursandminutes_de.qm</file>
         <file alias="icon.svg">../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg</file>
-        <file>qml/AppWinContent.qml</file>
         <file>qml/Calculator.qml</file>
         <file>qml/FirstRunDialog.qml</file>
         <file>qml/Info.qml</file>
@@ -14,6 +13,10 @@
         <file>images/shadow_top.png</file>
         <file>images/shadow_vertical.png</file>
         <file alias="icon.png">../generatedSources/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.png</file>
+        <file>images/ic_menu_24px.svg</file>
+        <file>images/ic_exit_to_app_24px.svg</file>
+        <file>images/ic_help_24px.svg</file>
+        <file>images/ic_info_24px.svg</file>
     </qresource>
     <qresource lang="de" prefix="/">
         <file alias="text/info.html">text/info_de.html</file>
