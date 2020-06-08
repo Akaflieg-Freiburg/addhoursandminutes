@@ -105,7 +105,7 @@ if (NOT ANDROID)
   
   add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
   add_dependencies(${PROJECT_NAME} translations)
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::Svg)
   
   #
   # Install things

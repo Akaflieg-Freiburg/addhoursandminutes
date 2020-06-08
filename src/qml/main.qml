@@ -49,8 +49,9 @@ ApplicationWindow {
                     icon.source: "/images/ic_info_24px.svg"
                     text: qsTr("About")
                 }
-                MenuSeparator {}
+                MenuSeparator {visible: platform.os !== "wasm"}
                 MenuItem {
+                    visible: platform.os !== "wasm"
                     icon.source: "/images/ic_exit_to_app_24px.svg"
                     text: qsTr("Exit")
                     onTriggered: Qt.quit()
