@@ -8,7 +8,6 @@ set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION 
 qt5_add_translation(qm_files addhoursandminutes_de.ts)
 add_custom_target(translations DEPENDS ${qm_files})
 
-
 #
 # Configure files.  For better cooperation with qmake, we save the configured
 # files in the SOURCE directory.  If we ever move to a pure cmake build in the
@@ -17,8 +16,6 @@ add_custom_target(translations DEPENDS ${qm_files})
 
 configure_file(text/info.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info.html)
 configure_file(text/info_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info_de.html)
-configure_file(text/firstStart.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart.html)
-configure_file(text/firstStart_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/firstStart_de.html)
 
 
 #
@@ -68,29 +65,11 @@ if(ANDROID)
   configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
   configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
-  #
-  # Generate android icons
-  #
-  add_custom_target(icons
-    COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xxxhdpi
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-xxxhdpi/icon.png -h 192 -w 192
-    COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xxhdpi
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-xxhdpi/icon.png -h 144 -w 144
-    COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-xhdpi
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-xhdpi/icon.png -h 96 -w 96
-    COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-hdpi
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-hdpi/icon.png -h 72 -w 72
-    COMMAND ${CMAKE_COMMAND} -E make_directory android-sources/res/drawable-mdpi
-    COMMAND inkscape -z -f ${CMAKE_SOURCE_DIR}/metadata/${APP_ID}.svg -e android-sources/res/drawable-mdpi/icon.png -h 48 -w 48
-    COMMENT "Generate icons"
-    )
-
-  
   # The android target is a library, not an executable
   add_library(${PROJECT_NAME} SHARED ${SOURCES} ${ANDROID_EXTRA_SOURCES})
   
   # Add libraries
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras Qt5::Core Qt5::Quick Qt5::Svg)
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras Qt5::Core Qt5::Quick)
 endif()
 
 
@@ -105,7 +84,7 @@ if (NOT ANDROID)
   
   add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
   add_dependencies(${PROJECT_NAME} translations)
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::Svg)
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
   
   #
   # Install things

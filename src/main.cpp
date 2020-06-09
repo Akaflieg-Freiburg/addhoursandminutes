@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
   // Install translators
   QString locale = QLocale::system().name();
   QTranslator translator;
-  translator.load(QString(":addHoursAndMinutes_") + locale.left(2));
+  translator.load(QString(":addhoursandminutes_") + locale.left(2));
   QGuiApplication::installTranslator(&translator);
   QTranslator Qt_translator;
   Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
   QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
   QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
   QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)) && defined(Q_OS_LINUX)
+#if defined(Q_OS_LINUX)
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
   
@@ -61,10 +61,6 @@ int main(int argc, char *argv[])
   QFile file1(":text/info.html");
   file1.open(QIODevice::ReadOnly);
   auto infoText = file1.readAll();
-  
-  QFile file2(":text/firstStart.html");
-  file2.open(QIODevice::ReadOnly);
-  auto firstStartText = file2.readAll();
 
   // Start QML Engine
   QQmlApplicationEngine engine;
@@ -80,7 +76,7 @@ int main(int argc, char *argv[])
   
   // Make text translations available to QML engine
   engine.rootContext()->setContextProperty("infoText", infoText);
-  engine.rootContext()->setContextProperty("firstStartText", firstStartText);
+
 
   // Make font scaling factor available to QML engine; this scaling factor
   // depends on the platform

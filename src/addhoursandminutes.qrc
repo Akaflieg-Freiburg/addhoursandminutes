@@ -7,7 +7,6 @@
         <file>qml/main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>text/info.html</file>
-        <file>text/firstStart.html</file>
         <file>images/shadow_horizontal.png</file>
         <file>images/shadow_top.png</file>
         <file>images/shadow_vertical.png</file>
@@ -16,9 +15,12 @@
         <file>images/ic_exit_to_app_24px.svg</file>
         <file>images/ic_help_24px.svg</file>
         <file>images/ic_info_24px.svg</file>
+        <file>images/ic_menu_black_24dp.png</file>
+        <file>images/ic_exit_to_app_black_24dp.png</file>
+        <file>images/ic_help_black_24dp.png</file>
+        <file>images/ic_info_black_24dp.png</file>
     </qresource>
     <qresource prefix="/" lang="de">
         <file alias="text/info.html">text/info_de.html</file>
-        <file alias="text/firstStart.html">text/firstStart_de.html</file>
     </qresource>
 </RCC>

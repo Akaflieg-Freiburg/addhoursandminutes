@@ -33,7 +33,7 @@ ApplicationWindow {
     header: ToolBar {
 
         ToolButton {
-            icon.source: "/images/ic_menu_24px.svg"
+            icon.source: Qt.platform.os !== "wasm" ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
 
             onClicked: mainMenu.open()
 
@@ -41,18 +41,21 @@ ApplicationWindow {
                 id: mainMenu
 
                 MenuItem {
-                    icon.source: "/images/ic_help_24px.svg"
+                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_help_24px.svg" : "/images/ic_help_black_24dp.png"
                     text: qsTr("Help")
                     onTriggered: helpDialog.open()
                 }
+
                 MenuItem {
-                    icon.source: "/images/ic_info_24px.svg"
+                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_info_24px.svg" : "/images/ic_info_black_24dp.png"
                     text: qsTr("About")
                 }
-                MenuSeparator {visible: platform.os !== "wasm"}
+
+                MenuSeparator {}
+
                 MenuItem {
-                    visible: platform.os !== "wasm"
-                    icon.source: "/images/ic_exit_to_app_24px.svg"
+                    enabled: Qt.platform.os !== "wasm"
+                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_exit_to_app_24px.svg" : "/images/ic_exit_to_app_black_24dp.png"
                     text: qsTr("Exit")
                     onTriggered: Qt.quit()
                 }
@@ -89,7 +92,7 @@ ApplicationWindow {
                 rightPadding: Qt.application.font.pixelSize
                 onLinkActivated: Qt.openUrlExternally(link)
                 textFormat: Text.RichText
-                text: "<h4>Enter times</h4><p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p><h4>Reset</h4><p>To reset the calculator, press and hold the key <strong>C</strong>.</p>"
+                text: qsTr("<h4>Enter times</h4><p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p><h4>Reset</h4><p>To reset the calculator, press and hold the key <strong>C</strong>.</p>")
             }
 
         } // ScrollView
