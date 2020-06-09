@@ -6,7 +6,6 @@
         <file>qml/Info.qml</file>
         <file>qml/main.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>text/info.html</file>
         <file>images/shadow_horizontal.png</file>
         <file>images/shadow_top.png</file>
         <file>images/shadow_vertical.png</file>
@@ -20,7 +19,5 @@
         <file>images/ic_help_black_24dp.png</file>
         <file>images/ic_info_black_24dp.png</file>
     </qresource>
-    <qresource prefix="/" lang="de">
-        <file alias="text/info.html">text/info_de.html</file>
-    </qresource>
+    <qresource prefix="/" lang="de"/>
 </RCC>

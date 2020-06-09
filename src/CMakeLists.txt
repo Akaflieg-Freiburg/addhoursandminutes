@@ -8,15 +8,6 @@ set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION 
 qt5_add_translation(qm_files addhoursandminutes_de.ts)
 add_custom_target(translations DEPENDS ${qm_files})
 
-#
-# Configure files.  For better cooperation with qmake, we save the configured
-# files in the SOURCE directory.  If we ever move to a pure cmake build in the
-# future, this should be fixed.
-#
-
-configure_file(text/info.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info.html)
-configure_file(text/info_de.html.in ${CMAKE_CURRENT_SOURCE_DIR}/text/info_de.html)
-
 
 #
 # Set up source files

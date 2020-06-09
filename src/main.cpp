@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDebug>
+
 #include <QGuiApplication>
 #include <QFile>
 #include <QFont>
@@ -57,11 +59,6 @@ int main(int argc, char *argv[])
   QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
   
-  // Load large strings from files, in order to make them available to QML
-  QFile file1(":text/info.html");
-  file1.open(QIODevice::ReadOnly);
-  auto infoText = file1.readAll();
-
   // Start QML Engine
   QQmlApplicationEngine engine;
 
@@ -70,13 +67,7 @@ int main(int argc, char *argv[])
   engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
 
   // Attach FirstRunNotifier
-  QSettings settings;
-  engine.rootContext()->setContextProperty("firstRun", settings.value("firstRun", true).toBool());
-  settings.setValue("firstRun", false);
-  
-  // Make text translations available to QML engine
-  engine.rootContext()->setContextProperty("infoText", infoText);
-
+  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
 
   // Make font scaling factor available to QML engine; this scaling factor
   // depends on the platform
