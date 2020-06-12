@@ -46,14 +46,15 @@ cd build-webasm-release
 #
 
 . $EMSDK/emsdk_env.sh
-$Qt5_DIR_WASM/bin/qmake ../src/addhoursandminutes.pro
+cmake ..
+$Qt5_DIR_WASM/bin/qmake src/addhoursandminutes.pro
 
 
 #
 # Build the executable
 #
 
-$Qt5_DIR_WASM/bin/lrelease ../src/addhoursandminutes.pro
+$Qt5_DIR_WASM/bin/lrelease src/addhoursandminutes.pro
 make -j
 # GitHub pages does not support SVG, so we need to include a PNG here
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o qtlogo.png

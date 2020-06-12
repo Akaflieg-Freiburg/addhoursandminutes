@@ -10,6 +10,13 @@ add_custom_target(translations DEPENDS ${qm_files})
 
 
 #
+# Configure QMake file -- required for the webassembly platform
+#
+
+configure_file(addhoursandminutes.pro.in addhoursandminutes.pro)
+
+
+#
 # Set up source files
 #
 
