@@ -61,6 +61,8 @@ if(ANDROID)
   configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
   configure_file(android/res/drawable/splash.xml android/res/drawable/splash.xml COPYONLY)
   configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
+  configure_file(android/res/values/strings.xml android/res/values/strings.xml COPYONLY)
+  configure_file(android/res/values-de/strings.xml android/res/values-de/strings.xml COPYONLY)
   configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
   # The android target is a library, not an executable
