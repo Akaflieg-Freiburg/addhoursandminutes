@@ -22,14 +22,13 @@
       y="0"
       width="512"
       height="512"
-      rx="64"
-      ry="64"
       style="fill:url(#myGradient)"
       />
 
   <g
+      filter="url(#f3)"
       style="fill:#FFFFFF;stroke:#none"
-      filter="url(#f3)">
+      >
     <g
 	transform="translate (29,34) scale (18.2)">
       <polygon points="10,8 10,14 14.7,16.9 15.5,15.7 11.5,13.3 11.5,8"/>
@@ -37,13 +36,4 @@
       <polygon points="20,5 20,2 18,2 18,5 15,5 15,7 18,7 18,10 20,10 20,7 23,7 23,5"/>
     </g>
   </g>
-
-  <line x1="64" y1="0" x2="64" y2="512" stroke="black" />
-  <line x1="256" y1="0" x2="256" y2="512" stroke="black" />
-  <line x1="448" y1="0" x2="448" y2="512" stroke="black" />
-
-  <line x1="0" y1="64" x2="512" y2="64" stroke="black" />
-  <line x1="0" y1="256" x2="512" y2="256" stroke="black" />
-  <line x1="0" y1="448" x2="512" y2="448" stroke="black" />
-  
 </svg>

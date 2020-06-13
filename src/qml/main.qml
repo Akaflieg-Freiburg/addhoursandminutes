@@ -69,73 +69,34 @@ ApplicationWindow {
         focus: true;
     }
 
-    Dialog {
+    LongTextDialog {
         id: helpDialog
-
         anchors.centerIn: parent
-        parent: Overlay.overlay
-
-        width: Math.min(window.width-Qt.application.font.pixelSize, 40*Qt.application.font.pixelSize)
-        modal: true
-
-        standardButtons: DialogButtonBox.Ok
 
         title: qsTr("Help…")
 
-        ScrollView {
-            anchors.fill: parent
-            width: helpDialog.availableWidth
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-
-            Label {
-                width: helpDialog.availableWidth
-                wrapMode: Text.Wrap
-                leftPadding: Qt.application.font.pixelSize
-                rightPadding: Qt.application.font.pixelSize
-                onLinkActivated: Qt.openUrlExternally(link)
-                textFormat: Text.RichText
-                text: qsTr("
+        text: qsTr("
 <h4>Enter times</h4>
 
 <p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys
-  <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p>
+<strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p>
 
 <h4>Reset</h4>
 
 <p>To reset the calculator, press and hold the key <strong>C</strong>.</p>
 ")
-            }
 
-        } // ScrollView
+        standardButtons: DialogButtonBox.Ok
     }
 
-
-    Dialog {
+    LongTextDialog {
         id: infoDialog
-
         anchors.centerIn: parent
         parent: Overlay.overlay
 
-        width: Math.min(window.width-Qt.application.font.pixelSize, 40*Qt.application.font.pixelSize)
-        modal: true
-
-        standardButtons: DialogButtonBox.Ok
-
         title: qsTr("Help…")
 
-        ScrollView {
-            anchors.fill: parent
-            width: helpDialog.availableWidth
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-
-            Label {
-                width: helpDialog.availableWidth
-                wrapMode: Text.Wrap
-                leftPadding: Qt.application.font.pixelSize
-                rightPadding: Qt.application.font.pixelSize
-                onLinkActivated: Qt.openUrlExternally(link)
-                textFormat: Text.RichText
-                text: qsTr("
+        text: qsTr("
 <h3>Add Hours and Minutes</h3>
 
 <h4>Version %1</h4>
@@ -180,9 +141,9 @@ Public License V3</a>.</p>
 <p>This program builds on a number of open source libraries, including
 <a href='https://www.qt.io'>Qt</a>.</p>
 ").arg(projectVersion)
-            }
 
-        } // ScrollView
+        standardButtons: DialogButtonBox.Ok
+
     }
 
     Shortcut {
