@@ -89,4 +89,10 @@ else
 						   --in android-build/addhoursandminutes.apk \
 						   --out addhourandminutes-release-signed.apk
     echo "Signed APK file is available at $PWD/addhourandminutes-release-signed.apk"
+    echo "Signing AAB"
+    jarsigner --ks $ANDROID_KEYSTORE_FILE \
+	      --ks-pass pass:$ANDROID_KEYSTORE_PASS \
+	      android-build/build/outputs/bundle/release/android-build-release.aab
+    
+    echo "Signed APK file is available at $PWD/addhourandminutes-release-signed.apk"
 fi
