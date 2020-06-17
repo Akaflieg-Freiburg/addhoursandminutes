@@ -20,14 +20,14 @@ header:
 <iframe
    src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
    width="350" 
-   height="400" 
+   height="450" 
    name="Add Hours and Minutes"
    scrolling="no"
    frameborder="1"
    float="right">
-   <p>Ihr Browser kann leider keine eingebetteten Frames anzeigen.
-Sie können die eingebettete Seite über den folgenden Verweis aufrufen: 
-<a href="https://wiki.selfhtml.org/wiki/Startseite">SELFHTML</a></p>
+   <p>Your browser cannot show embedded frames. anzeigen.
+   You can, however, display the embedded page via:
+<a href="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html">this link</a>.</p>
 </iframe>
   <figcaption>The app runs directly in your web browser</figcaption>
 </figure>
