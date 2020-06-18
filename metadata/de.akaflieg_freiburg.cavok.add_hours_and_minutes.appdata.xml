@@ -5,7 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Add Hours and Minutes</name>
-  <name xml:lang="de">Rechner für Stunden und Minuten</name>
+  <name xml:lang="de">Rechnen mit Stunden und Minuten</name>
   <summary>Simple calculator for adding hours and minutes</summary>
   <summary xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</summary>
   <description>
@@ -32,9 +32,9 @@
     <category>Utility</category>
     <category>Calculator</category>
   </categories>
-  <url type="homepage">https://cplx.vm.uni-freiburg.de/en/add-hours-and-minutes</url>
+  <url type="homepage">https://akaflieg-freiburg.github.io/addhoursandminutes</url>
   <project_group>Flatpak</project_group>
-  <update_contact>stefan.kebekus@math.uni-freiburg.de</update_contact>
+  <update_contact>stefan.kebekus@gmail.com</update_contact>
   <provides>
     <binary>${PROJECT_NAME}</binary>
   </provides>

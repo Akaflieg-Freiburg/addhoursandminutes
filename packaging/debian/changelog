@@ -1,5 +1,0 @@
-addhoursandminutes (${PROJECT_VERSION}-1) UNRELEASED; urgency=medium
-
-  * Initial release.
-
- -- Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>  Wed, 24 Oct 2018 15:08:51 +0000

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Installer>
-  <Name>Add Hours and Minutes</Name>
-    <Version>${PROJECT_VERSION}</Version>
-    <Title>Add Hours and Minutes -- Installer</Title>
-    <Publisher>Akaflieg Freiburg</Publisher>
-    <StartMenuDir>Akaflieg Freiburg</StartMenuDir>
-    <RunProgram>@TargetDir@\addhoursandminutes.exe</RunProgram>
-</Installer>
