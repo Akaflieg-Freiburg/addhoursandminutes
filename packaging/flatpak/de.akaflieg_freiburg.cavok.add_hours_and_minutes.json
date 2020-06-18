@@ -1,7 +1,7 @@
 {
     "app-id": "${APP_ID}",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.11",
+    "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
     "command": "${PROJECT_NAME}",
     "finish-args": [
@@ -17,10 +17,8 @@
             "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.com/kebekus/addHoursAndMinutes.git",
-                    "tag": "${PROJECT_VERSION}",
-                    "commit": "${TAG_COMMIT}"
+                    "type": "archive",
+                    "path": "addhoursandminutes-${PROJECT_VERSION}.tar.gz"
                 }
             ]
         }
