@@ -23,7 +23,9 @@ jobs:
         version: '5.15.0'
     - name: Install Additional Software
       run: |
-        sudo apt install doxygen flatpak-builder graphviz
+        sudo add-apt-repository ppa:alexlarsson/flatpak
+        sudo apt update
+        sudo apt install doxygen flatpak flatpak-builder graphviz
         sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - name: Configure
       run: |
