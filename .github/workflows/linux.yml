@@ -31,11 +31,11 @@ jobs:
         cmake -E make_directory build
         cd build
         cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS='-Werror -Wall -Wextra'
-    - name: Compile
+    - name: Test-compile on standard Linux
       run: |
         cd build
-        make
-    - name: flatpak test build
+        make VERBOSE=1
+    - name: Test-compile with flatpak
       run: |
         cd build
-        make flatpakBinary
+        make flatpakBinary VERBOSE=1
