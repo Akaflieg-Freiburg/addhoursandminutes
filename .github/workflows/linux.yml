@@ -35,7 +35,7 @@ jobs:
       run: |
         cd build
         make
-    - name: flatpak text build
+    - name: flatpak test build
       run: |
         cd build
         make flatpakBinary

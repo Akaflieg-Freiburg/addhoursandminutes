@@ -25,24 +25,6 @@ if( ANDROID )
 endif()
 include(GNUInstallDirs)
 
-
-# Find GIT commit for the TAG given by the ${PROJECT_VERSION}, if git is
-# available and if we are working in a git source tree
-
-if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
-  find_package(Git)
-  if(Git_FOUND)
-    message("Building inside a GIT directory, git found at ${GIT_EXECUTABLE}")
-    execute_process(COMMAND git log --pretty=format:'%H' -n1
-      OUTPUT_VARIABLE TAG_COMMIT
-      OUTPUT_STRIP_TRAILING_WHITESPACE
-      )
-    message("Currently working with git Commit ${TAG_COMMIT}")
-  else()
-    message("Git not found.")
-  endif()
-endif()
-
 # Subdirectories
 add_subdirectory(generatedSources)
 add_subdirectory(metadata)

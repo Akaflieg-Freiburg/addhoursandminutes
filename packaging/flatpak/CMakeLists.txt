@@ -8,11 +8,7 @@ set(FLATPAK_RUNTIME_VERSION 5.14)
 # Configure
 #
 
-if (DEFINED TAG_COMMIT)
-  configure_file(${APP_ID}.json ${APP_ID}.json)
-else()
-  message("Not building inside a GIT directory, or git command not available. Flatpak manifest will not be generated.")
-endif()
+configure_file(${APP_ID}.json ${APP_ID}.json)
 
 
 #
