@@ -24,7 +24,7 @@ jobs:
     - name: Install Additional Software
       run: |
         sudo apt install doxygen flatpak-builder graphviz
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     - name: Configure
       run: |
         export CC=/usr/bin/clang
