@@ -8,6 +8,10 @@ gallery:
     image_path: /assets/images/phone.png
     alt: "Android Phone App"
     title: "Android Phone App"
+  - url: /assets/images/desktop.png
+    image_path: /assets/images/desktop.png
+    alt: "Desktop App (Linux)"
+    title: "Desktop App (Linux)"
 
 
 ---
