@@ -29,10 +29,11 @@ add_custom_target(flatpak
 add_custom_target(flatpakBinary
   COMMAND rm -rf flatpakBuildDirectory .flatpak-builder
   COMMAND flatpak install -y org.kde.Sdk/x86_64/${FLATPAK_RUNTIME_VERSION}
-  COMMAND flatpak-builder --user --install flatpakBuildDirectory de.akaflieg_freiburg.cavok.add_hours_and_minutes.json
+  COMMAND flatpak-builder flatpakBuildDirectory de.akaflieg_freiburg.cavok.add_hours_and_minutes.json
   COMMAND echo ""
   COMMAND echo ""
   COMMAND echo "Run your flatpak with the following command"
+  COMMAND echo ""
   COMMAND echo " flatpak-builder --run ${CMAKE_CURRENT_BINARY_DIR}/flatpakBuildDirectory ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.json addhoursandminutes"
   COMMAND echo ""
   COMMAND echo ""
