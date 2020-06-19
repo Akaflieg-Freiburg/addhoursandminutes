@@ -20,6 +20,6 @@ gallery2:
 
 Below you can see **Add Hours and Minutes** in action.
 
-{% include gallery caption="Screenshots from mobile Phone" %}
+{% include gallery caption="Screenshots from a mobile phone" %}
 
-{% include gallery id="gallery2" caption="Screenshot from Desktop Computer" %}
+{% include gallery id="gallery2" caption="Screenshot from a desktop computer" %}
