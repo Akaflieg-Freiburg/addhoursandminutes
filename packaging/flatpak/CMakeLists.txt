@@ -32,7 +32,7 @@ add_custom_target(flatpakBinary
   COMMAND flatpak-builder --user --install flatpakBuildDirectory de.akaflieg_freiburg.cavok.add_hours_and_minutes.json
   COMMAND echo ""
   COMMAND echo ""
-  COMMAND echo "Run your flatpak with the following command\n"
+  COMMAND echo "Run your flatpak with the following command"
   COMMAND echo " flatpak-builder --run ${CMAKE_CURRENT_BINARY_DIR}/flatpakBuildDirectory ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.json addhoursandminutes"
   COMMAND echo ""
   COMMAND echo ""
