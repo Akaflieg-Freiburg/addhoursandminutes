@@ -1,3 +1,5 @@
+![Compile on Android](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Android/badge.svg) ![Compile on Linux](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Linux/badge.svg)
+
 # Add Hours and Minutes
 
 <img align="right" src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/phone.png" width="200">**Add Hours and Minutes** is a simple calculator app that adds times given in hours
