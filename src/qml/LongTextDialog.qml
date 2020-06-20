@@ -45,7 +45,7 @@ Dialog {
         ScrollBar.vertical.interactive: false
 
         clip: true
-         
+
         // The Label that we really want to show is wrapped into an Item. This allows
         // to set implicitHeight, and thus compute the implicitHeight of the Dialog
         // without binding loops
@@ -65,11 +65,4 @@ Dialog {
         } // Item
     } // ScrollView
     
-    Connections {
-        target: sensorGesture
-        function onDetected(gesture) {
-            close()
-        }
-    }
-
 } // Dialog

@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDebug>
-
 #include <QGuiApplication>
 #include <QFile>
 #include <QFont>
@@ -38,51 +36,51 @@
 
 int main(int argc, char *argv[])
 {
-  QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-  QGuiApplication app(argc, argv);
-  
-  // Install translators
-  QString locale = QLocale::system().name();
-  QTranslator translator;
-  translator.load(QString(":addhoursandminutes_") + locale.left(2));
-  QGuiApplication::installTranslator(&translator);
-  QTranslator Qt_translator;
-  Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-  QGuiApplication::installTranslator(&Qt_translator);
-  
-  // Set application parameters
-  QCoreApplication::setOrganizationName("Akaflieg Freiburg");
-  QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
-  QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
-  QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication app(argc, argv);
+
+    // Install translators
+    QString locale = QLocale::system().name();
+    QTranslator translator;
+    translator.load(QString(":addhoursandminutes_") + locale.left(2));
+    QGuiApplication::installTranslator(&translator);
+    QTranslator Qt_translator;
+    Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    QGuiApplication::installTranslator(&Qt_translator);
+
+    // Set application parameters
+    QCoreApplication::setOrganizationName("Akaflieg Freiburg");
+    QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
+    QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
+    QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
 #if defined(Q_OS_LINUX)
-  QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
+    QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
 #endif
-  
-  // Start QML Engine
-  QQmlApplicationEngine engine;
 
-  // Make AndroidAdaptor available to QML engine
-  auto *adaptor = new AndroidAdaptor(&engine);
-  engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
+    // Start QML Engine
+    QQmlApplicationEngine engine;
 
-  // Attach FirstRunNotifier
-  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
+    // Make AndroidAdaptor available to QML engine
+    auto *adaptor = new AndroidAdaptor(&engine);
+    engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
 
-  // Make font scaling factor available to QML engine; this scaling factor
-  // depends on the platform
+    // Attach FirstRunNotifier
+    engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
+
+    // Make font scaling factor available to QML engine; this scaling factor
+    // depends on the platform
 #ifdef Q_OS_ANDROID
-  engine.rootContext()->setContextProperty("fontScale", 1.5);
+    engine.rootContext()->setContextProperty("fontScale", 1.5);
 #else
-  engine.rootContext()->setContextProperty("fontScale", 1.2);
+    engine.rootContext()->setContextProperty("fontScale", 1.2);
 #endif
-  
-  // Now load the QML code
-  engine.load("qrc:/qml/main.qml");
-  
+
+    // Now load the QML code
+    engine.load("qrc:/qml/main.qml");
+
 #ifdef Q_OS_ANDROID
-  QtAndroid::hideSplashScreen();
+    QtAndroid::hideSplashScreen();
 #endif
-  
-  return QGuiApplication::exec();
+
+    return QGuiApplication::exec();
 }

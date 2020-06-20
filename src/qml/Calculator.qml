@@ -289,7 +289,6 @@ Rectangle {
             hoursAndMinutes.addOperator("-")
             buttonMinus.down = true
             buttonMinusTimer.running = true
-            buttonMinus.clicked()
             event.accepted = true
         } else if ((event.key === Qt.Key_Equals || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
             hoursAndMinutes.addOperator("=")
@@ -385,7 +384,7 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: fontpixelsize*0.25|0
-//                visible: !hoursAndMinutes.isPortrait()
+                //                visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_top.png"
             }
 
@@ -417,382 +416,382 @@ Rectangle {
                 color: "#e0e0e0"
             }
 
-        GridLayout {
-            id: keypad
+            GridLayout {
+                id: keypad
 
-            Layout.fillHeight: !hoursAndMinutes.isPortrait()
-            Layout.fillWidth: hoursAndMinutes.isPortrait()
+                Layout.fillHeight: !hoursAndMinutes.isPortrait()
+                Layout.fillWidth: hoursAndMinutes.isPortrait()
 
-            Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
-            Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
-            Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
-            Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
-            Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
-            columnSpacing: 0
-            rowSpacing: 0
-            rows: 2
-            columns: 4
+                Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
+                Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
+                Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
+                Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
+                Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
+                columnSpacing: 0
+                rowSpacing: 0
+                rows: 2
+                columns: 4
 
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "teal"
-            }
-
-            Button {
-                id: button7
-                text: "7"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("7")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button7Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button8
-                text: "8"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("8")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button8Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button9
-                text: "9"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("9")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                                
-                Timer {
-                    id: button9Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-
-            }
-
-            Button {
-                id: buttonClear
-                palette { button: "teal"; buttonText: "white"}
-                text: "C"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.backSpace()
-                    AndroidAdaptor.vibrateBrief()
-                }
-                onPressAndHold: {
-                    hoursAndMinutes.clear()
-                    AndroidAdaptor.vibrateBrief()
-                }
-                                
-                Timer {
-                    id: buttonClearTimer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-
-            }
-
-            Button {
-                id: button4
-                text: "4"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("4")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button4Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button5
-                text: "5"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("5")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button5Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button6
-                text: "6"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("6")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button6Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: buttonMinus
-                palette { button: "teal"; buttonText: "white"}
-                text: "-"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                onClicked: {
-                    hoursAndMinutes.addOperator("-")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: buttonMinusTimer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button1
-                text: "1"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("1")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                                
-                Timer {
-                    id: button1Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-
-            }
-
-            Button {
-                id: button2
-                text: "2"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("2")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                                
-                Timer {
-                    id: button2Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-
-            }
-
-            Button {
-                id: button3
-                text: "3"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("3")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: button3Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: buttonPlus
-                palette { button: "teal"; buttonText: "white"}
-                text: "+"
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addOperator("+")
-                    AndroidAdaptor.vibrateBrief()
-                }
-                
-                Timer {
-                    id: buttonPlusTimer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
-
-            Button {
-                id: button0
-                text: "0"
-                Layout.fillHeight: true
-                Layout.columnSpan: 3
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addDigit("0")
-                    AndroidAdaptor.vibrateBrief()
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
                 }
 
-                Timer {
-                    id: button0Timer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-
-            }
-
-            Button {
-                id: buttonEquals
-                palette { button: "teal"; buttonText: "white"}
-                text: "="
-                Layout.fillHeight: true
-                Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
-                Layout.fillWidth: true
-                font.pixelSize: fontpixelsize
-                palette { button: "#e0e0e0"; buttonText: "black"}
-                onClicked: {
-                    hoursAndMinutes.addOperator("=")
-                    AndroidAdaptor.vibrateBrief()
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
                 }
-                
-                Timer {
-                    id: buttonEqualsTimer
-                    interval: 100;
-                    onTriggered: parent.down = undefined
-                 }
-            }
 
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
 
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "teal"
+                }
 
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
+                Button {
+                    id: button7
+                    text: "7"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("7")
+                        AndroidAdaptor.vibrateBrief()
+                    }
 
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "teal"
+                    Timer {
+                        id: button7Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button8
+                    text: "8"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("8")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button8Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button9
+                    text: "9"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("9")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button9Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+
+                }
+
+                Button {
+                    id: buttonClear
+                    palette { button: "teal"; buttonText: "white"}
+                    text: "C"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.backSpace()
+                        AndroidAdaptor.vibrateBrief()
+                    }
+                    onPressAndHold: {
+                        hoursAndMinutes.clear()
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: buttonClearTimer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+
+                }
+
+                Button {
+                    id: button4
+                    text: "4"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("4")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button4Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button5
+                    text: "5"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("5")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button5Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button6
+                    text: "6"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("6")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button6Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: buttonMinus
+                    palette { button: "teal"; buttonText: "white"}
+                    text: "-"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    onClicked: {
+                        hoursAndMinutes.addOperator("-")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: buttonMinusTimer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button1
+                    text: "1"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("1")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button1Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+
+                }
+
+                Button {
+                    id: button2
+                    text: "2"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("2")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button2Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+
+                }
+
+                Button {
+                    id: button3
+                    text: "3"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("3")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button3Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: buttonPlus
+                    palette { button: "teal"; buttonText: "white"}
+                    text: "+"
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addOperator("+")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: buttonPlusTimer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Button {
+                    id: button0
+                    text: "0"
+                    Layout.fillHeight: true
+                    Layout.columnSpan: 3
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addDigit("0")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: button0Timer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+
+                }
+
+                Button {
+                    id: buttonEquals
+                    palette { button: "teal"; buttonText: "white"}
+                    text: "="
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.fillWidth: true
+                    font.pixelSize: fontpixelsize
+                    palette { button: "#e0e0e0"; buttonText: "black"}
+                    onClicked: {
+                        hoursAndMinutes.addOperator("=")
+                        AndroidAdaptor.vibrateBrief()
+                    }
+
+                    Timer {
+                        id: buttonEqualsTimer
+                        interval: 100;
+                        onTriggered: parent.down = undefined
+                    }
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "teal"
+                }
             }
-        }
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
                 color: "teal"
             }
-    }
+        }
     }
 }

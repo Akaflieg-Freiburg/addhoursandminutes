@@ -27,14 +27,14 @@
 #endif
 
 AndroidAdaptor::AndroidAdaptor(QObject *parent)
-  : QObject(parent)
+    : QObject(parent)
 {
 }
 
 void AndroidAdaptor::vibrateBrief()
 {
 #if defined(Q_OS_ANDROID)
-  QAndroidJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor",
-					    "vibrateBrief");  
+    QAndroidJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor",
+                                              "vibrateBrief");
 #endif
 }
