@@ -1,17 +1,6 @@
 #!/bin/bash
 
 #
-# Pull in the latest versions of everything
-#
-
-git submodule init
-git submodule update
-git pull
-cd 3rdParty/de.akaflieg_freiburg.cavok.add_hours_and_minutes
-git pull
-cd ../..
-
-#
 # Build the executable in all formats. Only proceed it all platforms can be
 # built.
 #
