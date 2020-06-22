@@ -49,8 +49,8 @@ echo "Installing flathub files…"
 cd 3rdParty/de.akaflieg_freiburg.cavok.add_hours_and_minutes
 
 git rm addhoursandminutes-*.tar.gz
-cp ../../build-linux-debug/packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json 3rdParty/de.akaflieg_freiburg.cavok.add_hours_and_minutes/de.akaflieg_freiburg.cavok.add_hours_and_minutes
-cp ../../build-linux-debug/packaging/flatpak/addhoursandminutes-*.tar.gz 3rdParty/de.akaflieg_freiburg.cavok.add_hours_and_minutes
+cp ../../build-linux-debug/packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json .
+cp ../../build-linux-debug/packaging/flatpak/addhoursandminutes-*.tar.gz .
 git add addhoursandminutes-*.tar.gz
 git commit -am "New upstream release"
 git push
