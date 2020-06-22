@@ -14,7 +14,7 @@ permalink: /download/
 
 
 <figure style="width: 150px" class="align-right">
-  <a href='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img width='150px' alt='Download on Flathub' src='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'/></a>
+  <a href='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img width='150px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 </figure>
 
 ### Linux Desktop

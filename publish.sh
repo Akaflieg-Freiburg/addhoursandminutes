@@ -45,13 +45,15 @@ git commit -am "New webassembly"
 #
 
 echo "Installing flathub files…"
-
-cd 3rdParty/de.akaflieg_freiburg.cavok.add_hours_and_minutes
-
+cd build-linux-debug
+git clone git@github.com:flathub/de.akaflieg_freiburg.cavok.add_hours_and_minutes.git
+cd de.akaflieg_freiburg.cavok.add_hours_and_minutes
 git rm addhoursandminutes-*.tar.gz
-cp ../../build-linux-debug/packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json .
-cp ../../build-linux-debug/packaging/flatpak/addhoursandminutes-*.tar.gz .
+cp ../packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json .
+cp ../packaging/flatpak/addhoursandminutes-*.tar.gz .
 git add addhoursandminutes-*.tar.gz
 git commit -am "New upstream release"
 git push
-cd ../..
+cd ..
+rm -rf  de.akaflieg_freiburg.cavok.add_hours_and_minutes
+cd ..
