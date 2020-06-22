@@ -60,15 +60,3 @@ make -j
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o qtlogo.png
 sed -i 's/qtlogo.svg/qtlogo.png/g' addhoursandminutes.html
 sed -i 's/320/200/g' addhoursandminutes.html
-
-#
-# Distribute the executable
-#
-
-echo "Copy webasm executable to 'docs' directory (y/n)?"
-read -rsn1 input
-if [ "$input" = "y" ]; then
-    echo "Copying file…"
-    cp qtloader.js qtlogo.png addhoursandminutes.html addhoursandminutes.js addhoursandminutes.wasm ../docs/assets/webasm/
-fi
-

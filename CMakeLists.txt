@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.1.0)
+project(addhoursandminutes VERSION 1.1.1)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
-set(PROJECT_DATE 2019-03-18)
+set(PROJECT_DATE 2019-06-22)
 math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 

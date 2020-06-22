@@ -14,14 +14,18 @@ permalink: /download/
 
 
 <figure style="width: 150px" class="align-right">
-  <a href='https://flathub.org/apps/details/org.gimp.GIMP'><img width='150px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+  <a href='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img width='150px' alt='Download on Flathub' src='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'/></a>
 </figure>
 
 ### Linux Desktop
 
-**Add Hours and Minutes** is available for free download at flathub.org, but you
-might also find the app in the software management application on your computer.
+**Add Hours and Minutes** is available for free download at
+[flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes),
+but you might also find the app in the software management application on your
+computer.
 
+Download and install with this [direct
+link](https://flathub.org/repo/appstream/de.akaflieg_freiburg.cavok.add_hours_and_minutes.flatpakref).
 
 ### Add to your web site
 
@@ -43,4 +47,8 @@ copy of **Add Hours and Minutes**.
 
 ### Source code
 
-Developers who are interested in compiling **Add Hours and Minutes** themselves find all relevant sources on [GitHub](https://github.com/Akaflieg-Freiburg/addhoursandminutes).  This program builds on the Qt library. The source code for Qt can be found at [this URL](https://cplx.vm.uni-freiburg.de/storage/QtSources).
+Developers who are interested in compiling **Add Hours and Minutes** themselves
+find all relevant sources on
+[GitHub](https://github.com/Akaflieg-Freiburg/addhoursandminutes).  This program
+builds on the Qt library. The source code for Qt can be found at [this
+URL](https://cplx.vm.uni-freiburg.de/storage/QtSources).
