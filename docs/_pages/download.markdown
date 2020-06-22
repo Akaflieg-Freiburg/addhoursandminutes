@@ -13,6 +13,16 @@ permalink: /download/
 **Add Hours and Minutes** is available for free download at Google Play.
 
 
+<figure style="width: 150px" class="align-right">
+  <a href='https://flathub.org/apps/details/org.gimp.GIMP'><img width='150px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+</figure>
+
+### Linux Desktop
+
+**Add Hours and Minutes** is available for free download at flathub.org, but you
+might also find the app in the software management application on your computer.
+
+
 ### Add to your web site
 
 Add the following code to your web site in order to embed a fully functional

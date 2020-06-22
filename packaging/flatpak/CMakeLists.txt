@@ -26,7 +26,7 @@ add_custom_target(flatpak
 # Sample build
 #
 
-add_custom_target(flatpakBinary
+add_custom_target(flatpak-binary
   COMMAND rm -rf flatpakBuildDirectory .flatpak-builder
   COMMAND flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   COMMAND flatpak install --user --assumeyes org.kde.Sdk/x86_64/${FLATPAK_RUNTIME_VERSION} org.kde.Platform/x86_64/${FLATPAK_RUNTIME_VERSION}
@@ -41,4 +41,22 @@ add_custom_target(flatpakBinary
   DEPENDS flatpak
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Generating flatpak binary"
+  )
+
+
+#
+# Publish
+#
+
+add_custom_target(publish-to-flathub
+  COMMAND git pull
+  COMMAND git rm -f addhoursandminutes-*.tar.gz
+  COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz .
+  COMMAND git add ${PROJECT_NAME}-${PROJECT_VERSION}.tar.gz .
+  COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.json .
+  COMMAND git commit -am "New upstream version"
+  COMMAND git push
+  DEPENDS flatpak-binary
+  WORKING_DIRECTORY /home/kebekus/Software/buildsystems/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes
+  COMMENT "Publishing flatpak to flathub.org"
   )
