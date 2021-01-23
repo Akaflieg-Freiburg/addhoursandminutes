@@ -18,7 +18,7 @@ apps:
 parts:
   addhoursandminutes:
     parse-info:
-      - $SNAPCRAFT_PART_INSTALL/share/metainfo/de.akaflieg_freiburg.cavok.add_hours_and_minutes.appdata.xml
+      - share/metainfo/de.akaflieg_freiburg.cavok.add_hours_and_minutes.appdata.xml
     plugin: cmake
     source: https://github.com/Akaflieg-Freiburg/addhoursandminutes.git
     source-type: git
