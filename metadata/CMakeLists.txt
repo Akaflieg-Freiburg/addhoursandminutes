@@ -13,5 +13,5 @@ if (UNIX)
   
   INSTALL(FILES ${PROJECT_SOURCE_DIR}/metadata/${APP_ID}.svg
     RENAME ${APP_ID}.svg
-    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps)
+    DESTINATION share/icons/hicolor/scalable/apps)
 endif (UNIX)
