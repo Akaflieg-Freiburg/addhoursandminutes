@@ -31,7 +31,6 @@ parts:
       - qttools5-dev-tools
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_PART_INSTALL
       - -DCMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu/cmake
     stage-packages:
       - qt5-default
