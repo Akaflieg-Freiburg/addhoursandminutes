@@ -1,5 +1,5 @@
 name: add-hours-and-minutes # you probably want to 'snapcraft register <name>'
-base: core18 # the base snap is the execution environment for this snap
+base: core20
 adopt-info: addhoursandminutes
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
@@ -10,11 +10,8 @@ apps:
     command: usr/bin/addhoursandminutes
     common-id: de.akaflieg_freiburg.cavok.add_hours_and_minutes
     desktop: usr/share/applications/de.akaflieg_freiburg.cavok.add_hours_and_minutes.desktop
-    extensions:
-      - kde-neon    
     plugs:
       - opengl
-      - kde-frameworks-5-plug
       
 parts:
   addhoursandminutes:
@@ -23,14 +20,17 @@ parts:
     plugin: cmake
     source: https://github.com/Akaflieg-Freiburg/addhoursandminutes.git
     source-type: git
-    build-snaps:
-      - kde-frameworks-5-core18-sdk
-      - kde-frameworks-5-core18
     build-packages:
-      - libmpfr-dev
-      - libgmp-dev
-      - kdoctools-dev
-    configflags:
+      - libqt5svg5-dev
+      - pkg-config
+      - qtbase5-dev
+      - qtdeclarative5-dev
+      - qttools5-dev
+      - qttools5-dev-tools
+    cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_PREFIX_PATH=/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/cmake
+    stage-packages:
+      - qt5-default
+      - libqt5qml5
