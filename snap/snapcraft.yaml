@@ -23,6 +23,8 @@ parts:
     source: .
     build-snaps:
       - kde-frameworks-5-core18-sdk
+    build-packages:
+      - libglvnd-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
     override-build: |
