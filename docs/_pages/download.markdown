@@ -23,9 +23,9 @@ permalink: /download/
 ### Linux Desktop
 
 **Add Hours and Minutes** is available for free download at
-[flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes),
-but you might also find the app in the software management application on your
-computer.
+[flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes)
+and [snapcraft.io](https://snapcraft.io/add-hour-and-minutes), but you might
+also find the app in the software management application on your computer.
 
 Download and install with this [direct
 link](https://flathub.org/repo/appstream/de.akaflieg_freiburg.cavok.add_hours_and_minutes.flatpakref).
