@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QGuiApplication>
 #include <QFile>
 #include <QFont>
+#include <QGuiApplication>
 #include <QLibraryInfo>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -34,7 +34,7 @@
 
 #include "androidAdaptor.h"
 
-int main(int argc, char *argv[])
+auto main(int argc, char *argv[]) -> int
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);

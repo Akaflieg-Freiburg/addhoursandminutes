@@ -4,6 +4,7 @@ adopt-info: addhoursandminutes
 grade: stable
 confinement: strict
 license: GPL-3.0
+architectures: [amd64]
 
 apps:
   add-hours-and-minutes:
@@ -23,6 +24,8 @@ parts:
     source: .
     build-snaps:
       - kde-frameworks-5-core18-sdk
+    build-packages:
+      - libglvnd-dev
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
     override-build: |
