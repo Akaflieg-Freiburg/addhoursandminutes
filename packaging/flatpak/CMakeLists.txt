@@ -2,7 +2,7 @@
 # Prepare flatpack manifest
 #
 
-set(FLATPAK_RUNTIME_VERSION 5.14)
+set(FLATPAK_RUNTIME_VERSION 5.15)
 
 #
 # Configure
