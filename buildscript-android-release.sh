@@ -95,5 +95,8 @@ else
 	      -storepass $ANDROID_KEYSTORE_PASS \
 	      android-build/build/outputs/bundle/release/android-build-release.aab "Stefan Kebekus"
     
-    echo "Signed AAB file is available at $PWD/android-build/build/outputs/bundle/release/android-build-release.aab"
+    cp android-build/build/outputs/bundle/release/android-build-release.aab addhoursandminutes-release-signed.aab
+    
+    echo "Signed AAB file is available at $PWD/addhoursandminutes-release-signed.aab"
+    nautilus $PWD &
 fi

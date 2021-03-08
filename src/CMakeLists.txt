@@ -59,6 +59,11 @@ if(ANDROID)
   
   # Configure files
   configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
+  configure_file(android/build.gradle android/build.gradle COPYONLY)
+  configure_file(android/gradle/wrapper/gradle-wrapper.properties android/gradle/wrapper/gradle-wrapper.properties COPYONLY)
+  configure_file(android/gradle/wrapper/gradle-wrapper.jar android/gradle/wrapper/gradle-wrapper.jar COPYONLY)
+  configure_file(android/gradlew android/gradlew COPYONLY)
+  configure_file(android/gradlew.bat android/gradlew.bat COPYONLY)
   configure_file(android/res/drawable/splash.xml android/res/drawable/splash.xml COPYONLY)
   configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
   configure_file(android/res/values/strings.xml android/res/values/strings.xml COPYONLY)
