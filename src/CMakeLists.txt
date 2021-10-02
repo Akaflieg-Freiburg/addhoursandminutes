@@ -5,7 +5,7 @@
 #
 
 set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION ${CMAKE_CURRENT_SOURCE_DIR})
-qt5_add_translation(qm_files addhoursandminutes_de.ts)
+qt6_add_translation(qm_files addhoursandminutes_de.ts)
 add_custom_target(translations DEPENDS ${qm_files})
 
 
@@ -74,7 +74,7 @@ if(ANDROID)
   add_library(${PROJECT_NAME} SHARED ${SOURCES} ${ANDROID_EXTRA_SOURCES})
   
   # Add libraries
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::AndroidExtras Qt5::Core Qt5::Quick Qt5::Svg)
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::AndroidExtras Qt6::Core Qt6::Quick Qt6::Svg)
 endif()
 
 
@@ -89,7 +89,7 @@ if (NOT ANDROID)
   
   add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
   add_dependencies(${PROJECT_NAME} translations)
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick)
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick)
   
   #
   # Install things

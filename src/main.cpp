@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2019 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2021 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,17 +36,18 @@
 
 auto main(int argc, char *argv[]) -> int
 {
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
     // Install translators
     QString locale = QLocale::system().name();
     QTranslator translator;
-    translator.load(QString(":addhoursandminutes_") + locale.left(2));
-    QGuiApplication::installTranslator(&translator);
+    if (translator.load(QString(":addhoursandminutes_") + locale.left(2))) {
+        QGuiApplication::installTranslator(&translator);
+    }
     QTranslator Qt_translator;
-    Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    QGuiApplication::installTranslator(&Qt_translator);
+    if (Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+        QGuiApplication::installTranslator(&Qt_translator);
+    }
 
     // Set application parameters
     QCoreApplication::setOrganizationName("Akaflieg Freiburg");

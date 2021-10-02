@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2020 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2021 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 
 ApplicationWindow {
     id: window
@@ -71,7 +71,6 @@ ApplicationWindow {
 
     LongTextDialog {
         id: helpDialog
-        anchors.centerIn: parent
 
         title: qsTr("Help…")
 
@@ -91,8 +90,6 @@ ApplicationWindow {
 
     LongTextDialog {
         id: infoDialog
-        anchors.centerIn: parent
-        parent: Overlay.overlay
 
         title: qsTr("Help…")
 
@@ -143,7 +140,6 @@ Public License V3</a>.</p>
 ").arg(projectVersion)
 
         standardButtons: DialogButtonBox.Ok
-
     }
 
     Shortcut {

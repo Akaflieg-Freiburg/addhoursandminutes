@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2020 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2021 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Rectangle {
     id: hoursAndMinutes
@@ -229,7 +229,7 @@ Rectangle {
         listView.positionViewAtEnd()
     }
 
-    Keys.onPressed: {
+    Keys.onPressed: function (event) {
         if (event.key === Qt.Key_0) {
             hoursAndMinutes.addDigit("0")
             button0.down = true

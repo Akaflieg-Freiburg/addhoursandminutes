@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2019-2020 by Stefan Kebekus                             *
+ *   Copyright (C) 2019-2021 by Stefan Kebekus                             *
  *   stefan.kebekus@gmail.com                                              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 
 Dialog {
     id: dlg
@@ -27,42 +27,37 @@ Dialog {
     // This is the text to be shown
     property var text: ({})
 
-    // Size is chosen so that the dialog does not cover the parent in full
-    width: Math.min(parent.width-Qt.application.font.pixelSize, 40*Qt.application.font.pixelSize)
-    height: Math.min(parent.height-Qt.application.font.pixelSize, implicitHeight)
+    margins: Qt.application.font.pixelSize
+
+    parent: Overlay.overlay
+    anchors.centerIn: parent
 
     modal: true
     
     ScrollView{
         id: sv
-        anchors.fill: parent
 
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        anchors.fill: parent
+        implicitWidth: 40*Qt.application.font.pixelSize
 
         // The visibility behavior of the vertical scroll bar is a little complex.
         // The following code guarantees that the scroll bar is shown initially. If it is not used, it is faded out after half a second or so.
-        ScrollBar.vertical.policy: (height < lbl.implicitHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+        ScrollBar.vertical.policy: (height < contentHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
         ScrollBar.vertical.interactive: false
 
         clip: true
 
-        // The Label that we really want to show is wrapped into an Item. This allows
-        // to set implicitHeight, and thus compute the implicitHeight of the Dialog
-        // without binding loops
-        Item {
-            implicitHeight: lbl.implicitHeight
-            width: dlg.availableWidth
+        Label {
+            id: lbl
+            text: dlg.text
+            width: sv.width
+            textFormat: Text.RichText
+            horizontalAlignment: Text.AlignJustify
+            wrapMode: Text.Wrap
+            onLinkActivated: Qt.openUrlExternally(link)
+        } // Label
 
-            Label {
-                id: lbl
-                text: dlg.text
-                width: dlg.availableWidth
-                textFormat: Text.RichText
-                horizontalAlignment: Text.AlignJustify
-                wrapMode: Text.Wrap
-                onLinkActivated: Qt.openUrlExternally(link)
-            } // Label
-        } // Item
     } // ScrollView
     
 } // Dialog
