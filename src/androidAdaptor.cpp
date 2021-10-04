@@ -21,10 +21,7 @@
 
 #include "androidAdaptor.h"
 
-#if defined(Q_OS_ANDROID)
-#include <QtAndroidExtras/QAndroidJniObject>
-#include <QAndroidJniEnvironment>
-#endif
+#include <QJniObject>
 
 AndroidAdaptor::AndroidAdaptor(QObject *parent)
     : QObject(parent)
@@ -34,7 +31,7 @@ AndroidAdaptor::AndroidAdaptor(QObject *parent)
 void AndroidAdaptor::vibrateBrief()
 {
 #if defined(Q_OS_ANDROID)
-    QAndroidJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor",
-                                              "vibrateBrief");
+    QJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor",
+                                       "vibrateBrief");
 #endif
 }

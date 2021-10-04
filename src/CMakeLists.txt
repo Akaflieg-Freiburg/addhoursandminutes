@@ -70,11 +70,15 @@ if(ANDROID)
   configure_file(android/res/values-de/strings.xml android/res/values-de/strings.xml COPYONLY)
   configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
+
   # The android target is a library, not an executable
-  add_library(${PROJECT_NAME} SHARED ${SOURCES} ${ANDROID_EXTRA_SOURCES})
-  
-  # Add libraries
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::AndroidExtras Qt6::Core Qt6::Quick Qt6::Svg)
+  qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION ${SOURCES} ${ANDROID_EXTRA_SOURCES})
+  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick Qt6::Svg)
+  target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+  set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
+  qt_import_qml_plugins(${PROJECT_NAME})
+  qt_finalize_executable(${PROJECT_NAME})
+
 endif()
 
 

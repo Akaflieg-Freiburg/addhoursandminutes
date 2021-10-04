@@ -28,10 +28,6 @@
 #include <QSettings>
 #include <QTranslator>
 
-#ifdef Q_OS_ANDROID
-#include <QtAndroid>
-#endif
-
 #include "androidAdaptor.h"
 
 auto main(int argc, char *argv[]) -> int
@@ -80,7 +76,7 @@ auto main(int argc, char *argv[]) -> int
     engine.load("qrc:/qml/main.qml");
 
 #ifdef Q_OS_ANDROID
-    QtAndroid::hideSplashScreen();
+    QNativeInterface::QAndroidApplication::hideSplashScreen();
 #endif
 
     return QGuiApplication::exec();

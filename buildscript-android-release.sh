@@ -50,7 +50,7 @@ cmake .. \
       -DANDROID_BUILD_ABI_armeabi-v7a:BOOL=ON \
       -DANDROID_BUILD_ABI_x86:BOOL=ON \
       -DANDROID_BUILD_ABI_x86_64:BOOL=ON \
-      -DANDROID_NATIVE_API_LEVEL:STRING=21 \
+      -DANDROID_NATIVE_API_LEVEL:STRING=23 \
       -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
       -DANDROID_SDK:PATH=$ANDROID_SDK_ROOT \
       -DANDROID_STL:STRING=c++_shared \
@@ -58,8 +58,8 @@ cmake .. \
       -DCMAKE_CXX_COMPILER:STRING=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ \
       -DCMAKE_CXX_FLAGS="-Werror -Wall -Wextra" \
       -DCMAKE_C_COMPILER:STRING=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/clang \
-      -DCMAKE_FIND_ROOT_PATH:STRING=$Qt5_DIR_ANDROID \
-      -DCMAKE_PREFIX_PATH:STRING=$Qt5_DIR_ANDROID \
+      -DCMAKE_FIND_ROOT_PATH:STRING=$Qt6_DIR_ANDROID \
+      -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID \
       -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake
 
 # This is bizarrely necessary, or else 'android_deployment_settings.json'

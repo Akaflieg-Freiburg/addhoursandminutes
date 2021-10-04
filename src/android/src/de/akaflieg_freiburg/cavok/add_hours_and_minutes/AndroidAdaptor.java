@@ -24,7 +24,7 @@ package de.akaflieg_freiburg.cavok.add_hours_and_minutes;
 import android.content.Context;
 import android.os.Vibrator;
 
-public class AndroidAdaptor extends org.qtproject.qt5.android.bindings.QtActivity
+public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
 {
     private static AndroidAdaptor m_instance;
     private static Vibrator m_vibrator;

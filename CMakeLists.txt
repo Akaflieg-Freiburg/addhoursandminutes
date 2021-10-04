@@ -20,8 +20,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Include required packages
 find_package(Qt6 COMPONENTS Core LinguistTools Quick Svg REQUIRED)
 if( ANDROID )
-  find_package(Qt6 COMPONENTS AndroidExtras REQUIRED)
-  find_package(Qt6QuickCompiler)
+#  find_package(Qt6 COMPONENTS AndroidExtras REQUIRED)
+#  find_package(Qt6QuickCompiler)
 endif()
 include(GNUInstallDirs)
 
