@@ -33,7 +33,7 @@ ApplicationWindow {
     header: ToolBar {
 
         ToolButton {
-            icon.source: Qt.platform.os !== "wasm" ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
+            icon.source: (Qt.platform.os !== "wasm") ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
 
             onClicked: mainMenu.open()
 

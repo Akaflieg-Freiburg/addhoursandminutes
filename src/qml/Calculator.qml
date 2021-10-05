@@ -290,7 +290,7 @@ Rectangle {
             buttonMinus.down = true
             buttonMinusTimer.running = true
             event.accepted = true
-        } else if ((event.key === Qt.Key_Equals || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
+        } else if ((event.key === Qt.Key_Equal || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
             hoursAndMinutes.addOperator("=")
             buttonEquals.down = true
             buttonEqualsTimer.running = true
@@ -314,7 +314,7 @@ Rectangle {
         rowSpacing: 0
         rows: 3
         columns: 3
-        flow: isPortrait() ? GridLayout.TopToBottom : GridLayout.LeftToRight
+        flow: hoursAndMinutes.isPortrait() ? GridLayout.TopToBottom : GridLayout.LeftToRight
         anchors.fill: parent
 
         Item {
@@ -329,29 +329,29 @@ Rectangle {
                 id: listView
 
                 anchors.fill: lvContainer
-                anchors.topMargin: 0.5*fontpixelsize
-                anchors.bottomMargin: 0.5*fontpixelsize
+                anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
+                anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
                 
                 clip: true
                 
                 delegate: Item {
-                    height: fontpixelsize*1.2
+                    height: hoursAndMinutes.fontpixelsize*1.2
                     width: parent.width
                     Text {
                         id: operator
                         anchors.left: parent.left
-                        anchors.leftMargin: 2*fontpixelsize
+                        anchors.leftMargin: 2*hoursAndMinutes.fontpixelsize
                         color: "teal"
                         text: model.operator
-                        font.pixelSize: fontpixelsize
+                        font.pixelSize: hoursAndMinutes.fontpixelsize
                         font.family: "Monospace"
                     }
                     Text {
                         id: operand
                         anchors.right: parent.right
-                        anchors.rightMargin: 2*fontpixelsize
+                        anchors.rightMargin: 2*hoursAndMinutes.fontpixelsize
                         text: model.operand
-                        font.pixelSize: fontpixelsize
+                        font.pixelSize: hoursAndMinutes.fontpixelsize
                         font.family: "Monospace"
                         font.bold: model.isSum
                     }
@@ -372,7 +372,7 @@ Rectangle {
                 anchors.bottom: lvContainer.bottom
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
-                height: fontpixelsize*0.25|0
+                height: hoursAndMinutes.fontpixelsize*0.25|0
                 visible: hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_horizontal.png"
             }
@@ -383,7 +383,7 @@ Rectangle {
                 anchors.top: lvContainer.top
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
-                height: fontpixelsize*0.25|0
+                height: hoursAndMinutes.fontpixelsize*0.25|0
                 //                visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_top.png"
             }
@@ -394,7 +394,7 @@ Rectangle {
                 anchors.top: lvContainer.top
                 anchors.bottom: lvContainer.bottom
                 anchors.right: lvContainer.right
-                width: fontpixelsize*0.25|0
+                width: hoursAndMinutes.fontpixelsize*0.25|0
                 visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_vertical.png"
             }
@@ -463,7 +463,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("7")
@@ -484,7 +484,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("8")
@@ -505,7 +505,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("9")
@@ -528,7 +528,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.backSpace()
@@ -554,7 +554,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("4")
@@ -575,7 +575,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("5")
@@ -596,7 +596,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("6")
@@ -618,7 +618,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     onClicked: {
                         hoursAndMinutes.addOperator("-")
                         AndroidAdaptor.vibrateBrief()
@@ -638,7 +638,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("1")
@@ -660,7 +660,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("2")
@@ -682,7 +682,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("3")
@@ -704,7 +704,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addOperator("+")
@@ -726,7 +726,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("0")
@@ -749,7 +749,7 @@ Rectangle {
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
                     Layout.fillWidth: true
-                    font.pixelSize: fontpixelsize
+                    font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addOperator("=")

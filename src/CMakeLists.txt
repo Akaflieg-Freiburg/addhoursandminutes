@@ -26,6 +26,7 @@ set(SOURCES
   main.cpp
   )
 
+
 if(ANDROID)
 
   # Generate android extra sources. This includes icons, but also a few other files
@@ -91,10 +92,20 @@ if (NOT ANDROID)
   # For non-Android platforms, simply generate executable
   #
   
-  add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+  qt_add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
   add_dependencies(${PROJECT_NAME} translations)
   target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick)
   
+  qt_add_qml_module(${PROJECT_NAME}
+      URI gui
+      VERSION 1.0
+      QML_FILES
+      qml/main.qml
+      qml/LongTextDialog.qml
+      qml/Calculator.qml
+      )
+
+
   #
   # Install things
   #

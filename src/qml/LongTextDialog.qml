@@ -55,7 +55,7 @@ Dialog {
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.Wrap
-            onLinkActivated: Qt.openUrlExternally(link)
+            onLinkActivated: (link) => Qt.openUrlExternally(link)
         } // Label
 
     } // ScrollView
