@@ -1,6 +1,8 @@
 # Set up cmake
 cmake_minimum_required(VERSION 3.1)
 set(CMAKE_CXX_STANDARD 11)
+cmake_policy(SET CMP0058 NEW)
+cmake_policy(SET CMP0071 NEW)
 
 # Basic information about our project
 project(addhoursandminutes VERSION 1.2.0)

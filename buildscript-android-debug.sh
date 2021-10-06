@@ -43,22 +43,23 @@ cd build-android-debug
 # Configure
 #
 
-export Qt6_DIR_ANDROID=/home/kebekus/Software/buildsystems/Qt/6.2.0/android_x86
-export OPENSSL_ROOT_DIR=/home/kebekus/Software/buildsystems/openssl-1.1.1k
-#export OPENSSL_INCLUDE_DIR=/home/kebekus/Software/buildsystems/openssl-1.1.1k/include			  
-
 cmake .. \
       -G Ninja\
       -DCMAKE_BUILD_TYPE:STRING=Debug \
       -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID \
       -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
       -DANDROID_NATIVE_API_LEVEL:STRING=23 \
-      -DANDROID_NDK:PATH=/home/kebekus/Software/buildsystems/Android-SDK/ndk/21.3.6528147 \
-      -DCMAKE_TOOLCHAIN_FILE:PATH=/home/kebekus/Software/buildsystems/Android-SDK/ndk/21.3.6528147/build/cmake/android.toolchain.cmake \
+      -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
+      -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
       -DANDROID_ABI:STRING=x86 \
       -DANDROID_STL:STRING=c++_shared \
       -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID \
-      -DQT_HOST_PATH:PATH=/home/kebekus/Software/buildsystems/Qt/6.2.0/gcc_64 \
-      -DANDROID_SDK_ROOT:PATH=/home/kebekus/Software/buildsystems/Android-SDK
+      -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
+      -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
 
+#
+# Compile
+#
+
+ninja
 #/home/kebekus/Software/buildsystems/Qt/6.2.0/gcc_64/bin/androiddeployqt" --input /home/kebekus/experiment/build-untitled-Android_Qt_6_2_0_Clang_x86-Debug/android-untitled-deployment-settings.json --output /home/kebekus/experiment/build-untitled-Android_Qt_6_2_0_Clang_x86-Debug/android-build --android-platform android-30 --jdk /usr/lib/jvm/java-1.8.0 --gradle --aab --jarsigner

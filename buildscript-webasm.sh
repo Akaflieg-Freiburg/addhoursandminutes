@@ -8,7 +8,7 @@
 
 
 #
-# Copyright © 2020 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
+# Copyright © 2020-2021 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -42,21 +42,33 @@ mkdir -p build-webasm-release
 cd build-webasm-release
 
 #
-# Configure
+# Setup paths
 #
 
 . $EMSDK/emsdk_env.sh
-cmake ..
-$Qt5_DIR_WASM/bin/qmake src/addhoursandminutes.pro
+export Qt6_DIR_BASE=/home/kebekus/Software/buildsystems/Qt/6.2.0
+export Qt6_DIR_ANDROID=$Qt6_DIR_BASE/android_x86
+export Qt6_DIR_LINUX=$Qt6_DIR_BASE/gcc_64
+export Qt6_DIR_WASM=$Qt6_DIR_BASE/wasm_32
+export OPENSSL_ROOT_DIR=/home/kebekus/Software/buildsystems/openssl-1.1.1k
 
+#
+# Configure
+#
+
+~/Software/buildsystems/Qt/Tools/CMake/bin/cmake .. \
+    -DCMAKE_TOOLCHAIN_FILE:PYTH=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake \
+    -DCMAKE_PREFIX_PATH:PATH=$Qt6_DIR_WASM \
+    -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_WASM \
+    -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
+    -GNinja
 
 #
 # Build the executable
 #
 
-$Qt5_DIR_WASM/bin/lrelease src/addhoursandminutes.pro
-make -j
+ninja
 # GitHub pages does not support SVG, so we need to include a PNG here
-rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o qtlogo.png
-sed -i 's/qtlogo.svg/qtlogo.png/g' addhoursandminutes.html
-sed -i 's/320/200/g' addhoursandminutes.html
+rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
+sed -i 's/qtlogo.svg/qtlogo.png/g' src/addhoursandminutes.html
+sed -i 's/320/200/g' src/addhoursandminutes.html
