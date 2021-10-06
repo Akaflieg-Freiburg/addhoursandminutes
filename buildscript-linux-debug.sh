@@ -52,7 +52,7 @@ cmake \
     -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address -fsanitize=undefined" \
     -DCMAKE_INSTALL_PREFIX=/ \
     -DCMAKE_MODULE_LINKER_FLAGS="-fsanitize=address -fsanitize=undefined" \
-    -DCMAKE_FIND_ROOT_PATH:STRING=$Qt5_DIR_LINUX \
+    -DCMAKE_FIND_ROOT_PATH:STRING=$Qt6_DIR_LINUX \
     ..
 
 ninja
