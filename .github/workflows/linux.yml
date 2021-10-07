@@ -39,7 +39,3 @@ jobs:
       run: |
         cd build
         make VERBOSE=1
-    - name: Test-compile with flatpak
-      run: |
-        cd build
-        make flatpak-binary VERBOSE=1

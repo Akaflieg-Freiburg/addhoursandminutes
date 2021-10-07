@@ -21,6 +21,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
+	arch: 'android_x86'
         version: '6.2.0'
     - name: Install Additional Software
       run: |
