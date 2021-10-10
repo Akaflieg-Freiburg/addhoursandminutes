@@ -10,16 +10,124 @@
         "--socket=wayland",
         "--device=dri"
     ],
+    "cleanup": [
+        "include",
+        "lib/*.a",
+        "lib/*.prl",
+        "lib/cmake",
+        "lib/debug",
+        "libexec"
+    ],
     "modules": [
+        {
+            "name": "qtbase",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtbase.git",
+                    "tag": "v6.2.0"
+                }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
+                "-DQT_BUILD_TESTS_BY_DEFAULT=OFF"
+            ]
+        },
+        {
+            "name": "qtsvg",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtsvg.git",
+                    "tag": "v6.2.0"
+                }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
+                "-DCMAKE_BUILD_TYPE:STRING=Release"
+            ]
+        },
+        {
+            "name": "qttools",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qttools.git",
+                    "tag": "v6.2.0"
+                }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
+                "-DQT_BUILD_TESTS_BY_DEFAULT=OFF",
+                "-DFEATURE_assistant=ON",
+                "-DFEATURE_clang=OFF",
+                "-DFEATURE_clangcpp=OFF",
+                "-DFEATURE_designer=ON",
+                "-DFEATURE_distancefieldgenerator=OFF",
+                "-DFEATURE_kmap2qmap=OFF",
+                "-DFEATURE_macdeployqt=OFF",
+                "-DFEATURE_pixeltool=OFF",
+                "-DFEATURE_pkg_config=OFF",
+                "-DFEATURE_qdbus=OFF",
+                "-DFEATURE_qev=OFF",
+                "-DFEATURE_qtattributionsscanner=OFF",
+                "-DFEATURE_qtdiag=OFF",
+                "-DFEATURE_qtplugininfo=OFF",
+                "-DFEATURE_windeployqt=OFF"
+            ]
+        },
+        {
+            "name": "qtshadertools",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtshadertools.git",
+                    "tag": "v6.2.0"
+                }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
+                "-DCMAKE_BUILD_TYPE:STRING=Release"
+            ]
+        },
+        {
+            "name": "qtdeclarative",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtdeclarative.git",
+                    "tag": "v6.2.0"
+                }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
+                "-DQT_BUILD_TESTS_BY_DEFAULT=OFF",
+                "-DFEATURE_qml_debug=OFF"
+           ]
+        },
         {
             "name": "addHoursAndMinutes",
             "buildsystem": "cmake-ninja",
-            "config-opts": ["-DCMAKE_BUILD_TYPE=RelWithDebInfo"],
             "sources": [
                 {
                     "type": "archive",
                     "path": "addhoursandminutes-${PROJECT_VERSION}.tar.gz"
                 }
+            ],
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
+                "-DCMAKE_BUILD_TYPE:STRING=Release"
             ]
         }
     ]

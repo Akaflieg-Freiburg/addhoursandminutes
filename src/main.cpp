@@ -37,7 +37,7 @@ auto main(int argc, char *argv[]) -> int
     // Install translators
     QString locale = QLocale::system().name();
     QTranslator translator;
-    if (translator.load(QString(":addhoursandminutes_") + locale.left(2))) {
+    if (translator.load(QString(":i18n/addhoursandminutes_") + locale.left(2))) {
         QGuiApplication::installTranslator(&translator);
     }
     QTranslator Qt_translator;

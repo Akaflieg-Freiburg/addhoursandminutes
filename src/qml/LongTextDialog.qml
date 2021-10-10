@@ -39,10 +39,10 @@ Dialog {
 
         anchors.fill: parent
         implicitWidth: 40*Qt.application.font.pixelSize
+        contentWidth: availableWidth // Disable horizontal scrolling
 
         // The visibility behavior of the vertical scroll bar is a little complex.
         // The following code guarantees that the scroll bar is shown initially. If it is not used, it is faded out after half a second or so.
-        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: (height < contentHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
         ScrollBar.vertical.interactive: false
 
@@ -51,7 +51,7 @@ Dialog {
         Label {
             id: lbl
             text: dlg.text
-            width: sv.width
+            width: sv.availableWidth
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.Wrap

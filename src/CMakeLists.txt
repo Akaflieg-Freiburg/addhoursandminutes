@@ -1,22 +1,4 @@
 #
-# Provide translations.  For better cooperation with qmake, we save the
-# translation files in the SOURCE directory.  If we ever move to a pure cmake
-# build in the future, this should be fixed.
-#
-
-set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION ${CMAKE_CURRENT_SOURCE_DIR})
-qt6_add_translation(qm_files addhoursandminutes_de.ts)
-add_custom_target(translations DEPENDS ${qm_files})
-
-
-#
-# Configure QMake file -- required for the webassembly platform
-#
-
-configure_file(addhoursandminutes.pro.in addhoursandminutes.pro)
-
-
-#
 # Set up source files
 #
 
@@ -69,47 +51,30 @@ if(ANDROID)
   configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
   configure_file(android/res/values/strings.xml android/res/values/strings.xml COPYONLY)
   configure_file(android/res/values-de/strings.xml android/res/values-de/strings.xml COPYONLY)
-  configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
-
-
-  # The android target is a library, not an executable
-  qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION ${SOURCES} ${ANDROID_EXTRA_SOURCES})
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick Qt6::Svg)
-  target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-  set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
-  qt_import_qml_plugins(${PROJECT_NAME})
-  qt_finalize_executable(${PROJECT_NAME})
+  configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY) 
 
 endif()
 
 
+qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION ${SOURCES} ${ANDROID_EXTRA_SOURCES})
+qt_add_translations(${PROJECT_NAME} TS_FILES addhoursandminutes_de.ts)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick Qt6::Svg)
+target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
+qt_add_qml_module(${PROJECT_NAME}
+    URI gui
+    VERSION 1.0
+    QML_FILES
+    qml/main.qml
+    qml/LongTextDialog.qml
+    qml/Calculator.qml
+    )
+qt_import_qml_plugins(${PROJECT_NAME})
+qt_finalize_executable(${PROJECT_NAME})
+
+
 #
-# Generate unix executable
+# Install things
 #
-if (NOT ANDROID)
 
-  #
-  # For non-Android platforms, simply generate executable
-  #
-  
-  qt_add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
-  add_dependencies(${PROJECT_NAME} translations)
-  target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick)
-  
-  qt_add_qml_module(${PROJECT_NAME}
-      URI gui
-      VERSION 1.0
-      QML_FILES
-      qml/main.qml
-      qml/LongTextDialog.qml
-      qml/Calculator.qml
-      )
-
-
-  #
-  # Install things
-  #
-  
-  install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
-  
-endif()
+install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})

@@ -24,8 +24,8 @@ import QtQuick.Controls
 
 ApplicationWindow {
     id: window
-    width: Qt.application.font.pixelSize*14*1.5
-    height: Qt.application.font.pixelSize*18*1.5
+    width: Qt.application.font.pixelSize*15*1.5
+    height: Qt.application.font.pixelSize*20*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
     visible: true
@@ -103,7 +103,7 @@ ApplicationWindow {
   flight times in your pilot's flight log, or your driving times as a truck
   driver.</p>
 
-<ul>
+<ul style='margin-left:-25px;'>
 <li>Simple, elegant and functional</li>
 <li>No ads</li>
 <li>No commerical 'pro' version</li>
