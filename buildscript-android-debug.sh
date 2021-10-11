@@ -7,7 +7,7 @@
 #
 
 #
-# Copyright © 2020 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
+# Copyright © 2020-2021 Stefan Kebekus <stefan.kebekus@math.uni-freiburg.de>
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -31,35 +31,59 @@
 
 set -e
 
-#
-# Clean up
-#
+rm -f *.apk *.aab
 
-rm -rf build-android-debug
-mkdir -p build-android-debug
-cd build-android-debug
+array=( x86 x86_64 arm64_v8a armv7 )
+for arch in "${array[@]}"
+do
 
-#
-# Configure
-#
+    #
+    # Clean up
+    #
+    
+    rm -rf build-android-debug
+    mkdir -p build-android-debug
+    cd build-android-debug
+    
+    #
+    # Configure
+    #
+    echo $Qt6_DIR_ANDROID\_${arch}
+    cmake .. \
+	  -G Ninja\
+	  -DCMAKE_BUILD_TYPE:STRING=Debug \
+	  -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID\_${arch} \
+	  -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
+	  -DANDROID_NATIVE_API_LEVEL:STRING=23 \
+	  -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
+	  -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
+	  -DANDROID_ABI:STRING=${arch} \
+	  -DANDROID_STL:STRING=c++_shared \
+	  -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID\_${arch} \
+	  -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
+	  -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
+    
+    #
+    # Compile
+    #
+    
+    ninja addhoursandminutes
+    ninja addhoursandminutes_prepare_apk_dir
+    
+    $Qt6_DIR_LINUX/bin/androiddeployqt \
+	--aab \
+	--input src/android-addhoursandminutes-deployment-settings.json \
+	--output src/android-build \
+	--apk ../addhoursandminutes-${arch}.apk \
+	--depfile src/android-build/addhoursandminutes.d \
+	--builddir .
+    
+    mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${arch}.aab
 
-cmake .. \
-      -G Ninja\
-      -DCMAKE_BUILD_TYPE:STRING=Debug \
-      -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID \
-      -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
-      -DANDROID_NATIVE_API_LEVEL:STRING=23 \
-      -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
-      -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
-      -DANDROID_ABI:STRING=x86 \
-      -DANDROID_STL:STRING=c++_shared \
-      -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID \
-      -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
-      -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
+    #
+    # cd out
+    #
+    cd ..
+done
 
-#
-# Compile
-#
 
-ninja
-#/home/kebekus/Software/buildsystems/Qt/6.2.0/gcc_64/bin/androiddeployqt" --input /home/kebekus/experiment/build-untitled-Android_Qt_6_2_0_Clang_x86-Debug/android-untitled-deployment-settings.json --output /home/kebekus/experiment/build-untitled-Android_Qt_6_2_0_Clang_x86-Debug/android-build --android-platform android-30 --jdk /usr/lib/jvm/java-1.8.0 --gradle --aab --jarsigner

@@ -11,6 +11,13 @@ set(PROJECT_DATE 2021-10-02)
 math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
+if (${ANDROID_ABI} STREQUAL "x86")
+    set(ABI_CODE 1)
+else()
+    set(ABI_CODE 0)
+endif()
+
+
 # Include external packages and modules
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
@@ -21,10 +28,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include required packages
 find_package(Qt6 COMPONENTS Core LinguistTools Quick Svg REQUIRED)
-if( ANDROID )
-#  find_package(Qt6 COMPONENTS AndroidExtras REQUIRED)
-#  find_package(Qt6QuickCompiler)
-endif()
 include(GNUInstallDirs)
 
 # Subdirectories

@@ -2,7 +2,7 @@
 <manifest package="de.akaflieg_freiburg.cavok.add_hours_and_minutes"
 	  xmlns:android="http://schemas.android.com/apk/res/android"
 	  android:versionName="${PROJECT_VERSION}"
-	  android:versionCode="${PROJECT_VERSION_CODE}0"
+          android:versionCode="${PROJECT_VERSION_CODE}${ABI_CODE}"
 	  android:installLocation="auto">
   <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="30"/>
 
