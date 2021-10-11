@@ -33,8 +33,11 @@ set -e
 
 rm -f *.apk *.aab
 
-array=( x86 x86_64 arm64_v8a armv7 )
-for arch in "${array[@]}"
+abis=(arm64-v8a armeabi-v7a x86 x86_64)
+path=(arm64_v8a armv7 x86 x86_64)
+
+
+for i in ${!abis[*]}
 do
 
     #
@@ -48,18 +51,18 @@ do
     #
     # Configure
     #
-    echo $Qt6_DIR_ANDROID\_${arch}
+    echo $Qt6_DIR_ANDROID\_${abis[i]}
     cmake .. \
 	  -G Ninja\
 	  -DCMAKE_BUILD_TYPE:STRING=Debug \
-	  -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID\_${arch} \
+	  -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID\_${path[i]} \
 	  -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
 	  -DANDROID_NATIVE_API_LEVEL:STRING=23 \
 	  -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
 	  -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
-	  -DANDROID_ABI:STRING=${arch} \
+	  -DANDROID_ABI:STRING=${abis[i]} \
 	  -DANDROID_STL:STRING=c++_shared \
-	  -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID\_${arch} \
+	  -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID\_${path[i]} \
 	  -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
 	  -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
     
@@ -74,11 +77,11 @@ do
 	--aab \
 	--input src/android-addhoursandminutes-deployment-settings.json \
 	--output src/android-build \
-	--apk ../addhoursandminutes-${arch}.apk \
+	--apk ../addhoursandminutes-${abis[i]}.apk \
 	--depfile src/android-build/addhoursandminutes.d \
 	--builddir .
     
-    mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${arch}.aab
+    mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${abis[i]}.aab
 
     #
     # cd out
