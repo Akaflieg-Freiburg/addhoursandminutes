@@ -1,9 +1,9 @@
 {
     "app-id": "${APP_ID}",
-    "runtime": "org.kde.Platform",
-    "runtime-version": "${FLATPAK_RUNTIME_VERSION}",
-    "sdk": "org.kde.Sdk",
-    "command": "${PROJECT_NAME}",
+     "runtime": "org.freedesktop.Platform",
+    "runtime-version": "21.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "addhoursandminutes",
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
