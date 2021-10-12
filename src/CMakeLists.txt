@@ -57,7 +57,6 @@ endif()
 
 
 qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION ${SOURCES} ${ANDROID_EXTRA_SOURCES})
-qt_add_translations(${PROJECT_NAME} TS_FILES addhoursandminutes_de.ts)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick Qt6::Svg)
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
@@ -71,6 +70,10 @@ qt_add_qml_module(${PROJECT_NAME}
     )
 qt_import_qml_plugins(${PROJECT_NAME})
 qt_finalize_executable(${PROJECT_NAME})
+
+# Translations
+set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
+qt_add_translations(${PROJECT_NAME} TS_FILES addhoursandminutes_de.ts)
 
 
 #

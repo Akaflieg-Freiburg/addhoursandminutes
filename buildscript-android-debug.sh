@@ -33,8 +33,8 @@ set -e
 
 rm -f *.apk *.aab
 
-abis=(arm64-v8a armeabi-v7a x86 x86_64)
-path=(arm64_v8a armv7 x86 x86_64)
+abis=(arm64-v8a x86)
+path=(arm64_v8a x86)
 
 
 for i in ${!abis[*]}
@@ -74,15 +74,12 @@ do
     ninja addhoursandminutes_prepare_apk_dir
     
     $Qt6_DIR_LINUX/bin/androiddeployqt \
-	--aab \
 	--input src/android-addhoursandminutes-deployment-settings.json \
 	--output src/android-build \
 	--apk ../addhoursandminutes-${abis[i]}.apk \
 	--depfile src/android-build/addhoursandminutes.d \
 	--builddir .
     
-    mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${abis[i]}.aab
-
     #
     # cd out
     #
