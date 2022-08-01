@@ -16,10 +16,10 @@ jobs:
       with:
         submodules: true
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         target: 'android'
-        version: '6.3.1'
+        version: '6.2'
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
