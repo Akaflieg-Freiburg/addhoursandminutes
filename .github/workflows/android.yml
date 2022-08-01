@@ -16,13 +16,13 @@ jobs:
     - name: Checkout submodules
       uses: srt32/git-actions@v0.0.3
       with:
-        args: git submodule update --init --recursive
+        submodules: true
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
         arch: 'android_x86'
-        version: '6.2.0'
+        version: '6.2.4'
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
@@ -37,15 +37,15 @@ jobs:
           -DANDROID_BUILD_ABI_x86:BOOL=ON \
           -DANDROID_BUILD_ABI_x86_64:BOOL=ON \
           -DANDROID_NATIVE_API_LEVEL:STRING=23 \
-          -DANDROID_NDK:PATH=$ANDROID_SDK_ROOT/ndk-bundle \
+          -DANDROID_NDK:PATH=$ANDROID_SDK_ROOT/ndk/23.2.8568313 \
           -DANDROID_SDK:PATH=$ANDROID_SDK_ROOT \
           -DANDROID_STL:STRING=c++_shared \
           -DCMAKE_BUILD_TYPE:STRING=Debug \
-          -DCMAKE_CXX_COMPILER:STRING=$ANDROID_SDK_ROOT/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ \
-          -DCMAKE_C_COMPILER:STRING=$ANDROID_SDK_ROOT/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang \
-          -DCMAKE_FIND_ROOT_PATH:STRING=$Qt5_DIR \
-          -DCMAKE_PREFIX_PATH:STRING=$Qt5_DIR \
-          -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_SDK_ROOT/ndk-bundle/build/cmake/android.toolchain.cmake \
+          -DCMAKE_CXX_COMPILER:STRING=$ANDROID_SDK_ROOT/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ \
+          -DCMAKE_C_COMPILER:STRING=$ANDROID_SDK_ROOT/ndk/23.2.8568313/toolchains/llvm/prebuilt/linux-x86_64/bin/clang \
+          -DCMAKE_FIND_ROOT_PATH:STRING=$Qt6_DIR \
+          -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR \
+          -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_SDK_ROOT/ndk/23.2.8568313/build/cmake/android.toolchain.cmake \
           -DQT_QMAKE_EXECUTABLE:STRING=$Qt5_DIR/bin/qmake
         cmake ..
     - name: Compile
