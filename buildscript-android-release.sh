@@ -83,6 +83,11 @@ do
     
     mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${abis[i]}.aab
 
+    jarsigner -keystore $ANDROID_KEYSTORE_FILE \
+	      -storepass $ANDROID_KEYSTORE_PASS \
+	      ../addhoursandminutes-${abis[i]}.aab \
+	      "Stefan Kebekus"
+
     #
     # cd out
     #

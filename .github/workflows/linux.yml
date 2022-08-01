@@ -15,14 +15,12 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: Checkout submodules
-      uses: srt32/git-actions@v0.0.3
       with:
-        args: git submodule update --init --recursive
+        submodules: true 
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
-        version: '6.2.0'
+        version: '6.2.4'
     - name: Install Additional Software
       run: |
         sudo add-apt-repository ppa:alexlarsson/flatpak

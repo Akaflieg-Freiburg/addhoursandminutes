@@ -5,15 +5,15 @@ cmake_policy(SET CMP0058 NEW)
 cmake_policy(SET CMP0071 NEW)
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.2.0)
+project(addhoursandminutes VERSION 1.2.1)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(PROJECT_DATE 2021-10-02)
 math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
-if ("${ANDROID_ABI}" STREQUAL "arm64-v8a")  
+if ("${ANDROID_ABI}" STREQUAL "armeabi-v7a")  
   set(ABI_CODE 1)
-elseif("${ANDROID_ABI}" STREQUAL "armeabi-v7a")
+elseif("${ANDROID_ABI}" STREQUAL "arm64-v8a")
   set(ABI_CODE 2)
 elseif("${ANDROID_ABI}" STREQUAL "x86")
   set(ABI_CODE 3)

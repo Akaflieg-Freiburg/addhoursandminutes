@@ -46,11 +46,6 @@ cd build-webasm-release
 #
 
 . $EMSDK/emsdk_env.sh
-export Qt6_DIR_BASE=/home/kebekus/Software/buildsystems/Qt/6.2.0
-export Qt6_DIR_ANDROID=$Qt6_DIR_BASE/android_x86
-export Qt6_DIR_LINUX=$Qt6_DIR_BASE/gcc_64
-export Qt6_DIR_WASM=$Qt6_DIR_BASE/wasm_32
-export OPENSSL_ROOT_DIR=/home/kebekus/Software/buildsystems/openssl-1.1.1k
 
 #
 # Configure
