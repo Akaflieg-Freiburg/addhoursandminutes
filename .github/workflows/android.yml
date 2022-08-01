@@ -12,14 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       with:
         submodules: true
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
         version: '6.2'
+	arch: 
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
