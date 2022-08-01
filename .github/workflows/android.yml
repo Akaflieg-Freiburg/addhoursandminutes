@@ -20,7 +20,6 @@ jobs:
       with:
         target: 'android'
         version: '6.2'
-	arch: 
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
