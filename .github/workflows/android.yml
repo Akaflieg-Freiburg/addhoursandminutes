@@ -13,8 +13,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: Checkout submodules
-      uses: srt32/git-actions@v0.0.3
       with:
         submodules: true
     - name: Install Qt
@@ -46,7 +44,7 @@ jobs:
           -DCMAKE_FIND_ROOT_PATH:STRING=$Qt6_DIR \
           -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR \
           -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_SDK_ROOT/ndk/23.2.8568313/build/cmake/android.toolchain.cmake \
-          -DQT_QMAKE_EXECUTABLE:STRING=$Qt5_DIR/bin/qmake
+          -DQT_QMAKE_EXECUTABLE:STRING=$Qt6_DIR/bin/qmake
         cmake ..
     - name: Compile
       run: |
