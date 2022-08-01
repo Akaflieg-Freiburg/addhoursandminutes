@@ -19,7 +19,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
-        version: '6.2'
+        version: '6.2.4'
         arch: 'android_armv7'
     - name: Install Additional Software
       run: |
