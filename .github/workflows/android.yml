@@ -21,7 +21,7 @@ jobs:
         target: 'android'
         version: '6.2.4'
         arch: 'android_armv7'
-        modules: qtcore
+        modules: qtcore qtcoretools
         cached: 'false'
     - name: Install Additional Software
       run: |
