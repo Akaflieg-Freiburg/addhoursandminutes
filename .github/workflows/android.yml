@@ -25,6 +25,8 @@ jobs:
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
+        SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
+        echo "y" | $SDKMANAGER "ndk;22.1.7171670"
     - name: Configure
       run: |
         mkdir -p build
