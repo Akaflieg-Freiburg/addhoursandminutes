@@ -31,65 +31,42 @@
 
 set -e
 
-rm -f *.apk *.aab
-
-abis=(arm64-v8a armeabi-v7a x86 x86_64)
-path=(arm64_v8a armv7 x86 x86_64)
-
-
-for i in ${!abis[*]}
-do
-
-    #
-    # Clean up
-    #
+#
+# Clean up
+#
     
-    rm -rf build-android-debug
-    mkdir -p build-android-debug
-    cd build-android-debug
+rm -rf build-android-release
+mkdir -p build-android-release
+cd build-android-release
     
-    #
-    # Configure
-    #
-    echo $Qt6_DIR_ANDROID\_${abis[i]}
-    cmake .. \
-	  -G Ninja\
-	  -DCMAKE_BUILD_TYPE:STRING=Release \
-	  -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID\_${path[i]} \
-	  -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
-	  -DANDROID_NATIVE_API_LEVEL:STRING=23 \
-	  -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
-	  -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
-	  -DANDROID_ABI:STRING=${abis[i]} \
-	  -DANDROID_STL:STRING=c++_shared \
-	  -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID\_${path[i]} \
-	  -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
-	  -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
-    
-    #
-    # Compile
-    #
-    
-    ninja addhoursandminutes
-    ninja addhoursandminutes_prepare_apk_dir
-    
-    $Qt6_DIR_LINUX/bin/androiddeployqt \
-	--aab \
-	--input src/android-addhoursandminutes-deployment-settings.json \
-	--output src/android-build \
-	--apk addhoursandminutes-${abis[i]}.apk \
-	--depfile src/android-build/addhoursandminutes.d \
-	--builddir .
-    
-    mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes-${abis[i]}.aab
+#
+# Configure
+#
 
-    jarsigner -keystore $ANDROID_KEYSTORE_FILE \
-	      -storepass $ANDROID_KEYSTORE_PASS \
-	      ../addhoursandminutes-${abis[i]}.aab \
-	      "Stefan Kebekus"
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-1.fc35.x86_64
 
-    #
-    # cd out
-    #
-    cd ..
-done
+$Qt6_DIR_ANDROID\_x86/bin/qt-cmake .. \
+  -G Ninja\
+  -DCMAKE_BUILD_TYPE:STRING=Release \
+  -DQT_ANDROID_BUILD_ALL_ABIS=ON
+    
+#
+# Compile
+#
+    
+ninja aab
+
+mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes.aab
+
+jarsigner -keystore $ANDROID_KEYSTORE_FILE \
+  -storepass $ANDROID_KEYSTORE_PASS \
+   ../addhoursandminutes.aab \
+   "Stefan Kebekus"
+
+#
+# cd out
+#
+
+cd ..
+

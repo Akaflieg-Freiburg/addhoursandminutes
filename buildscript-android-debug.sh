@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script builds "Add Hours and Minutes" for Android in release mode.
+# This script builds "Add Hours and Minutes" for Android in debug mode.
 #
 # See https://github.com/Akaflieg-Freiburg/addhoursandminutes/wiki/Build-scripts
 #
@@ -31,59 +31,37 @@
 
 set -e
 
-rm -f *.apk *.aab
 
-abis=(arm64-v8a x86)
-path=(arm64_v8a x86)
-
-
-for i in ${!abis[*]}
-do
-
-    #
-    # Clean up
-    #
+#
+# Clean up
+#
     
-    rm -rf build-android-debug
-    mkdir -p build-android-debug
-    cd build-android-debug
-    
-    #
-    # Configure
-    #
-    echo $Qt6_DIR_ANDROID\_${abis[i]}
-    cmake .. \
-	  -G Ninja\
-	  -DCMAKE_BUILD_TYPE:STRING=Debug \
-	  -DCMAKE_PREFIX_PATH:STRING=$Qt6_DIR_ANDROID\_${path[i]} \
-	  -DOPENSSL_ROOT_DIR:PATH=$OPENSSL_ROOT_DIR \
-	  -DANDROID_NATIVE_API_LEVEL:STRING=23 \
-	  -DANDROID_NDK:PATH=$ANDROID_NDK_ROOT \
-	  -DCMAKE_TOOLCHAIN_FILE:PATH=$ANDROID_NDK_ROOT/build/cmake/android.toolchain.cmake \
-	  -DANDROID_ABI:STRING=${abis[i]} \
-	  -DANDROID_STL:STRING=c++_shared \
-	  -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_ANDROID\_${path[i]} \
-	  -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
-	  -DANDROID_SDK_ROOT:PATH=$ANDROID_SDK_ROOT
-    
-    #
-    # Compile
-    #
-    
-    ninja addhoursandminutes
-    ninja addhoursandminutes_prepare_apk_dir
-    
-    $Qt6_DIR_LINUX/bin/androiddeployqt \
-	--input src/android-addhoursandminutes-deployment-settings.json \
-	--output src/android-build \
-	--apk ../addhoursandminutes-${abis[i]}.apk \
-	--depfile src/android-build/addhoursandminutes.d \
-	--builddir .
-    
-    #
-    # cd out
-    #
-    cd ..
-done
+rm -rf build-android-debug
+mkdir -p build-android-debug
+cd build-android-debug
 
 
+#
+# Configure
+#
+
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-1.fc35.x86_64
+
+$Qt6_DIR_ANDROID\_x86/bin/qt-cmake .. \
+  -G Ninja \
+  -DCMAKE_BUILD_TYPE:STRING=Debug
+
+
+#
+# Compile
+#
+
+ninja
+
+
+#
+# cd out
+#
+
+cd ..

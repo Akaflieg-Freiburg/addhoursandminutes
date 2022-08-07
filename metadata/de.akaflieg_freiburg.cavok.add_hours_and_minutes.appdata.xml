@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
-  <id>${APP_ID}</id>
-  <launchable type="desktop-id">${APP_ID}.desktop</launchable>
+  <id>de.akaflieg_freiburg.cavok.add_hours_and_minutes</id>
+  <launchable type="desktop-id">de.akaflieg_freiburg.cavok.add_hours_and_minutes.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Add Hours and Minutes</name>
@@ -21,7 +21,7 @@
   </description>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="${PROJECT_VERSION}" date="${PROJECT_DATE}"/>
+    <release version="1.2.1" date="2021-10-02"/>
   </releases>
   <developer_name>
     Akaflieg Freiburg
@@ -39,6 +39,6 @@
   <project_group>Flatpak</project_group>
   <update_contact>stefan.kebekus@gmail.com</update_contact>
   <provides>
-    <binary>${PROJECT_NAME}</binary>
+    <binary>addhoursandminutes</binary>
   </provides>
 </component>
