@@ -29,6 +29,7 @@ jobs:
       run: |
         mkdir -p build
         cd build
+        ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
         $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug
     - name: Compile
       run: |
