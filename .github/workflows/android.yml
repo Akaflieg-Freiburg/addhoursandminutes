@@ -15,7 +15,12 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
-    - name: Install Qt
+    - name: Install Qt for Desktop
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '6.3.1'
+        cached: 'false'
+    - name: Install Qt for Android
       uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
