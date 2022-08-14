@@ -19,26 +19,28 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: '6.3.1'
-        cached: 'false'
+    - name: Set QT_HOST_PATH
+      run: |
+        QT_HOST_PATH=$Qt6_DIR
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v2
       with:
         target: 'android'
         version: '6.3.1'
         arch: 'android_armv7'
-        cached: 'false'
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
         SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
         echo "y" | $SDKMANAGER "ndk;22.1.7171670"
+        ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
     - name: Configure
       run: |
         mkdir -p build
         cd build
-        ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
-        find $Qt6_DIR/../gcc_64
-        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug -DQT_HOST_PATH:STRING=$Qt6_DIR/../gcc_64
+        echo $QT_HOST_PATH
+        find $QT_HOST_PATH
+        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug
     - name: Compile
       run: |
         cd build
