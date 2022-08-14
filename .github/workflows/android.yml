@@ -49,4 +49,4 @@ jobs:
       if: github.event_name == 'push'
       with:
         name: Debug-APK
-        path: build/android-build/build/outputs/apk/debug/android-build-debug.apk
+        path: build/src/android-build//build/outputs/apk/debug/android-build-debug.apk
