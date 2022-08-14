@@ -17,7 +17,14 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: true 
-    - name: Install Qt
+    - name: Install Qt for Desktop
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '6.3.1'
+    - name: Set QT_HOST_PATH
+      run: |
+        echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
+    - name: Install Qt for iOS
       uses: jurplel/install-qt-action@v2
       with:
         target: 'ios'
