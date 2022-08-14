@@ -37,6 +37,7 @@ jobs:
         mkdir -p build
         cd build
         ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
+        find $Qt6_DIR/../gcc_64
         $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug -DQT_HOST_PATH:STRING=$Qt6_DIR/../gcc_64
     - name: Compile
       run: |
