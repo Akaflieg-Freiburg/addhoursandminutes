@@ -46,4 +46,4 @@ jobs:
     - name: Compile
       run: |
         cd build
-        make VERBOSE=1
+        cmake --build .
