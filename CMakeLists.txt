@@ -33,7 +33,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include required packages
-find_package(Qt6 COMPONENTS Core LinguistTools Quick Svg REQUIRED)
+find_package(Qt6 COMPONENTS Core Quick Svg REQUIRED)
 include(GNUInstallDirs)
 
 # Subdirectories
