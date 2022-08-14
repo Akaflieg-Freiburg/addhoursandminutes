@@ -3,6 +3,8 @@ name: Compile on MacOS
 on:
   create:
     branches: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 

@@ -1,6 +1,10 @@
 name: Compile on Android
 
 on:
+  create:
+    branches: [ master ]
+  push:
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
