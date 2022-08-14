@@ -21,7 +21,7 @@ jobs:
         version: '6.3.1'
     - name: Set QT_HOST_PATH
       run: |
-        QT_HOST_PATH=$Qt6_DIR
+        export QT_HOST_PATH=$Qt6_DIR
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v2
       with:
@@ -33,7 +33,7 @@ jobs:
         sudo apt install doxygen graphviz librsvg2-bin
         SDKMANAGER=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager
         echo "y" | $SDKMANAGER "ndk;22.1.7171670"
-        ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
+        export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
     - name: Configure
       run: |
         mkdir -p build
