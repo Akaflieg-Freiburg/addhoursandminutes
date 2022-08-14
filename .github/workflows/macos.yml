@@ -21,18 +21,12 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: '6.3.1'
-    - name: Install Additional Software
-      run: |
-        sudo apt update
-        sudo apt install doxygen graphviz
     - name: Configure
       run: |
-        export CC=/usr/bin/clang
-        export CXX=/usr/bin/clang++
         cmake -E make_directory build
         cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS='-Werror -Wall -Wextra'
-    - name: Test-compile on standard Linux
+        cmake .. -DCMAKE_BUILD_TYPE=Debug
+    - name: Compile
       run: |
         cd build
         make VERBOSE=1
