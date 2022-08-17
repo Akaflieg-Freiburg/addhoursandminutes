@@ -14,7 +14,6 @@ add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 find_package(Qt6 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
 qt_standard_project_setup()
 
-
 # Subdirectories
 add_subdirectory(generatedSources)
 add_subdirectory(metadata)

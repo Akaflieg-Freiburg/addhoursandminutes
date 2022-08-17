@@ -3,7 +3,6 @@
 #
 
 set(SOURCES
-  addhoursandminutes.qrc
   androidAdaptor.cpp
   main.cpp
   )
@@ -64,11 +63,43 @@ qt_add_qml_module(${PROJECT_NAME}
     qml/Calculator.qml
     )
 qt_import_qml_plugins(${PROJECT_NAME})
-qt_finalize_executable(${PROJECT_NAME})
 
-# Translations
-set_source_files_properties(addhoursandminutes_de.ts PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
-qt_add_translations(${PROJECT_NAME} TS_FILES addhoursandminutes_de.ts)
+qt_add_resources(${PROJECT_NAME} config
+    PREFIX "/"
+    FILES
+    qtquickcontrols2.conf
+)
+
+qt_add_resources(${PROJECT_NAME} "imageresources"
+    PREFIX "/"
+    FILES
+    images/shadow_horizontal.png
+    images/shadow_top.png
+    images/shadow_vertical.png
+    images/ic_menu_24px.svg
+    images/ic_exit_to_app_24px.svg
+    images/ic_help_24px.svg
+    images/ic_info_24px.svg
+    images/ic_menu_black_24dp.png
+    images/ic_exit_to_app_black_24dp.png
+    images/ic_help_black_24dp.png
+    images/ic_info_black_24dp.png
+)
+
+qt_add_resources(${PROJECT_NAME} "programicons"
+    PREFIX "/"
+    FILES
+    ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg
+    ../generatedSources/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.png
+
+)
+
+qt_add_translations(${PROJECT_NAME}
+    TS_FILES
+    addhoursandminutes_de.ts
+)
+
+qt_finalize_executable(${PROJECT_NAME})
 
 
 #
