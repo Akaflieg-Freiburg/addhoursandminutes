@@ -37,7 +37,7 @@ auto main(int argc, char *argv[]) -> int
     // Install translators
     QString locale = QLocale::system().name();
     QTranslator translator;
-    if (translator.load(QString(":i18n/addhoursandminutes_") + locale.left(2))) {
+    if (translator.load(QStringLiteral(":i18n/addhoursandminutes_") + locale.left(2))) {
         QGuiApplication::installTranslator(&translator);
     }
     QTranslator Qt_translator;
@@ -46,12 +46,12 @@ auto main(int argc, char *argv[]) -> int
     }
 
     // Set application parameters
-    QCoreApplication::setOrganizationName("Akaflieg Freiburg");
-    QCoreApplication::setOrganizationDomain("akaflieg_freiburg.de");
+    QCoreApplication::setOrganizationName(QStringLiteral("Akaflieg Freiburg"));
+    QCoreApplication::setOrganizationDomain(QStringLiteral("akaflieg_freiburg.de"));
     QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
     QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
 #if defined(Q_OS_LINUX)
-    QGuiApplication::setDesktopFileName("de.akaflieg_freiburg.cavok.add_hours_and_minutes");
+    QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
 #endif
 
     // Start QML Engine
@@ -59,21 +59,21 @@ auto main(int argc, char *argv[]) -> int
 
     // Make AndroidAdaptor available to QML engine
     auto *adaptor = new AndroidAdaptor(&engine);
-    engine.rootContext()->setContextProperty("AndroidAdaptor", adaptor);
+    engine.rootContext()->setContextProperty(QStringLiteral("AndroidAdaptor"), adaptor);
 
     // Attach FirstRunNotifier
-    engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
+    engine.rootContext()->setContextProperty(QStringLiteral("projectVersion"), PROJECT_VERSION);
 
     // Make font scaling factor available to QML engine; this scaling factor
     // depends on the platform
 #ifdef Q_OS_ANDROID
     engine.rootContext()->setContextProperty("fontScale", 1.5);
 #else
-    engine.rootContext()->setContextProperty("fontScale", 1.2);
+    engine.rootContext()->setContextProperty(QStringLiteral("fontScale"), 1.2);
 #endif
 
     // Now load the QML code
-    engine.load("qrc:/gui/qml/main.qml");
+    engine.load(QStringLiteral("qrc:/gui/qml/main.qml"));
 
 #ifdef Q_OS_ANDROID
     QNativeInterface::QAndroidApplication::hideSplashScreen();
