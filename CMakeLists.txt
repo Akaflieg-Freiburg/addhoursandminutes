@@ -1,8 +1,7 @@
 # Set up cmake
-cmake_minimum_required(VERSION 3.1)
-set(CMAKE_CXX_STANDARD 11)
-cmake_policy(SET CMP0058 NEW)
-cmake_policy(SET CMP0071 NEW)
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Basic information about our project
 project(addhoursandminutes VERSION 1.2.1)
@@ -11,30 +10,10 @@ set(PROJECT_DATE 2021-10-02)
 math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
-if ("${ANDROID_ABI}" STREQUAL "armeabi-v7a")  
-  set(ABI_CODE 1)
-elseif("${ANDROID_ABI}" STREQUAL "arm64-v8a")
-  set(ABI_CODE 2)
-elseif("${ANDROID_ABI}" STREQUAL "x86")
-  set(ABI_CODE 3)
-elseif("${ANDROID_ABI}" STREQUAL "x86_64")
-  set(ABI_CODE 4)
-else()
-  set(ABI_CODE 0)
-endif()
-
-
-# Include external packages and modules
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 # Include required packages
-find_package(Qt6 COMPONENTS Core LinguistTools Quick Svg REQUIRED)
-include(GNUInstallDirs)
+find_package(Qt6 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
+qt_standard_project_setup()
+
 
 # Subdirectories
 add_subdirectory(generatedSources)
