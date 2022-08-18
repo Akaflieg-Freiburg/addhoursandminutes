@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2021 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2022 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -54,12 +54,17 @@ auto main(int argc, char *argv[]) -> int
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
 #endif
 
+    // Make AndroidAdaptor available to QML engine
+    qmlRegisterSingletonType<AndroidAdaptor>("enroute", 1, 0, "AndroidAdaptor",
+                                             [&](QQmlEngine *, QJSEngine *) -> QObject * {
+        return new AndroidAdaptor();
+        // the QML engine takes ownership of the singleton so you can also do:
+        // return new trafficLightClass;
+    });
+
+
     // Start QML Engine
     QQmlApplicationEngine engine;
-
-    // Make AndroidAdaptor available to QML engine
-    auto *adaptor = new AndroidAdaptor(&engine);
-    engine.rootContext()->setContextProperty(QStringLiteral("AndroidAdaptor"), adaptor);
 
     // Attach FirstRunNotifier
     engine.rootContext()->setContextProperty(QStringLiteral("projectVersion"), PROJECT_VERSION);
@@ -67,7 +72,7 @@ auto main(int argc, char *argv[]) -> int
     // Make font scaling factor available to QML engine; this scaling factor
     // depends on the platform
 #ifdef Q_OS_ANDROID
-    engine.rootContext()->setContextProperty("fontScale", 1.5);
+    engine.rootContext()->setContextProperty(QStringLiteral("fontScale"), 1.5);
 #else
     engine.rootContext()->setContextProperty(QStringLiteral("fontScale"), 1.2);
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2021 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2022 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+import enroute
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
