@@ -3,7 +3,6 @@
 #
 
 set(SOURCES
-  androidAdaptor.cpp
   main.cpp
   )
 
@@ -54,6 +53,7 @@ qt_add_executable(${PROJECT_NAME} MANUAL_FINALIZATION ${SOURCES} ${ANDROID_EXTRA
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Quick Qt6::Svg)
 target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
+
 qt_add_qml_module(${PROJECT_NAME}
     URI gui
     VERSION 1.0
@@ -61,6 +61,9 @@ qt_add_qml_module(${PROJECT_NAME}
     qml/main.qml
     qml/LongTextDialog.qml
     qml/Calculator.qml
+    SOURCES
+    androidAdaptor.cpp
+    androidAdaptor.h
     )
 qt_import_qml_plugins(${PROJECT_NAME})
 

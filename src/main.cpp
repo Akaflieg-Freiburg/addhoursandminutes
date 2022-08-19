@@ -54,15 +54,6 @@ auto main(int argc, char *argv[]) -> int
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
 #endif
 
-    // Make AndroidAdaptor available to QML engine
-    qmlRegisterSingletonType<AndroidAdaptor>("enroute", 1, 0, "AndroidAdaptor",
-                                             [&](QQmlEngine *, QJSEngine *) -> QObject * {
-        return new AndroidAdaptor();
-        // the QML engine takes ownership of the singleton so you can also do:
-        // return new trafficLightClass;
-    });
-
-
     // Start QML Engine
     QQmlApplicationEngine engine;
 

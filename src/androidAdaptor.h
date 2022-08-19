@@ -23,18 +23,21 @@
 #define ANDROIDADAPTOR_H
 
 #include <QObject>
+#include <QQmlEngine>
 
 class AndroidAdaptor : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
 
 public:
-  explicit AndroidAdaptor(QObject *parent = 0);
-					     
+    explicit AndroidAdaptor(QObject *parent = 0);
+
 public slots:
-  /* On Android, make the device briefly vibrate. On other platforms, this does
+    /* On Android, make the device briefly vibrate. On other platforms, this does
      nothing. */
-  void vibrateBrief();
+    void vibrateBrief();
 };
 
 #endif // ANDROIDADAPTOR_H
