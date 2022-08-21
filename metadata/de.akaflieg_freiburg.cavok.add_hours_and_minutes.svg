@@ -11,10 +11,6 @@
       <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
       <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
     </filter>
-    <linearGradient id="myGradient" gradientTransform="rotate(40)">
-      <stop offset="5%"  stop-color="#006060" />
-      <stop offset="95%" stop-color="#008080" />
-    </linearGradient>
   </defs>
 
   <rect
@@ -24,7 +20,7 @@
       height="512"
       rx="64"
       ry="64"
-      style="fill:url(#myGradient)"
+      style="fill:#008080"
       />
 
   <g

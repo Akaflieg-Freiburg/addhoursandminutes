@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2022 by Stefan Kebekus                           *
+ *   Copyright (C) 2018-2022 by Stefan Kebekus                             *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,8 +27,6 @@
 #include <QQuickView>
 #include <QSettings>
 #include <QTranslator>
-
-#include "androidAdaptor.h"
 
 auto main(int argc, char *argv[]) -> int
 {
