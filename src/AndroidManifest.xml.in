@@ -19,7 +19,7 @@
     <application android:hardwareAccelerated="true"
 		 android:name="org.qtproject.qt.android.bindings.QtApplication"
 		 android:label="@string/app_name"
-		 android:icon="@drawable/icon"
+		 android:icon="@mipmap/ic_launcher"
 		 android:extractNativeLibs="true">
       <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
 		android:name="de.akaflieg_freiburg.cavok.add_hours_and_minutes.AndroidAdaptor"

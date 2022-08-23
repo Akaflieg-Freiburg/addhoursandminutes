@@ -48,7 +48,7 @@ cd build-android-debug
 ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
 JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-1.fc35.x86_64
 
-$Qt6_DIR_ANDROID\_x86_64/bin/qt-cmake .. \
+$Qt6_DIR_ANDROID\_x86/bin/qt-cmake .. \
   -G Ninja \
   -DCMAKE_BUILD_TYPE:STRING=Debug
 
