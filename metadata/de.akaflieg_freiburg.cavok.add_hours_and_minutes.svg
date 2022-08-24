@@ -23,7 +23,7 @@
       style="fill:#008080"
       />
 
-  <g style="fill:#FFFFFF;stroke:#none">
+  <g style="fill:#FFFFFF;stroke:#none" filter="url(#f3)">
     <g
 	transform="translate (29,34) scale (18.2)">
       <polygon points="10,8 10,14 14.7,16.9 15.5,15.7 11.5,13.3 11.5,8"/>
