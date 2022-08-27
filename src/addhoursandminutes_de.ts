@@ -4,6 +4,7 @@
 <context>
     <name>C++ Main Program</name>
     <message>
+        <location filename="main.cpp" line="49"/>
         <source>Add Hours and Minutes</source>
         <comment>Application Name</comment>
         <translation>Rechnen mit Stunden und Minuten</translation>
@@ -12,6 +13,7 @@
 <context>
     <name>Calculator</name>
     <message>
+        <location filename="qml/Calculator.qml" line="198"/>
         <source>Overflow</source>
         <translation>Überlauf</translation>
     </message>
@@ -30,18 +32,23 @@
         <translation type="vanished">Weiter</translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="45"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="51"/>
         <source>About</source>
         <translation>Über diese App</translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="60"/>
         <source>Exit</source>
         <translation>Beenden</translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="75"/>
+        <location filename="qml/main.qml" line="94"/>
         <source>Help…</source>
         <translation>Hilfe…</translation>
     </message>
@@ -157,6 +164,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 </translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="77"/>
         <source>
 &lt;h4&gt;Enter times&lt;/h4&gt;
 
@@ -176,6 +184,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Um den Rechner zurückzusetzen, halten Sie die Taste &lt;strong&gt;C&lt;/strong&gt; gedrückt.&lt;/p&gt;</translation>
     </message>
     <message>
+        <location filename="qml/main.qml" line="96"/>
         <source>
 &lt;h3&gt;Add Hours and Minutes&lt;/h3&gt;
 
