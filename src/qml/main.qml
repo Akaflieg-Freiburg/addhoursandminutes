@@ -28,7 +28,14 @@ ApplicationWindow {
     height: Qt.application.font.pixelSize*20*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
-    visible: true
+
+    visible: {
+        console.warn(primaryScreen)
+        console.warn(primaryScreen.availableGeometry)
+        true
+    }
+
+
 
     header: ToolBar {
 
