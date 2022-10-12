@@ -47,7 +47,7 @@ ApplicationWindow {
 
         ToolButton {
             id: toolB
-            anchors.topMargin: 100
+            x: primaryScreen.availableGeometry.x
             anchors.bottom: parent.bottom
             icon.source: (Qt.platform.os !== "wasm") ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
 
