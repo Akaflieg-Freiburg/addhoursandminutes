@@ -29,9 +29,13 @@ ApplicationWindow {
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
 
+    flags: Qt.MaximizeUsingFullscreenGeometryHint
+
     visible: {
+        console.warn(screen)
         console.warn(primaryScreen)
         console.warn(primaryScreen.availableGeometry)
+        console.warn(primaryScreen.availableGeometry.y)
         true
     }
 
@@ -39,7 +43,12 @@ ApplicationWindow {
 
     header: ToolBar {
 
+        height: toolB.implicitHeight + primaryScreen.availableGeometry.y
+
         ToolButton {
+            id: toolB
+            anchors.topMargin: 100
+            anchors.bottom: parent.bottom
             icon.source: (Qt.platform.os !== "wasm") ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
 
             onClicked: mainMenu.open()
