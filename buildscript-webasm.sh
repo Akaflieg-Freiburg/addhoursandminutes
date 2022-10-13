@@ -51,12 +51,7 @@ cd build-webasm-release
 # Configure
 #
 
-~/Software/buildsystems/Qt/Tools/CMake/bin/cmake .. \
-    -DCMAKE_TOOLCHAIN_FILE:PYTH=$EMSDK/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake \
-    -DCMAKE_PREFIX_PATH:PATH=$Qt6_DIR_WASM \
-    -DCMAKE_FIND_ROOT_PATH:PATH=$Qt6_DIR_WASM \
-    -DQT_HOST_PATH:PATH=$Qt6_DIR_LINUX \
-    -GNinja
+$Qt6_DIR_WASM/bin/qt-cmake .. -GNinja
 
 #
 # Build the executable
@@ -67,3 +62,10 @@ ninja
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
 sed -i 's/qtlogo.svg/qtlogo.png/g' src/addhoursandminutes.html
 sed -i 's/320/200/g' src/addhoursandminutes.html
+
+
+#
+# Test-run the compiled program
+#
+
+emrun --browser=firefox src/addhoursandminutes.html 

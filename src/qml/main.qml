@@ -162,10 +162,5 @@ Public License V3</a>.</p>
         sequence: StandardKey.Quit
         onActivated: Qt.quit()
     }
-    
-    Shortcut {
-        sequence: StandardKey.Close
-        onActivated: Qt.quit()
-    }
 
 }
