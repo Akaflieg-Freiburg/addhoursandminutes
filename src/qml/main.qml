@@ -31,15 +31,7 @@ ApplicationWindow {
 
     flags: Qt.MaximizeUsingFullscreenGeometryHint
 
-    visible: {
-        console.warn(screen)
-        console.warn(primaryScreen)
-        console.warn(primaryScreen.availableGeometry)
-        console.warn(primaryScreen.availableGeometry.y)
-        true
-    }
-
-
+    visible: true
 
     header: ToolBar {
 
@@ -82,6 +74,8 @@ ApplicationWindow {
 
     Calculator {
         anchors.fill: parent
+        coloredBottomMargin: 10
+
         focus: true;
     }
 
