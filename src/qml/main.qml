@@ -31,19 +31,19 @@ ApplicationWindow {
 
     flags: Qt.MaximizeUsingFullscreenGeometryHint
 
-    visible: {
-        console.warn(screen)
-        console.warn(primaryScreen)
-        console.warn(primaryScreen.availableGeometry)
-        console.warn(primaryScreen.availableGeometry.y)
-        true
-    }
-
-
+    visible: true
 
     header: ToolBar {
 
-        height: toolB.implicitHeight + primaryScreen.availableGeometry.y
+        height: {
+            var result = toolB.implicitHeight
+            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
+            {
+                result += primaryScreen.availableGeometry.y
+            }
+
+            return result
+        }
 
         ToolButton {
             id: toolB
