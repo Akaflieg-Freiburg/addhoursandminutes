@@ -5,6 +5,14 @@
    height="512"
    viewBox="0 0 512 512">
 
+  <defs>
+    <filter id="f3" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceAlpha" dx="10" dy="10" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+    </filter>
+  </defs>
+
   <rect
       x="0"
       y="0"
@@ -13,7 +21,7 @@
       style="fill:#008080"
       />
 
-  <g style="fill:#FFFFFF;stroke:#none">
+  <g style="fill:#FFFFFF;stroke:#none" filter="url(#f3)">
     <g
 	transform="translate (29,34) scale (18.2)">
       <polygon points="10,8 10,14 14.7,16.9 15.5,15.7 11.5,13.3 11.5,8"/>

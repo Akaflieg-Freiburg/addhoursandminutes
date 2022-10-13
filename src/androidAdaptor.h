@@ -35,8 +35,7 @@ public:
     explicit AndroidAdaptor(QObject *parent = 0);
 
 public slots:
-    /* On Android, make the device briefly vibrate. On other platforms, this does
-     nothing. */
+    /* On Android, make the device briefly vibrate. On other platforms, this does nothing. */
     void vibrateBrief();
 };
 

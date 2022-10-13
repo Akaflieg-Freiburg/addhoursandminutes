@@ -35,7 +35,15 @@ ApplicationWindow {
 
     header: ToolBar {
 
-        height: toolB.implicitHeight + primaryScreen.availableGeometry.y
+        height: {
+            var result = toolB.implicitHeight
+            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
+            {
+                result += primaryScreen.availableGeometry.y
+            }
+
+            return result
+        }
 
         ToolButton {
             id: toolB
@@ -154,11 +162,6 @@ Public License V3</a>.</p>
 
     Shortcut {
         sequence: StandardKey.Quit
-        onActivated: Qt.quit()
-    }
-    
-    Shortcut {
-        sequence: StandardKey.Close
         onActivated: Qt.quit()
     }
 
