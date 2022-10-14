@@ -84,6 +84,8 @@ ApplicationWindow {
 
     Calculator {
         anchors.fill: parent
+        coloredBottomMargin: 10
+
         focus: true;
         safeAreaBottom: {
             var result = 0;
