@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "filename" : "de.akaflieg_freiburg.cavok.add_hours_and_minutes_angular.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

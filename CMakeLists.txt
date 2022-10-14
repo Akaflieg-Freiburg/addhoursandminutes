@@ -10,6 +10,14 @@ set(PROJECT_DATE 2021-10-02)
 math(EXPR PROJECT_VERSION_CODE 10000*${PROJECT_VERSION_MAJOR}+100*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
+
+if(IOS)
+    set(BUNDLE_ID de.simonschneider.addhoursandminutes) #TODO: currently needed (probably for code signing)
+
+    #set Icon
+    set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
+endif()
+
 # Include required packages
 find_package(Qt6 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
 qt_standard_project_setup()
