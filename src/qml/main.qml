@@ -41,6 +41,8 @@ ApplicationWindow {
             {
                 result += primaryScreen.availableGeometry.y
             }
+            //console.warn(primaryScreen.size)
+            //console.warn(primaryScreen.availableGeometry.height)
 
             return result
         }
@@ -83,6 +85,25 @@ ApplicationWindow {
     Calculator {
         anchors.fill: parent
         focus: true;
+        safeAreaBottom: {
+            var result = 0;
+            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
+            {
+                var screenSize = primaryScreen.size
+                var geometry = primaryScreen.availableGeometry
+                result += screenSize.height - (geometry.y + geometry.height)
+            }
+            return result;
+
+        }
+        safeAreaRight: {
+            var result = 0;
+            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
+            {
+                result += primaryScreen.size.width - primaryScreen.availableGeometry.right //Does not work, I dont know why
+            }
+            return result;
+        }
     }
 
     LongTextDialog {

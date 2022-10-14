@@ -36,6 +36,9 @@ Rectangle {
     property real formfactor: 2.5
     property int buttonMinHeight: fontpixelsize*formfactor
 
+    property int safeAreaBottom: 0
+    property int safeAreaRight: 0
+
     SequentialAnimation {
         id: blinkAnimation
 
@@ -410,10 +413,11 @@ Rectangle {
 
             columnSpacing: 0
             rowSpacing: 0
-            rows: 1
+            rows: 2
             
             Rectangle {
                 Layout.fillHeight: true
+                Layout.columnSpan: 2
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
                 color: "#e0e0e0"
             }
@@ -424,8 +428,8 @@ Rectangle {
                 Layout.fillHeight: !hoursAndMinutes.isPortrait()
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
 
-                Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
-                Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
+                Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight + safeAreaBottom
+                Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight + safeAreaBottom
                 Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
                 Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
                 Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
@@ -765,6 +769,22 @@ Rectangle {
                     }
                 }
 
+
+
+                Rectangle {
+                    Layout.columnSpan: 3
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: safeAreaBottom
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.columnSpan: 1
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: safeAreaBottom
+                    color: "teal"
+                }
+
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
@@ -789,7 +809,18 @@ Rectangle {
                     color: "teal"
                 }
             }
+
             Rectangle {
+                Layout.fillHeight: true
+                width: {
+                    return safeAreaRight
+                }
+
+                color: "teal"
+            }
+
+            Rectangle {
+                Layout.columnSpan: 2
                 Layout.fillHeight: true
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
                 color: "teal"
