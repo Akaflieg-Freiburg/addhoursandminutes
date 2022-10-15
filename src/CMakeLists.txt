@@ -2,7 +2,11 @@
 # Set up source files
 #
 
-qt_add_executable(${PROJECT_NAME} main.cpp)
+qt_add_executable(${PROJECT_NAME}
+    main.cpp
+    #ios/ObjCAdapter.h ios/ObjCAdapter.mm #TODO: There may be a better way?
+)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::Svg)
 
 qt_add_qml_module(${PROJECT_NAME}
@@ -15,6 +19,10 @@ qt_add_qml_module(${PROJECT_NAME}
     SOURCES
     androidAdaptor.cpp
     androidAdaptor.h
+    ios/ObjCAdapter.h
+    ios/ObjCAdapter.mm
+    PlatformAdapter.cpp
+    PlatformAdapter.h
 )
 
 qt_add_resources(${PROJECT_NAME} config
@@ -87,9 +95,10 @@ if(IOS)
     target_sources(${PROJECT_NAME}  PRIVATE "${asset_catalog_path}")
     set_source_files_properties(${asset_catalog_path} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
-
     #Launchscreen
     set_target_properties(${PROJECT_NAME} PROPERTIES  QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
+
+    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Foundation") #TODO: This may not be needed
 endif()
 
 

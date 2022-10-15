@@ -138,6 +138,7 @@ Rectangle {
 
     function addDigit(digit) {
         if (hoursEntered.length >= maxNumDigits) {
+            PlatformAdapter.vibrateError()
             blinkAnimation.start()
             return
         }
@@ -475,7 +476,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("7")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -496,7 +496,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("8")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -517,7 +516,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("9")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -540,11 +538,10 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.backSpace()
-                        AndroidAdaptor.vibrateBrief()
                     }
                     onPressAndHold: {
                         hoursAndMinutes.clear()
-                        AndroidAdaptor.vibrateBrief()
+                        PlatformAdapter.vibrateBrief()
                     }
 
                     Timer {
@@ -566,7 +563,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("4")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -587,7 +583,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("5")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -608,7 +603,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("6")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -629,7 +623,6 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     onClicked: {
                         hoursAndMinutes.addOperator("-")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -650,7 +643,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("1")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -672,7 +664,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("2")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -694,7 +685,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("3")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -716,7 +706,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addOperator("+")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -738,7 +727,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addDigit("0")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {
@@ -761,7 +749,6 @@ Rectangle {
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
                         hoursAndMinutes.addOperator("=")
-                        AndroidAdaptor.vibrateBrief()
                     }
 
                     Timer {

@@ -16,6 +16,7 @@ if(IOS)
 
     #set Icon
     set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
+
 endif()
 
 # Include required packages
