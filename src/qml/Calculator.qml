@@ -333,7 +333,9 @@ Rectangle {
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
                 anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
-                
+                anchors.leftMargin: window.leftScreenMargin
+                anchors.rightMargin: hoursAndMinutes.isPortrait() ? window.rightScreenMargin : 0
+
                 clip: true
                 
                 delegate: Item {
@@ -412,6 +414,12 @@ Rectangle {
             rowSpacing: 0
             rows: 1
             
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.preferredWidth: hoursAndMinutes.isPortrait() ? window.leftScreenMargin : 0
+                color: "#e0e0e0"
+            }
+
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
@@ -789,11 +797,19 @@ Rectangle {
                     color: "teal"
                 }
             }
+
             Rectangle {
                 Layout.fillHeight: true
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
                 color: "teal"
             }
+
+            Rectangle {
+                Layout.fillHeight: true
+                Layout.preferredWidth: window.rightScreenMargin
+                color: "teal"
+            }
+
         }
     }
 }

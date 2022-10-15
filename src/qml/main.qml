@@ -30,9 +30,19 @@ ApplicationWindow {
     minimumHeight: Qt.application.font.pixelSize*14*1.5
     visible: true
 
+    property int leftScreenMargin: 0
+    property int rightScreenMargin: 50
+    property int topScreenMargin: 0
+
     header: ToolBar {
 
+        height: toolButton.height+window.topScreenMargin
+
         ToolButton {
+            id: toolButton
+
+            x: window.leftScreenMargin
+            y: window.topScreenMargin
             icon.source: (Qt.platform.os !== "wasm") ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
 
             onClicked: mainMenu.open()
