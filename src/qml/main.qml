@@ -29,10 +29,15 @@ ApplicationWindow {
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
     visible: true
+    flags: Qt.MaximizeUsingFullscreenGeometryHint
 
     // These margins are used to avoid the notch area of the display, and areas
     // covered by system widgets.
-    property int bottomScreenMargin: 50
+    property int bottomScreenMargin: {
+        for (var p in window.screen)
+          console.log(p + ": " + window.screen[p]);
+        return 50
+    }
     property int leftScreenMargin: 0
     property int rightScreenMargin: 0
     property int topScreenMargin: 0
