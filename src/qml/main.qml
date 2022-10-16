@@ -34,13 +34,37 @@ ApplicationWindow {
     // These margins are used to avoid the notch area of the display, and areas
     // covered by system widgets.
     property int bottomScreenMargin: {
-        for (var p in window.screen)
-          console.log(p + ": " + window.screen[p]);
-        return 50
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        {
+            return primaryScreen.size.height - primaryScreen.availableGeometry.height - primaryScreen.availableGeometry.y
+        }
+
+        return 0
     }
-    property int leftScreenMargin: 0
-    property int rightScreenMargin: 0
-    property int topScreenMargin: 0
+    property int leftScreenMargin: {
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        {
+            return primaryScreen.availableGeometry.x
+        }
+
+        return 0
+    }
+    property int rightScreenMargin: {
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        {
+            return primaryScreen.size.width - primaryScreen.availableGeometry.width - primaryScreen.availableGeometry.x
+        }
+
+        return 0
+    }
+    property int topScreenMargin: {
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        {
+            return primaryScreen.availableGeometry.y
+        }
+
+        return 0
+    }
 
     header: ToolBar {
 
