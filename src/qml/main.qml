@@ -30,8 +30,11 @@ ApplicationWindow {
     minimumHeight: Qt.application.font.pixelSize*14*1.5
     visible: true
 
+    // These margins are used to avoid the notch area of the display, and areas
+    // covered by system widgets.
+    property int bottomScreenMargin: 50
     property int leftScreenMargin: 0
-    property int rightScreenMargin: 50
+    property int rightScreenMargin: 0
     property int topScreenMargin: 0
 
     header: ToolBar {

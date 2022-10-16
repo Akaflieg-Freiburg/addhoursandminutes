@@ -332,7 +332,7 @@ Rectangle {
 
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
+                anchors.bottomMargin: hoursAndMinutes.isPortrait() ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+window.bottomScreenMargin
                 anchors.leftMargin: window.leftScreenMargin
                 anchors.rightMargin: hoursAndMinutes.isPortrait() ? window.rightScreenMargin : 0
 
@@ -432,14 +432,11 @@ Rectangle {
                 Layout.fillHeight: !hoursAndMinutes.isPortrait()
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
 
-                Layout.preferredHeight: 4*hoursAndMinutes.buttonMinHeight
-                Layout.minimumHeight: 4*hoursAndMinutes.buttonMinHeight
                 Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
                 Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
                 Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
                 columnSpacing: 0
                 rowSpacing: 0
-                rows: 2
                 columns: 4
 
                 Rectangle {
@@ -796,6 +793,36 @@ Rectangle {
                     Layout.fillWidth: true
                     color: "teal"
                 }
+
+
+                Rectangle {
+                    Layout.preferredHeight: window.bottomScreenMargin
+                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.preferredHeight: window.bottomScreenMargin
+                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.preferredHeight: window.bottomScreenMargin
+                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.preferredHeight: window.bottomScreenMargin
+                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.fillWidth: true
+                    color: "teal"
+                }
+
             }
 
             Rectangle {
