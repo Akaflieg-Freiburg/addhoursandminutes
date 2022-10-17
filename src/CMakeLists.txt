@@ -19,8 +19,6 @@ qt_add_qml_module(${PROJECT_NAME}
     SOURCES
     androidAdaptor.cpp
     androidAdaptor.h
-    ios/ObjCAdapter.h
-    ios/ObjCAdapter.mm
     PlatformAdapter.cpp
     PlatformAdapter.h
 )
@@ -98,6 +96,10 @@ if(IOS)
     #Launchscreen
     set_target_properties(${PROJECT_NAME} PROPERTIES  QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
 
+
+    #Platform specific functions
+    target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.mm)
+    target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.h)
     target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Foundation") #TODO: This may not be needed
 endif()
 
