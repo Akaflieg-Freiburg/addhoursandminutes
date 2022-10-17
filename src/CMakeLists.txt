@@ -100,7 +100,6 @@ if(IOS)
     #Platform specific functions
     target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.mm)
     target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.h)
-    target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Foundation") #TODO: This may not be needed
 endif()
 
 
