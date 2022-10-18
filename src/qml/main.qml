@@ -111,28 +111,8 @@ ApplicationWindow {
 
     Calculator {
         anchors.fill: parent
-        coloredBottomMargin: 10
 
         focus: true;
-        safeAreaBottom: {
-            var result = 0;
-            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
-            {
-                var screenSize = primaryScreen.size
-                var geometry = primaryScreen.availableGeometry
-                result += screenSize.height - (geometry.y + geometry.height)
-            }
-            return result;
-
-        }
-        safeAreaRight: {
-            var result = 0;
-            if ((Qt.platform.os === "ios") || (Qt.platform.is === "android"))
-            {
-                result += primaryScreen.size.width - primaryScreen.availableGeometry.right //Does not work, I dont know why
-            }
-            return result;
-        }
     }
 
     LongTextDialog {

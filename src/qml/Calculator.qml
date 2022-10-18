@@ -32,14 +32,9 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property int coloredBottomMargin: 0
-
     property int fontpixelsize: Qt.application.font.pixelSize*fontScale
     property real formfactor: 2.5
     property int buttonMinHeight: fontpixelsize*formfactor
-
-    property int safeAreaBottom: 0
-    property int safeAreaRight: 0
 
     SequentialAnimation {
         id: blinkAnimation
@@ -316,7 +311,7 @@ Rectangle {
             event.accepted = true
         }
     }
-    
+
     GridLayout {
         columnSpacing: 0
         rowSpacing: 0
@@ -327,7 +322,7 @@ Rectangle {
 
         Item {
             id: lvContainer
-            
+
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.preferredHeight: 160
@@ -343,7 +338,7 @@ Rectangle {
                 anchors.rightMargin: hoursAndMinutes.isPortrait() ? window.rightScreenMargin : 0
 
                 clip: true
-                
+
                 delegate: Item {
                     height: hoursAndMinutes.fontpixelsize*1.2
                     width: parent.width
@@ -366,7 +361,7 @@ Rectangle {
                         font.bold: model.isSum
                     }
                 }
-                
+
                 model: ListModel {
                     ListElement {
                         operator: ""
@@ -378,7 +373,7 @@ Rectangle {
 
             Image {
                 id: shadow1
-                
+
                 anchors.bottom: lvContainer.bottom
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
@@ -389,7 +384,7 @@ Rectangle {
 
             Image {
                 id: shadow1a
-                
+
                 anchors.top: lvContainer.top
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
@@ -400,7 +395,7 @@ Rectangle {
 
             Image {
                 id: shadow2
-                
+
                 anchors.top: lvContainer.top
                 anchors.bottom: lvContainer.bottom
                 anchors.right: lvContainer.right
@@ -408,7 +403,7 @@ Rectangle {
                 visible: !hoursAndMinutes.isPortrait()
                 source: "../../images/shadow_vertical.png"
             }
-            
+
         }
 
 
@@ -419,7 +414,7 @@ Rectangle {
             columnSpacing: 0
             rowSpacing: 0
             rows: 2
-            
+
             Rectangle {
                 Layout.fillHeight: true
                 Layout.preferredWidth: hoursAndMinutes.isPortrait() ? window.leftScreenMargin : 0
@@ -763,64 +758,36 @@ Rectangle {
                 }
 
 
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
 
                 Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "#e0e0e0"
+                }
+
+                Rectangle {
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    color: "teal"
+                }
+
+
+                Rectangle {
+                    Layout.preferredHeight: window.bottomScreenMargin
+                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.fillWidth: true
                     Layout.columnSpan: 3
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: safeAreaBottom
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.columnSpan: 1
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: safeAreaBottom
-                    color: "teal"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "teal"
-                }
-
-
-                Rectangle {
-                    Layout.preferredHeight: window.bottomScreenMargin
-                    Layout.minimumHeight: window.bottomScreenMargin
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.preferredHeight: window.bottomScreenMargin
-                    Layout.minimumHeight: window.bottomScreenMargin
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.preferredHeight: window.bottomScreenMargin
-                    Layout.minimumHeight: window.bottomScreenMargin
-                    Layout.fillWidth: true
                     color: "#e0e0e0"
                 }
 
@@ -833,14 +800,6 @@ Rectangle {
 
             }
 
-            Rectangle {
-                Layout.fillHeight: true
-                width: {
-                    return safeAreaRight
-                }
-
-                color: "teal"
-            }
 
             Rectangle {
                 Layout.columnSpan: 2
