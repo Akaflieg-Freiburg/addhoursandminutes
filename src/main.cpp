@@ -59,7 +59,7 @@ auto main(int argc, char *argv[]) -> int
     engine.rootContext()->setContextProperty(QStringLiteral("projectVersion"), PROJECT_VERSION);
 
     // Make screen available to QML
-    engine.rootContext()->setContextProperty(QStringLiteral("primaryScreen"), app.primaryScreen());
+    engine.rootContext()->setContextProperty(QStringLiteral("primaryScreen"), QGuiApplication::primaryScreen());
 
     // Make font scaling factor available to QML engine; this scaling factor
     // depends on the platform
