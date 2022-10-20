@@ -36,10 +36,6 @@ qt_add_resources(${PROJECT_NAME} "imageresources"
     images/ic_exit_to_app_24px.svg
     images/ic_help_24px.svg
     images/ic_info_24px.svg
-    images/ic_menu_black_24dp.png
-    images/ic_exit_to_app_black_24dp.png
-    images/ic_help_black_24dp.png
-    images/ic_info_black_24dp.png
 )
 
 set_source_files_properties(${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg PROPERTIES QT_RESOURCE_ALIAS icon.svg)

@@ -78,7 +78,7 @@ ApplicationWindow {
             x: window.leftScreenMargin
             y: window.topScreenMargin
 
-            icon.source: (Qt.platform.os !== "wasm") ? "/images/ic_menu_24px.svg" : "/images/ic_menu_black_24dp.png"
+            icon.source: "/images/ic_menu_24px.svg"
 
             onClicked: mainMenu.open()
 
@@ -86,13 +86,13 @@ ApplicationWindow {
                 id: mainMenu
 
                 MenuItem {
-                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_help_24px.svg" : "/images/ic_help_black_24dp.png"
+                    icon.source: "/images/ic_help_24px.svg"
                     text: qsTr("Help")
                     onTriggered: helpDialog.open()
                 }
 
                 MenuItem {
-                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_info_24px.svg" : "/images/ic_info_black_24dp.png"
+                    icon.source: "/images/ic_info_24px.svg"
                     text: qsTr("About")
                     onTriggered: infoDialog.open()
                 }
@@ -101,7 +101,7 @@ ApplicationWindow {
 
                 MenuItem {
                     enabled: Qt.platform.os !== "wasm"
-                    icon.source: Qt.platform.os !== "wasm" ? "/images/ic_exit_to_app_24px.svg" : "/images/ic_exit_to_app_black_24dp.png"
+                    icon.source: "/images/ic_exit_to_app_24px.svg"
                     text: qsTr("Exit")
                     onTriggered: Qt.quit()
                 }
