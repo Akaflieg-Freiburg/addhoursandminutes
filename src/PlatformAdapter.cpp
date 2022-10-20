@@ -1,8 +1,14 @@
 
 #include "PlatformAdapter.h"
-#include "ios/ObjCAdapter.h"
 
+
+#if defined(Q_OS_ANDROID)
 #include <QJniObject>
+#endif
+
+#if defined(Q_OS_IOS)
+#include "ios/ObjCAdapter.h"
+#endif
 
 PlatformAdapter::PlatformAdapter(QObject *parent)
     : QObject(parent)

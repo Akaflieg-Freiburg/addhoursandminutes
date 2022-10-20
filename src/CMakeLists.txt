@@ -4,7 +4,6 @@
 
 qt_add_executable(${PROJECT_NAME}
     main.cpp
-    #ios/ObjCAdapter.h ios/ObjCAdapter.mm #TODO: There may be a better way?
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::Svg)
