@@ -341,7 +341,7 @@ Rectangle {
 
                 delegate: Item {
                     height: hoursAndMinutes.fontpixelsize*1.2
-                    width: parent.width
+                    width: listView.width
                     Text {
                         id: operator
                         anchors.left: parent.left

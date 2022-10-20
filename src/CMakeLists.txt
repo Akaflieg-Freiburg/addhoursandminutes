@@ -16,10 +16,8 @@ qt_add_qml_module(${PROJECT_NAME}
     qml/LongTextDialog.qml
     qml/Calculator.qml
     SOURCES
-    androidAdaptor.cpp
-    androidAdaptor.h
-    PlatformAdapter.cpp
-    PlatformAdapter.h
+    platformAdapter.cpp
+    platformAdapter.h
 )
 
 qt_add_resources(${PROJECT_NAME} config
@@ -81,6 +79,10 @@ if(ANDROID)
 
 endif()
 
+
+#
+# Set up additional files for Android
+#
 
 if(IOS)
     #Info.plist

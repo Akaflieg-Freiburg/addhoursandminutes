@@ -1,5 +1,5 @@
 
-#include "PlatformAdapter.h"
+#include "platformAdapter.h"
 
 
 #if defined(Q_OS_ANDROID)
