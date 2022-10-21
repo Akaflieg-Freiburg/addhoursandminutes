@@ -29,14 +29,14 @@ ApplicationWindow {
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
 
-    flags: Qt.MaximizeUsingFullscreenGeometryHint
+    flags: (Qt.platform.os === "ios") ? Qt.MaximizeUsingFullscreenGeometryHint : 0
 
     visible: true
 
     // These margins are used to avoid the notch area of the display, and areas
     // covered by system widgets.
     property int bottomScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        if (Qt.platform.os === "ios")
         {
             return primaryScreen.size.height - primaryScreen.availableGeometry.height - primaryScreen.availableGeometry.y
         }
@@ -44,7 +44,7 @@ ApplicationWindow {
         return 0
     }
     property int leftScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        if (Qt.platform.os === "ios")
         {
             return primaryScreen.availableGeometry.x
         }
@@ -52,7 +52,7 @@ ApplicationWindow {
         return 0
     }
     property int rightScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        if (Qt.platform.os === "ios")
         {
             return primaryScreen.size.width - primaryScreen.availableGeometry.width - primaryScreen.availableGeometry.x
         }
@@ -60,7 +60,7 @@ ApplicationWindow {
         return 0
     }
     property int topScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
+        if (Qt.platform.os === "ios")
         {
             return primaryScreen.availableGeometry.y
         }

@@ -38,6 +38,6 @@ void PlatformAdapter::vibrateError()
 
 #if defined(Q_OS_ANDROID)
     QJniObject::callStaticMethod<void>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor",
-                                       "vibrateBrief");
+                                       "vibrateError");
 #endif
 }
