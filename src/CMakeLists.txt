@@ -33,7 +33,6 @@ qt_add_resources(${PROJECT_NAME} "imageresources"
     images/shadow_top.png
     images/shadow_vertical.png
     images/ic_menu_24px.svg
-    images/ic_exit_to_app_24px.svg
     images/ic_help_24px.svg
     images/ic_info_24px.svg
 )

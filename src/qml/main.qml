@@ -72,13 +72,18 @@ ApplicationWindow {
 
         height: toolButton.height+window.topScreenMargin
 
+        background: Rectangle { color: "teal" }
+
         ToolButton {
             id: toolButton
 
             x: window.leftScreenMargin
             y: window.topScreenMargin
 
+            background: Rectangle { color: "teal" }
+
             icon.source: "/images/ic_menu_24px.svg"
+            icon.color: "white"
 
             onClicked: mainMenu.open()
 
@@ -95,15 +100,6 @@ ApplicationWindow {
                     icon.source: "/images/ic_info_24px.svg"
                     text: qsTr("About")
                     onTriggered: infoDialog.open()
-                }
-
-                MenuSeparator {}
-
-                MenuItem {
-                    enabled: Qt.platform.os !== "wasm"
-                    icon.source: "/images/ic_exit_to_app_24px.svg"
-                    text: qsTr("Exit")
-                    onTriggered: Qt.quit()
                 }
             }
         }
