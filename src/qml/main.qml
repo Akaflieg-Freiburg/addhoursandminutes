@@ -182,6 +182,8 @@ Public License V3</a>.</p>
 ").arg(projectVersion)
 
         standardButtons: DialogButtonBox.Ok
+        topMargin: window.topScreenMargin + Qt.application.font.pixelSize
+        bottomMargin: window.bottomScreenMargin + Qt.application.font.pixelSize
     }
 
     Shortcut {
