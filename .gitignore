@@ -1,2 +1,5 @@
 CMakeLists.txt.user
 *.snap
+build-android-debug
+build-linux-debug
+build-webasm-release

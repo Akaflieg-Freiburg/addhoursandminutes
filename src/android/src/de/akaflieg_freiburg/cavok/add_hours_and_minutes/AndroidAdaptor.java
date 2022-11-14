@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2019 by Stefan Kebekus                                  *
+ *   Copyright (C) 2019-2022 by Stefan Kebekus                             *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,11 +35,18 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
     }
 
     /* Vibrate once, very briefly */
-    
     public static void vibrateBrief()
     {
         if (m_vibrator == null)
             m_vibrator = (Vibrator) m_instance.getSystemService(Context.VIBRATOR_SERVICE);
         m_vibrator.vibrate(10);
+    }
+
+    /* Vibrate once, for a longer period */   
+    public static void vibrateError()
+    {
+        if (m_vibrator == null)
+            m_vibrator = (Vibrator) m_instance.getSystemService(Context.VIBRATOR_SERVICE);
+        m_vibrator.vibrate(200);
     }
 }
