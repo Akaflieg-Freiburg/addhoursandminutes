@@ -29,14 +29,14 @@ ApplicationWindow {
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
 
-    flags: (Qt.platform.os === "ios") ? Qt.MaximizeUsingFullscreenGeometryHint : 0
+    flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? Qt.MaximizeUsingFullscreenGeometryHint : 0
 
     visible: true
 
     // These margins are used to avoid the notch area of the display, and areas
     // covered by system widgets.
     property int bottomScreenMargin: {
-        if (Qt.platform.os === "ios")
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
         {
             return primaryScreen.size.height - primaryScreen.availableGeometry.height - primaryScreen.availableGeometry.y
         }
@@ -44,15 +44,16 @@ ApplicationWindow {
         return 0
     }
     property int leftScreenMargin: {
-        if (Qt.platform.os === "ios")
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
         {
+            console.log(primaryScreen.availableGeometry.x)
             return primaryScreen.availableGeometry.x
         }
 
         return 0
     }
     property int rightScreenMargin: {
-        if (Qt.platform.os === "ios")
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
         {
             return primaryScreen.size.width - primaryScreen.availableGeometry.width - primaryScreen.availableGeometry.x
         }
@@ -60,7 +61,7 @@ ApplicationWindow {
         return 0
     }
     property int topScreenMargin: {
-        if (Qt.platform.os === "ios")
+        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
         {
             return primaryScreen.availableGeometry.y
         }
@@ -182,8 +183,6 @@ Public License V3</a>.</p>
 ").arg(projectVersion)
 
         standardButtons: DialogButtonBox.Ok
-        topMargin: window.topScreenMargin + Qt.application.font.pixelSize
-        bottomMargin: window.bottomScreenMargin + Qt.application.font.pixelSize
     }
 
     Shortcut {

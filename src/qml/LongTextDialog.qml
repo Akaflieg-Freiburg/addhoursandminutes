@@ -27,10 +27,10 @@ Dialog {
     // This is the text to be shown
     property var text: ({})
 
-    margins: Qt.application.font.pixelSize
-
-    parent: Overlay.overlay
-    anchors.centerIn: parent
+    leftMargin: window.leftScreenMargin + Qt.application.font.pixelSize
+    rightMargin: window.rightScreenMargin + Qt.application.font.pixelSize
+    topMargin: window.topScreenMargin + Qt.application.font.pixelSize
+    bottomMargin: window.bottomScreenMargin + Qt.application.font.pixelSize
 
     modal: true
     
