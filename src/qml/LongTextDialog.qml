@@ -32,16 +32,20 @@ Dialog {
     topMargin: window.topScreenMargin + Qt.application.font.pixelSize
     bottomMargin: window.bottomScreenMargin + Qt.application.font.pixelSize
 
+    // We center the dialog manually. The recommended "anchors.center: parent" does not seem to work
+    x: window.leftScreenMargin + (window.width-window.leftScreenMargin-window.rightScreenMargin-width)/2.0
+    y: window.topScreenMargin + (window.height-window.topScreenMargin-window.bottomScreenMargin-height)/2.0
+
+    parent: Overlay.overlay
     modal: true
     
     ScrollView{
         id: sv
 
         anchors.fill: parent
-        implicitWidth: 40*Qt.application.font.pixelSize
+        implicitWidth: 30*Qt.application.font.pixelSize
         contentWidth: availableWidth // Disable horizontal scrolling
 
-        // The visibility behavior of the vertical scroll bar is a little complex.
         // The following code guarantees that the scroll bar is shown initially. If it is not used, it is faded out after half a second or so.
         ScrollBar.vertical.policy: (height < contentHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
         ScrollBar.vertical.interactive: false

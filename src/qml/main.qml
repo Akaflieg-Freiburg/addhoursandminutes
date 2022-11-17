@@ -19,15 +19,25 @@
  ***************************************************************************/
 
 
+import Qt.labs.settings
 import QtQuick
 import QtQuick.Controls
 
 ApplicationWindow {
     id: window
+
     width: Qt.application.font.pixelSize*15*1.5
     height: Qt.application.font.pixelSize*20*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
+
+    Settings {
+        property alias x: window.x
+        property alias y: window.y
+        property alias width: window.width
+        property alias height: window.height
+    }
+
 
     flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? Qt.MaximizeUsingFullscreenGeometryHint : 0
 
