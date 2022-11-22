@@ -13,15 +13,12 @@ QString ObjCAdapter::objectiveC_Call()
 }
 
 void ObjCAdapter::vibrateBrief() {
-	AudioServicesPlaySystemSound(1519);
-	NSLog(@"Vibrate Brief");
+    AudioServicesPlaySystemSound(1519);
 }
 
 void ObjCAdapter::vibrateError() {
 	/*UINotificationFeedbackGenerator *myGen = [[UINotificationFeedbackGenerator alloc] init];
 	[myGen prepare];
 	[myGen notificationOccurred: UINotificationFeedbackTypeError];*/
-	AudioServicesPlayAlertSound(1107);
-	NSLog(@"Vibrate Error");
-
+    AudioServicesPlayAlertSound(1107);
 }

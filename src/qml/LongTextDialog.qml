@@ -21,30 +21,32 @@
 import QtQuick
 import QtQuick.Controls
 
+import gui
+
 Dialog {
     id: dlg
 
     // This is the text to be shown
     property var text: ({})
 
-    margins: Qt.application.font.pixelSize
+    leftMargin: PlatformAdapter.safeInsetLeft + Qt.application.font.pixelSize
+    rightMargin: PlatformAdapter.safeInsetRight + Qt.application.font.pixelSize
+    topMargin: PlatformAdapter.safeInsetTop + Qt.application.font.pixelSize
+    bottomMargin: PlatformAdapter.safeInsetBottom + Qt.application.font.pixelSize
+
+    // We center the dialog manually. The recommended "anchors.center: parent" does not seem to work
+    x: PlatformAdapter.safeInsetLeft + (window.width-PlatformAdapter.safeInsetLeft-PlatformAdapter.safeInsetRight-width)/2.0
+    y: PlatformAdapter.safeInsetTop + (window.height-PlatformAdapter.safeInsetTop-PlatformAdapter.safeInsetBottom-height)/2.0
 
     parent: Overlay.overlay
-    anchors.centerIn: parent
-
     modal: true
     
     ScrollView{
         id: sv
 
         anchors.fill: parent
-        implicitWidth: 40*Qt.application.font.pixelSize
+        implicitWidth: 30*Qt.application.font.pixelSize
         contentWidth: availableWidth // Disable horizontal scrolling
-
-        // The visibility behavior of the vertical scroll bar is a little complex.
-        // The following code guarantees that the scroll bar is shown initially. If it is not used, it is faded out after half a second or so.
-        ScrollBar.vertical.policy: (height < contentHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-        ScrollBar.vertical.interactive: false
 
         clip: true
 
@@ -52,6 +54,7 @@ Dialog {
             id: lbl
             text: dlg.text
             width: sv.availableWidth
+
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.Wrap

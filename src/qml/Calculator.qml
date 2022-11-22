@@ -333,9 +333,9 @@ Rectangle {
 
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.bottomMargin: hoursAndMinutes.isPortrait() ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+window.bottomScreenMargin
-                anchors.leftMargin: window.leftScreenMargin
-                anchors.rightMargin: hoursAndMinutes.isPortrait() ? window.rightScreenMargin : 0
+                anchors.bottomMargin: hoursAndMinutes.isPortrait() ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+PlatformAdapter.safeInsetBottom
+                anchors.leftMargin: PlatformAdapter.safeInsetLeft
+                anchors.rightMargin: hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetRight : 0
 
                 clip: true
 
@@ -417,7 +417,7 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.preferredWidth: hoursAndMinutes.isPortrait() ? window.leftScreenMargin : 0
+                Layout.preferredWidth: hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetLeft : 0
                 color: "#e0e0e0"
             }
 
@@ -784,16 +784,16 @@ Rectangle {
 
 
                 Rectangle {
-                    Layout.preferredHeight: window.bottomScreenMargin
-                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.preferredHeight: PlatformAdapter.safeInsetBottom
+                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
                     Layout.fillWidth: true
                     Layout.columnSpan: 3
                     color: "#e0e0e0"
                 }
 
                 Rectangle {
-                    Layout.preferredHeight: window.bottomScreenMargin
-                    Layout.minimumHeight: window.bottomScreenMargin
+                    Layout.preferredHeight: PlatformAdapter.safeInsetBottom
+                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
                     Layout.fillWidth: true
                     color: "teal"
                 }
@@ -810,7 +810,7 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.preferredWidth: window.rightScreenMargin
+                Layout.preferredWidth: PlatformAdapter.safeInsetRight
                 color: "teal"
             }
 

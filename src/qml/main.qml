@@ -19,66 +19,47 @@
  ***************************************************************************/
 
 
+import Qt.labs.settings
 import QtQuick
 import QtQuick.Controls
 
+import gui
+
 ApplicationWindow {
     id: window
+
     width: Qt.application.font.pixelSize*15*1.5
     height: Qt.application.font.pixelSize*20*1.5
     minimumWidth: Qt.application.font.pixelSize*12*1.5
     minimumHeight: Qt.application.font.pixelSize*14*1.5
 
-    flags: Qt.MaximizeUsingFullscreenGeometryHint
+    Settings {
+        property alias x: window.x
+        property alias y: window.y
+        property alias width: window.width
+        property alias height: window.height
+    }
+
+    flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? Qt.MaximizeUsingFullscreenGeometryHint : 0
 
     visible: true
 
-    // These margins are used to avoid the notch area of the display, and areas
-    // covered by system widgets.
-    property int bottomScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.size.height - primaryScreen.availableGeometry.height - primaryScreen.availableGeometry.y
-        }
-
-        return 0
-    }
-    property int leftScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.availableGeometry.x
-        }
-
-        return 0
-    }
-    property int rightScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.size.width - primaryScreen.availableGeometry.width - primaryScreen.availableGeometry.x
-        }
-
-        return 0
-    }
-    property int topScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.availableGeometry.y
-        }
-
-        return 0
-    }
-
     header: ToolBar {
 
-        height: toolButton.height+window.topScreenMargin
+        height: toolButton.height+PlatformAdapter.safeInsetTop
+
+        background: Rectangle { color: "teal" }
 
         ToolButton {
             id: toolButton
 
-            x: window.leftScreenMargin
-            y: window.topScreenMargin
+            x: PlatformAdapter.safeInsetLeft
+            y: PlatformAdapter.safeInsetTop
+
+            background: Rectangle { color: "teal" }
 
             icon.source: "/images/ic_menu_24px.svg"
+            icon.color: "white"
 
             onClicked: mainMenu.open()
 
@@ -95,15 +76,6 @@ ApplicationWindow {
                     icon.source: "/images/ic_info_24px.svg"
                     text: qsTr("About")
                     onTriggered: infoDialog.open()
-                }
-
-                MenuSeparator {}
-
-                MenuItem {
-                    enabled: Qt.platform.os !== "wasm"
-                    icon.source: "/images/ic_exit_to_app_24px.svg"
-                    text: qsTr("Exit")
-                    onTriggered: Qt.quit()
                 }
             }
         }
