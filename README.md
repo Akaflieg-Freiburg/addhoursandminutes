@@ -1,6 +1,6 @@
 ![Compile on Android](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Android/badge.svg)
 ![Compile on Linux](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Linux/badge.svg)
-![Compile on MacOS](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml/badge.svg)]
+![Compile on MacOS](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml/badge.svg)
 
 # Add Hours and Minutes
 
