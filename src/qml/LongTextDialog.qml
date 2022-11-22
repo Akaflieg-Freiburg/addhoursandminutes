@@ -21,20 +21,22 @@
 import QtQuick
 import QtQuick.Controls
 
+import gui
+
 Dialog {
     id: dlg
 
     // This is the text to be shown
     property var text: ({})
 
-    leftMargin: window.leftScreenMargin + Qt.application.font.pixelSize
-    rightMargin: window.rightScreenMargin + Qt.application.font.pixelSize
-    topMargin: window.topScreenMargin + Qt.application.font.pixelSize
-    bottomMargin: window.bottomScreenMargin + Qt.application.font.pixelSize
+    leftMargin: PlatformAdapter.safeInsetLeft + Qt.application.font.pixelSize
+    rightMargin: PlatformAdapter.safeInsetRight + Qt.application.font.pixelSize
+    topMargin: PlatformAdapter.safeInsetTop + Qt.application.font.pixelSize
+    bottomMargin: PlatformAdapter.safeInsetBottom + Qt.application.font.pixelSize
 
     // We center the dialog manually. The recommended "anchors.center: parent" does not seem to work
-    x: window.leftScreenMargin + (window.width-window.leftScreenMargin-window.rightScreenMargin-width)/2.0
-    y: window.topScreenMargin + (window.height-window.topScreenMargin-window.bottomScreenMargin-height)/2.0
+    x: PlatformAdapter.safeInsetLeft + (window.width-PlatformAdapter.safeInsetLeft-PlatformAdapter.safeInsetRight-width)/2.0
+    y: PlatformAdapter.safeInsetTop + (window.height-PlatformAdapter.safeInsetTop-PlatformAdapter.safeInsetBottom-height)/2.0
 
     parent: Overlay.overlay
     modal: true
@@ -46,16 +48,13 @@ Dialog {
         implicitWidth: 30*Qt.application.font.pixelSize
         contentWidth: availableWidth // Disable horizontal scrolling
 
-        // The following code guarantees that the scroll bar is shown initially. If it is not used, it is faded out after half a second or so.
-        ScrollBar.vertical.policy: (height < contentHeight) ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-        ScrollBar.vertical.interactive: false
-
         clip: true
 
         Label {
             id: lbl
             text: dlg.text
             width: sv.availableWidth
+
             textFormat: Text.RichText
             horizontalAlignment: Text.AlignJustify
             wrapMode: Text.Wrap

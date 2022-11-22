@@ -23,6 +23,8 @@ import Qt.labs.settings
 import QtQuick
 import QtQuick.Controls
 
+import gui
+
 ApplicationWindow {
     id: window
 
@@ -38,58 +40,21 @@ ApplicationWindow {
         property alias height: window.height
     }
 
-
     flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? Qt.MaximizeUsingFullscreenGeometryHint : 0
 
     visible: true
 
-    // These margins are used to avoid the notch area of the display, and areas
-    // covered by system widgets.
-    property int bottomScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.size.height - primaryScreen.availableGeometry.height - primaryScreen.availableGeometry.y
-        }
-
-        return 0
-    }
-    property int leftScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            console.log(primaryScreen.availableGeometry.x)
-            return primaryScreen.availableGeometry.x
-        }
-
-        return 0
-    }
-    property int rightScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.size.width - primaryScreen.availableGeometry.width - primaryScreen.availableGeometry.x
-        }
-
-        return 0
-    }
-    property int topScreenMargin: {
-        if ((Qt.platform.os === "ios") || (Qt.platform.os === "android"))
-        {
-            return primaryScreen.availableGeometry.y
-        }
-
-        return 0
-    }
-
     header: ToolBar {
 
-        height: toolButton.height+window.topScreenMargin
+        height: toolButton.height+PlatformAdapter.safeInsetTop
 
         background: Rectangle { color: "teal" }
 
         ToolButton {
             id: toolButton
 
-            x: window.leftScreenMargin
-            y: window.topScreenMargin
+            x: PlatformAdapter.safeInsetLeft
+            y: PlatformAdapter.safeInsetTop
 
             background: Rectangle { color: "teal" }
 
