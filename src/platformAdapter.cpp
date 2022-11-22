@@ -1,8 +1,11 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QTimer>
+#include <chrono>
 
 #include "platformAdapter.h"
+
+using namespace std::chrono_literals;
 
 
 #if defined(Q_OS_ANDROID)
@@ -16,79 +19,96 @@
 PlatformAdapter::PlatformAdapter(QObject* parent)
     : QObject(parent)
 {
+    // Update the properties safeInsets* 100ms after the screen orientation changes.
+    // Experience shows that the system calls on Android do not always
+    // reflect updates in the safeInsets* immediately.
     auto* timer = new QTimer(this);
     timer->setSingleShot(true);
-    timer->setInterval(100);
-    connect(timer, &QTimer::timeout, this, &PlatformAdapter::getSafeInsets);
+    timer->setInterval(100ms);
+    connect(timer, &QTimer::timeout, this, &PlatformAdapter::updateSafeInsets);
     connect(QGuiApplication::primaryScreen(), &QScreen::orientationChanged, timer, [timer]{ timer->start(); });
+
+    // Update the properties safeInsets* 100ms from now.
     timer->start();
 }
 
 
-void PlatformAdapter::getSafeInsets()
+void PlatformAdapter::updateSafeInsets()
 {
+    auto safeInsetBottom {_safeInsetBottom};
+    auto safeInsetLeft {_safeInsetLeft};
+    auto safeInsetRight {_safeInsetRight};
+    auto safeInsetTop {_safeInsetTop};
 
-#if defined(Q_OS_ANDROID)
+
+#if defined(Q_OS_ANDROID)   
     auto devicePixelRatio = QGuiApplication::primaryScreen()->devicePixelRatio();
-    if ( !qIsFinite(devicePixelRatio) || (devicePixelRatio < 0.0))
+    if ( qIsFinite(devicePixelRatio) && (devicePixelRatio > 0.0))
     {
-        return;
-    }
+        double inset = 0.0;
 
-    auto safeInsetBottom = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetBottom"));
-    if ( qIsFinite(safeInsetBottom) && (safeInsetBottom >= 0.0) )
-    {
-        safeInsetBottom = safeInsetBottom/devicePixelRatio;
-        if (safeInsetBottom != _safeInsetBottom)
+        inset = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetBottom"));
+        if ( qIsFinite(safeInsetBottom) && (safeInsetBottom >= 0.0) )
         {
-            _safeInsetBottom = safeInsetBottom;
-            emit safeInsetBottomChanged();
+            safeInsetBottom = inset/devicePixelRatio;
         }
-    }
 
-    auto safeInsetLeft = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetLeft"));
-    if ( qIsFinite(safeInsetLeft) && (safeInsetLeft >= 0.0) )
-    {
-        safeInsetLeft = safeInsetLeft/devicePixelRatio;
-        if (safeInsetLeft != _safeInsetLeft)
+        inset = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetLeft"));
+        if ( qIsFinite(safeInsetLeft) && (safeInsetLeft >= 0.0) )
         {
-            _safeInsetLeft = safeInsetLeft;
-            emit safeInsetLeftChanged();
+            safeInsetLeft = inset/devicePixelRatio;
         }
-    }
 
-    auto safeInsetRight = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetRight"));
-    if ( qIsFinite(safeInsetRight) && (safeInsetRight >= 0.0) )
-    {
-        safeInsetRight = safeInsetRight/devicePixelRatio;
-        if (safeInsetRight != _safeInsetRight)
+        inset = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetRight"));
+        if ( qIsFinite(safeInsetRight) && (safeInsetRight >= 0.0) )
         {
-            _safeInsetRight = safeInsetRight;
-            emit safeInsetRightChanged();
+            safeInsetRight = inset/devicePixelRatio;
         }
-    }
 
-    auto safeInsetTop = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetTop"));
-    if ( qIsFinite(safeInsetTop) && (safeInsetTop >= 0.0) )
-    {
-        safeInsetTop = safeInsetTop/devicePixelRatio;
-        if (safeInsetTop != _safeInsetTop)
+        inset = static_cast<double>(QJniObject::callStaticMethod<jdouble>("de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor", "safeInsetTop"));
+        if ( qIsFinite(safeInsetTop) && (safeInsetTop >= 0.0) )
         {
-            _safeInsetTop = safeInsetTop;
-            emit safeInsetTopChanged();
+            safeInsetTop = inset/devicePixelRatio;
         }
     }
 #endif
 
-#warning need iOS implementation!
+#if defined(Q_OS_IOS)
+    auto primaryScreen = QGuiApplication::primaryScreen();
+    safeInsetBottom = primaryScreen->size().height() - primaryScreen->availableGeometry().height() - primaryScreen->availableGeometry().y();
+    safeInsetLeft = primaryScreen->availableGeometry().x();
+    safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
+    safeInsetTop = primaryScreen->availableGeometry().y();
+#endif
+
+    // Update properties and emit notification signals
+    if (safeInsetBottom != _safeInsetBottom)
+    {
+        _safeInsetBottom = safeInsetBottom;
+        emit safeInsetBottomChanged();
+    }
+    if (safeInsetLeft != _safeInsetLeft)
+    {
+        _safeInsetLeft = safeInsetLeft;
+        emit safeInsetLeftChanged();
+    }
+    if (safeInsetRight != _safeInsetRight)
+    {
+        _safeInsetRight = safeInsetRight;
+        emit safeInsetRightChanged();
+    }
+    if (safeInsetTop != _safeInsetTop)
+    {
+        _safeInsetTop = safeInsetTop;
+        emit safeInsetTopChanged();
+    }
+
 }
 
 
 //Vibration normal
 void PlatformAdapter::vibrateBrief()
 {
-    Q_UNUSED(this)
-
 #if defined(Q_OS_IOS)
     ObjCAdapter::vibrateBrief();
 #endif
@@ -101,8 +121,6 @@ void PlatformAdapter::vibrateBrief()
 //Vibration Error
 void PlatformAdapter::vibrateError()
 {
-    Q_UNUSED(this)
-
 #if defined(Q_OS_IOS)
     ObjCAdapter::vibrateError();
 #endif
