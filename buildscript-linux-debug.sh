@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script builds "enroute flight navigation" for the Linux desktop in
+# This script builds "Add Times" for the Linux desktop in
 # "Debug" mode.  Several sanitizers are switched on.
 #
 # See https://github.com/Akaflieg-Freiburg/enroute/wiki/Build-scripts

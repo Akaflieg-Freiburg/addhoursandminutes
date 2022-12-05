@@ -4,16 +4,21 @@
 <context>
     <name>C++ Main Program</name>
     <message>
-        <location filename="main.cpp" line="49"/>
         <source>Add Hours and Minutes</source>
         <comment>Application Name</comment>
-        <translation>Rechnen mit Stunden und Minuten</translation>
+        <translation type="vanished">Rechnen mit Stunden und Minuten</translation>
+    </message>
+    <message>
+        <location filename="main.cpp" line="49"/>
+        <source>Add Times</source>
+        <comment>Application Name</comment>
+        <translation>Rechnen mit Zeiten</translation>
     </message>
 </context>
 <context>
     <name>Calculator</name>
     <message>
-        <location filename="qml/Calculator.qml" line="198"/>
+        <location filename="qml/Calculator.qml" line="199"/>
         <source>Overflow</source>
         <translation>Überlauf</translation>
     </message>
@@ -32,23 +37,22 @@
         <translation type="vanished">Weiter</translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="45"/>
+        <location filename="qml/main.qml" line="71"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="51"/>
+        <location filename="qml/main.qml" line="77"/>
         <source>About</source>
         <translation>Über diese App</translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="60"/>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation type="vanished">Beenden</translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="75"/>
-        <location filename="qml/main.qml" line="94"/>
+        <location filename="qml/main.qml" line="93"/>
+        <location filename="qml/main.qml" line="112"/>
         <source>Help…</source>
         <translation>Hilfe…</translation>
     </message>
@@ -164,7 +168,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 </translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="77"/>
+        <location filename="qml/main.qml" line="95"/>
         <source>
 &lt;h4&gt;Enter times&lt;/h4&gt;
 
@@ -184,9 +188,9 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Um den Rechner zurückzusetzen, halten Sie die Taste &lt;strong&gt;C&lt;/strong&gt; gedrückt.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="qml/main.qml" line="96"/>
+        <location filename="qml/main.qml" line="114"/>
         <source>
-&lt;h3&gt;Add Hours and Minutes&lt;/h3&gt;
+&lt;h3&gt;Add Times&lt;/h3&gt;
 
 &lt;h4&gt;Version %1&lt;/h4&gt;
 
@@ -230,14 +234,59 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This program builds on a number of open source libraries, including
 &lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
 </source>
+        <oldsource>
+&lt;h3&gt;Add Hours and Minutes&lt;/h3&gt;
+
+&lt;h4&gt;Version %1&lt;/h4&gt;
+
+&lt;p&gt;This is a simple calculator app that adds times given in hours and minutes.
+  It helps with the recording of machine running times, with the addition of
+  flight times in your pilot&apos;s flight log, or your driving times as a truck
+  driver.&lt;/p&gt;
+
+&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
+&lt;li&gt;Simple, elegant and functional&lt;/li&gt;
+&lt;li&gt;No ads&lt;/li&gt;
+&lt;li&gt;No commerical &apos;pro&apos; version&lt;/li&gt;
+&lt;li&gt;Does not spy on you&lt;/li&gt;
+&lt;li&gt;&lt;a href=&apos;https://github.com/Akaflieg-Freiburg/addhoursandminutes&apos;&gt;100% Open Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Written without commercial interest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This app is available for a variety of
+platforms. &lt;a href=&apos;https://akaflieg-freiburg.github.io/addhoursandminutes&apos;&gt;
+Have a look at the homepage.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Author&lt;/h3&gt;
+
+&lt;p&gt;
+Stefan Kebekus&lt;br&gt;
+Wintererstraße 77&lt;br&gt;
+79104 Freiburg im Breisgau&lt;br&gt;
+Germany
+&lt;/p&gt;
+
+
+&lt;h3&gt;License&lt;/h3&gt;
+
+&lt;p&gt;This program is licensed under the
+&lt;a href=&apos;https://www.gnu.org/licenses/gpl-3.0-standalone.html&apos;&gt;GNU General
+Public License V3&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;h3&gt;Acknowledgements&lt;/h3&gt;
+
+&lt;p&gt;This program builds on a number of open source libraries, including
+&lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
+</oldsource>
         <translation>
-&lt;h3&gt;Rechnen mit Stunden und Minuten&lt;/h3&gt;
+&lt;h3&gt;Rechnen mit Zeiten&lt;/h3&gt;
 
 &lt;h4&gt;Version %1&lt;/h4&gt;
 
 &lt;p&gt;Dies ist eine kleine Taschenrechner-App, mit der Sie Zeiten zusammenrechnen können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.&lt;/p&gt;
 
-&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
+&lt;ul&gt;
   &lt;li&gt;Einfach, elegant und funktional&lt;/li&gt;
   &lt;li&gt;Werbefrei&lt;/li&gt;
   &lt;li&gt;Keine kostenpflichtige &quot;pro&quot; Version&lt;/li&gt;
@@ -248,7 +297,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
   &lt;li&gt;Ohne kommerzielles Interesse geschrieben&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Diese App ist auf einer ganzen Reihe von Platformen verfügbar. &lt;a href=&quot;https://akaflieg-freiburg.github.io/addhoursandminutes&quot;&gt;Besuchen Sie unsere Homepage.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Diese App ist auf einer ganzen Reihe von Platformen verfügbar. &lt;a href=&quot;https://akaflieg-freiburg.github.io/addhoursandminutes&apos;&quot;&gt;Besuchen Sie unsere Homepage.&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;h3&gt;Autor&lt;/h3&gt;

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script builds "Add Hours and Minutes" for Android in release mode.
+# This script builds "Add Times" for Android in release mode.
 #
 # See https://github.com/Akaflieg-Freiburg/addhoursandminutes/wiki/Build-scripts
 #

@@ -4,8 +4,8 @@
   <launchable type="desktop-id">de.akaflieg_freiburg.cavok.add_hours_and_minutes.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
-  <name>Add Hours and Minutes</name>
-  <name xml:lang="de">Rechnen mit Stunden und Minuten</name>
+  <name>Add Times</name>
+  <name xml:lang="de">Rechnen mit Zeiten</name>
   <summary>Simple calculator for adding hours and minutes</summary>
   <summary xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</summary>
   <description>

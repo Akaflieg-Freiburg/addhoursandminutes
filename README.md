@@ -2,12 +2,15 @@
 ![Compile on Linux](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Linux/badge.svg)
 ![Compile on MacOS](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml/badge.svg)
 
-# Add Hours and Minutes
+# Add Times
 
-<img align="right" src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/phone.png" width="200">**Add Hours and Minutes** is a simple calculator app that adds times given in hours
-and minutes. It helps with the recording of machine running times, with the
-addition of flight times in your pilots' flight log, or your driving times as a
-truck driver. The app is free, open source, 100% non-commercial and does not collect user data.
+<img align="right"
+src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/phone.png"
+width="200">**Add Times** is a simple calculator app that adds times given in
+hours and minutes. It helps with the recording of machine running times, with
+the addition of flight times in your pilots' flight log, or your driving times
+as a truck driver. The app is free, open source, 100% non-commercial and does
+not collect user data.
 
 ## Information for users
 

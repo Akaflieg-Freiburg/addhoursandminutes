@@ -46,7 +46,7 @@ auto main(int argc, char *argv[]) -> int
     // Set application parameters
     QCoreApplication::setOrganizationName(QStringLiteral("Akaflieg Freiburg"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("akaflieg_freiburg.de"));
-    QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Hours and Minutes", "Application Name") );
+    QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Times", "Application Name") );
     QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
 #if defined(Q_OS_LINUX)
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));

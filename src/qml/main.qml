@@ -90,8 +90,6 @@ ApplicationWindow {
     LongTextDialog {
         id: helpDialog
 
-        title: qsTr("Help…")
-
         text: qsTr("
 <h4>Enter times</h4>
 
@@ -109,10 +107,8 @@ ApplicationWindow {
     LongTextDialog {
         id: infoDialog
 
-        title: qsTr("Help…")
-
         text: qsTr("
-<h3>Add Hours and Minutes</h3>
+<h3>Add Times</h3>
 
 <h4>Version %1</h4>
 

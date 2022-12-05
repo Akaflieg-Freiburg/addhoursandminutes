@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# This script builds "Add Hours and minutes" for webasm in release mode.
+# This script builds "Add Times" for webasm in release mode.
 #
 # See https://github.com/Akaflieg-Freiburg/addhoursandminutes/wiki/Build-scripts
 #

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.1
-Name=Add Hours and Minutes
-Name[de]=Rechnen mit Stunden und Minuten
+Name=Add Times
+Name[de]=Rechnen mit Zeiten
 GenericName=Calculator for adding times
 GenericName[de]=Rechner zum Zusammenzählen von Zeiten
 Icon=de.akaflieg_freiburg.cavok.add_hours_and_minutes
