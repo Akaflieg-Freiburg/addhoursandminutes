@@ -46,7 +46,7 @@ cd build-android-debug
 #
 
 export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.17.0.8-2.fc36.x86_64
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.5.0.8-1.fc37.x86_64
 
 $Qt6_DIR_ANDROID\_x86_64/bin/qt-cmake .. \
   -DQT_ANDROID_ABIS="arm64-v8a" \

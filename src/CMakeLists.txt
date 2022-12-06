@@ -63,12 +63,13 @@ if(ANDROID)
 
     # Configure files
     configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
-    configure_file(android/res/drawable/splash.xml android/res/drawable/splash.xml COPYONLY)
-    configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
-    configure_file(android/res/values/splashscreentheme.xml android/res/values/splashscreentheme.xml COPYONLY)
-    configure_file(android/res/values/strings.xml android/res/values/strings.xml COPYONLY)
-    configure_file(android/res/values-de/strings.xml android/res/values-de/strings.xml COPYONLY)
-    configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
+    file(COPY ${CMAKE_SOURCE_DIR}/src/android DESTINATION .)
+#    configure_file(android/res/drawable/splash.xml android/res/drawable/splash.xml COPYONLY)
+#    configure_file(android/res/values/apptheme.xml android/res/values/apptheme.xml COPYONLY)
+#    configure_file(android/res/values/splashscreentheme.xml android/res/values/splashscreentheme.xml COPYONLY)
+#    configure_file(android/res/values/strings.xml android/res/values/strings.xml COPYONLY)
+#    configure_file(android/res/values-de/strings.xml android/res/values-de/strings.xml COPYONLY)
+#    configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
 
