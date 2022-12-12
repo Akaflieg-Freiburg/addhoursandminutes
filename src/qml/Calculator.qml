@@ -443,24 +443,15 @@ Rectangle {
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.columnSpan: 3
+                    Layout.minimumHeight: !hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetBottom : 0
                     color: "#e0e0e0"
                 }
 
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
+                    Layout.minimumHeight: !hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetBottom : 0
                     color: "teal"
                 }
 
@@ -761,43 +752,17 @@ Rectangle {
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "#e0e0e0"
-                }
-
-                Rectangle {
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    color: "teal"
-                }
-
-
-                Rectangle {
-                    Layout.preferredHeight: PlatformAdapter.safeInsetBottom
-                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
-                    Layout.fillWidth: true
                     Layout.columnSpan: 3
+                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
                     color: "#e0e0e0"
                 }
 
                 Rectangle {
-                    Layout.preferredHeight: PlatformAdapter.safeInsetBottom
-                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+                    Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.minimumHeight: PlatformAdapter.safeInsetBottom
                     color: "teal"
                 }
-
             }
 
 
@@ -811,6 +776,7 @@ Rectangle {
             Rectangle {
                 Layout.fillHeight: true
                 Layout.preferredWidth: PlatformAdapter.safeInsetRight
+                Layout.minimumHeight: PlatformAdapter.safeInsetRight
                 color: "teal"
             }
 

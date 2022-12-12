@@ -23,6 +23,7 @@ PlatformAdapter::PlatformAdapter(QObject* parent)
     // Experience shows that the system calls on Android do not always
     // reflect updates in the safeInsets* immediately.
     auto* timer = new QTimer(this);
+    updateSafeInsets();
     timer->setSingleShot(true);
     timer->setInterval(100ms);
     connect(timer, &QTimer::timeout, this, &PlatformAdapter::updateSafeInsets);
@@ -80,7 +81,6 @@ void PlatformAdapter::updateSafeInsets()
     safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
     safeInsetTop = primaryScreen->availableGeometry().y();
 #endif
-
     // Update properties and emit notification signals
     if (safeInsetBottom != _safeInsetBottom)
     {

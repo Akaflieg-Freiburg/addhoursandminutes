@@ -1,3 +1,4 @@
+.vscode
 CMakeLists.txt.user
 *.snap
 build-android-debug
