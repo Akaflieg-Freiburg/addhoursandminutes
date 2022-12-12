@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+pragma ComponentBehavior: Bound
+
 import gui
 
 import QtQuick
@@ -32,7 +34,7 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property int fontpixelsize: Qt.application.font.pixelSize*fontScale
+    property int fontpixelsize: Application.font.pixelSize*fontScale
     property real formfactor: 2.5
     property int buttonMinHeight: fontpixelsize*formfactor
 
@@ -340,32 +342,39 @@ Rectangle {
                 clip: true
 
                 delegate: Item {
+                    id: delegateParent
+
+                    required property bool isSum
+                    required property string operator
+                    required property string operand
+
                     height: hoursAndMinutes.fontpixelsize*1.2
                     width: listView.width
+
                     Text {
-                        id: operator
+                        id: operatorText
                         anchors.left: parent.left
                         anchors.leftMargin: 2*hoursAndMinutes.fontpixelsize
                         color: "teal"
-                        text: model.operator
+                        text: delegateParent.operator
                         font.pixelSize: hoursAndMinutes.fontpixelsize
                         font.family: "Monospace"
                     }
                     Text {
-                        id: operand
+                        id: operandText
                         anchors.right: parent.right
                         anchors.rightMargin: 2*hoursAndMinutes.fontpixelsize
-                        text: model.operand
+                        text: delegateParent.operand
                         font.pixelSize: hoursAndMinutes.fontpixelsize
                         font.family: "Monospace"
-                        font.bold: model.isSum
+                        font.bold: delegateParent.isSum
                     }
                 }
 
                 model: ListModel {
                     ListElement {
-                        operator: ""
-                        operand: "0"
+                        operator: ''
+                        operand: '0'
                         isSum: false
                     }
                 }

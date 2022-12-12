@@ -40,7 +40,7 @@ ApplicationWindow {
         property alias height: window.height
     }
 
-    flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? Qt.MaximizeUsingFullscreenGeometryHint : 0
+    flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? (Qt.MaximizeUsingFullscreenGeometryHint|Qt.Window) : Qt.Window
 
     visible: true
 
