@@ -43,8 +43,8 @@ cd build-android-release
 # Configure
 #
 
-ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/22.1.7171670
-JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.15.0.10-1.fc35.x86_64
+export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.5.0.8-1.fc37.x86_64
 
 $Qt6_DIR_ANDROID\_x86/bin/qt-cmake .. \
   -G Ninja\
@@ -57,12 +57,15 @@ $Qt6_DIR_ANDROID\_x86/bin/qt-cmake .. \
     
 ninja aab
 
-mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ../addhoursandminutes.aab
+mv ./src/android-build/build/outputs/bundle/release/android-build-release.aab ./addhoursandminutes.aab
 
 jarsigner -keystore $ANDROID_KEYSTORE_FILE \
   -storepass $ANDROID_KEYSTORE_PASS \
-   ../addhoursandminutes.aab \
+   ./addhoursandminutes.aab \
    "Stefan Kebekus"
+
+echo "Signed AAB file is available at $PWD/addhoursandminutes.aab"
+nautilus $PWD &
 
 #
 # cd out
