@@ -19,9 +19,11 @@ if(IOS)
 
 endif()
 
+
 # Include required packages
 find_package(Qt6 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
 qt_standard_project_setup()
+
 
 # Subdirectories
 add_subdirectory(generatedSources)

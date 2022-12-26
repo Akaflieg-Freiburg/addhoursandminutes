@@ -1,7 +1,7 @@
 {
     "app-id": "${APP_ID}",
      "runtime": "org.freedesktop.Platform",
-    "runtime-version": "21.08",
+    "runtime-version": "22.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "addhoursandminutes",
     "finish-args": [
@@ -25,7 +25,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtbase.git",
-                    "tag": "v6.2.0"
+                    "tag": "v${Qt6_VERSION}"
                 }
             ],
             "buildsystem": "cmake-ninja",
@@ -41,7 +41,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtsvg.git",
-                    "tag": "v6.2.0"
+                    "tag": "v${Qt6_VERSION}"
                 }
             ],
             "buildsystem": "cmake-ninja",
@@ -56,7 +56,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qttools.git",
-                    "tag": "v6.2.0"
+                    "tag": "v${Qt6_VERSION}"
                 }
             ],
             "buildsystem": "cmake-ninja",
@@ -88,7 +88,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtshadertools.git",
-                    "tag": "v6.2.0"
+                    "tag": "v${Qt6_VERSION}"
                 }
             ],
             "buildsystem": "cmake-ninja",
@@ -103,7 +103,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtdeclarative.git",
-                    "tag": "v6.2.0"
+                    "tag": "v${Qt6_VERSION}"
                 }
             ],
             "buildsystem": "cmake-ninja",
