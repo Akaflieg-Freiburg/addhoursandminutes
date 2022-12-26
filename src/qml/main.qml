@@ -28,10 +28,10 @@ import gui
 ApplicationWindow {
     id: window
 
-    width: Qt.application.font.pixelSize*15*1.5
-    height: Qt.application.font.pixelSize*20*1.5
-    minimumWidth: Qt.application.font.pixelSize*12*1.5
-    minimumHeight: Qt.application.font.pixelSize*14*1.5
+    width: font.pixelSize*15*1.5
+    height: font.pixelSize*20*1.5
+    minimumWidth: font.pixelSize*12*1.5
+    minimumHeight: font.pixelSize*14*1.5
 
     Settings {
         property alias x: window.x
@@ -90,7 +90,7 @@ ApplicationWindow {
     LongTextDialog {
         id: helpDialog
 
-        text: qsTr("
+        text: qsTr(`
 <h4>Enter times</h4>
 
 <p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys
@@ -99,7 +99,7 @@ ApplicationWindow {
 <h4>Reset</h4>
 
 <p>To reset the calculator, press and hold the key <strong>C</strong>.</p>
-")
+`)
 
         standardButtons: DialogButtonBox.Ok
     }
@@ -107,7 +107,7 @@ ApplicationWindow {
     LongTextDialog {
         id: infoDialog
 
-        text: qsTr("
+        text: qsTr(`
 <h3>Add Times</h3>
 
 <h4>Version %1</h4>
@@ -151,7 +151,7 @@ Public License V3</a>.</p>
 
 <p>This program builds on a number of open source libraries, including
 <a href='https://www.qt.io'>Qt</a>.</p>
-").arg(projectVersion)
+`).arg(projectVersion)
 
         standardButtons: DialogButtonBox.Ok
     }

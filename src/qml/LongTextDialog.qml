@@ -29,14 +29,14 @@ Dialog {
     // This is the text to be shown
     property var text: ({})
 
-    leftMargin: PlatformAdapter.safeInsetLeft + Qt.application.font.pixelSize
-    rightMargin: PlatformAdapter.safeInsetRight + Qt.application.font.pixelSize
-    topMargin: PlatformAdapter.safeInsetTop + Qt.application.font.pixelSize
-    bottomMargin: PlatformAdapter.safeInsetBottom + Qt.application.font.pixelSize
+    leftMargin: PlatformAdapter.safeInsetLeft + font.pixelSize
+    rightMargin: PlatformAdapter.safeInsetRight + font.pixelSize
+    topMargin: PlatformAdapter.safeInsetTop + font.pixelSize
+    bottomMargin: PlatformAdapter.safeInsetBottom + font.pixelSize
 
     // We center the dialog manually. The recommended "anchors.center: parent" does not seem to work
-    x: PlatformAdapter.safeInsetLeft + (window.width-PlatformAdapter.safeInsetLeft-PlatformAdapter.safeInsetRight-width)/2.0
-    y: PlatformAdapter.safeInsetTop + (window.height-PlatformAdapter.safeInsetTop-PlatformAdapter.safeInsetBottom-height)/2.0
+    x: PlatformAdapter.safeInsetLeft + (parent.width-PlatformAdapter.safeInsetLeft-PlatformAdapter.safeInsetRight-width)/2.0
+    y: PlatformAdapter.safeInsetTop + (parent.height-PlatformAdapter.safeInsetTop-PlatformAdapter.safeInsetBottom-height)/2.0
 
     parent: Overlay.overlay
     modal: true
@@ -45,7 +45,7 @@ Dialog {
         id: sv
 
         anchors.fill: parent
-        implicitWidth: 30*Qt.application.font.pixelSize
+        implicitWidth: 30*font.pixelSize
         contentWidth: availableWidth // Disable horizontal scrolling
 
         clip: true
