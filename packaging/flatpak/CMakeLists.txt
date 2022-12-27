@@ -1,10 +1,4 @@
 #
-# Prepare flatpack manifest
-#
-
-set(FLATPAK_RUNTIME_VERSION 5.15)
-
-#
 # Configure
 #
 
@@ -22,7 +16,7 @@ add_custom_target(flatpak
   COMMAND gzip -9 ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-${PROJECT_VERSION}.tar
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   COMMENT "Generating tarball for flatpak"
-  )
+)
 
 
 #
@@ -44,4 +38,23 @@ add_custom_target(flatpak-binary
   DEPENDS flatpak
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
   COMMENT "Generating flatpak binary"
-  )
+)
+
+
+#
+# Publication
+#
+
+add_custom_target(flatpak-publish
+  COMMAND rm -rf de.akaflieg_freiburg.cavok.add_hours_and_minutes
+  COMMAND git clone --depth 1 --branch upstream git@github.com:flathub/de.akaflieg_freiburg.cavok.add_hours_and_minutes.git
+  COMMAND cp de.akaflieg_freiburg.cavok.add_hours_and_minutes.json de.akaflieg_freiburg.cavok.add_hours_and_minutes
+  COMMAND cd de.akaflieg_freiburg.cavok.add_hours_and_minutes
+  COMMAND git diff-index --quiet HEAD || git commit -am "New upstream release"
+  COMMAND git push
+  COMMAND gh pr create --title "New upstream release" --body "Please merge the following new upstream release"
+  COMMAND cd ..
+  COMMAND rm -rf de.akaflieg_freiburg.cavok.add_hours_and_minutes
+  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  COMMENT "Publishing flatpak"
+)
