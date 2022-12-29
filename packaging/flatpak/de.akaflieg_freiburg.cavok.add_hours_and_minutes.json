@@ -120,8 +120,9 @@
             "buildsystem": "cmake-ninja",
             "sources": [
                 {
-                    "type": "archive",
-                    "path": "addhoursandminutes-${PROJECT_VERSION}.tar.gz"
+		    "type": "git",
+                    "url": "https://github.com/Akaflieg-Freiburg/addhoursandminutes.git",
+		    "commit": "${GIT_COMMIT}"
                 }
             ],
             "buildsystem": "cmake-ninja",
