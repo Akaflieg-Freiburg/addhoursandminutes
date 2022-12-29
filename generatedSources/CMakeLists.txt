@@ -16,8 +16,8 @@ add_custom_target(mainIcons
 
 add_custom_target(featureGraphic
   COMMAND mkdir -p ${CMAKE_CURRENT_SOURCE_DIR}/propaganda/GooglePlay
-  COMMAND convert -font Helvetica-bold -fill white -pointsize 60 -gravity center -draw "text 0,0 'Add Hours and Minutes'" ${CMAKE_SOURCE_DIR}/propaganda/GooglePlay/feature.png ${CMAKE_CURRENT_SOURCE_DIR}/propaganda/GooglePlay/feature_en.png
-  COMMAND convert -font Helvetica -fill white -pointsize 60 -gravity center -draw "text 0,0 'Rechnen mit Stunden und Minuten'" ${CMAKE_SOURCE_DIR}/propaganda/GooglePlay/feature.png ${CMAKE_CURRENT_SOURCE_DIR}/propaganda/GooglePlay/feature_de.png
+  COMMAND convert -font Helvetica-bold -fill white -pointsize 60 -gravity center -draw "text 0,0 'Add Times'" ${CMAKE_SOURCE_DIR}/propaganda/GooglePlay/feature.png ${CMAKE_CURRENT_SOURCE_DIR}/propaganda/GooglePlay/feature_en.png
+  COMMAND convert -font Helvetica -fill white -pointsize 60 -gravity center -draw "text 0,0 'Rechnen mit Zeiten'" ${CMAKE_SOURCE_DIR}/propaganda/GooglePlay/feature.png ${CMAKE_CURRENT_SOURCE_DIR}/propaganda/GooglePlay/feature_de.png
   COMMENT "Generated sources: Google Play Feature Graphic"
   VERBATIM
   )
