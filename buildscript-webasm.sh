@@ -62,10 +62,3 @@ ninja
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
 sed -i 's/qtlogo.svg/qtlogo.png/g' src/addhoursandminutes.html
 sed -i 's/320/200/g' src/addhoursandminutes.html
-
-
-#
-# Test-run the compiled program
-#
-
-emrun --browser=firefox src/addhoursandminutes.html 
