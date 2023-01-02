@@ -18,7 +18,7 @@ gallery2:
 
 ---
 
-Below you can see **Add Hours and Minutes** in action.
+Below you can see **Add Times** in action.
 
 {% include gallery caption="Screenshots from a mobile phone" %}
 

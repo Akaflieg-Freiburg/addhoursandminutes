@@ -10,7 +10,7 @@ permalink: /download/
 
 ### Mobile App for Android devices
 
-**Add Hours and Minutes** is available for free download at Google Play.
+**Add Times** is available for free download at Google Play.
 
 
 <figure style="width: 150px" class="align-right">
@@ -22,7 +22,7 @@ permalink: /download/
 
 ### Linux Desktop
 
-**Add Hours and Minutes** is available for free download at
+**Add Times** is available for free download at
 [flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 and [snapcraft.io](https://snapcraft.io/add-hour-and-minutes), but you might
 also find the app in the software management application on your computer.
@@ -33,14 +33,14 @@ link](https://flathub.org/repo/appstream/de.akaflieg_freiburg.cavok.add_hours_an
 ### Add to your web site
 
 Add the following code to your web site in order to embed a fully functional
-copy of **Add Hours and Minutes**.
+copy of **Add Times**.
 
 ```html
 <iframe
    src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
    width="350" 
    height="450" 
-   name="Add Hours and Minutes"
+   name="Add Times"
    scrolling="no"
    frameborder="1">
    <p>Your browser cannot show embedded frames. You can however display the embedded page via<a href="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html">this link</a>.</p>
@@ -50,8 +50,8 @@ copy of **Add Hours and Minutes**.
 
 ### Source code
 
-Developers who are interested in compiling **Add Hours and Minutes** themselves
-find all relevant sources on
+Developers who are interested in compiling **Add Times** themselves find all
+relevant sources on
 [GitHub](https://github.com/Akaflieg-Freiburg/addhoursandminutes).  This program
 builds on the Qt library. The source code for Qt can be found at [this
 URL](https://cplx.vm.uni-freiburg.de/storage/QtSources).

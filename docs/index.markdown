@@ -21,7 +21,7 @@ header:
    src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
    width="350" 
    height="450" 
-   name="Add Hours and Minutes"
+   name="Add Times"
    scrolling="no"
    frameborder="1"
    float="right">
@@ -31,7 +31,7 @@ header:
 </iframe>
   <figcaption>The app runs directly in your web browser</figcaption>
 </figure>
-**Add Hours and Minutes**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.  The program has been written by Stefan Kebekus, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
+**Add Times**  is a simple calculator app that adds times given in hours and minutes. It helps with the recording of machine running times, or with the addition of flight times in your pilots’ flight log.  The program has been written by Stefan Kebekus, as a project of [Akaflieg Freiburg](https://akaflieg-freiburg.de), a flight club based in Freiburg, Germany.
 
 # Not Commercial. Privacy Taken Seriously.
 

@@ -7,9 +7,8 @@ toc: true
 
 # Privacy Policies for the app
 
-The app **Add Hours and Minutes** has been designed to not send any data to us. We do not track our users. We do not collect data. However, note the following.
-
-- The app contains third-party software components.  While we have checked that no data is collected by these components, there is a chance that we overlooked something.
+The app **Add Times** has been designed to not send any data to us. We do not
+track our users. We do not collect data.
 
 ## Responsible person
 
