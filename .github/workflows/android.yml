@@ -29,7 +29,7 @@ jobs:
       with:
         target: 'android'
         version: '6.4.1'
-        arch: 'android_armv7'
+        arch: 'android_arm64_v8a'
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
