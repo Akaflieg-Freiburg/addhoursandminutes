@@ -36,7 +36,8 @@ Rectangle {
 
     property int fontpixelsize: Application.font.pixelSize*fontScale
     property real formfactor: 2.5
-    property int buttonMinHeight: fontpixelsize*formfactor
+    property int buttonMinHeight: fontpixelsize*1.5
+    property int buttonMaxHeight: fontpixelsize*formfactor
 
     SequentialAnimation {
         id: blinkAnimation
@@ -442,9 +443,9 @@ Rectangle {
                 Layout.fillHeight: !hoursAndMinutes.isPortrait()
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
 
-                Layout.preferredWidth: 5*hoursAndMinutes.buttonMinHeight
-                Layout.minimumWidth: 5*hoursAndMinutes.buttonMinHeight
-                Layout.maximumWidth: 8*hoursAndMinutes.buttonMinHeight
+                Layout.preferredWidth: 5*hoursAndMinutes.buttonMaxHeight
+                Layout.minimumWidth: (hoursAndMinutes.width > 5*hoursAndMinutes.buttonMaxHeight) ? 5*hoursAndMinutes.buttonMaxHeight : hoursAndMinutes.width
+                Layout.maximumWidth: 8*hoursAndMinutes.buttonMaxHeight
                 columnSpacing: 0
                 rowSpacing: 0
                 columns: 4
@@ -469,7 +470,7 @@ Rectangle {
                     text: "7"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -489,7 +490,7 @@ Rectangle {
                     text: "8"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -509,7 +510,7 @@ Rectangle {
                     text: "9"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -531,7 +532,7 @@ Rectangle {
                     text: "C"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -556,7 +557,7 @@ Rectangle {
                     text: "4"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -576,7 +577,7 @@ Rectangle {
                     text: "5"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -596,7 +597,7 @@ Rectangle {
                     text: "6"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -617,7 +618,7 @@ Rectangle {
                     text: "-"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     onClicked: {
@@ -636,7 +637,7 @@ Rectangle {
                     text: "1"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -657,7 +658,7 @@ Rectangle {
                     text: "2"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -678,7 +679,7 @@ Rectangle {
                     text: "3"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -699,7 +700,7 @@ Rectangle {
                     text: "+"
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -720,7 +721,7 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.columnSpan: 3
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
@@ -742,7 +743,7 @@ Rectangle {
                     text: "="
                     Layout.fillHeight: true
                     Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-                    Layout.maximumHeight: hoursAndMinutes.buttonMinHeight
+                    Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
                     Layout.fillWidth: true
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}

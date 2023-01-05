@@ -21,7 +21,7 @@
   </description>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="1.2.1" date="2021-10-02"/>
+    <release version="${PROJECT_VERSION}" date="${GIT_DATE}"/>
   </releases>
   <developer_name>
     Akaflieg Freiburg
