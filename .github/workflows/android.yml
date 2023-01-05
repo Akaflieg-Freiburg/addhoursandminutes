@@ -39,8 +39,10 @@ jobs:
       run: |
         mkdir -p build
         cd build
+        echo $Qt6_DIR
+	ls $Qt6_DIR
         echo $QT_HOST_PATH
-        find $QT_HOST_PATH
+        ls $QT_HOST_PATH
         $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug
     - name: Compile
       run: |
