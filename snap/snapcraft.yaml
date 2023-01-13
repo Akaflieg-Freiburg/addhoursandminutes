@@ -48,7 +48,7 @@ parts:
       - libxkbcommon-x11-dev
       - libgl1-mesa-dev
     plugin: cmake
-    configflags:
+    cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
   addhoursandminutes:
     after:
@@ -59,7 +59,7 @@ parts:
     source: .
     build-packages:
       - libglvnd-dev
-    configflags:
+    cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
     override-build: |
       snapcraftctl build
