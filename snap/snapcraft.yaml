@@ -68,8 +68,6 @@ parts:
     plugin: cmake
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_FIND_ROOT_PATH:PATH=/app
-      - -DCMAKE_BUILD_TYPE:STRING=Release
       - -DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF
       - -DQT_BUILD_TESTS_BY_DEFAULT=OFF
       - -DFEATURE_assistant=ON
