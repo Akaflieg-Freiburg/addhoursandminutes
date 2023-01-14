@@ -50,6 +50,15 @@ parts:
     plugin: cmake
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
+  qtsvg:
+    source: https://github.com/qt/qtsvg.git
+    source-type: git
+    source-tag: v6.4.2
+    build-snaps:
+      - cmake
+    plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
   addhoursandminutes:
     after:
       - qtbase
