@@ -1,5 +1,5 @@
 name: add-hours-and-minutes
-base: core20
+base: core22
 adopt-info: addhoursandminutes
 grade: stable
 confinement: strict
@@ -47,6 +47,32 @@ parts:
       - libxkbcommon-dev
       - libxkbcommon-x11-dev
       - libgl1-mesa-dev
+    stage-packages:
+      - libfontconfig1
+      - libfreetype6
+      - libx11
+      - libx11-xcb
+      - libxext
+      - libxfixes
+      - libxi
+      - libxrender
+      - libxcb1
+      - libxcb-glx0
+      - libxcb-keysyms1
+      - libxcb-image0
+      - libxcb-shm0
+      - libxcb-icccm4
+      - libxcb-sync
+      - libxcb-xfixes0
+      - libxcb-shape0
+      - libxcb-randr0
+      - libxcb-render-util0
+      - libxcb-util
+      - libxcb-xinerama0
+      - libxcb-xkb
+      - libxkbcommon
+      - libxkbcommon-x11
+      - libgl1-mesa
     plugin: cmake
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
