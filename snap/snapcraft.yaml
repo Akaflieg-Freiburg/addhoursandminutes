@@ -107,6 +107,8 @@ parts:
     after:
       - qtbase
       - qtshadertools
+    build-environment: &buildenv
+      - LD_LIBRARY_PATH: $CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET:/usr/lib/$CRAFT_ARCH_TRIPLET${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
     build-snaps:
       - cmake
     plugin: cmake
