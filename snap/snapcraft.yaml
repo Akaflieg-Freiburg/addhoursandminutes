@@ -30,20 +30,11 @@ parts:
       - libxfixes-dev
       - libxi-dev
       - libxrender-dev
-      - libxcb1-dev
-      - libxcb-glx0-dev
-      - libxcb-keysyms1-dev
-      - libxcb-image0-dev
-      - libxcb-shm0-dev
-      - libxcb-icccm4-dev
-      - libxcb-sync-dev
-      - libxcb-xfixes0-dev
+      - libxcb-render0-dev
       - libxcb-shape0-dev
-      - libxcb-randr0-dev
-      - libxcb-render-util0-dev
-      - libxcb-util-dev
-      - libxcb-xinerama0-dev
-      - libxcb-xkb-dev
+      - libxcb-shm0-dev
+      - libxcb-xfixes0-dev
+      - libxcb1-dev
       - libxkbcommon-dev
       - libxkbcommon-x11-dev
       - libgl1-mesa-dev
@@ -56,26 +47,36 @@ parts:
       - libxfixes
       - libxi
       - libxrender
-      - libxcb1
-      - libxcb-glx0
-      - libxcb-keysyms1
-      - libxcb-image0
-      - libxcb-shm0
       - libxcb-icccm4
-      - libxcb-sync
-      - libxcb-xfixes0
-      - libxcb-shape0
+      - libxcb-image0
+      - libxcb-keysyms1
       - libxcb-randr0
       - libxcb-render-util0
-      - libxcb-util
+      - libxcb-util1
       - libxcb-xinerama0
-      - libxcb-xkb
+      - libxcb-xinput0
+      - libxcb-xkb1
       - libxkbcommon
       - libxkbcommon-x11
       - libgl1-mesa
     plugin: cmake
     cmake-parameters:
+      - -DCMAKE_LIBRARY_PATH=$CRAFT_ARCH_TRIPLET
       - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DINSTALL_BINDIR=lib/qt6/bin
+      - -DINSTALL_LIBDIR=lib/$CRAFT_ARCH_TRIPLET
+      - -DINSTALL_LIBEXECDIR=lib/qt6/libexec
+      - -DINSTALL_ARCHDATADIR=lib/$CRAFT_ARCH_TRIPLET/qt6
+      - -DINSTALL_EXAMPLESDIR=lib/$CRAFT_ARCH_TRIPLET/qt6/examples
+      - -DINSTALL_DATADIR=share/qt6
+      - -DINSTALL_HOSTDATADIR=lib/$CRAFT_ARCH_TRIPLET/qt6
+      - -DINSTALL_DOCDIR=share/qt6/doc
+      - -DINSTALL_SYSCONFDIR=/etc/xdg
+      - -DINSTALL_INCLUDEDIR=include/$CRAFT_ARCH_TRIPLET/qt6
+      - -DINSTALL_PLUGINDIR=lib/$CRAFT_ARCH_TRIPLET/qt6/plugins
+      - -DINSTALL_TRANSLATIONDIR=share/qt6/translations
+      - -DINSTALL_MKSPECSDIR=lib/$CRAFT_ARCH_TRIPLET/qt6/mkspecs
+      - -DINSTALL_PUBLICBINDIR=bin
   qtsvg:
     source: https://github.com/qt/qtsvg.git
     source-type: git
