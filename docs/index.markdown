@@ -52,7 +52,7 @@ License](https://en.wikipedia.org/wiki/GNU_General_Public_License), a
 widely-used free software license that guarantees end users the freedom to run,
 study, share, and modify the software.
 
-[We do not collect your data.](/addhoursandminutes/privacy/) We do not use the
+[We do not collect your data.](/addhoursandminutes/privacy) We do not use the
 "Facebook API", "Crashlytics" or similar software that spies on you. You do not
 need to register for "membership". And we do not hassle you with e-mails. We do
 not even have or want your address!
