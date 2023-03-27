@@ -47,6 +47,7 @@ ApplicationWindow {
     header: ToolBar {
 
         height: toolButton.height+PlatformAdapter.safeInsetTop
+        width: (Qt.platform.os === "android") ? SafeInsets.wWidth : parent.wWidth
 
         background: Rectangle { color: "teal" }
 

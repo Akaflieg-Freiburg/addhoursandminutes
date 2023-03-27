@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2019-2022 by Stefan Kebekus                             *
+*   Copyright (C) 2019-2023 by Stefan Kebekus                             *
 *   stefan.kebekus@math.uni-freiburg.de                                   *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -62,11 +62,14 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
         }
     }
 
-    // Returns the bottom inset required to avoid system bars and display cutouts
+    // Returns the height of the screen, taking the Android split view
+    // into account
     public static double windowHeight() {
 	return m_instance.getWindow().getDecorView().getRootView().getHeight();
     }
 
+    // Returns the width of the screen, taking the Android split view
+    // into account
     public static double windowWidth() {
 	return m_instance.getWindow().getDecorView().getRootView().getWidth();
     }
