@@ -34,10 +34,10 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property int fontpixelsize: Application.font.pixelSize*fontScale
+    property real fontpixelsize: Application.font.pixelSize*fontScale
     property real formfactor: 2.5
-    property int buttonMinHeight: fontpixelsize*1.5
-    property int buttonMaxHeight: fontpixelsize*formfactor
+    property real buttonMinHeight: fontpixelsize*2
+    property real buttonMaxHeight: fontpixelsize*formfactor
 
     SequentialAnimation {
         id: blinkAnimation
@@ -443,6 +443,7 @@ Rectangle {
                 Layout.fillHeight: !hoursAndMinutes.isPortrait()
                 Layout.fillWidth: hoursAndMinutes.isPortrait()
 
+                Layout.preferredHeight: 4.2*hoursAndMinutes.buttonMaxHeight
                 Layout.preferredWidth: 5*hoursAndMinutes.buttonMaxHeight
                 Layout.minimumWidth: (hoursAndMinutes.width > 5*hoursAndMinutes.buttonMaxHeight) ? 5*hoursAndMinutes.buttonMaxHeight : hoursAndMinutes.width
                 Layout.maximumWidth: 8*hoursAndMinutes.buttonMaxHeight
