@@ -12,9 +12,10 @@ qt_add_qml_module(${PROJECT_NAME}
     URI gui
     VERSION 1.0
     QML_FILES
-    qml/main.qml
-    qml/LongTextDialog.qml
     qml/Calculator.qml
+    qml/CenteringDialog.qml
+    qml/LongTextDialog.qml
+    qml/main.qml
     SOURCES
     platformAdapter.cpp
     platformAdapter.h

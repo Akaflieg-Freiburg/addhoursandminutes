@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2019-2022 by Stefan Kebekus                             *
+ *   Copyright (C) 2019-2023 by Stefan Kebekus                             *
  *   stefan.kebekus@gmail.com                                              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,38 +20,20 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Material
 
 import gui
 
-CenteringDialog {
-    id: dialogMain
+Dialog {
+    parent: Overlay.overlay
 
-    // This is the text to be shown
-    property string text
+    property real avHeight: ((Qt.platform.os === "android") ? PlatformAdapter.wHeight : parent.height)-2*font.pixelSize-PlatformAdapter.safeInsetTop-PlatformAdapter.safeInsetBottom
+    property real avWidth: ((Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width)-2*font.pixelSize-PlatformAdapter.safeInsetLeft-PlatformAdapter.safeInsetRight
 
-    modal: true
-    
-    ScrollView{
-        anchors.fill: parent
-        contentWidth: availableWidth // Disable horizontal scrolling
+    // We center the dialog manually, taking care of safe insets
+    x: PlatformAdapter.safeInsetLeft + font.pixelSize + (avWidth-width)/2.0
+    y: PlatformAdapter.safeInsetTop + font.pixelSize + (avHeight-height)/2.0
 
-        // Delays evaluation and prevents binding loops
-        Binding on implicitHeight {
-            value: lbl.implicitHeight
-            delayed: true    // Prevent intermediary values from being assigned
-        }
+    height: Math.min(avHeight, implicitHeight)
+    width: Math.min(avWidth, 40*font.pixelSize)
 
-        clip: true
-
-        Label {
-            id: lbl
-            text: "<style>a:link { color: " + Material.accent + "; }</style>"+dialogMain.text
-            width: dialogMain.availableWidth
-            textFormat: Text.RichText
-            linkColor: Material.accent
-            wrapMode: Text.Wrap
-            onLinkActivated: (link) => Qt.openUrlExternally(link)
-        }
-    }
 }

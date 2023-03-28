@@ -37,6 +37,8 @@ PlatformAdapter::PlatformAdapter(QObject* parent)
 
     // Update the properties safeInsets* 100ms from now.
     timer->start();
+
+    safeInsetsinstance = this;
 }
 
 
@@ -176,5 +178,6 @@ JNIEXPORT void JNICALL Java_de_akaflieg_1freiburg_cavok_add_1hours_1and_1minutes
     }
 }
 
+} // extern "C"
+
 #endif
-}
