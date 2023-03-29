@@ -39,7 +39,7 @@
         <string>AppIcon</string>
 
         <key>UILaunchStoryboardName</key>
-        <string>LaunchScreen.storyboard</string>
+        <string>LaunchScreen</string>
 
         <key>CFBundleAllowMixedLocalizations</key>
         <true/>
