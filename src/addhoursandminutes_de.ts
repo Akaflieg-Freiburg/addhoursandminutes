@@ -297,7 +297,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
   &lt;li&gt;Ohne kommerzielles Interesse geschrieben&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Diese App ist auf einer ganzen Reihe von Platformen verfügbar. &lt;a href=&quot;https://akaflieg-freiburg.github.io/addhoursandminutes&apos;&quot;&gt;Besuchen Sie unsere Homepage.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Diese App ist auf einer ganzen Reihe von Platformen verfügbar. &lt;a href=&quot;https://akaflieg-freiburg.github.io/addhoursandminutes&quot;&gt;Besuchen Sie unsere Homepage.&lt;/a&gt;&lt;/p&gt;
 
 
 &lt;h3&gt;Autor&lt;/h3&gt;
