@@ -44,6 +44,15 @@
         <key>CFBundleAllowMixedLocalizations</key>
         <true/>
 
+        <key>ITSAppUsesNonExemptEncryption</key>
+        <false/>
+
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleLightContent</string>
+
+        <key>UIViewControllerBasedStatusBarAppearance</key>
+        <false/>
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
