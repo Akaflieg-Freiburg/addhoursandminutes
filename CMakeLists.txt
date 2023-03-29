@@ -53,11 +53,11 @@ endif()
 
 
 if(IOS)
-    set(BUNDLE_ID de.simonschneider.addhoursandminutes) #TODO: currently needed (probably for code signing)
+    set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
+    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "XXXXX")
 
     #set Icon
     set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
-
 endif()
 
 
