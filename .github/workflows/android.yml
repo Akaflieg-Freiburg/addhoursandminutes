@@ -33,7 +33,8 @@ jobs:
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
-        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platforms;android-31" "platform-tools" "build-tools;31.0.0"	
+        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platforms;android-31" "platform-tools" "build-tools;31.0.0"
+        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --uninstall "platforms;android-33-ext5"
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;23.1.7779620"
         echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 >> $GITHUB_ENV
     - name: Configure
