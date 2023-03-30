@@ -1,4 +1,4 @@
-name: Compile on Android
+name: Compile on Android-TESTING
 
 on:
   create:
