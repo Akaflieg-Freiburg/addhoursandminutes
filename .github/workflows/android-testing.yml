@@ -39,7 +39,15 @@ jobs:
     - name: Configure
       run: |
         mkdir -p build
-        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
+        cd build
+        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE:STRING=Debug
     - name: Compile
       run: |
-        $Qt6_DIR/bin/qt-cmake --build build
+        cd build
+        make
+        make apk
+    - uses: actions/upload-artifact@v3
+      if: github.event_name == 'push'
+      with:
+        name: Debug-APK
+        path: build/src/android-build//build/outputs/apk/debug/android-build-debug.apk
