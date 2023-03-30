@@ -42,4 +42,5 @@ jobs:
         $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Compile
       run: |
-        $Qt6_DIR/bin/qt-cmake --build build
+        cat build-android-debug/src/android-addhoursandminutes-deployment-settings.json
+        cmake --build build
