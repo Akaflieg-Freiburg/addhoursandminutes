@@ -39,6 +39,16 @@ Rectangle {
     property real buttonMinHeight: fontpixelsize*2
     property real buttonMaxHeight: fontpixelsize*formfactor
 
+    property bool isPortrait: {
+        if (width < 1.2*height) {
+            console.warn("Portrait Mode", width, height)
+            return true
+        }
+        console.warn("Landscape Mode", width, height)
+        return false
+    }
+
+
     SequentialAnimation {
         id: blinkAnimation
 
@@ -51,10 +61,6 @@ Rectangle {
 
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "teal"; duration: 50}
         PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
-    }
-
-    function isPortrait() {
-        return width < 1.2*height
     }
 
     function convertToHoursAndMinutes(minutes) {
@@ -320,7 +326,7 @@ Rectangle {
         rowSpacing: 0
         rows: 3
         columns: 3
-        flow: hoursAndMinutes.isPortrait() ? GridLayout.TopToBottom : GridLayout.LeftToRight
+        flow: hoursAndMinutes.isPortrait ? GridLayout.TopToBottom : GridLayout.LeftToRight
         anchors.fill: parent
 
         Item {
@@ -336,9 +342,9 @@ Rectangle {
 
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.bottomMargin: hoursAndMinutes.isPortrait() ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+PlatformAdapter.safeInsetBottom
+                anchors.bottomMargin: hoursAndMinutes.isPortrait ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+PlatformAdapter.safeInsetBottom
                 anchors.leftMargin: PlatformAdapter.safeInsetLeft
-                anchors.rightMargin: hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetRight : 0
+                anchors.rightMargin: hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetRight : 0
 
                 clip: true
 
@@ -388,7 +394,7 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
-                visible: hoursAndMinutes.isPortrait()
+                visible: hoursAndMinutes.isPortrait
                 source: "../../images/shadow_horizontal.png"
             }
 
@@ -399,7 +405,7 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
-                //                visible: !hoursAndMinutes.isPortrait()
+                //                visible: !hoursAndMinutes.isPortrait
                 source: "../../images/shadow_top.png"
             }
 
@@ -410,7 +416,7 @@ Rectangle {
                 anchors.bottom: lvContainer.bottom
                 anchors.right: lvContainer.right
                 width: hoursAndMinutes.fontpixelsize*0.25|0
-                visible: !hoursAndMinutes.isPortrait()
+                visible: !hoursAndMinutes.isPortrait
                 source: "../../images/shadow_vertical.png"
             }
 
@@ -418,8 +424,8 @@ Rectangle {
 
 
         GridLayout {
-            Layout.fillHeight: !hoursAndMinutes.isPortrait()
-            Layout.fillWidth: hoursAndMinutes.isPortrait()
+            Layout.fillHeight: !hoursAndMinutes.isPortrait
+            Layout.fillWidth: hoursAndMinutes.isPortrait
 
             columnSpacing: 0
             rowSpacing: 0
@@ -427,21 +433,21 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.preferredWidth: hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetLeft : 0
+                Layout.preferredWidth: hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetLeft : 0
                 color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.fillWidth: hoursAndMinutes.isPortrait()
+                Layout.fillWidth: hoursAndMinutes.isPortrait
                 color: "#e0e0e0"
             }
 
             GridLayout {
                 id: keypad
 
-                Layout.fillHeight: !hoursAndMinutes.isPortrait()
-                Layout.fillWidth: hoursAndMinutes.isPortrait()
+                Layout.fillHeight: !hoursAndMinutes.isPortrait
+                Layout.fillWidth: hoursAndMinutes.isPortrait
 
                 Layout.preferredHeight: 4.2*hoursAndMinutes.buttonMaxHeight
                 Layout.preferredWidth: 5*hoursAndMinutes.buttonMaxHeight
@@ -455,14 +461,14 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     Layout.columnSpan: 3
-                    Layout.minimumHeight: !hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetBottom : 0
+                    Layout.minimumHeight: !hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetBottom : 0
                     color: "#e0e0e0"
                 }
 
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.minimumHeight: !hoursAndMinutes.isPortrait() ? PlatformAdapter.safeInsetBottom : 0
+                    Layout.minimumHeight: !hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetBottom : 0
                     color: "teal"
                 }
 
@@ -780,7 +786,7 @@ Rectangle {
             Rectangle {
                 Layout.columnSpan: 2
                 Layout.fillHeight: true
-                Layout.fillWidth: hoursAndMinutes.isPortrait()
+                Layout.fillWidth: hoursAndMinutes.isPortrait
                 color: "teal"
             }
 
