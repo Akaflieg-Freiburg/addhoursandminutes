@@ -2,6 +2,8 @@
 #include <QScreen>
 #include <QTimer>
 #include <chrono>
+#include <iostream>
+#include <ostream>
 
 #include "platformAdapter.h"
 
@@ -102,6 +104,8 @@ void PlatformAdapter::updateSafeInsets()
     safeInsetLeft = primaryScreen->availableGeometry().x();
     safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
     safeInsetTop = primaryScreen->availableGeometry().y();
+
+    std::cout << "Primary Screen: " << primaryScreen->size().width() << " " << primaryScreen->availableSize().height() << "\n";
 #endif
     // Update properties and emit notification signals
     if (safeInsetBottom != _safeInsetBottom)
