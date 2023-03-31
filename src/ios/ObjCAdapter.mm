@@ -22,3 +22,21 @@ void ObjCAdapter::vibrateError() {
 	[myGen notificationOccurred: UINotificationFeedbackTypeError];*/
     AudioServicesPlayAlertSound(1107);
 }
+
+
+double ObjCAdapter::safeAreaTopInset() {
+    UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+    return window.safeAreaInsets.top;
+}
+double ObjCAdapter::safeAreaLeftInset() {
+    UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+    return window.safeAreaInsets.left;
+}
+double ObjCAdapter::safeAreaBottomInset() {
+    UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+    return window.safeAreaInsets.bottom;
+}
+double ObjCAdapter::safeAreaRightInset() {
+    UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
+    return window.safeAreaInsets.right;
+}

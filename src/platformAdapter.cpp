@@ -46,6 +46,8 @@ PlatformAdapter::PlatformAdapter(QObject* parent)
 
 void PlatformAdapter::updateSafeInsets()
 {
+    std::cout << "Updating insets";
+
     auto safeInsetBottom {_safeInsetBottom};
     auto safeInsetLeft {_safeInsetLeft};
     auto safeInsetRight {_safeInsetRight};
@@ -104,6 +106,12 @@ void PlatformAdapter::updateSafeInsets()
     safeInsetLeft = primaryScreen->availableGeometry().x();
     safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
     safeInsetTop = primaryScreen->availableGeometry().y();
+
+    safeInsetTop = ObjCAdapter::safeAreaTopInset();
+    safeInsetLeft = ObjCAdapter::safeAreaLeftInset();
+    safeInsetBottom = ObjCAdapter::safeAreaBottomInset();
+    safeInsetRight = ObjCAdapter::safeAreaRightInset();
+    std::cout << "Safe Area Top: " << safeInsetTop;
 
     std::cout << "Primary Screen: " << primaryScreen->size().width() << " " << primaryScreen->availableSize().height() << "\n";
 #endif
