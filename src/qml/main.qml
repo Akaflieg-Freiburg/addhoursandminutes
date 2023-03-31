@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 
-import Qt.labs.settings
+import QtCore
 import QtQuick
 import QtQuick.Controls
 
@@ -39,6 +39,8 @@ ApplicationWindow {
         property alias width: window.width
         property alias height: window.height
     }
+
+    title: qsTr("Add Times")
 
     flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? (Qt.MaximizeUsingFullscreenGeometryHint|Qt.Window) : Qt.Window
 
