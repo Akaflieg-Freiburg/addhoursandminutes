@@ -23,7 +23,7 @@ pragma ComponentBehavior: Bound
 import gui
 
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 
 Rectangle {
