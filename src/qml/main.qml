@@ -45,8 +45,10 @@ ApplicationWindow {
     visible: true
 
     header: ToolBar {
+        id: toolBar
 
         height: toolButton.height+PlatformAdapter.safeInsetTop
+        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.wWidth
 
         background: Rectangle { color: "teal" }
 
@@ -82,7 +84,8 @@ ApplicationWindow {
     }
 
     Calculator {
-        anchors.fill: parent
+        height: (Qt.platform.os === "android") ? (PlatformAdapter.wHeight-toolBar.height) : parent.height
+        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width
 
         focus: true;
     }

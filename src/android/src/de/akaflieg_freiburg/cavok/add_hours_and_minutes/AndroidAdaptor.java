@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2019-2022 by Stefan Kebekus                             *
+*   Copyright (C) 2019-2023 by Stefan Kebekus                             *
 *   stefan.kebekus@math.uni-freiburg.de                                   *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -28,7 +28,8 @@ import android.view.*;
 public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity {
     private static AndroidAdaptor m_instance;
     private static Vibrator m_vibrator;
-
+    public static native void onWindowSizeChanged();
+    
     public AndroidAdaptor() 
     {
         m_instance = this;
@@ -38,7 +39,21 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-
+	
+	// Be informed when the window size changes, and call the C++ method
+	// onWindowSizeChanged() whenever it changes. The window size changes
+	// when the user starts/end the split view mode, or when the user drags
+	// the slider in order to adjust the relative size of the two windows
+	// shown.
+	View rootView = getWindow().getDecorView().getRootView();
+	rootView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+		@Override
+		public void onLayoutChange(View view, int left, int top, int right, int bottom,
+					   int oldLeft, int oldTop, int oldRight, int oldBottom) {
+		    onWindowSizeChanged();
+		}
+	    });
+	
         // Set fullscreen
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 
@@ -47,6 +62,18 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
         }
     }
 
+    // Returns the height of the screen, taking the Android split view
+    // into account
+    public static double windowHeight() {
+	return m_instance.getWindow().getDecorView().getRootView().getHeight();
+    }
+
+    // Returns the width of the screen, taking the Android split view
+    // into account
+    public static double windowWidth() {
+	return m_instance.getWindow().getDecorView().getRootView().getWidth();
+    }
+    
     // Returns the bottom inset required to avoid system bars and display cutouts
     public static double safeInsetBottom() 
     {
