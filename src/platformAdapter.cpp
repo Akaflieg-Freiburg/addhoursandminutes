@@ -101,19 +101,10 @@ void PlatformAdapter::updateSafeInsets()
 #endif
 
 #if defined(Q_OS_IOS)
-    auto primaryScreen = QGuiApplication::primaryScreen();
-    safeInsetBottom = primaryScreen->size().height() - primaryScreen->availableGeometry().height() - primaryScreen->availableGeometry().y();
-    safeInsetLeft = primaryScreen->availableGeometry().x();
-    safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
-    safeInsetTop = primaryScreen->availableGeometry().y();
-
     safeInsetTop = ObjCAdapter::safeAreaTopInset();
     safeInsetLeft = ObjCAdapter::safeAreaLeftInset();
     safeInsetBottom = ObjCAdapter::safeAreaBottomInset();
     safeInsetRight = ObjCAdapter::safeAreaRightInset();
-    std::cout << "Safe Area Top: " << safeInsetTop;
-
-    std::cout << "Primary Screen: " << primaryScreen->size().width() << " " << primaryScreen->availableSize().height() << "\n";
 #endif
     // Update properties and emit notification signals
     if (safeInsetBottom != _safeInsetBottom)

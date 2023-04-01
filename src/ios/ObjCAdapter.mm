@@ -24,6 +24,7 @@ void ObjCAdapter::vibrateError() {
 }
 
 
+//TODO: Reduce redundant code
 double ObjCAdapter::safeAreaTopInset() {
     UIWindow *window = UIApplication.sharedApplication.windows.firstObject;
     return window.safeAreaInsets.top;

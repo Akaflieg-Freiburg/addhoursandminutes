@@ -40,12 +40,7 @@ Rectangle {
     property real buttonMaxHeight: fontpixelsize*formfactor
 
     property bool isPortrait: {
-        if (width < 1.2*height) {
-            console.warn("Portrait Mode", width, height)
-            return true
-        }
-        console.warn("Landscape Mode", width, height)
-        return false
+        return width < 1.2*height
     }
 
 
