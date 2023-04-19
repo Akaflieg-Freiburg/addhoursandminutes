@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Basic information about our project
 project(addhoursandminutes VERSION 1.3.4)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
+set(DISPLAY_NAME "Add Times")
 set(PROJECT_DATE 2023-3-28)
 math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
@@ -52,11 +53,11 @@ endif()
 
 
 if(IOS)
-    set(BUNDLE_ID de.simonschneider.addhoursandminutes) #TODO: currently needed (probably for code signing)
+    set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
+    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "XXXXX")
 
     #set Icon
     set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
-
 endif()
 
 

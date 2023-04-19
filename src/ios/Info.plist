@@ -8,6 +8,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
+        <key>UIUserInterfaceStyle</key>
+        <string>Light</string>
+
 	<key>CFBundleName</key>
 	<string></string>
 
@@ -15,7 +18,7 @@
         <string>${DISPLAY_NAME}</string>
 
 	<key>CFBundleIdentifier</key>
-        <string>${BUNDLE_ID}</string>
+        <string>${PRODUCT_BUNDLE_IDENTIFIER}</string>
 
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -24,7 +27,7 @@
 	<string>0.0.1</string>
 
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.1</string>
+        <string>${PROJECT_VERSION}</string>
 
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
@@ -39,10 +42,19 @@
         <string>AppIcon</string>
 
         <key>UILaunchStoryboardName</key>
-        <string>LaunchScreen.storyboard</string>
+        <string>LaunchScreen</string>
 
         <key>CFBundleAllowMixedLocalizations</key>
         <true/>
+
+        <key>ITSAppUsesNonExemptEncryption</key>
+        <false/>
+
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleLightContent</string>
+
+        <key>UIViewControllerBasedStatusBarAppearance</key>
+        <false/>
 
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

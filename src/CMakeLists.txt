@@ -21,12 +21,6 @@ qt_add_qml_module(${PROJECT_NAME}
     platformAdapter.h
 )
 
-qt_add_resources(${PROJECT_NAME} config
-    PREFIX "/"
-    FILES
-    qtquickcontrols2.conf
-)
-
 qt_add_resources(${PROJECT_NAME} "imageresources"
     PREFIX "/"
     FILES

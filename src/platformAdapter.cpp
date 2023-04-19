@@ -2,6 +2,8 @@
 #include <QScreen>
 #include <QTimer>
 #include <chrono>
+#include <iostream>
+#include <ostream>
 
 #include "platformAdapter.h"
 
@@ -44,6 +46,8 @@ PlatformAdapter::PlatformAdapter(QObject* parent)
 
 void PlatformAdapter::updateSafeInsets()
 {
+    std::cout << "Updating insets";
+
     auto safeInsetBottom {_safeInsetBottom};
     auto safeInsetLeft {_safeInsetLeft};
     auto safeInsetRight {_safeInsetRight};
@@ -97,11 +101,10 @@ void PlatformAdapter::updateSafeInsets()
 #endif
 
 #if defined(Q_OS_IOS)
-    auto primaryScreen = QGuiApplication::primaryScreen();
-    safeInsetBottom = primaryScreen->size().height() - primaryScreen->availableGeometry().height() - primaryScreen->availableGeometry().y();
-    safeInsetLeft = primaryScreen->availableGeometry().x();
-    safeInsetRight =  primaryScreen->size().width() - primaryScreen->availableGeometry().width() - primaryScreen->availableGeometry().x();
-    safeInsetTop = primaryScreen->availableGeometry().y();
+    safeInsetTop = ObjCAdapter::safeAreaTopInset();
+    safeInsetLeft = ObjCAdapter::safeAreaLeftInset();
+    safeInsetBottom = ObjCAdapter::safeAreaBottomInset();
+    safeInsetRight = ObjCAdapter::safeAreaRightInset();
 #endif
     // Update properties and emit notification signals
     if (safeInsetBottom != _safeInsetBottom)
