@@ -20,7 +20,7 @@ jobs:
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.4.*'
+        version: '6.5.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
@@ -28,7 +28,7 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         target: 'android'
-        version: '6.4.*'
+        version: '6.5.*'
         arch: 'android_arm64_v8a'
     - name: Install Additional Software
       run: |
