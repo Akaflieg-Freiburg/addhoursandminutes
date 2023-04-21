@@ -390,7 +390,7 @@ Rectangle {
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
                 visible: hoursAndMinutes.isPortrait
-                source: "../../images/shadow_horizontal.png"
+                source: "/images/shadow_horizontal.png"
             }
 
             Image {
@@ -401,7 +401,7 @@ Rectangle {
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
                 //                visible: !hoursAndMinutes.isPortrait
-                source: "../../images/shadow_top.png"
+                source: "/images/shadow_top.png"
             }
 
             Image {
@@ -412,7 +412,7 @@ Rectangle {
                 anchors.right: lvContainer.right
                 width: hoursAndMinutes.fontpixelsize*0.25|0
                 visible: !hoursAndMinutes.isPortrait
-                source: "../../images/shadow_vertical.png"
+                source: "/images/shadow_vertical.png"
             }
 
         }

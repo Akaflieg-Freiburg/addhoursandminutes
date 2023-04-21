@@ -62,9 +62,9 @@ endif()
 
 
 # Include required packages
-find_package(Qt6 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
 qt_standard_project_setup()
-
+qt_policy(SET QTP0001 NEW)
 
 # Subdirectories
 add_subdirectory(generatedSources)

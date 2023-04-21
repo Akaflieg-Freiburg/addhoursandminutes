@@ -70,7 +70,7 @@ auto main(int argc, char *argv[]) -> int
 #endif
 
     // Now load the QML code
-    engine.load(QStringLiteral("qrc:/gui/qml/main.qml"));
+    engine.load(QStringLiteral("qrc:/qt/qml/gui/qml/main.qml"));
 
 #ifdef Q_OS_ANDROID
     QNativeInterface::QAndroidApplication::hideSplashScreen();
