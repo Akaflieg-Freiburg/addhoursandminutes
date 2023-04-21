@@ -50,7 +50,7 @@ ApplicationWindow {
         id: toolBar
 
         height: toolButton.height+PlatformAdapter.safeInsetTop
-        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.wWidth
+        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width
 
         background: Rectangle { color: "teal" }
 
@@ -95,8 +95,10 @@ ApplicationWindow {
     LongTextDialog {
         id: helpDialog
 
-        text: qsTr(`
-<h4>Enter times</h4>
+        // qmllint disable
+        title: qsTr("Help")
+        text: qsTr("
+<h4>Enter Times</h4>
 
 <p>In order to enter the time <strong>1 hour and 23 minutes</strong>, simply press the keys
 <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p>
@@ -104,7 +106,8 @@ ApplicationWindow {
 <h4>Reset</h4>
 
 <p>To reset the calculator, press and hold the key <strong>C</strong>.</p>
-`)
+")
+        // qmllint enable
 
         standardButtons: DialogButtonBox.Ok
     }
@@ -112,9 +115,9 @@ ApplicationWindow {
     LongTextDialog {
         id: infoDialog
 
-        text: qsTr(`
-<h3>Add Times</h3>
-
+        // qmllint disable
+        title: qsTr("Add Times")
+        text: qsTr("
 <h4>Version %1</h4>
 
 <p>This is a simple calculator app that adds times given in hours and minutes.
@@ -126,7 +129,7 @@ ApplicationWindow {
 <li>Simple, elegant and functional</li>
 <li>No ads</li>
 <li>No commerical 'pro' version</li>
-<li>Does not spy on you</li>
+<li><a href='https://akaflieg-freiburg.github.io/addhoursandminutes/privacy'>Does not spy on you</a></li>
 <li><a href='https://github.com/Akaflieg-Freiburg/addhoursandminutes'>100% Open Source</a></li>
 <li>Written without commercial interest</li>
 </ul>
@@ -156,7 +159,8 @@ Public License V3</a>.</p>
 
 <p>This program builds on a number of open source libraries, including
 <a href='https://www.qt.io'>Qt</a>.</p>
-`).arg(projectVersion)
+").arg(projectVersion)
+        // qmllint enable
 
         standardButtons: DialogButtonBox.Ok
     }

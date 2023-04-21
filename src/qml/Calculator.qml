@@ -34,7 +34,7 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property real fontpixelsize: Application.font.pixelSize*fontScale
+    property real fontpixelsize: Application.font.pixelSize*fontScale // qmllint disable
     property real formfactor: 2.5
     property real buttonMinHeight: fontpixelsize*2
     property real buttonMaxHeight: fontpixelsize*formfactor

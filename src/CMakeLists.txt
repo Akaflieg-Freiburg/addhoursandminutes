@@ -45,6 +45,10 @@ qt_add_resources(${PROJECT_NAME} "programicons"
 qt_add_translations(${PROJECT_NAME}
     TS_FILES
     addhoursandminutes_de.ts
+    addhoursandminutes_es.ts
+    addhoursandminutes_fr.ts
+    addhoursandminutes_it.ts
+    addhoursandminutes_pl.ts
 )
 
 
@@ -53,7 +57,6 @@ qt_add_translations(${PROJECT_NAME}
 #
 
 if(ANDROID)
-
     # Icons
     file(COPY ${CMAKE_SOURCE_DIR}/generatedSources/src/android DESTINATION .)
 
@@ -65,7 +68,6 @@ if(ANDROID)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
-
 endif()
 
 
@@ -85,7 +87,6 @@ if(IOS)
 
     #Launchscreen
     set_target_properties(${PROJECT_NAME} PROPERTIES  QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
-
 
     #Platform specific functions
     target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.mm)
