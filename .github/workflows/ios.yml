@@ -48,4 +48,4 @@ jobs:
     - name: Compile
       run: |
         cd build
-        cmake --build .
+        cmake --build . -- -allowProvisioningUpdates
