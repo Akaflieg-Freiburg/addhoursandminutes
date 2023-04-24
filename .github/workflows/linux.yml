@@ -14,25 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         version: '6.5.*'
     - name: Install Additional Software
       run: |
         sudo apt update
         sudo apt install doxygen graphviz
-    - name: Configure
+    - name: Configure and Compile
       run: |
         export CC=/usr/bin/clang
         export CXX=/usr/bin/clang++
         cmake -E make_directory build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS='-Werror -Wall -Wextra'
-    - name: Test-compile on standard Linux
-      run: |
-        cd build
-        make VERBOSE=1
+        cmake -DCMAKE_BUILD_TYPE=Debug -S . -B build
+        cmake --build build

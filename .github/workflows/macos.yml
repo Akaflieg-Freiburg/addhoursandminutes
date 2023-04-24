@@ -14,19 +14,17 @@ jobs:
     runs-on: macos-12
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         version: '6.5.*'
     - name: Configure
       run: |
         cmake -E make_directory build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Debug
+        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Compile
       run: |
-        cd build
-        make VERBOSE=1
+        cmake --build build
