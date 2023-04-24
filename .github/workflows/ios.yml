@@ -4,7 +4,7 @@ on:
   create:
     branches: [ master ]
   push:
-    branches: [ master ]
+    branches: [ master, working ]
   pull_request:
     branches: [ master ]
 
@@ -18,31 +18,33 @@ jobs:
     runs-on: macos-12
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt for Desktop
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
-        version: '6.5.0'
+        version: '6.5.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
     - name: Install Qt for iOS
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         target: 'ios'
-        version: '6.5.0'
+        version: '6.5.*'
     - name: Setup env
       run: |
         export PATH=$Qt6_DIR/bin:$PATH
         ln -s /Users/runner/work/${{env.APPLICATION}}/Qt/6.5.0/macos /Users/runner/work/${{env.APPLICATION}}/Qt/6.5.0/clang_64
         qmake --version
     - name: Configure
+      env:
+        XADT: ${{ secrets.XCODE_ATTRIBUTE_DEVELOPMENT_TEAM }}
       run: |
         cmake -E make_directory build
         cd build
-        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE=Debug
+        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM=$XADT
     - name: Compile
       run: |
         cd build

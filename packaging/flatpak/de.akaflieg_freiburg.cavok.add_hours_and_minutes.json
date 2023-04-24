@@ -11,12 +11,8 @@
         "--device=dri"
     ],
     "cleanup": [
-        "include",
-        "lib/*.a",
-        "lib/*.prl",
-        "lib/cmake",
-        "lib/debug",
-        "libexec"
+        "/app/qtTemporary",
+        "/qtTemporary"
     ],
     "modules": [
         {
@@ -31,6 +27,7 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
                 "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
                 "-DQT_BUILD_TESTS_BY_DEFAULT=OFF"
             ]
@@ -46,8 +43,9 @@
             ],
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
-                "-DCMAKE_BUILD_TYPE:STRING=Release"
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary"
             ]
         },
         {
@@ -61,8 +59,9 @@
             ],
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
                 "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
                 "-DQT_BUILD_TESTS_BY_DEFAULT=OFF",
                 "-DFEATURE_assistant=ON",
@@ -93,8 +92,10 @@
             ],
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
-                "-DCMAKE_BUILD_TYPE:STRING=Release"
+		"-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary"
+
             ]
         },
         {
@@ -108,11 +109,12 @@
             ],
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
                 "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
+		"-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
+                "-DFEATURE_qml_debug=OFF",
                 "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
-                "-DQT_BUILD_TESTS_BY_DEFAULT=OFF",
-                "-DFEATURE_qml_debug=OFF"
+                "-DQT_BUILD_TESTS_BY_DEFAULT=OFF"
            ]
         },
         {
@@ -127,8 +129,8 @@
             ],
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_FIND_ROOT_PATH:PATH=/app",
-                "-DCMAKE_BUILD_TYPE:STRING=Release"
+                "-DCMAKE_BUILD_TYPE:STRING=Release",
+                "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary"
             ]
         }
     ]
