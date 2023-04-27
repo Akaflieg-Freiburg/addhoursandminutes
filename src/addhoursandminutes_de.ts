@@ -95,11 +95,11 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dies ist eine kleine Taschenrechner-App, mit der Sie Zeiten zusammenrechnen können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.&lt;/p&gt;
 
-&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
+&lt;ul&gt;
   &lt;li&gt;Einfach, elegant und funktional&lt;/li&gt;
   &lt;li&gt;Werbefrei&lt;/li&gt;
   &lt;li&gt;Keine kostenpflichtige &quot;pro&quot; Version&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.spiegel.de/netzwelt/apps/facebook-sdk-android-apps-geben-heikle-interessen-preis-a-1242898.html&quot;&gt;Spioniert sie nicht aus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.spiegel.de/netzwelt/apps/facebook-sdk-android-apps-geben-heikle-interessen-preis-a-1242898.html&quot;&gt;Spioniert Sie nicht aus&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/Akaflieg-Freiburg/addhoursandminutes&quot;&gt;100% Open Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Ohne kommerzielles Interesse geschrieben&lt;/li&gt;
 &lt;/ul&gt;

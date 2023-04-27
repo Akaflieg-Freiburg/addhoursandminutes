@@ -6,18 +6,30 @@
   <project_license>GPL-3.0+</project_license>
   <name>Add Times</name>
   <name xml:lang="de">Rechnen mit Zeiten</name>
+  <name xml:lang="es"></name>
+  <name xml:lang="fr"></name>
+  <name xml:lang="it"></name>
+  <name xml:lang="pl">Dodaj czasy</name>
   <summary>Simple calculator for adding hours and minutes</summary>
   <summary xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</summary>
+  <summary xml:lang="es"></summary>
+  <summary xml:lang="fr"></summary>
+  <summary xml:lang="it"></summary>
+  <summary xml:lang="pl">Prosty kalkulator do zliczania godzin i minut</summary>
   <description>
     <p>This calculator adds times given in hours and minutes.  It helps with the
     recording of machine running times, with the addition of flight times for
     pilots' flight logs, or driving times of truck drivers.</p>
-  </description>
-  <description xml:lang="de">
-    <p>Dieser Rechner addiert Zeiten, die in Stunden und Minuten gegeben sind.
-    Er hilft bei der Erfassung von Maschinenlaufzeiten, beim Zusammenrechnen von
-    Flugzeiten für die Flugbücher von Piloten, oder bei Lenkzeiten von
-    LKW-Fahrern.</p>
+    <p xml:lang="de">Dieser Rechner addiert Zeiten, die in Stunden und Minuten
+    gegeben sind.  Er hilft bei der Erfassung von Maschinenlaufzeiten, beim
+    Zusammenrechnen von Flugzeiten für die Flugbücher von Piloten, oder bei
+    Lenkzeiten von LKW-Fahrern.</p>
+    <p xml:lang="es"></p>
+    <p xml:lang="fr"></p>
+    <p xml:lang="it"></p>
+    <p xml:lang="pl">Ten kalkulator pozwala na zliczanie czasów podanych w
+    godinach i minutach. Pomaga przy zapisywaniu czasu lotu samolotem, z dodawaniem
+    czasu lotu ciągłego pilotów lub czasu jazdy kierowców ciężarówek.</p>
   </description>
   <content_rating type="oars-1.1" />
   <releases>
@@ -41,4 +53,8 @@
   <provides>
     <binary>addhoursandminutes</binary>
   </provides>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
 </component>
