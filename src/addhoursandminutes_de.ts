@@ -95,11 +95,11 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Dies ist eine kleine Taschenrechner-App, mit der Sie Zeiten zusammenrechnen können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.&lt;/p&gt;
 
-&lt;ul&gt;
+&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
   &lt;li&gt;Einfach, elegant und funktional&lt;/li&gt;
   &lt;li&gt;Werbefrei&lt;/li&gt;
   &lt;li&gt;Keine kostenpflichtige &quot;pro&quot; Version&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.spiegel.de/netzwelt/apps/facebook-sdk-android-apps-geben-heikle-interessen-preis-a-1242898.html&quot;&gt;Spioniert Sie nicht aus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://akaflieg-freiburg.github.io/addhoursandminutes/privacy&quot;&gt;Spioniert Sie nicht aus&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/Akaflieg-Freiburg/addhoursandminutes&quot;&gt;100% Open Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Ohne kommerzielles Interesse geschrieben&lt;/li&gt;
 &lt;/ul&gt;
@@ -124,8 +124,7 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3&gt;Danksagung&lt;/h3&gt;
 
-&lt;p&gt;Dieses Programm baut auf einer Reihe von open-source Programmbibliotheken
-  auf, unter Anderem auf &lt;a href=&quot;https://www.qt.io&quot;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Dieses Programm baut auf einer Reihe von open-source Programmbibliotheken auf, unter Anderem auf &lt;a href=&quot;https://www.qt.io&quot;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
 </translation>
     </message>
     <message>
