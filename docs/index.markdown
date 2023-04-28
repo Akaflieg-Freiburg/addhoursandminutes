@@ -16,10 +16,10 @@ header:
       
 ---
 
-<figure style="width: 350px" class="align-right">
+<figure style="width: 200px" class="align-right">
   <iframe
     src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html"
-    width="350" 
+    width="200" 
     height="450" 
     name="Add Times"
     scrolling="no"
