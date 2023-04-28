@@ -2,11 +2,11 @@ name: Compile on iOS
 
 on:
   create:
-    branches: [ master ]
+    branches: [ ios ]
   push:
-    branches: [ master, working ]
+    branches: [ ios ]
   pull_request:
-    branches: [ master ]
+    branches: [ ios ]
 
 
 env:
