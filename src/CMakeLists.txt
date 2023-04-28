@@ -60,11 +60,12 @@ if(ANDROID)
     # Icons
     file(COPY ${CMAKE_SOURCE_DIR}/generatedSources/src/android DESTINATION .)
 
+    # Copy files into the Android directories
+    file(COPY ${CMAKE_SOURCE_DIR}/src/android DESTINATION .)
+
     # Configure files
     configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
-
-    # Java files
-    file(COPY ${CMAKE_SOURCE_DIR}/src/android DESTINATION .)
+    configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
