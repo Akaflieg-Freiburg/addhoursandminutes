@@ -13,6 +13,8 @@ header:
   actions:
     - label: "Get it on Google Play"
       url: "https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes"
+    - label: "Download on the App Store"
+      url: "https://apps.apple.com/de/app/rechnen-mit-zeiten/id6446039266"
       
 ---
 
