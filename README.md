@@ -18,6 +18,6 @@ not collect user data.
 
 - Run the app [directly in your browser](https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html)
 
-- Download the app for Android on [Google Play](https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes).
+- Download the app for Android on [Google Play](https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes) or on the [App Store](https://apps.apple.com/de/app/rechnen-mit-zeiten/id6446039266).
 
 - Download the app for Linux Desktop systems on [flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes), or find the app in the software manager on your computer.
