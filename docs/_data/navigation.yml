@@ -2,7 +2,5 @@
 main:
   - title: "Download"
     url: /download
-  - title: "Screenshots"
-    url: /screenshots
   - title: "Acknowledgements"
     url: /acknowledgements
