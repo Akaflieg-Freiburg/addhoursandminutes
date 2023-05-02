@@ -8,6 +8,8 @@ permalink: /download/
   <a href='https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
   <a href="https://apps.apple.com/us/app/add-times/id6446039266?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 8px; width: 150px; height: 50px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1682812800" alt="Download on the App Store" style="border-radius: 8px; width: 150px; height: 50px;"></a>
+
+  <a href='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img width='150px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 </figure>
 
 ### Mobile App
@@ -15,11 +17,6 @@ permalink: /download/
 **Add Times** is available for free on [Google
 Play](https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 and the [App Store](https://apps.apple.com/us/app/add-times/id6446039266).
-
-
-<figure style="width: 150px" class="align-right">
-  <a href='https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes'><img width='150px' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
-</figure>
 
 ### Linux Desktop
 
