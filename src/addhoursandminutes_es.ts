@@ -5,13 +5,14 @@
     <name>C++ Main Program</name>
     <message>
         <source>Add Times</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar tiempos</translation>
     </message>
     <message>
         <location filename="main.cpp" line="+49"/>
         <source>Add Times</source>
         <comment>Application Name</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Nombre de la aplicación</translatorcomment>
+        <translation>Agregar tiempos</translation>
     </message>
 </context>
 <context>
@@ -20,7 +21,7 @@
         <location filename="qml/Calculator.qml" line="+203"/>
         <location/>
         <source>Overflow</source>
-        <translation type="unfinished"></translation>
+        <translation>Overflow</translation>
     </message>
 </context>
 <context>
@@ -30,20 +31,20 @@
         <location line="+76"/>
         <location/>
         <source>Add Times</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar tiempos</translation>
     </message>
     <message>
         <location line="-44"/>
         <location line="+24"/>
         <location/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda</translation>
     </message>
     <message>
         <location line="-18"/>
         <location/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <location line="+39"/>
@@ -90,7 +91,48 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This program builds on a number of open source libraries, including
 &lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;h4&gt;Versión %1&lt;/h4&gt;
+
+&lt;p&gt;Esta es una sencilla aplicación de calculo que suma tiempos dados en horas y minutos.
+Puede ayudar con el registro de los tiempos de funcionamiento de la máquina, con la adición de
+ tiempos de vuelo en el registro de vuelo del piloto, o sus tiempos de conducción como conductor de camión
+&lt;/p&gt;
+
+&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
+&lt;li&gt;SSimple, elegante y funcional&lt;/li&gt;
+&lt;li&gt;Sin anuncios&lt;/li&gt;
+&lt;li&gt;Sin versión comercial &apos;pro&apos;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&apos;https://akaflieg-freiburg.github.io/addhoursandminutes/privacy&apos;&gt;No te espía&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&apos;https://github.com/Akaflieg-Freiburg/addhoursandminutes&apos;&gt;100% Open Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Escrito sin interés comercialt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Esta aplicación está disponible para una variedad de
+plataformas&lt;a href=&apos;https://akaflieg-freiburg.github.io/addhoursandminutes&apos;&gt;
+Eche un vistazo a la página de inicio.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Autor&lt;/h3&gt;
+
+&lt;p&gt;
+Stefan Kebekus&lt;br&gt;
+Wintererstraße 77&lt;br&gt;
+79104 Freiburg im Breisgau&lt;br&gt;
+Germany
+&lt;/p&gt;
+
+
+&lt;h3&gt;Licencia/h3&gt;
+
+&lt;p&gt;Este programa tiene licencia bajo el
+&lt;a href=&apos;https://www.gnu.org/licenses/gpl-3.0-standalone.html&apos;&gt;Licencia Pública General de GNU V3&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;h3&gt;Agradecimientos&lt;/h3&gt;
+
+&lt;p&gt;Este programa se basa en varias bibliotecas de código abierto, incluidas
+&lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
+</translation>
     </message>
     <message>
         <location line="-20"/>
@@ -112,7 +154,14 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To reset the calculator, press and hold the key &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;
 </oldsource>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h4&gt;Ingresar horas&lt;/h4&gt;
+
+&lt;p&gt;Para ingresar el tiempo &lt;strong&gt;1 hora y 23 minutos&lt;/strong&gt;, simplemente presione las teclas
+&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; y &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Restablecer&lt;/h4&gt;
+
+&lt;p&gt;Para reiniciar la calculadora, mantenga presionada la tecla &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
         <source>
@@ -160,7 +209,48 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This program builds on a number of open source libraries, including
 &lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;Agregar tiempos&lt;/h3&gt;
+
+&lt;h4&gt;Versión %1&lt;/h4&gt;
+
+&lt;p&gt;Esta es una sencilla aplicación de calculo que suma tiempos dados en horas y minutos.
+ Puede ayudar con el registro de los tiempos de funcionamiento de la máquina, con la adición de
+ tiempos de vuelo en el registro de vuelo del piloto, o sus tiempos de conducción como conductor de camión&lt;/p&gt;
+
+&lt;ul style=&apos;margin-left:-25px;&apos;&gt;
+&lt;li&gt;SSimple, elegante y funcional&lt;/li&gt;
+&lt;li&gt;Sin anuncios&lt;/li&gt;
+&lt;li&gt;Sin versión comercial &apos;pro&apos;&lt;/li&gt;
+&lt;li&gt;&lt;a&gt;No te espía&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&apos;https://github.com/Akaflieg-Freiburg/addhoursandminutes&apos;&gt;100% Open Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Escrito sin interés comercialt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Esta aplicación está disponible para una variedad de
+plataformas&lt;a href=&apos;https://akaflieg-freiburg.github.io/addhoursandminutes&apos;&gt;
+Eche un vistazo a la página de inicio.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Autor&lt;/h3&gt;
+
+&lt;p&gt;
+Stefan Kebekus&lt;br&gt;
+Wintererstraße 77&lt;br&gt;
+79104 Freiburg im Breisgau&lt;br&gt;
+Germany
+&lt;/p&gt;
+
+
+&lt;h3&gt;Licencia/h3&gt;
+
+&lt;p&gt;Este programa tiene licencia bajo el
+&lt;a href=&apos;https://www.gnu.org/licenses/gpl-3.0-standalone.html&apos;&gt;Licencia Pública General de GNU V3&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;h3&gt;Agradecimientos&lt;/h3&gt;
+
+&lt;p&gt;Este programa se basa en varias bibliotecas de código abierto, incluidas
+&lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
+</translation>
     </message>
     <message>
         <source>
@@ -173,11 +263,18 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To reset the calculator, press and hold the key &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;
 </source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h4&gt;Ingresar horas&lt;/h4&gt;
+
+&lt;p&gt;Para ingresar el tiempo &lt;strong&gt;1 hora y 23 minutos&lt;/strong&gt;, simplemente presione las teclas
+&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; y &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Restablecer&lt;/h4&gt;
+
+&lt;p&gt;Para reiniciar la calculadora, mantenga presionada la tecla &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
         <source>Help…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda</translation>
     </message>
 </context>
 </TS>
