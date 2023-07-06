@@ -4,12 +4,10 @@
 
 # Add Times
 
-<img align="right"
-src="https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/phone.png"
-width="200">**Add Times** is a simple calculator app that adds times given in
+**Add Times** is a simple calculator app that adds times given in
 hours and minutes. It helps with the recording of machine running times, with
 the addition of flight times in your pilots' flight log, or your driving times
-as a truck driver. The app is free, open source, 100% non-commercial and does
+as a truck driver. The app is free, open-source, 100% non-commercial, and does
 not collect user data.
 
 ## Information for users
