@@ -4,7 +4,7 @@ on:
   create:
     branches: [ master, working ]
   push:
-    branches: [ master, working ]
+    branches: [ main, feature/actions ]
   pull_request:
     branches: [ master, working ]
 
@@ -20,7 +20,7 @@ jobs:
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.5.*'
+        version: '6.*.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
@@ -28,15 +28,15 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         target: 'android'
-        version: '6.5.*'
+        version: '6.*.*'
         arch: 'android_arm64_v8a'
     - name: Install Additional Software
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platforms;android-31" "platform-tools" "build-tools;31.0.0"
-        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --uninstall "platforms;android-33-ext5" "platforms;android-33-ext4"
-        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;23.1.7779620"
-        echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 >> $GITHUB_ENV
+        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --uninstall "platforms;android-33-ext5" "platforms;android-33-ext4;android-34-ext8"
+        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;25.1.8937393"
+        echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.1.8937393 >> $GITHUB_ENV
     - name: Configure
       run: |
         mkdir -p build
