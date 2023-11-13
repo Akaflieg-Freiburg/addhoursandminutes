@@ -377,7 +377,7 @@ Rectangle {
                     }
                 }
             }
-
+/*
             Image {
                 id: shadow1
 
@@ -397,7 +397,7 @@ Rectangle {
                 height: hoursAndMinutes.fontpixelsize*0.25|0
                 source: "/images/shadow_top.png"
             }
-
+*/
 
         }
 

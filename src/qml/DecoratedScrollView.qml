@@ -37,10 +37,12 @@ ScrollView {
         Label {
             anchors.top: parent.top
             anchors.left: parent.left
+            anchors.leftMargin: 4*font.pixelSize
             anchors.right: parent.right
+            anchors.rightMargin: 4*font.pixelSize
 
             background: Rectangle {
-                opacity: 0.8
+                opacity: 0.9
             }
 
             opacity: (scrollView.contentItem.contentY === 0) ? 0.0 : 1.0
@@ -60,10 +62,12 @@ ScrollView {
         Label {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
+            anchors.leftMargin: 4*font.pixelSize
             anchors.right: parent.right
+            anchors.rightMargin: 4*font.pixelSize
 
             background: Rectangle {
-                opacity: 0.8
+                opacity: 0.9
             }
 
             opacity: (scrollView.contentItem.contentY >= scrollView.contentHeight-scrollView.height ) ? 0.0 : 1.0
