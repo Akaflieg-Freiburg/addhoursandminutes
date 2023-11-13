@@ -20,7 +20,7 @@
 
 import QtQuick
 import QtQuick.Controls
-//import QtQuick.Controls.Material
+import QtQuick.Controls.Material
 
 import gui
 
@@ -46,8 +46,7 @@ CenteringDialog {
 
         Label {
             id: lbl
-//            text: "<style>a:link { color: " + Material.accent + "; }</style>"+dialogMain.text
-            text: dialogMain.text
+            text: "<style>a:link { color: " + Material.accent + "; }</style>"+dialogMain.text
             width: dialogMain.availableWidth
             textFormat: Text.RichText
             wrapMode: Text.Wrap

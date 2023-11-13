@@ -27,7 +27,6 @@ qt_add_resources(${PROJECT_NAME} "imageresources"
     FILES
     images/shadow_horizontal.png
     images/shadow_top.png
-    images/shadow_vertical.png
     images/ic_menu_24px.svg
     images/ic_help_24px.svg
     images/ic_info_24px.svg

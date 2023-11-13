@@ -46,8 +46,6 @@ PlatformAdapter::PlatformAdapter(QObject* parent)
 
 void PlatformAdapter::updateSafeInsets()
 {
-    std::cout << "Updating insets";
-
     auto safeInsetBottom {_safeInsetBottom};
     auto safeInsetLeft {_safeInsetLeft};
     auto safeInsetRight {_safeInsetRight};

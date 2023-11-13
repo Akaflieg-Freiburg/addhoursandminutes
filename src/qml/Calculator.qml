@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2022 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2023 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,10 +38,6 @@ Rectangle {
     property real formfactor: 2.5
     property real buttonMinHeight: fontpixelsize*2
     property real buttonMaxHeight: fontpixelsize*formfactor
-
-    property bool isPortrait: {
-        return width < 1.2*height
-    }
 
 
     SequentialAnimation {
@@ -321,7 +317,7 @@ Rectangle {
         rowSpacing: 0
         rows: 3
         columns: 3
-        flow: hoursAndMinutes.isPortrait ? GridLayout.TopToBottom : GridLayout.LeftToRight
+        flow: GridLayout.TopToBottom
         anchors.fill: parent
 
         Item {
@@ -337,9 +333,9 @@ Rectangle {
 
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.bottomMargin: hoursAndMinutes.isPortrait ? 0.5*hoursAndMinutes.fontpixelsize : 0.5*hoursAndMinutes.fontpixelsize+PlatformAdapter.safeInsetBottom
+                anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
                 anchors.leftMargin: PlatformAdapter.safeInsetLeft
-                anchors.rightMargin: hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetRight : 0
+                anchors.rightMargin: PlatformAdapter.safeInsetRight
 
                 clip: true
 
@@ -389,7 +385,6 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
-                visible: hoursAndMinutes.isPortrait
                 source: "/images/shadow_horizontal.png"
             }
 
@@ -400,27 +395,16 @@ Rectangle {
                 anchors.left: lvContainer.left
                 anchors.right: lvContainer.right
                 height: hoursAndMinutes.fontpixelsize*0.25|0
-                //                visible: !hoursAndMinutes.isPortrait
                 source: "/images/shadow_top.png"
             }
 
-            Image {
-                id: shadow2
-
-                anchors.top: lvContainer.top
-                anchors.bottom: lvContainer.bottom
-                anchors.right: lvContainer.right
-                width: hoursAndMinutes.fontpixelsize*0.25|0
-                visible: !hoursAndMinutes.isPortrait
-                source: "/images/shadow_vertical.png"
-            }
 
         }
 
 
         GridLayout {
-            Layout.fillHeight: !hoursAndMinutes.isPortrait
-            Layout.fillWidth: hoursAndMinutes.isPortrait
+            Layout.fillHeight: false
+            Layout.fillWidth: true
 
             columnSpacing: 0
             rowSpacing: 0
@@ -428,21 +412,21 @@ Rectangle {
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.preferredWidth: hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetLeft : 0
+                Layout.preferredWidth: PlatformAdapter.safeInsetLeft
                 color: "#e0e0e0"
             }
 
             Rectangle {
                 Layout.fillHeight: true
-                Layout.fillWidth: hoursAndMinutes.isPortrait
+                Layout.fillWidth: true
                 color: "#e0e0e0"
             }
 
             GridLayout {
                 id: keypad
 
-                Layout.fillHeight: !hoursAndMinutes.isPortrait
-                Layout.fillWidth: hoursAndMinutes.isPortrait
+                Layout.fillHeight: false
+                Layout.fillWidth: true
 
                 Layout.preferredHeight: 4.2*hoursAndMinutes.buttonMaxHeight
                 Layout.preferredWidth: 5*hoursAndMinutes.buttonMaxHeight
@@ -456,14 +440,14 @@ Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     Layout.columnSpan: 3
-                    Layout.minimumHeight: !hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetBottom : 0
+                    Layout.minimumHeight: 0
                     color: "#e0e0e0"
                 }
 
                 Rectangle {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.minimumHeight: !hoursAndMinutes.isPortrait ? PlatformAdapter.safeInsetBottom : 0
+                    Layout.minimumHeight: 0
                     color: "teal"
                 }
 
@@ -781,7 +765,7 @@ Rectangle {
             Rectangle {
                 Layout.columnSpan: 2
                 Layout.fillHeight: true
-                Layout.fillWidth: hoursAndMinutes.isPortrait
+                Layout.fillWidth: true
                 color: "teal"
             }
 
