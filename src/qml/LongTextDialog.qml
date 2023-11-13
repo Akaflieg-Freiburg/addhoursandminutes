@@ -20,7 +20,7 @@
 
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Controls.Material
+//import QtQuick.Controls.Material
 
 import gui
 
@@ -32,7 +32,7 @@ CenteringDialog {
 
     modal: true
     
-    ScrollView{
+    DecoratedScrollView{
         anchors.fill: parent
         contentWidth: availableWidth // Disable horizontal scrolling
 
@@ -46,10 +46,10 @@ CenteringDialog {
 
         Label {
             id: lbl
-            text: "<style>a:link { color: " + Material.accent + "; }</style>"+dialogMain.text
+//            text: "<style>a:link { color: " + Material.accent + "; }</style>"+dialogMain.text
+            text: dialogMain.text
             width: dialogMain.availableWidth
             textFormat: Text.RichText
-            linkColor: Material.accent
             wrapMode: Text.Wrap
             onLinkActivated: (link) => Qt.openUrlExternally(link)
         }

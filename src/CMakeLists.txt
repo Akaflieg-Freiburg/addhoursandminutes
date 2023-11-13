@@ -14,6 +14,7 @@ qt_add_qml_module(${PROJECT_NAME}
     QML_FILES
     qml/Calculator.qml
     qml/CenteringDialog.qml
+    qml/DecoratedScrollView.qml
     qml/LongTextDialog.qml
     qml/main.qml
     SOURCES
