@@ -1,12 +1,8 @@
 name: Compile on Linux
 
 on:
-  create:
-    branches: [ master ]
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ main, feature/actions ]
 
 jobs:
   build:
@@ -20,15 +16,11 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.5.*'
-    - name: Install Additional Software
+        version: '6.*.*'
+    - name: Configure
       run: |
-        sudo apt update
-        sudo apt install doxygen graphviz
+        cmake -E make_directory build
+        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Configure and Compile
       run: |
-        export CC=/usr/bin/clang
-        export CXX=/usr/bin/clang++
-        cmake -E make_directory build
-        cmake -DCMAKE_BUILD_TYPE=Debug -S . -B build
         cmake --build build

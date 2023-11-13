@@ -35,9 +35,16 @@ jobs:
         echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.1.8937393 >> $GITHUB_ENV
     - name: Configure
       run: |
-        mkdir -p build
+        cmake -E make_directory build
         $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Compile
       run: |
         cmake --build build
         cmake --build build --target apk
+    - uses: pyTooling/Actions/releaser@r0
+      with:
+        tag: developerBuilds
+        rm: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: |
+          build/src/android-build//build/outputs/apk/debug/android-build-debug.apk
