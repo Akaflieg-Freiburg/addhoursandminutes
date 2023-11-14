@@ -1,4 +1,4 @@
-name: Compile on MacOS
+name: Compile on Windows
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: windows-latest
     
     steps:
     - uses: actions/checkout@v3

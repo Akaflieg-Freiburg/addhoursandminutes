@@ -2,7 +2,7 @@ name: Compile on Android
 
 on:
   push:
-    branches: [ main, feature/actions ]
+    branches: [ develop ]
 
 jobs:
   build:

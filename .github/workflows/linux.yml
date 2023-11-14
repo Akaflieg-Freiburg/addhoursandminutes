@@ -2,7 +2,7 @@ name: Compile on Linux
 
 on:
   push:
-    branches: [ main, feature/actions ]
+    branches: [ feature/actions ]
 
 jobs:
   build:
@@ -17,10 +17,18 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.*.*'
+    - name: Install LinuxDeploy
+      uses: miurahr/install-linuxdeploy-action@v1
+      with:
+        plugins: appimage
     - name: Configure
       run: |
         cmake -E make_directory build
-        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
-    - name: Configure and Compile
+        $Qt6_DIR/bin/qt-cmake -DCMAKE_INSTALL_PREFIX:STRING=$PWD/app -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
+    - name: Compile and Install
       run: |
         cmake --build build
+        cmake --build build --target install
+    - name: Package
+      run: |
+        linuxdeploy-x86_64.AppImage --appdir x --output appimage
