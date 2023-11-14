@@ -1,11 +1,7 @@
 name: Compile on iOS
 
 on:
-  create:
-    branches: [ ios ]
   push:
-    branches: [ ios ]
-  pull_request:
     branches: [ ios ]
 
 

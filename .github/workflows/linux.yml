@@ -1,12 +1,8 @@
 name: Compile on Linux
 
 on:
-  create:
-    branches: [ master ]
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ XXX ]
 
 jobs:
   build:
