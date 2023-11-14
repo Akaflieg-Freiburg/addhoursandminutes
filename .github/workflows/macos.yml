@@ -2,7 +2,7 @@ name: Compile on MacOS
 
 on:
   push:
-    branches: [ feature/xxactions ]
+    branches: [ feature/actions ]
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.*.*'
+        version: '6.5.2'
     - name: Configure
       run: |
         cmake -E make_directory build
