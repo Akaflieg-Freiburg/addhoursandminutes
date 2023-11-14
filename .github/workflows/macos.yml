@@ -2,7 +2,7 @@ name: Compile on MacOS
 
 on:
   push:
-    branches: [ feature/actions ]
+    branches: [ feature/xxactions ]
 
 jobs:
   build:

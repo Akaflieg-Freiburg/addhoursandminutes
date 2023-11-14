@@ -21,6 +21,9 @@ jobs:
       uses: miurahr/install-linuxdeploy-action@v1
       with:
         plugins: appimage
+    - name: Install Additional Software
+      run: |
+        sudo apt install fuse
     - name: Configure
       run: |
         cmake -E make_directory build
@@ -31,4 +34,4 @@ jobs:
         cmake --build build --target install
     - name: Package
       run: |
-        linuxdeploy-x86_64.AppImage --appdir x --output appimage
+        linuxdeploy-x86_64.AppImage --appdir app --output appimage
