@@ -25,8 +25,6 @@ qt_add_qml_module(${PROJECT_NAME}
 qt_add_resources(${PROJECT_NAME} "imageresources"
     PREFIX "/"
     FILES
-    images/shadow_horizontal.png
-    images/shadow_top.png
     images/ic_menu_24px.svg
     images/ic_help_24px.svg
     images/ic_info_24px.svg
