@@ -2,7 +2,7 @@ name: Compile on Android
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ feature/actions, develop ]
 
 jobs:
   build:
@@ -41,10 +41,11 @@ jobs:
       run: |
         cmake --build build
         cmake --build build --target apk
+	cp build/src/android-build/build/outputs/apk/debug/android-build-debug.apk addTimes-android.apk
     - uses: pyTooling/Actions/releaser@r0
       with:
         tag: developerBuilds
         rm: true
         token: ${{ secrets.GITHUB_TOKEN }}
         files: |
-          build/src/android-build//build/outputs/apk/debug/android-build-debug.apk
+          addTimes-android.apk

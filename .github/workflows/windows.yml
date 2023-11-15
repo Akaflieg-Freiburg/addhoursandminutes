@@ -20,7 +20,18 @@ jobs:
     - name: Configure
       run: |
         cmake -E make_directory build
-        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
-    - name: Compile
+        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=$PWD/addTimes -S . -B build
+    - name: Compile and Install
       run: |
         cmake --build build
+        cmake --build build --target install
+    - name: Package
+      run: |
+        powershell Compress-Archive addTimes addTimes-windows.zip
+    - uses: pyTooling/Actions/releaser@r0
+      with:
+        tag: developerBuilds
+        rm: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: |
+          addTimes-windows.zip
