@@ -22,7 +22,7 @@ jobs:
     - name: Configure
       run: |
         cmake -E make_directory build
-        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=addTimes -S . -B build
+        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=${{ github.workspace }}\addTimes -S . -B build
     - name: Compile
       run: |
         cmake --build build
