@@ -425,6 +425,15 @@ Rectangle {
             GridLayout {
                 id: keypad
 
+                onDigitPressed: (digit) => hoursAndMinutes.addDigit(digit)
+
+                signal digitPressed(digit: string)
+
+                signal operatorPressed(opCode: string)
+
+                signal clearPressed()
+
+
                 Layout.fillHeight: false
                 Layout.fillWidth: true
 
@@ -461,7 +470,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("7")
+                        keypad.digitPressed("7")
                     }
 
                     Timer {
@@ -481,7 +490,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("8")
+                        keypad.digitPressed("8")
                     }
 
                     Timer {
@@ -501,7 +510,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("9")
+                        keypad.digitPressed("9")
                     }
 
                     Timer {
@@ -548,7 +557,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("4")
+                        keypad.digitPressed("4")
                     }
 
                     Timer {
@@ -568,7 +577,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("5")
+                        keypad.digitPressed("5")
                     }
 
                     Timer {
@@ -588,7 +597,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("6")
+                        keypad.digitPressed("6")
                     }
 
                     Timer {
@@ -628,7 +637,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("1")
+                        keypad.digitPressed("1")
                     }
 
                     Timer {
@@ -649,7 +658,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("2")
+                        keypad.digitPressed("2")
                     }
 
                     Timer {
@@ -670,7 +679,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("3")
+                        keypad.digitPressed("3")
                     }
 
                     Timer {
@@ -712,7 +721,7 @@ Rectangle {
                     font.pixelSize: hoursAndMinutes.fontpixelsize
                     palette { button: "#e0e0e0"; buttonText: "black"}
                     onClicked: {
-                        hoursAndMinutes.addDigit("0")
+                        keypad.digitPressed("0")
                     }
 
                     Timer {
