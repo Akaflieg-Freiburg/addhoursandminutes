@@ -17,10 +17,19 @@
 <context>
     <name>Calculator</name>
     <message>
-        <location filename="qml/Calculator.qml" line="+203"/>
+        <location filename="qml/Calculator.qml" line="+199"/>
         <location/>
         <source>Overflow</source>
         <translation>Overflow</translation>
+    </message>
+</context>
+<context>
+    <name>DecoratedScrollView</name>
+    <message>
+        <location filename="qml/DecoratedScrollView.qml" line="+52"/>
+        <location line="+25"/>
+        <source>more</source>
+        <translation>altro</translation>
     </message>
 </context>
 <context>
@@ -47,6 +56,7 @@
     </message>
     <message>
         <location line="+39"/>
+        <location/>
         <source>
 &lt;h4&gt;Version %1&lt;/h4&gt;
 
@@ -135,6 +145,7 @@ della licenza pubblica GNU V3&lt;/a&gt;.&lt;/p&gt;
     </message>
     <message>
         <location line="-20"/>
+        <location/>
         <source>
 &lt;h4&gt;Enter Times&lt;/h4&gt;
 
