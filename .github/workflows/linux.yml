@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt
@@ -36,10 +37,11 @@ jobs:
     - name: Package
       run: |
         linuxdeploy-x86_64.AppImage --appdir app --output appimage
-    - uses: pyTooling/Actions/releaser@r0
+	ls
+    - name: Upload artifacts
+      uses: pyTooling/Actions/releaser@r0
       with:
         tag: developerBuilds
-        rm: true
         token: ${{ secrets.GITHUB_TOKEN }}
         files: |
           *mage

@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         submodules: true
     - name: Install Qt for Desktop
@@ -48,10 +49,10 @@ jobs:
         cmake --build build
         cmake --build build --target apk
         cp build/src/android-build/build/outputs/apk/debug/android-build-debug.apk addTimes-android-arm64v8a.apk
-    - uses: pyTooling/Actions/releaser@r0
+    - name: Upload artifacts
+      uses: pyTooling/Actions/releaser@r0
       with:
         tag: developerBuilds
-        rm: true
         token: ${{ secrets.GITHUB_TOKEN }}
         files: |
           addTimes-android-arm64v8a.apk
