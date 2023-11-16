@@ -37,7 +37,7 @@ jobs:
     - name: Package
       run: |
         linuxdeploy-x86_64.AppImage --appdir app --output appimage
-	ls
+        ls
     - name: Upload artifacts
       uses: pyTooling/Actions/releaser@r0
       with:
