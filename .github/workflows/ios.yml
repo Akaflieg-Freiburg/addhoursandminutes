@@ -24,7 +24,7 @@ jobs:
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
       with:
-        version: '6.5.*'
+        version: '6.*.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
@@ -32,7 +32,7 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         target: 'ios'
-        version: '6.5.*'
+        version: '6.*.*'
     - name: Setup env
       run: |
         export PATH=$Qt6_DIR/bin:$PATH

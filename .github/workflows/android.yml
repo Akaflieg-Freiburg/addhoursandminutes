@@ -16,6 +16,8 @@ jobs:
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
+        cache-key-prefix: 'install-qt-action-host'
         version: '6.*.*'
     - name: Set QT_HOST_PATH
       run: |
@@ -23,6 +25,8 @@ jobs:
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
+        cache-key-prefix: 'install-qt-action-android'
         target: 'android'
         version: '6.*.*'
         arch: 'android_arm64_v8a'
@@ -30,9 +34,11 @@ jobs:
       run: |
         sudo apt install doxygen graphviz librsvg2-bin
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platforms;android-33" "platform-tools" "build-tools;33.0.2"
+        echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.1.8937393 >> $GITHUB_ENV
+    - name: Remove Unwanted Software
+      run: |
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --uninstall "platforms;android-33-ext4" "platforms;android-33-ext5" "platforms;android-34-ext8"
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;25.1.8937393"
-        echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.1.8937393 >> $GITHUB_ENV
     - name: Configure
       run: |
         cmake -E make_directory build
@@ -41,11 +47,11 @@ jobs:
       run: |
         cmake --build build
         cmake --build build --target apk
-	cp build/src/android-build/build/outputs/apk/debug/android-build-debug.apk addTimes-android.apk
+        cp build/src/android-build/build/outputs/apk/debug/android-build-debug.apk addTimes-android-arm64v8a.apk
     - uses: pyTooling/Actions/releaser@r0
       with:
         tag: developerBuilds
         rm: true
         token: ${{ secrets.GITHUB_TOKEN }}
         files: |
-          addTimes-android.apk
+          addTimes-android-arm64v8a.apk

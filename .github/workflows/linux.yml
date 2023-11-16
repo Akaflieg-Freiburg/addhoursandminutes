@@ -16,6 +16,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
         version: '6.*.*'
     - name: Install LinuxDeploy
       uses: miurahr/install-linuxdeploy-action@v1
@@ -23,7 +24,7 @@ jobs:
         plugins: appimage
     - name: Install Additional Software
       run: |
-        sudo apt install appstream fuse
+        sudo apt install appstream fuse libxcb-cursor0
     - name: Configure
       run: |
         cmake -E make_directory build
