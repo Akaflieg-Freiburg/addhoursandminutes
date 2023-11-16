@@ -26,7 +26,6 @@ jobs:
     - name: Compile
       run: |
         cmake --build build
-        cmake --build build --target INSTALL
     - name: Install
       run: |
         cmake --build build --target INSTALL
