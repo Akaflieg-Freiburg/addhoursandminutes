@@ -2,7 +2,7 @@ name: Compile on MacOS
 
 on:
   push:
-    branches: [ feature/xxactions ]
+    branches: [ feature/actions ]
 
 jobs:
   build:
@@ -10,17 +10,29 @@ jobs:
     runs-on: macos-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
         version: '6.5.2'
     - name: Configure
       run: |
         cmake -E make_directory build
-        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
+        $Qt6_DIR/bin/qt-cmake -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_INSTALL_PREFIX=. -S . -B build
     - name: Compile
       run: |
         cmake --build build
+    - name: Package
+      run: |
+        cmake --build build --target install
+        $Qt6_DIR/bin/macdeployqt addhoursandminutes.app -dmg
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addhoursandminutes.dmg
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
