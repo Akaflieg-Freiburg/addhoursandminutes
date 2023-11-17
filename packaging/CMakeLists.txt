@@ -15,6 +15,10 @@ add_custom_target(tar
 )
 
 
-if (UNIX AND NOT ANDROID)
-  add_subdirectory(flatpak)
-endif (UNIX AND NOT ANDROID)
+#
+# Prepare TAR Flatpak distribution
+#
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_subdirectory(flatpak)
+endif ()

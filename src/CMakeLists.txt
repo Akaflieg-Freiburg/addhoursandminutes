@@ -73,7 +73,16 @@ endif()
 
 
 #
-# Set up additional files for Android
+# Set up additional files for macOS
+#
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
+endif ()
+
+
+#
+# Set up additional files for iOS
 #
 
 if(IOS)
@@ -100,19 +109,22 @@ endif()
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
 
-# Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
-install(
-  TARGETS ${PROJECT_NAME}
-  BUNDLE  DESTINATION .
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+message(${CMAKE_SYSTEM_NAME})
+if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux")))
+    # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
+    install(
+        TARGETS ${PROJECT_NAME}
+        BUNDLE  DESTINATION .
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )
 
-# Generate the deployment script for the target ${PROJECT_NAME}.
-qt_generate_deploy_qml_app_script(
-  TARGET ${PROJECT_NAME}
-  OUTPUT_SCRIPT deploy_script
-  NO_UNSUPPORTED_PLATFORM_ERROR
-)
+    # Generate the deployment script for the target ${PROJECT_NAME}.
+    qt_generate_deploy_qml_app_script(
+        TARGET ${PROJECT_NAME}
+        OUTPUT_SCRIPT deploy_script
+        NO_UNSUPPORTED_PLATFORM_ERROR
+    )
 
-# Call the deployment script on "cmake --install".
-install(SCRIPT ${deploy_script})
+    # Call the deployment script on "cmake --install".
+    install(SCRIPT ${deploy_script})
+endif ()
