@@ -2,7 +2,7 @@ name: Compile on Windows
 
 on:
   push:
-    branches: [ feature/xxxactions ]
+    branches: [ feature/actions ]
 
 jobs:
   build:
@@ -28,10 +28,8 @@ jobs:
     - name: Package
       run: |
         powershell Compress-Archive addTimes addTimes-windows.zip
-    - uses: pyTooling/Actions/releaser@r0
-      with:
-        tag: developerBuilds
-        rm: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: |
-          addTimes-windows.zip
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addTimes-windows.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
