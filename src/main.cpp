@@ -24,6 +24,7 @@
 #include <QLibraryInfo>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QQuickStyle>
 #include <QQuickView>
 #include <QSettings>
 #include <QTranslator>
@@ -50,6 +51,10 @@ auto main(int argc, char *argv[]) -> int
     QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
 #if defined(Q_OS_LINUX)
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
+#endif
+
+#if defined(Q_OS_WINDOWS)
+    QQuickStyle::setStyle(u"Universal"_qs);
 #endif
 
     // Start QML Engine

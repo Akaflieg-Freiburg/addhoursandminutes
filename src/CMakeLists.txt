@@ -6,7 +6,7 @@ qt_add_executable(${PROJECT_NAME}
     main.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::Svg)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
 qt_add_qml_module(${PROJECT_NAME}
     URI gui
