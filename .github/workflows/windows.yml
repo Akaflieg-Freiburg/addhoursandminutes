@@ -2,7 +2,7 @@ name: Compile on Windows
 
 on:
   push:
-    branches: [ feature/xxxactions ]
+    branches: [ feature/actions ]
 
 jobs:
   build:
@@ -10,28 +10,30 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         submodules: true 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
         version: '6.*.*'
     - name: Configure
       run: |
         cmake -E make_directory build
-        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=$PWD/addTimes -S . -B build
-    - name: Compile and Install
+        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=${{ github.workspace }}\addTimes -S . -B build
+    - name: Compile
       run: |
         cmake --build build
-        cmake --build build --target install
+    - name: Install
+      run: |
+        cmake --build build --target INSTALL
     - name: Package
       run: |
         powershell Compress-Archive addTimes addTimes-windows.zip
-    - uses: pyTooling/Actions/releaser@r0
-      with:
-        tag: developerBuilds
-        rm: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: |
-          addTimes-windows.zip
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addTimes-windows.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
