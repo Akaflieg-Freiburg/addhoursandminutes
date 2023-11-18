@@ -1,51 +1,34 @@
 name: Compile on iOS
 
 on:
-  create:
-    branches: [ ios ]
   push:
-    branches: [ ios ]
-  pull_request:
-    branches: [ ios ]
-
-
-env:
-  APPLICATION: "addhoursandminutes"
+    branches: [ feature/actions ]
 
 jobs:
   build:
 
-    runs-on: macos-12
+    runs-on: macos-latest
     
     steps:
     - uses: actions/checkout@v3
       with:
         submodules: true 
-    - name: Install Qt for Desktop
-      uses: jurplel/install-qt-action@v3
-      with:
-        version: '6.*.*'
-    - name: Set QT_HOST_PATH
-      run: |
-        echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
     - name: Install Qt for iOS
       uses: jurplel/install-qt-action@v3
       with:
+        cache: 'true'
         target: 'ios'
         version: '6.*.*'
-    - name: Setup env
-      run: |
-        export PATH=$Qt6_DIR/bin:$PATH
-        ln -s /Users/runner/work/${{env.APPLICATION}}/Qt/6.5.0/macos /Users/runner/work/${{env.APPLICATION}}/Qt/6.5.0/clang_64
-        qmake --version
     - name: Configure
-      env:
-        XADT: ${{ secrets.XCODE_ATTRIBUTE_DEVELOPMENT_TEAM }}
       run: |
         cmake -E make_directory build
-        cd build
-        $Qt6_DIR/bin/qt-cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM=$XADT
+        $Qt6_DIR/bin/qt-cmake -S . -B build
     - name: Compile
       run: |
         cd build
-        cmake --build . -- -allowProvisioningUpdates
+        cmake --build . -- -sdk iphonesimulator
+   - name: Upload to developerBuilds
+        run: |
+            gh release upload --clobber developerBuilds build/src/Debug-iphonesimulator/addhoursandminutes.app
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
