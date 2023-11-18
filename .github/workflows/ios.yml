@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        submodules: true 
+        submodules: true
     - name: Install Qt for iOS
       uses: jurplel/install-qt-action@v3
       with:
@@ -27,8 +27,12 @@ jobs:
       run: |
         cd build
         cmake --build . -- -sdk iphonesimulator
+    - name: Package
+      run: |
+        brew install create-dmg
+        create-dmg addTimes-iphonesimulator.dmg build/src/Debug-iphonesimulator
    - name: Upload to developerBuilds
         run: |
-            gh release upload --clobber developerBuilds build/src/Debug-iphonesimulator/addhoursandminutes.app
+            gh release upload --clobber developerBuilds addTimes-iphonesimulator.dmg‚
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
