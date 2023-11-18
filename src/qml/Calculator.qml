@@ -23,7 +23,7 @@ pragma ComponentBehavior: Bound
 import gui
 
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
@@ -235,12 +235,7 @@ Rectangle {
 
     focus: true
 
-    GridLayout {
-        columnSpacing: 0
-        rowSpacing: 0
-        rows: 3
-        columns: 3
-        flow: GridLayout.TopToBottom
+    ColumnLayout {
         anchors.fill: parent
 
         Item {
@@ -248,8 +243,6 @@ Rectangle {
 
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.preferredHeight: 160
-            Layout.preferredWidth: 110
 
             ListView {
                 id: listView
@@ -300,69 +293,12 @@ Rectangle {
                     }
                 }
             }
-            /*
-            Image {
-                id: shadow1
-
-                anchors.bottom: lvContainer.bottom
-                anchors.left: lvContainer.left
-                anchors.right: lvContainer.right
-                height: hoursAndMinutes.fontpixelsize*0.25|0
-                source: "/images/shadow_horizontal.png"
-            }
-
-            Image {
-                id: shadow1a
-
-                anchors.top: lvContainer.top
-                anchors.left: lvContainer.left
-                anchors.right: lvContainer.right
-                height: hoursAndMinutes.fontpixelsize*0.25|0
-                source: "/images/shadow_top.png"
-            }
-*/
-
         }
 
 
-        GridLayout {
-            Layout.fillHeight: false
+        Keypad {
+            Layout.fillHeight: true
             Layout.fillWidth: true
-
-            columnSpacing: 0
-            rowSpacing: 0
-            rows: 2
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.preferredWidth: PlatformAdapter.safeInsetLeft
-                color: "#e0e0e0"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "#e0e0e0"
-            }
-
-            Keypad {
-
-            }
-
-            Rectangle {
-                Layout.columnSpan: 2
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                color: "teal"
-            }
-
-            Rectangle {
-                Layout.fillHeight: true
-                Layout.preferredWidth: PlatformAdapter.safeInsetRight
-                Layout.minimumHeight: PlatformAdapter.safeInsetRight
-                color: "teal"
-            }
-
         }
     }
 }

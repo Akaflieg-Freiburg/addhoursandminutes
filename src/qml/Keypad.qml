@@ -47,13 +47,6 @@ Item {
 
     Component.onCompleted: forceActiveFocus()
 
-    Layout.fillHeight: false
-    Layout.fillWidth: true
-
-    Layout.preferredHeight: 4.2*hoursAndMinutes.buttonMaxHeight
-    Layout.preferredWidth: 5*hoursAndMinutes.buttonMaxHeight
-    Layout.minimumWidth: (hoursAndMinutes.width > 5*hoursAndMinutes.buttonMaxHeight) ? 5*hoursAndMinutes.buttonMaxHeight : hoursAndMinutes.width
-    Layout.maximumWidth: 8*hoursAndMinutes.buttonMaxHeight
 
     focus: true
 
