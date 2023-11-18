@@ -1,6 +1,8 @@
-# On Unix, generate and install metadata information
+#
+# On Linux, generate and install metadata information
+#
 
-if (UNIX)
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   CONFIGURE_FILE(${APP_ID}.desktop ${APP_ID}.desktop)
   INSTALL(FILES ${PROJECT_BINARY_DIR}/metadata/${APP_ID}.desktop
     RENAME ${APP_ID}.desktop
@@ -14,4 +16,4 @@ if (UNIX)
   INSTALL(FILES ${PROJECT_SOURCE_DIR}/metadata/${APP_ID}.svg
     RENAME ${APP_ID}.svg
     DESTINATION share/icons/hicolor/scalable/apps)
-endif (UNIX)
+endif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
