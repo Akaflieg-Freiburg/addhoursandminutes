@@ -42,7 +42,7 @@ jobs:
     run: |
       brew install create-dmg
       create-dmg addTimes-iphonesimulator.dmg build/src/Debug-iphonesimulator
- - name: Upload to developerBuilds
+  - name: Upload to developerBuilds
     run: |
       gh release upload --clobber developerBuilds addTimes-iphonesimulator.dmg
     env:
