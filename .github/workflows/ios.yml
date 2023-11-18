@@ -1,4 +1,4 @@
-name: Compile on iOS
+name: Compile on iOS-Simulator
 
 on:
   push:
@@ -10,25 +10,34 @@ jobs:
     runs-on: macos-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
         submodules: true 
-    - name: Install Qt for iOS
+    - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
         cache: 'true'
         target: 'ios'
-        version: '6.*.*'
+        version: '6.5.2'
     - name: Configure
       run: |
         cmake -E make_directory build
         $Qt6_DIR/bin/qt-cmake -S . -B build
     - name: Compile
       run: |
-        cd build
-        cmake --build . -- -sdk iphonesimulator
-   - name: Upload to developerBuilds
-        run: |
-            gh release upload --clobber developerBuilds build/src/Debug-iphonesimulator/addhoursandminutes.app
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        cmake --build build -- -sdk iphonesimulator
+    - name: Package
+      run: |
+        cmake --build build --target install
+        $Qt6_DIR/bin/macdeployqt addhoursandminutes.app -dmg
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addhoursandminutes.dmg
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds build/src/Debug-iphonesimulator/addhoursandminutes.app
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
