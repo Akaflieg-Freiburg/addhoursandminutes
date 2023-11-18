@@ -12,46 +12,6 @@ math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VE
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
 
-#
-# Find GIT repository data.
-#
-
-if (EXISTS ${CMAKE_SOURCE_DIR}/.git)
-    # Get the current working branch
-    execute_process(
-        COMMAND git rev-parse --abbrev-ref HEAD
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        OUTPUT_VARIABLE GIT_BRANCH
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-    message("Currently working with git branch ${GIT_BRANCH}")
-
-    # Get the latest abbreviated commit hash of the working branch
-    execute_process(
-        COMMAND git log -1 --format=%h
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        OUTPUT_VARIABLE GIT_COMMIT
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-    message("Currently working with git Commit ${GIT_COMMIT}")
-
-    # Get the latest commit date of the working branch
-    execute_process(
-        COMMAND git log -1 --format=%as
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        OUTPUT_VARIABLE GIT_DATE
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-        )
-    message("Currently working with git commit from ${GIT_DATE}")
-else()
-    message("Not working from a GIT directory")
-    set(GIT_BRANCH "")
-    set(GIT_BRANCH "")
-    set(GIT_COMMIT "")
-    set(GIT_DATE "")
-endif()
-
-
 if(IOS)
     set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
 #    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "XXXXX")
@@ -62,7 +22,7 @@ endif()
 
 
 # Include required packages
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core LinguistTools Quick Svg)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
 

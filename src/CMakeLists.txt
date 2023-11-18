@@ -6,7 +6,7 @@ qt_add_executable(${PROJECT_NAME}
     main.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::Svg)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
 qt_add_qml_module(${PROJECT_NAME}
     URI gui
@@ -73,7 +73,16 @@ endif()
 
 
 #
-# Set up additional files for Android
+# Set up additional files for macOS
+#
+
+if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
+endif ()
+
+
+#
+# Set up additional files for iOS
 #
 
 if(IOS)
@@ -99,7 +108,9 @@ endif()
 # Installation for Linux, MacOS, Windows
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+
+message(${CMAKE_SYSTEM_NAME})
+if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux")))
     # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
     install(
         TARGETS ${PROJECT_NAME}
@@ -116,4 +127,4 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
     # Call the deployment script on "cmake --install".
     install(SCRIPT ${deploy_script})
-endif()
+endif ()
