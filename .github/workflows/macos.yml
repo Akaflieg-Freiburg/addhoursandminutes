@@ -30,9 +30,10 @@ jobs:
       run: |
         cmake --build build --target install
         $Qt6_DIR/bin/macdeployqt addhoursandminutes.app -dmg
+        mv addhoursandminutes.dmg addTimes-macOS-universal.dmg
     - name: Upload to developerBuilds
       run: |
-        gh release upload --clobber developerBuilds addhoursandminutes.dmg
+        gh release upload --clobber developerBuilds addTimes-macOS-universal.dmg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+

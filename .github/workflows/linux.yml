@@ -37,11 +37,9 @@ jobs:
     - name: Package
       run: |
         linuxdeploy-x86_64.AppImage --appdir app --output appimage
-        ls
-    - name: Upload artifacts
-      uses: pyTooling/Actions/releaser@r0
-      with:
-        tag: developerBuilds
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: |
-          *mage
+        mv Add_Times-x86_64.AppImage addTimes-Linux.AppImage
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addTimes-Linux.AppImage
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

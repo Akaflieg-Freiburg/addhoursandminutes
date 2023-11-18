@@ -49,10 +49,8 @@ jobs:
         cmake --build build
         cmake --build build --target apk
         cp build/src/android-build/build/outputs/apk/debug/android-build-debug.apk addTimes-android-arm64v8a.apk
-    - name: Upload artifacts
-      uses: pyTooling/Actions/releaser@r0
-      with:
-        tag: developerBuilds
-        token: ${{ secrets.GITHUB_TOKEN }}
-        files: |
-          addTimes-android-arm64v8a.apk
+    - name: Upload to developerBuilds
+      run: |
+        gh release upload --clobber developerBuilds addTimes-android-arm64v8a.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

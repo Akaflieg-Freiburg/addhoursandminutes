@@ -2,7 +2,7 @@ name: Compile on iOS-Simulator
 
 on:
   push:
-    branches: [ feature/actions ]
+    branches: [ develop ]
 
 jobs:
   build:
