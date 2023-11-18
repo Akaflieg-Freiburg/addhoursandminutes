@@ -1,9 +1,7 @@
 name: Compile on iOS-Simulator
-
 on:
   push:
     branches: [ feature/actions ]
-
 jobs:
   build:
     runs-on: macos-latest
