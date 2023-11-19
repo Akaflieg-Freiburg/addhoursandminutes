@@ -15,4 +15,4 @@ not collect user data.
 
 ## Information for developers
 
-- Developers will find automatically generate experimental builds for a variety of platforms [here](https://github.com/Akaflieg-Freiburg/addhoursandminutes/releases/tag/developerBuilds).
+- Developers will find automatically generated experimental builds for a variety of platforms [here](https://github.com/Akaflieg-Freiburg/addhoursandminutes/releases/tag/developerBuilds).
