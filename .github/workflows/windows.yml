@@ -28,7 +28,7 @@ jobs:
         cmake --build build
     - name: Install
       run: |
-        cmake --build build --target INSTALL
+        cmake --build build --target install
     - name: Package
       run: |
         powershell Compress-Archive addTimes addTimes-windows64.zip
