@@ -29,14 +29,6 @@ import QtQuick.Layouts
 Item {
     id: keypad
 
-    onBackspacePressed: hoursAndMinutes.backSpace()
-
-    onClearPressed: hoursAndMinutes.clear()
-
-    onDigitPressed: (digit) => hoursAndMinutes.addDigit(digit)
-
-    onOperatorPressed: (opCode) => hoursAndMinutes.addOperator(opCode)
-
     signal backspacePressed()
 
     signal clearPressed()
@@ -239,6 +231,7 @@ Item {
 
         }
 
+
         Button {
             id: button4
             text: "4"
@@ -318,6 +311,7 @@ Item {
                 onTriggered: parent.down = undefined
             }
         }
+
 
         Button {
             id: button1
@@ -401,6 +395,7 @@ Item {
                 onTriggered: parent.down = undefined
             }
         }
+
 
         Button {
             id: button0

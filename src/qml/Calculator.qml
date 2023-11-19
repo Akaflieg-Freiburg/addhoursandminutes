@@ -107,131 +107,6 @@ Rectangle {
         return minutesEntered
     }
 
-    function backSpace() {
-        var i = listView.model.count - 1
-        if (listView.model.get(i).operator === "=") {
-            return
-        }
-        if (listView.model.get(i).operator === "E") {
-            return
-        }
-
-        var carryOver = ""
-
-        if (hoursEntered.length > 0) {
-            carryOver = hoursEntered.charAt(hoursEntered.length-1)
-            hoursEntered = hoursEntered.substring(0, hoursEntered.length-1)
-        }
-        if (minutesEntered.length === 1) {
-            minutesEntered = ""
-        } else {
-            minutesEntered = carryOver+minutesEntered.charAt(0)
-        }
-
-        listView.model.get(i).operand = printCurrentLine()
-    }
-
-    function addDigit(digit) {
-        if (hoursEntered.length >= maxNumDigits) {
-            PlatformAdapter.vibrateError()
-            blinkAnimation.start()
-            return
-        }
-
-        var i = listView.model.count - 1
-
-        // If the current line is the result of a computation, insert a blank line and start a new computation
-        if (listView.model.get(i).operator === "=") {
-            listView.model.append({"operator": "", "operand": ""})
-            listView.model.append({"operator": "", "operand": digit})
-            minutesEntered = digit
-            hoursEntered = ""
-            totalMinutes = 0
-
-            // Position the view at the end
-            listView.positionViewAtEnd()
-            return
-        }
-
-        // In all other cases, add the digit entered to the current lines. Shift
-        // strings around, so that "1:23" + "x" becomes "12:3x"
-        if (minutesEntered === "") {
-            if (digit !== "0") {
-                minutesEntered = digit
-            }
-        } else if (minutesEntered.length === 1) {
-            if (minutesEntered === "0") {
-                minutesEntered = digit
-            } else {
-                minutesEntered = minutesEntered + digit
-            }
-        } else {
-            hoursEntered = hoursEntered + minutesEntered.charAt(0)
-            minutesEntered = minutesEntered.charAt(1) + digit
-        }
-
-        // Update display
-        listView.model.get(i).operand = printCurrentLine()
-
-        // Position the view at the end
-        listView.positionViewAtEnd()
-    }
-
-    function addOperator(opCode) {
-        // Index of current line
-        var i = listView.model.count - 1
-        if (listView.model.get(i).operator !== "=") {
-            listView.model.get(i).operand = convertToHoursAndMinutes(getMinutesForCurrentLine())
-        }
-
-        // Check operator of line, and adjust totalMinutes accordingly
-        if (listView.model.get(i).operator === "") {
-            totalMinutes = getMinutesForCurrentLine()
-        } else if (listView.model.get(i).operator === "+") {
-            totalMinutes = totalMinutes + getMinutesForCurrentLine()
-        } else if (listView.model.get(i).operator === "-") {
-            totalMinutes = totalMinutes - getMinutesForCurrentLine()
-        }
-        minutesEntered = ""
-        hoursEntered = ""
-
-        if (Math.floor(Math.abs(totalMinutes/60)) > Math.pow(10,maxNumDigits+1)-1) {
-            listView.model.append({"operator": "E", "operand": qsTr("Overflow")})
-            listView.model.append({"operator": "", "operand": ""})
-            listView.model.append({"operator": "", "operand": "0"})
-            minutesEntered = ""
-            hoursEntered = ""
-            totalMinutes = 0
-
-            listView.positionViewAtEnd()
-            blinkAnimation.start()
-            return
-        }
-
-        if (opCode === "+" || opCode === "-") {
-            listView.model.append({"operator": opCode, "operand": "0"})
-        } else if (opCode === "=") {
-            if (listView.model.get(i).operator !== "=") {
-                listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes), "isSum": true})
-            }
-        }
-
-        // Position the view at the end
-        listView.positionViewAtEnd()
-    }
-
-    function clear() {
-        minutesEntered = ""
-        hoursEntered = ""
-        totalMinutes = 0
-
-        listView.model.clear()
-        clearAnimation.start()
-
-        listView.model.append({"operator": "", "operand": "0"})
-        listView.positionViewAtEnd()
-    }
-
 
     focus: true
 
@@ -299,6 +174,132 @@ Rectangle {
         Keypad {
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            onBackspacePressed: {
+                var i = listView.model.count - 1
+                if (listView.model.get(i).operator === "=") {
+                    return
+                }
+                if (listView.model.get(i).operator === "E") {
+                    return
+                }
+
+                var carryOver = ""
+
+                if (hoursEntered.length > 0) {
+                    carryOver = hoursEntered.charAt(hoursEntered.length-1)
+                    hoursEntered = hoursEntered.substring(0, hoursEntered.length-1)
+                }
+                if (minutesEntered.length === 1) {
+                    minutesEntered = ""
+                } else {
+                    minutesEntered = carryOver+minutesEntered.charAt(0)
+                }
+
+                listView.model.get(i).operand = printCurrentLine()
+            }
+
+            onClearPressed: {
+                minutesEntered = ""
+                hoursEntered = ""
+                totalMinutes = 0
+
+                listView.model.clear()
+                clearAnimation.start()
+
+                listView.model.append({"operator": "", "operand": "0"})
+                listView.positionViewAtEnd()
+            }
+
+            onDigitPressed: (digit) => {
+                if (hoursEntered.length >= maxNumDigits) {
+                    PlatformAdapter.vibrateError()
+                    blinkAnimation.start()
+                    return
+                }
+
+                var i = listView.model.count - 1
+
+                // If the current line is the result of a computation, insert a blank line and start a new computation
+                if (listView.model.get(i).operator === "=") {
+                    listView.model.append({"operator": "", "operand": ""})
+                    listView.model.append({"operator": "", "operand": digit})
+                    minutesEntered = digit
+                    hoursEntered = ""
+                    totalMinutes = 0
+
+                    // Position the view at the end
+                    listView.positionViewAtEnd()
+                    return
+                }
+
+                // In all other cases, add the digit entered to the current lines. Shift
+                // strings around, so that "1:23" + "x" becomes "12:3x"
+                if (minutesEntered === "") {
+                    if (digit !== "0") {
+                        minutesEntered = digit
+                    }
+                } else if (minutesEntered.length === 1) {
+                    if (minutesEntered === "0") {
+                        minutesEntered = digit
+                    } else {
+                        minutesEntered = minutesEntered + digit
+                    }
+                } else {
+                    hoursEntered = hoursEntered + minutesEntered.charAt(0)
+                    minutesEntered = minutesEntered.charAt(1) + digit
+                }
+
+                // Update display
+                listView.model.get(i).operand = printCurrentLine()
+
+                // Position the view at the end
+                listView.positionViewAtEnd()
+            }
+
+            onOperatorPressed: (opCode) => {
+                // Index of current line
+                var i = listView.model.count - 1
+                if (listView.model.get(i).operator !== "=") {
+                    listView.model.get(i).operand = convertToHoursAndMinutes(getMinutesForCurrentLine())
+                }
+
+                // Check operator of line, and adjust totalMinutes accordingly
+                if (listView.model.get(i).operator === "") {
+                    totalMinutes = getMinutesForCurrentLine()
+                } else if (listView.model.get(i).operator === "+") {
+                    totalMinutes = totalMinutes + getMinutesForCurrentLine()
+                } else if (listView.model.get(i).operator === "-") {
+                    totalMinutes = totalMinutes - getMinutesForCurrentLine()
+                }
+                minutesEntered = ""
+                hoursEntered = ""
+
+                if (Math.floor(Math.abs(totalMinutes/60)) > Math.pow(10,maxNumDigits+1)-1) {
+                    listView.model.append({"operator": "E", "operand": qsTr("Overflow")})
+                    listView.model.append({"operator": "", "operand": ""})
+                    listView.model.append({"operator": "", "operand": "0"})
+                    minutesEntered = ""
+                    hoursEntered = ""
+                    totalMinutes = 0
+
+                    listView.positionViewAtEnd()
+                    blinkAnimation.start()
+                    return
+                }
+
+                if (opCode === "+" || opCode === "-") {
+                    listView.model.append({"operator": opCode, "operand": "0"})
+                } else if (opCode === "=") {
+                    if (listView.model.get(i).operator !== "=") {
+                        listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes), "isSum": true})
+                    }
+                }
+
+                // Position the view at the end
+                listView.positionViewAtEnd()
+            }
+
         }
     }
 }
