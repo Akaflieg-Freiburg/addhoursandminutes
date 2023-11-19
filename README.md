@@ -1,8 +1,3 @@
-[![Compile on Android](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/android.yml/badge.svg?branch=develop)](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/android.yml)
-[![Compile on iOS-Simulator](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/ios.yml/badge.svg?branch=develop)](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/ios.yml)
-[![Compile on Linux](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/linux.yml/badge.svg?branch=develop)](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/linux.yml)
-[![Compile on MacOS](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml/badge.svg?branch=develop)](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml)
-[![Compile on Windows](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/windows.yml/badge.svg?branch=develop)](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/windows.yml)
 
 # Add Times
 
