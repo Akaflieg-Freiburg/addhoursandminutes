@@ -13,6 +13,7 @@ qt_add_qml_module(${PROJECT_NAME}
     VERSION 1.0
     QML_FILES
     qml/Calculator.qml
+    qml/CalculatorButton.qml
     qml/CenteringDialog.qml
     qml/DecoratedScrollView.qml
     qml/Keypad.qml

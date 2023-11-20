@@ -110,14 +110,14 @@ Rectangle {
 
     focus: true
 
-    ColumnLayout {
+    SplitView {
         anchors.fill: parent
+        orientation: Qt.Vertical
 
         Item {
             id: lvContainer
 
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+            SplitView.fillHeight: true
 
             ListView {
                 id: listView
@@ -172,8 +172,9 @@ Rectangle {
 
 
         Keypad {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+            SplitView.minimumHeight: fontpixelsize*8
+            SplitView.maximumHeight: fontpixelsize*20
+            SplitView.preferredHeight: fontpixelsize*14
 
             onBackspacePressed: {
                 var i = listView.model.count - 1

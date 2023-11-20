@@ -23,7 +23,7 @@ pragma ComponentBehavior: Bound
 import gui
 
 import QtQuick
-import QtQuick.Controls.Basic
+import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {
@@ -38,7 +38,6 @@ Item {
     signal operatorPressed(opCode: string)
 
     Component.onCompleted: forceActiveFocus()
-
 
     focus: true
 
@@ -144,7 +143,7 @@ Item {
             color: "teal"
         }
 
-        Button {
+        CalculatorButton {
             id: button7
             text: "7"
             Layout.fillHeight: true
