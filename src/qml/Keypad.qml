@@ -121,7 +121,11 @@ Item {
         }
     }
 
+    implicitHeight: grid.implicitHeight
+
     GridLayout {
+        id: grid
+
         anchors.fill: parent
 
         columnSpacing: 0
@@ -146,15 +150,8 @@ Item {
         CalculatorButton {
             id: button7
             text: "7"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("7")
-            }
+            onClicked: keypad.digitPressed("7")
 
             Timer {
                 id: button7Timer
@@ -163,18 +160,11 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: button8
             text: "8"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("8")
-            }
+            onClicked: keypad.digitPressed("8")
 
             Timer {
                 id: button8Timer
@@ -183,40 +173,25 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: button9
             text: "9"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("9")
-            }
+            onClicked: keypad.digitPressed("9")
 
             Timer {
                 id: button9Timer
                 interval: 100;
                 onTriggered: parent.down = undefined
             }
-
         }
 
-        Button {
+        CalculatorButton {
             id: buttonClear
             palette { button: "teal"; buttonText: "white"}
             text: "C"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.backspacePressed()
-            }
+            onClicked: keypad.backspacePressed()
             onPressAndHold: {
                 keypad.clearPressed()
                 PlatformAdapter.vibrateBrief()
@@ -227,22 +202,14 @@ Item {
                 interval: 100;
                 onTriggered: parent.down = undefined
             }
-
         }
 
 
-        Button {
+        CalculatorButton {
             id: button4
             text: "4"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("4")
-            }
+            onClicked: keypad.digitPressed("4")
 
             Timer {
                 id: button4Timer
@@ -251,18 +218,11 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: button5
             text: "5"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("5")
-            }
+            onClicked: keypad.digitPressed("5")
 
             Timer {
                 id: button5Timer
@@ -271,18 +231,11 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: button6
             text: "6"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("6")
-            }
+            onClicked: keypad.digitPressed("6")
 
             Timer {
                 id: button6Timer
@@ -291,18 +244,11 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: buttonMinus
             palette { button: "teal"; buttonText: "white"}
             text: "-"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
-            onClicked: {
-                keypad.operatorPressed("-")
-            }
+            onClicked: keypad.operatorPressed("-")
 
             Timer {
                 id: buttonMinusTimer
@@ -312,18 +258,11 @@ Item {
         }
 
 
-        Button {
+        CalculatorButton {
             id: button1
             text: "1"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("1")
-            }
+            onClicked: keypad.digitPressed("1")
 
             Timer {
                 id: button1Timer
@@ -333,39 +272,24 @@ Item {
 
         }
 
-        Button {
+        CalculatorButton {
             id: button2
             text: "2"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("2")
-            }
+            onClicked: keypad.digitPressed("2")
 
             Timer {
                 id: button2Timer
                 interval: 100;
                 onTriggered: parent.down = undefined
             }
-
         }
 
-        Button {
+        CalculatorButton {
             id: button3
             text: "3"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("3")
-            }
+            onClicked: keypad.digitPressed("3")
 
             Timer {
                 id: button3Timer
@@ -374,19 +298,12 @@ Item {
             }
         }
 
-        Button {
+        CalculatorButton {
             id: buttonPlus
             palette { button: "teal"; buttonText: "white"}
             text: "+"
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.operatorPressed("+")
-            }
+            onClicked: keypad.operatorPressed("+")
 
             Timer {
                 id: buttonPlusTimer
@@ -396,19 +313,13 @@ Item {
         }
 
 
-        Button {
+        CalculatorButton {
             id: button0
             text: "0"
-            Layout.fillHeight: true
+
             Layout.columnSpan: 3
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.digitPressed("0")
-            }
+            onClicked: keypad.digitPressed("0")
 
             Timer {
                 id: button0Timer
@@ -418,19 +329,12 @@ Item {
 
         }
 
-        Button {
+        CalculatorButton {
             id: buttonEquals
             palette { button: "teal"; buttonText: "white"}
             text: "="
-            Layout.fillHeight: true
-            Layout.minimumHeight: hoursAndMinutes.buttonMinHeight
-            Layout.maximumHeight: hoursAndMinutes.buttonMaxHeight
-            Layout.fillWidth: true
-            font.pixelSize: hoursAndMinutes.fontpixelsize
             palette { button: "#e0e0e0"; buttonText: "black"}
-            onClicked: {
-                keypad.operatorPressed("=")
-            }
+            onClicked: keypad.operatorPressed("=")
 
             Timer {
                 id: buttonEqualsTimer
@@ -444,12 +348,28 @@ Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.columnSpan: 3
-            Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+            Layout.minimumHeight: 0
             color: "#e0e0e0"
         }
 
         Rectangle {
             Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.minimumHeight: 0
+            color: "teal"
+        }
+
+
+        Rectangle {
+
+            Layout.fillWidth: true
+            Layout.columnSpan: 3
+            Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+            color: "#e0e0e0"
+        }
+
+        Rectangle {
+
             Layout.fillWidth: true
             Layout.minimumHeight: PlatformAdapter.safeInsetBottom
             color: "teal"

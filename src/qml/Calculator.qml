@@ -172,9 +172,9 @@ Rectangle {
 
 
         Keypad {
-            SplitView.minimumHeight: fontpixelsize*8
-            SplitView.maximumHeight: fontpixelsize*20
-            SplitView.preferredHeight: fontpixelsize*14
+            SplitView.minimumHeight: implicitHeight
+            SplitView.maximumHeight: 2*implicitHeight
+            SplitView.preferredHeight: 1.2*implicitHeight
 
             onBackspacePressed: {
                 var i = listView.model.count - 1

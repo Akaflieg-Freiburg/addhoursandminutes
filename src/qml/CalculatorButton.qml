@@ -23,5 +23,10 @@ import QtQuick.Controls.Basic
 import QtQuick.Layouts
 
 Button {
+    Layout.fillHeight: true
+    Layout.minimumHeight: implicitHeight
+    Layout.maximumHeight: 1.5*implicitHeight
+    Layout.fillWidth: true
 
+    font.pixelSize: hoursAndMinutes.fontpixelsize
 }
