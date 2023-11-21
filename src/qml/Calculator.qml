@@ -22,9 +22,11 @@ pragma ComponentBehavior: Bound
 
 import gui
 
+import QtCore
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+
 
 Rectangle {
     id: hoursAndMinutes
@@ -110,14 +112,54 @@ Rectangle {
 
     focus: true
 
+    Component.onCompleted: splitView.restoreState(settings.splitView)
+    Component.onDestruction: settings.splitView = splitView.saveState()
+
+    Settings {
+        id: settings
+
+        property var splitView
+    }
+
+    Timer {
+        interval: 10*1000
+        repeat: true
+        running: true
+        onTriggered: settings.splitView = splitView.saveState()
+    }
+
     SplitView {
+        id: splitView
         anchors.fill: parent
         orientation: Qt.Vertical
 
-        Item {
+        handle: Item {
+            id: handleDelegate
+
+            implicitHeight: 12
+
+            Rectangle {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                color: "teal"
+                width: 24
+                height: 3
+                radius: height
+            }
+
+            containmentMask: Item {
+                y: -1*handleDelegate.height
+
+                width: handleDelegate.width
+                height: 3*handleDelegate.height
+            }
+        }
+
+        Control {
             id: lvContainer
 
             SplitView.fillHeight: true
+            SplitView.minimumHeight: 4*font.pixelSize
 
             ListView {
                 id: listView
@@ -170,11 +212,18 @@ Rectangle {
             }
         }
 
-
         Keypad {
+            id: keypad
+
             SplitView.minimumHeight: implicitHeight
             SplitView.maximumHeight: 2*implicitHeight
-            SplitView.preferredHeight: 1.2*implicitHeight
+            SplitView.preferredHeight: {
+                if (Qt.platform.os === "android") {
+                    return 1.4*implicitHeight
+                }
+
+                return implicitHeight
+            }
 
             onBackspacePressed: {
                 var i = listView.model.count - 1

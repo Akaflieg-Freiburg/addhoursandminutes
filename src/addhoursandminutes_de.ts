@@ -4,7 +4,7 @@
 <context>
     <name>C++ Main Program</name>
     <message>
-        <location filename="main.cpp" line="+49"/>
+        <location filename="main.cpp" line="+50"/>
         <source>Add Times</source>
         <comment>Application Name</comment>
         <translation>Rechnen mit Zeiten</translation>
@@ -17,7 +17,7 @@
 <context>
     <name>Calculator</name>
     <message>
-        <location filename="qml/Calculator.qml" line="+199"/>
+        <location filename="qml/Calculator.qml" line="+323"/>
         <location/>
         <source>Overflow</source>
         <translation>Überlauf</translation>
@@ -28,6 +28,7 @@
     <message>
         <location filename="qml/DecoratedScrollView.qml" line="+52"/>
         <location line="+25"/>
+        <location/>
         <source>more</source>
         <translation>mehr</translation>
     </message>
@@ -36,13 +37,13 @@
     <name>main</name>
     <message>
         <location filename="qml/main.qml" line="+43"/>
-        <location line="+76"/>
+        <location line="+80"/>
         <location/>
         <source>Add Times</source>
         <translation>Rechnen mit Zeiten</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-48"/>
         <location line="+24"/>
         <location/>
         <source>Help</source>
@@ -55,7 +56,37 @@
         <translation>Über diese App</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+19"/>
+        <source>
+&lt;h4&gt;Enter Times&lt;/h4&gt;
+
+&lt;p&gt;In order to enter the time &lt;strong&gt;1 hour and 23 minutes&lt;/strong&gt;, simply press the keys
+&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; and &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Reset&lt;/h4&gt;
+
+&lt;p&gt;To reset the calculator, press and hold the key &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Resize&lt;/h4&gt;
+
+&lt;p&gt;Drag the dividing line above the keypad to change the keypad size.&lt;/p&gt;
+</source>
+        <translation>
+&lt;h4&gt;Zeiten eingeben&lt;/h4&gt;
+
+&lt;p&gt;Um die Zeit &lt;strong&gt;1 Stunde und 23 Minuten&lt;/strong&gt; einzugeben, drücken Sie einfach die Tasten &lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; und &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Zurücksetzen&lt;/h4&gt;
+
+&lt;p&gt;Um den Rechner zurückzusetzen, halten Sie die Taste &lt;strong&gt;C&lt;/strong&gt; gedrückt.&lt;/p&gt;
+
+&lt;h4&gt;Größe ändern&lt;/h4&gt;
+
+&lt;p&gt;Ziehen Sie die Trennlinie über dem Tastenfeld, um die Größe des Tastenfelds zu ändern.&lt;/p&gt;
+</translation>
+    </message>
+    <message>
+        <location line="+24"/>
         <location/>
         <source>
 &lt;h4&gt;Version %1&lt;/h4&gt;
@@ -138,8 +169,6 @@ Public License V3&lt;/a&gt;.&lt;/p&gt;
 </translation>
     </message>
     <message>
-        <location line="-20"/>
-        <location/>
         <source>
 &lt;h4&gt;Enter Times&lt;/h4&gt;
 

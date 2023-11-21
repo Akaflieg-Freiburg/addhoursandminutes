@@ -8,7 +8,7 @@
         <translation>Ajouter les temps</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="+49"/>
+        <location filename="main.cpp" line="+50"/>
         <source>Add Times</source>
         <comment>Application Name</comment>
         <translatorcomment>Nom de l&apos;application</translatorcomment>
@@ -18,7 +18,7 @@
 <context>
     <name>Calculator</name>
     <message>
-        <location filename="qml/Calculator.qml" line="+199"/>
+        <location filename="qml/Calculator.qml" line="+323"/>
         <location/>
         <source>Overflow</source>
         <translation>Dépassement</translation>
@@ -29,6 +29,7 @@
     <message>
         <location filename="qml/DecoratedScrollView.qml" line="+52"/>
         <location line="+25"/>
+        <location/>
         <source>more</source>
         <translation>plus</translation>
     </message>
@@ -37,13 +38,13 @@
     <name>main</name>
     <message>
         <location filename="qml/main.qml" line="+43"/>
-        <location line="+76"/>
+        <location line="+80"/>
         <location/>
         <source>Add Times</source>
         <translation>Ajouter les temps</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-48"/>
         <location line="+24"/>
         <location/>
         <source>Help</source>
@@ -56,7 +57,38 @@
         <translation>A propos</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+19"/>
+        <source>
+&lt;h4&gt;Enter Times&lt;/h4&gt;
+
+&lt;p&gt;In order to enter the time &lt;strong&gt;1 hour and 23 minutes&lt;/strong&gt;, simply press the keys
+&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; and &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Reset&lt;/h4&gt;
+
+&lt;p&gt;To reset the calculator, press and hold the key &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Resize&lt;/h4&gt;
+
+&lt;p&gt;Drag the dividing line above the keypad to change the keypad size.&lt;/p&gt;
+</source>
+        <translation>
+&lt;h4&gt;Entrez les heures&lt;/h4&gt;
+
+&lt;p&gt;Pour entrer le temps &lt;strong&gt;1 heure et 23 minutes&lt;/strong&gt;, appuyez simplement sur les touches
+&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt; et &lt;strong&gt;3&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Réinitialiser&lt;/h4&gt;
+
+&lt;p&gt;Pour réinitialiser la calculatrice, maintenez enfoncée la touche &lt;strong&gt;C&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Redimensionner&lt;/h4&gt;
+
+&lt;/p&gt;Faites glisser la ligne de séparation au-dessus du clavier pour modifier la taille du clavier.&lt;p&gt;
+</translation>
+    </message>
+    <message>
+        <location line="+24"/>
         <location/>
         <source>
 &lt;h4&gt;Version %1&lt;/h4&gt;
@@ -144,8 +176,6 @@ Licence publique V3&lt;/a&gt;.&lt;/p&gt;
 &lt;a href=&apos;https://www.qt.io&apos;&gt;Qt&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location line="-20"/>
-        <location/>
         <source>
 &lt;h4&gt;Enter Times&lt;/h4&gt;
 

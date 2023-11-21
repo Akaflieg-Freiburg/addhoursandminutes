@@ -53,13 +53,6 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
 		    onWindowSizeChanged();
 		}
 	    });
-	
-        // Set fullscreen
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 
-        {
-            getWindow().getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-        }
     }
 
     // Returns the height of the screen, taking the Android split view

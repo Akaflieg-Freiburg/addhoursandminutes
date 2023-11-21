@@ -130,10 +130,25 @@ Item {
 
         columnSpacing: 0
         rowSpacing: 0
-        columns: 4
+        columns: 8
 
 
         // Row 1
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.rowSpan: 8
+            Layout.minimumWidth: PlatformAdapter.safeInsetLeft
+            color: "#e0e0e0"
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.rowSpan: 8
+            Layout.minimumWidth: 0
+            color: "#e0e0e0"
+        }
 
         Rectangle {
             Layout.fillHeight: true
@@ -147,6 +162,41 @@ Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.minimumHeight: 0
+            Layout.maximumWidth: button1.Layout.maximumWidth
+            color: "teal"
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.rowSpan: 8
+            Layout.minimumWidth: 0
+            color: "teal"
+        }
+
+        Rectangle {
+            Layout.fillHeight: true
+            Layout.rowSpan: 8
+            Layout.minimumWidth: PlatformAdapter.safeInsetRight
+            color: "teal"
+        }
+
+
+        // Row 1
+
+        Rectangle {
+            Layout.preferredHeight: 12
+            Layout.fillWidth: true
+            Layout.columnSpan: 3
+            Layout.minimumHeight: 0
+            color: "#e0e0e0"
+        }
+
+        Rectangle {
+            Layout.preferredHeight: 12
+            Layout.fillWidth: true
+            Layout.minimumHeight: 0
+            Layout.maximumWidth: button1.Layout.maximumWidth
             color: "teal"
         }
 
@@ -372,6 +422,8 @@ Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.minimumHeight: 0
+            Layout.maximumWidth: button1.Layout.maximumWidth
+
             color: "teal"
         }
 
@@ -388,6 +440,8 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+            Layout.maximumWidth: button1.Layout.maximumWidth
+
             color: "teal"
         }
     }

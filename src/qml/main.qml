@@ -106,6 +106,10 @@ ApplicationWindow {
 <h4>Reset</h4>
 
 <p>To reset the calculator, press and hold the key <strong>C</strong>.</p>
+
+<h4>Resize</h4>
+
+<p>Drag the dividing line above the keypad to change the keypad size.</p>
 ")
         // qmllint enable
 
