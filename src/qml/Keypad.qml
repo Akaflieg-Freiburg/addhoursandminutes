@@ -132,6 +132,9 @@ Item {
         rowSpacing: 0
         columns: 4
 
+
+        // Row 1
+
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -146,6 +149,9 @@ Item {
             Layout.minimumHeight: 0
             color: "teal"
         }
+
+
+        // Row 2
 
         CalculatorButton {
             id: button7
@@ -205,6 +211,8 @@ Item {
         }
 
 
+        // Row 3
+
         CalculatorButton {
             id: button4
             text: "4"
@@ -257,6 +265,8 @@ Item {
             }
         }
 
+
+        // Row 4
 
         CalculatorButton {
             id: button1
@@ -313,11 +323,15 @@ Item {
         }
 
 
+        // Row 5
+
         CalculatorButton {
             id: button0
             text: "0"
 
             Layout.columnSpan: 3
+            Layout.maximumWidth: -1
+
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("0")
 
@@ -344,6 +358,8 @@ Item {
         }
 
 
+        // Row 6
+
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -360,8 +376,9 @@ Item {
         }
 
 
-        Rectangle {
+        // Row 7
 
+        Rectangle {
             Layout.fillWidth: true
             Layout.columnSpan: 3
             Layout.minimumHeight: PlatformAdapter.safeInsetBottom
@@ -369,7 +386,6 @@ Item {
         }
 
         Rectangle {
-
             Layout.fillWidth: true
             Layout.minimumHeight: PlatformAdapter.safeInsetBottom
             color: "teal"

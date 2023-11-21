@@ -26,6 +26,8 @@ Button {
     Layout.fillHeight: true
     Layout.minimumHeight: implicitHeight
     Layout.maximumHeight: 1.5*implicitHeight
+    Layout.minimumWidth: 0.5*implicitWidth
+    Layout.maximumWidth: 1.5*implicitWidth
     Layout.fillWidth: true
 
     font.pixelSize: hoursAndMinutes.fontpixelsize
