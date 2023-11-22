@@ -11,7 +11,7 @@ class PlatformAdapter : public QObject
     QML_SINGLETON
 
 public:
-    explicit PlatformAdapter(QObject* parent = 0);
+    explicit PlatformAdapter(QObject *parent = nullptr);
 
     // Safe inset at bottom of screen, so as to avoid system status bars and display cutouts
     Q_PROPERTY(double safeInsetBottom READ safeInsetBottom NOTIFY safeInsetBottomChanged)
@@ -47,28 +47,28 @@ public:
 
 
     // Getter method
-    double safeInsetBottom() const {return _safeInsetBottom;}
+    [[nodiscard]] double safeInsetBottom() const { return _safeInsetBottom; }
 
     // Getter method
-    double safeInsetLeft() const {return _safeInsetLeft;}
+    [[nodiscard]] double safeInsetLeft() const { return _safeInsetLeft; }
 
     // Getter method
-    double safeInsetRight() const {return _safeInsetRight;}
+    [[nodiscard]] double safeInsetRight() const { return _safeInsetRight; }
 
     // Getter method
-    double safeInsetTop() const {return _safeInsetTop;}
+    [[nodiscard]] double safeInsetTop() const { return _safeInsetTop; }
 
     /*! \brief Getter function for the property with the same name
      *
      *  @returns Property wHeight
      */
-    double wHeight() const {return m_wHeight;}
+    [[nodiscard]] double wHeight() const { return m_wHeight; }
 
     /*! \brief Getter function for the property with the same name
      *
      *  @returns Property wWidth
      */
-    double wWidth() const {return m_wWidth;}
+    [[nodiscard]] double wWidth() const { return m_wWidth; }
 
 public slots:
     /* On Android and iOS, make the device briefly vibrate. On other platforms, this does nothing. */

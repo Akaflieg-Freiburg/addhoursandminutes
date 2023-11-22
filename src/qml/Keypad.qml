@@ -18,12 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-pragma ComponentBehavior: Bound
 
 import gui
 
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {

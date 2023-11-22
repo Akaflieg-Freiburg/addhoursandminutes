@@ -18,14 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-pragma ComponentBehavior: Bound
 
 import gui
 
 import QtCore
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
 
 
 Rectangle {
@@ -36,10 +34,7 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
-    property real fontpixelsize: Application.font.pixelSize*fontScale // qmllint disable
-    property real formfactor: 2.5
-    property real buttonMinHeight: fontpixelsize*2
-    property real buttonMaxHeight: fontpixelsize*formfactor
+    property real fontpixelsize: (Qt.platform.os === "android") ? 1.6*Application.font.pixelSize :  1.2*Application.font.pixelSize
 
 
     SequentialAnimation {
@@ -250,9 +245,9 @@ Rectangle {
             }
 
             onClearPressed: {
-                minutesEntered = ""
-                hoursEntered = ""
-                totalMinutes = 0
+                hoursAndMinutes.minutesEntered = ""
+                hoursAndMinutes.hoursEntered = ""
+                hoursAndMinutes.totalMinutes = 0
 
                 listView.model.clear()
                 clearAnimation.start()
@@ -262,7 +257,7 @@ Rectangle {
             }
 
             onDigitPressed: (digit) => {
-                if (hoursEntered.length >= maxNumDigits) {
+                if (hoursAndMinutes.hoursEntered.length >= hoursAndMinutes.maxNumDigits) {
                     PlatformAdapter.vibrateError()
                     blinkAnimation.start()
                     return

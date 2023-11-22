@@ -45,7 +45,7 @@ ScrollView {
                 opacity: 0.9
             }
 
-            opacity: (scrollView.contentItem.contentY === 0) ? 0.0 : 1.0
+            opacity: (scrollView.contentItem.contentY === 0) ? 0.0 : 1.0  // qmllint disable
             Behavior on opacity { NumberAnimation { duration: 200 } }
 
             font.pixelSize: 0.8*scrollView.font.pixelSize
@@ -70,7 +70,7 @@ ScrollView {
                 opacity: 0.9
             }
 
-            opacity: (scrollView.contentItem.contentY >= scrollView.contentHeight-scrollView.height ) ? 0.0 : 1.0
+            opacity: (scrollView.contentItem.contentY >= scrollView.contentHeight-scrollView.height ) ? 0.0 : 1.0 // qmllint disable
             Behavior on opacity { NumberAnimation { duration: 200 } }
 
             font.pixelSize: 0.8*scrollView.font.pixelSize

@@ -31,16 +31,17 @@
 
 auto main(int argc, char *argv[]) -> int
 {
-    QGuiApplication app(argc, argv);
+    QGuiApplication const app(argc, argv);
 
     // Install translators
-    QString locale = QLocale::system().name();
+    QString const locale = QLocale::system().name();
     QTranslator translator;
     if (translator.load(QStringLiteral(":i18n/addhoursandminutes_") + locale.left(2))) {
         QGuiApplication::installTranslator(&translator);
     }
     QTranslator Qt_translator;
-    if (Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
+    if (Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+    {
         QGuiApplication::installTranslator(&Qt_translator);
     }
 
@@ -49,9 +50,7 @@ auto main(int argc, char *argv[]) -> int
     QCoreApplication::setOrganizationDomain(QStringLiteral("akaflieg_freiburg.de"));
     QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Times", "Application Name") );
     QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
-#if defined(Q_OS_LINUX)
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
-#endif
 
 #if defined(Q_OS_WINDOWS)
     QQuickStyle::setStyle(u"Universal"_qs);
