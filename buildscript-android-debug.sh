@@ -38,33 +38,22 @@ set -e
     
 rm -rf build-android-debug
 mkdir -p build-android-debug
-cd build-android-debug
 
 
 #
 # Configure
 #
 
-export ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620
-export JAVA_HOME=/usr/lib/jvm/java-19-openjdk
-
-$Qt6_DIR_ANDROID\_x86_64/bin/qt-cmake .. \
+$Qt6_DIR_ANDROID\_x86_64/bin/qt-cmake \
+  -DCMAKE_BUILD_TYPE:STRING="Debug" \
   -DQT_ANDROID_ABIS="arm64-v8a" \
   -G Ninja \
-  -DCMAKE_BUILD_TYPE:STRING=Debug
+  -S . \
+  -B build-android-debug 
 
-# Work around a bug in CMake Script…
-sed -i s/zipalign/31/ src/android-addhoursandminutes-deployment-settings.json
 
 #
 # Compile
 #
 
-ninja
-
-
-#
-# cd out
-#
-
-cd ..
+cmake --build build-android-debug
