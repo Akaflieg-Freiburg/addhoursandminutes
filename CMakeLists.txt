@@ -25,7 +25,9 @@ endif()
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
 qt_standard_project_setup()
 qt_policy(SET QTP0001 NEW)
-qt_policy(SET QTP0002 NEW)
+if ((CMAKE_SYSTEM_NAME STREQUAL "Android") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
+    qt_policy(SET QTP0002 NEW)
+endif ()
 
 # Subdirectories
 add_subdirectory(generatedSources)
