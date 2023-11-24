@@ -56,7 +56,7 @@ qt_add_translations(${PROJECT_NAME}
 # Set up additional files for Android
 #
 
-if(ANDROID)
+if (CMAKE_SYSTEM_NAME STREQUAL "Android")
     # Icons
     file(COPY ${CMAKE_SOURCE_DIR}/generatedSources/src/android DESTINATION .)
 
@@ -69,7 +69,7 @@ if(ANDROID)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
-endif()
+endif ()
 
 
 #
@@ -85,7 +85,7 @@ endif ()
 # Set up additional files for iOS
 #
 
-if(IOS)
+if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     #Info.plist
     set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
     set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/ios/Info.plist")
@@ -108,6 +108,7 @@ endif()
 # Installation for Linux, MacOS, Windows
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
+
 if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
     # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
     install(
