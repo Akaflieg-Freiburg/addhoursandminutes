@@ -4,6 +4,9 @@ on:
   push:
     branches: [ develop ]
 
+env:
+  APPLICATION: "addhoursandminutes"
+
 jobs:
   build:
     runs-on: macos-latest

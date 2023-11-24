@@ -1,6 +1,3 @@
-![Compile on Android](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Android/badge.svg)
-![Compile on Linux](https://github.com/Akaflieg-Freiburg/addhoursandminutes/workflows/Compile%20on%20Linux/badge.svg)
-![Compile on MacOS](https://github.com/Akaflieg-Freiburg/addhoursandminutes/actions/workflows/macos.yml/badge.svg)
 
 # Add Times
 
@@ -13,9 +10,9 @@ not collect user data.
 ## Information for users
 
 - Please have a look at the [homepage](https://akaflieg-freiburg.github.io/addhoursandminutes).
-
 - Run the app [directly in your browser](https://akaflieg-freiburg.github.io/addhoursandminutes/assets/webasm/addhoursandminutes.html)
+- Download the app on [Google Play](https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes), on the [App Store](https://apps.apple.com/de/app/rechnen-mit-zeiten/id6446039266) or on [Flathub](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes).
 
-- Download the app on [Google Play](https://play.google.com/store/apps/details?id=de.akaflieg_freiburg.cavok.add_hours_and_minutes) or on the [App Store](https://apps.apple.com/de/app/rechnen-mit-zeiten/id6446039266).
+## Information for developers
 
-- Download the app for Linux Desktop systems on [flathub.org](https://flathub.org/apps/details/de.akaflieg_freiburg.cavok.add_hours_and_minutes), or find the app in the software manager on your computer.
+- Developers will find automatically generated experimental builds for a variety of platforms [here](https://github.com/Akaflieg-Freiburg/addhoursandminutes/releases/tag/developerBuilds).
