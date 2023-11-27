@@ -67,8 +67,13 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
     configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
     configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
-    set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android")
-    set_target_properties(${PROJECT_NAME} PROPERTIES QT_ANDROID_TARGET_SDK_VERSION 33)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android"
+        QT_ANDROID_TARGET_SDK_VERSION 33
+        QT_ANDROID_MIN_SDK_VERSION 26
+    )
+
+
 endif ()
 
 
