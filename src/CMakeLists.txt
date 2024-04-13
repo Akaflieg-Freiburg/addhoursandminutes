@@ -101,11 +101,22 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set_source_files_properties(${asset_catalog_path} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
     #Launchscreen
-    set_target_properties(${PROJECT_NAME} PROPERTIES  QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
+    set_target_properties(${PROJECT_NAME} PROPERTIES QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
 
     #Platform specific functions
     target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.mm)
     target_sources(${PROJECT_NAME} PRIVATE ios/ObjCAdapter.h)
+
+
+    set(privacy_manifest "${CMAKE_CURRENT_SOURCE_DIR}/ios/PrivacyInfo.xcprivacy")
+    target_sources("${PROJECT_NAME}" PRIVATE "${privacy_manifest}")
+    set_property(TARGET "${PROJECT_NAME}" APPEND PROPERTY RESOURCE "${privacy_manifest}")
+
+
+    #target_sources(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/iosX/PrivacyInfo.xcprivacy")
+    #set_target_properties(${PROJECT_NAME} PROPERTIES
+    #    _qt_privacy_manifest "${CMAKE_CURRENT_SOURCE_DIR}/iosX/PrivacyInfo.xcprivacy")
+
 endif()
 
 
