@@ -22,7 +22,7 @@ jobs:
         version: '6.6.*'
     - name: Set QT_HOST_PATH
       run: |
-        echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
+        echo QT_HOST_PATH=$QT_ROOT_DIR >> $GITHUB_ENV
     - name: Install Qt for Android
       uses: jurplel/install-qt-action@v4
       with:
