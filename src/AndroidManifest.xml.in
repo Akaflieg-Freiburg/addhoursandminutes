@@ -8,7 +8,7 @@
     android:installLocation="auto">  
   <uses-sdk
       android:minSdkVersion="23"
-      android:targetSdkVersion="33"/>
+      android:targetSdkVersion="35"/>
   <uses-permission
       android:name="android.permission.VIBRATE"/>
   <supports-screens

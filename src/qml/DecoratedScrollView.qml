@@ -86,5 +86,12 @@ ScrollView {
         bottomItem.createObject(scrollView)
     }
 
+    // This seems necessary starting from Qt6.6.1
+    contentHeight: {
+        if (contentChildren.length > 0) {
+            return contentChildren[0].implicitHeight
+        }
+        return 0
+    }
 
 }

@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.4.1)
+project(addhoursandminutes VERSION 1.4.2)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(DISPLAY_NAME "Add Times")
 set(PROJECT_DATE 2023-11-24)
@@ -58,8 +58,15 @@ endif()
 
 
 # Include required packages
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
-qt_standard_project_setup()
+find_package(Qt6 6.6 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
+set(QT_VERSION ${Qt6Core_VERSION})
+
+if(${QT_VERSION} VERSION_GREATER_EQUAL "6.7.0")
+    qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES de es fr it pl)
+else()
+    qt_standard_project_setup()
+endif()
+
 qt_policy(SET QTP0001 NEW)
 if ((CMAKE_SYSTEM_NAME STREQUAL "Android") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
     qt_policy(SET QTP0002 NEW)

@@ -42,14 +42,37 @@ qt_add_resources(${PROJECT_NAME} "programicons"
 
 )
 
-qt_add_translations(${PROJECT_NAME}
-    TS_FILES
-    addhoursandminutes_de.ts
-    addhoursandminutes_es.ts
-    addhoursandminutes_fr.ts
-    addhoursandminutes_it.ts
-    addhoursandminutes_pl.ts
-)
+
+if(${QT_VERSION} VERSION_GREATER_EQUAL "6.7.0")
+    qt_add_lrelease(
+        TS_FILES
+        addhoursandminutes_de.ts
+        addhoursandminutes_es.ts
+        addhoursandminutes_fr.ts
+        addhoursandminutes_it.ts
+        addhoursandminutes_pl.ts
+        QM_FILES_OUTPUT_VARIABLE qmFiles
+    )
+    qt_add_resources(
+        ${PROJECT_NAME}
+        translations_addhoursandminutes
+        BASE
+        ${CMAKE_CURRENT_BINARY_DIR}
+        PREFIX
+        i18n
+        FILES
+        ${qmFiles}
+    )
+else()
+    qt_add_translations(${PROJECT_NAME}
+        TS_FILES
+        addhoursandminutes_de.ts
+        addhoursandminutes_es.ts
+        addhoursandminutes_fr.ts
+        addhoursandminutes_it.ts
+        addhoursandminutes_pl.ts
+    )
+endif()
 
 
 #
