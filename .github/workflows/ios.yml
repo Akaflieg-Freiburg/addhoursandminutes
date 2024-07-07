@@ -16,11 +16,11 @@ jobs:
       with:
         submodules: true
     - name: Install Qt for Desktop
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-macOS-host'
-        version: '6.5.2'
+        version: '6.7.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
@@ -30,7 +30,7 @@ jobs:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-ios'
         target: 'ios'
-        version: '6.5.2'
+        version: '6.7.*'
     - name: Configure
       run: |
         cmake -E make_directory build

@@ -15,10 +15,10 @@ jobs:
       with:
         submodules: true 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
-        version: '6.5.2'
+        version: '6.7.*'
     - name: Configure
       run: |
         cmake -E make_directory build

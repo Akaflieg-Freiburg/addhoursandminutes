@@ -15,21 +15,21 @@ jobs:
       with:
         submodules: true
     - name: Install Qt for Desktop
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-host'
-        version: '6.*.*'
+        version: '6.6.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$Qt6_DIR >> $GITHUB_ENV
     - name: Install Qt for Android
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-android'
         target: 'android'
-        version: '6.*.*'
+        version: '6.6.*'
         arch: 'android_arm64_v8a'
     - name: Install Additional Software
       run: |
