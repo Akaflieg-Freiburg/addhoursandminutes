@@ -22,14 +22,14 @@ jobs:
     - name: Configure
       run: |
         cmake -E make_directory build
-        $Qt6_DIR/bin/qt-cmake -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_INSTALL_PREFIX=. -S . -B build
+        $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_INSTALL_PREFIX=. -S . -B build
     - name: Compile
       run: |
         cmake --build build
     - name: Package
       run: |
         cmake --build build --target install
-        $Qt6_DIR/bin/macdeployqt addhoursandminutes.app -dmg
+        $QT_ROOT_DIR/bin/macdeployqt addhoursandminutes.app -dmg
         mv addhoursandminutes.dmg addTimes-macOS-universal.dmg
     - name: Upload to developerBuilds
       run: |

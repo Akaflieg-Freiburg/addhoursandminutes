@@ -43,7 +43,7 @@ jobs:
     - name: Configure
       run: |
         cmake -E make_directory build
-        $Qt6_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
+        $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Compile
       run: |
         cmake --build build
