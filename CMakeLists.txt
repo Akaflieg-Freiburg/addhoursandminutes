@@ -4,10 +4,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.4.3)
+project(addhoursandminutes VERSION 1.4.4)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(DISPLAY_NAME "Add Times")
-set(PROJECT_DATE 2023-11-24)
+set(PROJECT_DATE 2024-07-11)
 math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
