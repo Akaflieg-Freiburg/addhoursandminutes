@@ -10,12 +10,12 @@
   <name xml:lang="fr">Calculer avec des temps</name>
   <name xml:lang="it">Calcolo con i tempi</name>
   <name xml:lang="pl">Dodaj czasy</name>
-  <summary>Simple calculator for adding hours and minutes</summary>
-  <summary xml:lang="de">Einfacher Rechner zum Addieren von Stunden und Minuten</summary>
-  <summary xml:lang="es">Calculadora sencilla para sumar horas y minutos</summary>
-  <summary xml:lang="fr">Calculatrice simple pour additionner les heures et les minutes</summary>
-  <summary xml:lang="it">Semplice calcolatrice per aggiungere ore e minuti</summary>
-  <summary xml:lang="pl">Prosty kalkulator do zliczania godzin i minut</summary>
+  <summary>Calculator for adding hours and minutes</summary>
+  <summary xml:lang="de">Rechner zum Addieren von Stunden und Minuten</summary>
+  <summary xml:lang="es">Calculadora para sumar horas y minutos</summary>
+  <summary xml:lang="fr">Calculatrice pour additionner les heures et les minutes</summary>
+  <summary xml:lang="it">Calcolatrice per aggiungere ore e minuti</summary>
+  <summary xml:lang="pl">Kalkulator do zliczania godzin i minut</summary>
   <description>
     <p>This calculator adds times given in hours and minutes.  It helps with the
     recording of machine running times, with the addition of flight times for
@@ -44,11 +44,12 @@
   <releases>
     <release version="${PROJECT_VERSION}" date="${GIT_DATE}"/>
   </releases>
-  <developer_name>
-    Akaflieg Freiburg
-  </developer_name>
+  <developer id="de.akaflieg-freiburg">
+    <name>Akaflieg Freiburg</name>
+  </developer>
   <screenshots>
     <screenshot type="default">
+      <caption>Calculator in Action</caption>    
       <image type="source">https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/screenshot-linux.png</image>
     </screenshot>
   </screenshots>
@@ -64,6 +65,5 @@
   </provides>
   <custom>
     <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
   </custom>
 </component>
