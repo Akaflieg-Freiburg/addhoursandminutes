@@ -8,8 +8,7 @@ configure_file(${APP_ID}.json ${APP_ID}.json)
 # Sample build
 #
 add_custom_target(flatpak-binary
-  COMMAND rm -rf flatpakBuildDirectory .flatpak-builder
-  COMMAND flatpak-builder flatpakBuildDirectory de.akaflieg_freiburg.cavok.add_hours_and_minutes.json
+  COMMAND flatpak-builder --force-clean flatpakBuildDirectory de.akaflieg_freiburg.cavok.add_hours_and_minutes.json
   COMMAND echo ""
   COMMAND echo ""
   COMMAND echo "Run your flatpak with the following command"
