@@ -3,3 +3,4 @@ CMakeLists.txt.user
 *.snap
 build-*
 build
+.DS_Store
