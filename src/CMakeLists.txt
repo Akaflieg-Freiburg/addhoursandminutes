@@ -148,7 +148,7 @@ endif()
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
 
-if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux-error") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
+if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
     # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
     install(
         TARGETS ${PROJECT_NAME}
@@ -157,12 +157,12 @@ if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux
     )
 
     # Generate the deployment script for the target ${PROJECT_NAME}.
-    qt_generate_deploy_qml_app_script(
-        TARGET ${PROJECT_NAME}
-        OUTPUT_SCRIPT deploy_script
-        NO_UNSUPPORTED_PLATFORM_ERROR
-    )
+    #qt_generate_deploy_qml_app_script(
+    #    TARGET ${PROJECT_NAME}
+    #    OUTPUT_SCRIPT deploy_script
+    #    NO_UNSUPPORTED_PLATFORM_ERROR
+    #)
 
     # Call the deployment script on "cmake --install".
-    install(SCRIPT ${deploy_script})
+    #install(SCRIPT ${deploy_script})
 endif ()
