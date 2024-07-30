@@ -148,7 +148,7 @@ endif()
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
 
-if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
+if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux-error") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
     # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
     install(
         TARGETS ${PROJECT_NAME}
