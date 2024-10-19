@@ -105,7 +105,10 @@ endif ()
 #
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE true
+        MACOSX_BUNDLE_BUNDLE_NAME "Add Times"
+    )
 endif ()
 
 
