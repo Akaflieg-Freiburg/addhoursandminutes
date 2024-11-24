@@ -60,6 +60,7 @@ endif()
 # Include required packages
 find_package(Qt6 6.6 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
 set(QT_VERSION ${Qt6Core_VERSION})
+set(QT_QML_GENERATE_QMLLS_INI ON)
 
 if(${QT_VERSION} VERSION_GREATER_EQUAL "6.7.0")
     qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES de es fr it pl)
