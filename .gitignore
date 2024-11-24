@@ -3,6 +3,5 @@ CMakeLists.txt.user
 *.snap
 build-*
 build
-
-# Mac
 .DS_Store
+**/.qmlls.ini
