@@ -65,14 +65,6 @@ auto main(int argc, char *argv[]) -> int
     // Make screen available to QML
     engine.rootContext()->setContextProperty(QStringLiteral("primaryScreen"), QGuiApplication::primaryScreen());
 
-    // Make font scaling factor available to QML engine; this scaling factor
-    // depends on the platform
-#ifdef Q_OS_ANDROID
-    engine.rootContext()->setContextProperty(QStringLiteral("fontScale"), 1.5);
-#else
-    engine.rootContext()->setContextProperty(QStringLiteral("fontScale"), 1.2);
-#endif
-
     // Now load the QML code
     engine.load(QStringLiteral("qrc:/qt/qml/gui/qml/main.qml"));
 

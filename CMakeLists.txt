@@ -48,30 +48,17 @@ endif()
 add_compile_definitions(GIT_COMMIT="${GIT_COMMIT}")
 
 
-if(IOS)
-    set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
-#    set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "XXXXX")
-
-    #set Icon
-    set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
-endif()
-
-
 # Include required packages
 find_package(Qt6 6.6 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
 set(QT_VERSION ${Qt6Core_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
-if(${QT_VERSION} VERSION_GREATER_EQUAL "6.7.0")
-    qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES de es fr it pl)
-else()
-    qt_standard_project_setup()
-endif()
+qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES de es fr it pl)
 
 qt_policy(SET QTP0001 NEW)
-if ((CMAKE_SYSTEM_NAME STREQUAL "Android") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
-    qt_policy(SET QTP0002 NEW)
-endif ()
+qt_policy(SET QTP0002 NEW)
+qt_policy(SET QTP0004 NEW)
+
 
 # Subdirectories
 add_subdirectory(generatedSources)

@@ -25,6 +25,8 @@ import QtCore
 import QtQuick
 import QtQuick.Controls
 
+pragma ComponentBehavior: Bound
+
 
 Rectangle {
     id: hoursAndMinutes
