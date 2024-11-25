@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.19)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+option(QTDEPLOY "Generate and run Qt deployment scripts" OFF)
+
+
 # Basic information about our project
 project(addhoursandminutes VERSION 1.4.4)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
@@ -10,6 +13,7 @@ set(DISPLAY_NAME "Add Times")
 set(PROJECT_DATE 2024-07-11)
 math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
+
 
 # Find GIT repository data.
 if (EXISTS ${CMAKE_SOURCE_DIR}/.git)
@@ -49,7 +53,7 @@ add_compile_definitions(GIT_COMMIT="${GIT_COMMIT}")
 
 
 # Include required packages
-find_package(Qt6 6.6 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Core LinguistTools Quick QuickControls2 Svg)
 set(QT_VERSION ${Qt6Core_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 

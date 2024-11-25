@@ -40,7 +40,12 @@ jobs:
     - name: Configure
       run: |
         cmake -E make_directory build
-        $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_INSTALL_PREFIX:STRING=$PWD/app/usr -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
+        $QT_ROOT_DIR/bin/qt-cmake \
+          -DQTDEPLOY=ON \
+          -DCMAKE_INSTALL_PREFIX:STRING=$PWD/app/usr \
+          -DCMAKE_BUILD_TYPE:STRING=Release \
+          -S . \
+          -B build
     - name: Compile and Install
       run: |
         cmake --build build

@@ -139,13 +139,15 @@ if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
-# Generate the deployment script for the target ${PROJECT_NAME}.
-qt_generate_deploy_qml_app_script(
-    TARGET ${PROJECT_NAME}
-    OUTPUT_SCRIPT deploy_script
-    NO_UNSUPPORTED_PLATFORM_ERROR
-)
+    if ( QTDEPLOY )
+        # Generate the deployment script for the target ${PROJECT_NAME}.
+        qt_generate_deploy_qml_app_script(
+            TARGET ${PROJECT_NAME}
+            OUTPUT_SCRIPT deploy_script
+            NO_UNSUPPORTED_PLATFORM_ERROR
+        )
 
-# Call the deployment script on "cmake --install".
-install(SCRIPT ${deploy_script})
+        # Call the deployment script on "cmake --install".
+        install(SCRIPT ${deploy_script})
+    endif ()
 endif ()
