@@ -1,120 +1,16 @@
 {
   "app-id": "${APP_ID}",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "23.08",
-  "sdk": "org.freedesktop.Sdk",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "6.8",
+  "sdk": "org.kde.Sdk",
   "command": "addhoursandminutes",
   "finish-args": [
+    "--device=dri",
     "--share=ipc",
-    "--socket=x11",
-    "--device=dri"
-  ],
-  "cleanup": [
-    "/app/qtTemporary",
-    "/qtTemporary"
+    "--socket=fallback-x11",
+    "--socket=wayland"
   ],
   "modules": [
-    {
-      "name": "qtbase",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/qt/qtbase.git",
-          "tag": "v${Qt6_VERSION}"
-        }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE=Release",
-        "-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
-        "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
-        "-DQT_BUILD_TESTS_BY_DEFAULT=OFF"
-      ]
-    },
-    {
-      "name": "qtsvg",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/qt/qtsvg.git",
-          "tag": "v${Qt6_VERSION}"
-        }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE:STRING=Release",
-        "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
-        "-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary"
-      ]
-    },
-    {
-      "name": "qttools",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/qt/qttools.git",
-          "tag": "v${Qt6_VERSION}"
-        }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE:STRING=Release",
-        "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
-        "-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
-        "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
-        "-DQT_BUILD_TESTS_BY_DEFAULT=OFF",
-        "-DFEATURE_assistant=ON",
-        "-DFEATURE_clang=OFF",
-        "-DFEATURE_clangcpp=OFF",
-        "-DFEATURE_designer=ON",
-        "-DFEATURE_distancefieldgenerator=OFF",
-        "-DFEATURE_kmap2qmap=OFF",
-        "-DFEATURE_macdeployqt=OFF",
-        "-DFEATURE_pixeltool=OFF",
-        "-DFEATURE_pkg_config=OFF",
-        "-DFEATURE_qdbus=OFF",
-        "-DFEATURE_qev=OFF",
-        "-DFEATURE_qtattributionsscanner=OFF",
-        "-DFEATURE_qtdiag=OFF",
-        "-DFEATURE_qtplugininfo=OFF",
-        "-DFEATURE_windeployqt=OFF"
-      ]
-    },
-    {
-      "name": "qtshadertools",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/qt/qtshadertools.git",
-          "tag": "v${Qt6_VERSION}"
-        }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE:STRING=Release",
-        "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
-        "-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary"
-      ]
-    },
-    {
-      "name": "qtdeclarative",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/qt/qtdeclarative.git",
-          "tag": "v${Qt6_VERSION}"
-        }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE:STRING=Release",
-        "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary",
-        "-DCMAKE_INSTALL_PREFIX:PATH=/app/qtTemporary",
-        "-DFEATURE_qml_debug=OFF",
-        "-DQT_BUILD_EXAMPLES_BY_DEFAULT=OFF",
-        "-DQT_BUILD_TESTS_BY_DEFAULT=OFF"
-      ]
-    },
     {
       "name": "addHoursAndMinutes",
       "buildsystem": "cmake-ninja",
@@ -124,11 +20,6 @@
           "url": "https://github.com/Akaflieg-Freiburg/addhoursandminutes.git",
           "commit": "${GIT_COMMIT}"
         }
-      ],
-      "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_BUILD_TYPE:STRING=Release",
-        "-DCMAKE_FIND_ROOT_PATH:PATH=/app/qtTemporary"
       ]
     }
   ]
