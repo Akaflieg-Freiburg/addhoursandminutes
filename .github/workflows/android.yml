@@ -3,6 +3,15 @@ name: Compile on Android
 on:
   push:
     branches: [ develop ]
+    paths-ignore:
+      - ".gitignore"
+      - "README.md"
+      - "CHANGELOG.md"
+      # ignore CI for other platforms
+      - ".github/workflows/ios.yml"
+      - ".github/workflows/linux.yml"
+      - ".github/workflows/macos.yml"
+      - ".github/workflows/windows.yml"
 
 jobs:
   build:
@@ -11,37 +20,32 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: true
-    - name: Install Qt for Desktop
+    - name: Install Qt for Android arm64
       uses: jurplel/install-qt-action@v4
       with:
-        cache: 'true'
-        cache-key-prefix: 'install-qt-action-host'
-        version: '6.6.*'
-    - name: Set QT_HOST_PATH
-      run: |
-        echo QT_HOST_PATH=$QT_ROOT_DIR >> $GITHUB_ENV
-    - name: Install Qt for Android
-      uses: jurplel/install-qt-action@v4
-      with:
+        aqtversion: ==3.1.*
         cache: 'true'
         cache-key-prefix: 'install-qt-action-android'
+        modules: 'qt5compat qtconnectivity qthttpserver qtimageformats qtlocation qtmultimedia qtpositioning qtsensors qtserialport qtshadertools qtspeech qtwebsockets qtwebview'
         target: 'android'
-        version: '6.6.*'
+        version: '6.8.0'
         arch: 'android_arm64_v8a'
-    - name: Install Additional Software
-      run: |
-        sudo apt install doxygen graphviz librsvg2-bin
-        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platforms;android-33" "platform-tools" "build-tools;33.0.2"
-        echo ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.1.8937393 >> $GITHUB_ENV
+    - name: Set up OpenJDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: adopt
+        java-version: 17
+    - name: Setup ninja
+      uses: seanmiddleditch/gha-setup-ninja@v5
     - name: Remove Unwanted Software
       run: |
         echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --uninstall "platforms;android-33-ext4" "platforms;android-33-ext5" "platforms;android-34-ext8"
-        echo "y" | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "ndk;25.1.8937393"
     - name: Configure
       run: |
+        export QT_HOST_PATH="$(readlink -f "$QT_ROOT_DIR/../gcc_64")"
         cmake -E make_directory build
         $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build
     - name: Compile

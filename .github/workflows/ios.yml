@@ -3,6 +3,15 @@ name: Compile on iOS-Simulator
 on:
   push:
     branches: [ develop ]
+    paths-ignore:
+      - ".gitignore"
+      - "README.md"
+      - "CHANGELOG.md"
+      # ignore CI for other platforms
+      - ".github/workflows/android.yml"
+      - ".github/workflows/linux.yml"
+      - ".github/workflows/macos.yml"
+      - ".github/workflows/windows.yml"
 
 env:
   APPLICATION: "addhoursandminutes"
@@ -12,7 +21,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: true
     - name: Install Qt for Desktop
@@ -20,7 +29,7 @@ jobs:
       with:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-macOS-host'
-        version: '6.7.*'
+        version: '6.8.*'
     - name: Set QT_HOST_PATH
       run: |
         echo QT_HOST_PATH=$QT_ROOT_DIR >> $GITHUB_ENV
@@ -30,7 +39,7 @@ jobs:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-ios'
         target: 'ios'
-        version: '6.7.*'
+        version: '6.8.*'
     - name: Configure
       run: |
         cmake -E make_directory build
