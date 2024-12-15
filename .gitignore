@@ -6,3 +6,5 @@ build
 .DS_Store
 **/.qmlls.ini
 pc-api-8548806115718303828-770-6966308588f6.json
+fastlane/README.md
+fastlane/report.xml
