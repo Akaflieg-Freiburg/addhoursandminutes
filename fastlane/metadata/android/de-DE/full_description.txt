@@ -1,0 +1,3 @@
+Eine kleine Taschenrechner-App, mit der Sie Zeiten zusammenrechnen können. Das hilft Ihnen bei der Erfassung von Maschinenlaufzeiten, bei der Addition Ihrer Flugzeiten als Pilot oder Ihrer Lenkzeiten als LKW-Fahrer.
+
+Die Benutzeroberfläche ist minimalistisch und funktional. Die App ist werbefrei und spioniert sie nicht aus. Das gesamte Programm ist 100% Open Source und wurde ohne kommerzielles Interesse geschrieben.

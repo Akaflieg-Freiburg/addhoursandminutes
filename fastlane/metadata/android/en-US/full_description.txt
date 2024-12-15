@@ -1,0 +1,3 @@
+A simple calculator app that adds times given in hours and minutes.  It helps with the recording of machine running times, with the addition of flight times in your pilots' flight log, or your driving times as a truck driver.
+
+This user interface is designed to be simple, minimalistic and functional. The app contains no advertising and does not spy on you. The program is 100% Open Source and written without commercial interest.
