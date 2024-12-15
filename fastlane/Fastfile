@@ -8,8 +8,6 @@ platform :android do
   desc "Build Android Binary"
   lane :build do
     Dir.chdir("..") do
-      #       sh "./buildscript-android-release.sh"
-
       # Clean up previous builds
       FileUtils.rm_rf('build-android-release')
       FileUtils.mkdir_p('build-android-release')
@@ -67,8 +65,8 @@ platform :android do
 
   desc "Deploy a new version to Google Play - Beta"
   lane :deployBeta do
-    build
-    metadata
-    #upload_to_play_store
+#    build
+#    metadata
+    upload_to_play_store(aab: 'build-android-release/addhoursandminutes.aab', track: 'beta', validate_only: true, skip_upload_changelogs: true)
   end
 end
