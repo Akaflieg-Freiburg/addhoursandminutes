@@ -94,9 +94,19 @@ endif ()
 #
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "14.0")
+    message("CMAKE_OSX_DEPLOYMENT_TARGET: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
+
+    set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.icns")
+    set_source_files_properties(${app_icon_macos} PROPERTIES
+        MACOSX_PACKAGE_LOCATION "Resources")
+    target_sources(${PROJECT_NAME} PRIVATE "${app_icon_macos}")
+
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE true
         MACOSX_BUNDLE_BUNDLE_NAME "Add Times"
+        MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/macos/Info.plist"
+        MACOSX_BUNDLE_ICON_FILE addhoursandminutes.icns
     )
 endif ()
 
@@ -131,23 +141,27 @@ endif()
 # see https://www.qt.io/blog/deploying-to-linux-with-cmake
 #
 
+# Generate the deployment script for the target ${PROJECT_NAME}.
+qt_generate_deploy_qml_app_script(
+    TARGET ${PROJECT_NAME}
+    OUTPUT_SCRIPT deploy_script
+    NO_UNSUPPORTED_PLATFORM_ERROR
+    MACOS_BUNDLE_POST_BUILD
+    DEPLOY_TOOL_OPTIONS
+    "-sign-for-notarization=Stefan Kebekus"
+
+)
+
 if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
     # Install the executable into "${CMAKE_INSTALL_PREFIX}/bin".
     install(
         TARGETS ${PROJECT_NAME}
-        BUNDLE  DESTINATION .
+        BUNDLE DESTINATION .
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
+    # Call the deployment script on "cmake --install".
     if ( QTDEPLOY )
-        # Generate the deployment script for the target ${PROJECT_NAME}.
-        qt_generate_deploy_qml_app_script(
-            TARGET ${PROJECT_NAME}
-            OUTPUT_SCRIPT deploy_script
-            NO_UNSUPPORTED_PLATFORM_ERROR
-        )
-
-        # Call the deployment script on "cmake --install".
         install(SCRIPT ${deploy_script})
     endif ()
 endif ()
