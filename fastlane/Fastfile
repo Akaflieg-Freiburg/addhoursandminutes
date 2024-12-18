@@ -134,26 +134,10 @@ platform :macos do
     )
 
     UI.message('Building macOS Binary...')
-    sh('cmake --build build-macos-release --target install')
+    sh('cmake --build build-macos-release')
 
     UI.message('Compile MacOS Bundle and Sign ...')
     sh('cmake --build build-macos-release --target install')
   end
 
-  desc "Updata Meta Data for Google Play"
-  lane :metadata do
-    # Update Changelog files
-    matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-    latest_version, changelog_text = matches.last
-    major, minor, patch = latest_version.split('.').map(&:to_i)
-    version_code = 100000 * major + 1000 * minor + patch
-    File.write("metadata/android/en-US/#{version_code}.txt", changelog_text.strip)      
-  end
-
-  desc "Deploy a new version to Google Play - Beta"
-  lane :deployBeta do
-    build
-    metadata
-    upload_to_play_store(aab: 'build-android-release/addhoursandminutes.aab', track: 'beta', validate_only: true, skip_upload_changelogs: true)
-  end
 end
