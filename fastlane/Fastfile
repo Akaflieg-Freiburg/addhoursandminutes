@@ -9,10 +9,10 @@ platform :android do
   lane :build do
     Dir.chdir("..") do
       # Clean up previous builds
-      FileUtils.rm_rf('build-android-release')
-      FileUtils.mkdir_p('build-android-release')
+      FileUtils.rm_rf('../build/build-android-release')
 
       # Configure CMake build
+      UI.message('Configuring CMake build...')
       qt6_android_dir = ENV['Qt6_DIR_ANDROID']
       cmake_config_cmd = [
         "#{qt6_android_dir}_x86/bin/qt-cmake",
@@ -20,19 +20,17 @@ platform :android do
         '-DCMAKE_BUILD_TYPE:STRING=Release',
         '-DQT_ANDROID_BUILD_ALL_ABIS=ON',
         '-S .',
-        '-B build-android-release'
+        '-B ../build/build-android-release'
       ].join(' ')
-
-      UI.message('Configuring CMake build...')
       sh(cmake_config_cmd)
 
       # Build AAB
       UI.message('Building Android App Bundle...')
-      sh('cmake --build build-android-release --target aab')
+      sh('cmake --build ../build/build-android-release --target aab')
 
       # Move AAB to a consistent location
-      aab_source = 'build-android-release/src/android-build/build/outputs/bundle/release/android-build-release.aab'
-      aab_dest = 'build-android-release/addhoursandminutes.aab'
+      aab_source = '../build/build-android-release/src/android-build/build/outputs/bundle/release/android-build-release.aab'
+      aab_dest = '../build/addhoursandminutes.aab'
       FileUtils.mv(aab_source, aab_dest)
 
       # Sign the AAB
@@ -75,7 +73,7 @@ platform :linux do
   desc "Build Linux Binary"
   lane :build do
     # Clean up previous builds
-    FileUtils.rm_rf('build-linux-release')
+    FileUtils.rm_rf('../build/build-linux-release')
 
     # Configure CMake build
     qt6_linux_dir = ENV['Qt6_DIR_LINUX']
@@ -83,8 +81,8 @@ platform :linux do
       "#{qt6_linux_dir}/bin/qt-cmake",
       '-G Ninja',
       '-DCMAKE_BUILD_TYPE:STRING=Release',
-      '-S .',
-      '-B build-android-release'
+      '-S ..',
+      '-B ../build/build-linux-release'
     ].join(' ')
 
     UI.message('Configuring CMake build...')
@@ -92,9 +90,8 @@ platform :linux do
 
     # Build AAB
     UI.message('Building Linux Binary...')
-    sh('cmake --build build-linux-release')
+    sh('cmake --build ../build/build-linux-release')
   end
-
 end
 
 
