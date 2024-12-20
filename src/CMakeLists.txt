@@ -149,7 +149,6 @@ qt_generate_deploy_qml_app_script(
     MACOS_BUNDLE_POST_BUILD
     DEPLOY_TOOL_OPTIONS
     "-sign-for-notarization=Stefan Kebekus"
-
 )
 
 if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
@@ -161,7 +160,7 @@ if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux
     )
 
     # Call the deployment script on "cmake --install".
-    if ( QTDEPLOY )
+    if (QTDEPLOY)
         install(SCRIPT ${deploy_script})
     endif ()
 endif ()
