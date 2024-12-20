@@ -73,7 +73,7 @@ platform :linux do
   desc "Build Linux Binary"
   lane :build do
     # Clean up previous builds
-    FileUtils.rm_rf('build-linux-release')
+    FileUtils.rm_rf('../build/build-linux-release')
 
     # Configure CMake build
     qt6_linux_dir = ENV['Qt6_DIR_LINUX']
@@ -81,8 +81,8 @@ platform :linux do
       "#{qt6_linux_dir}/bin/qt-cmake",
       '-G Ninja',
       '-DCMAKE_BUILD_TYPE:STRING=Release',
-      '-S .',
-      '-B build-android-release'
+      '-S ..',
+      '-B ../build/build-linux-release'
     ].join(' ')
 
     UI.message('Configuring CMake build...')
@@ -90,24 +90,7 @@ platform :linux do
 
     # Build AAB
     UI.message('Building Linux Binary...')
-    sh('cmake --build build-linux-release')
-  end
-
-  desc "Updata Meta Data for Google Play"
-  lane :metadata do
-    # Update Changelog files
-    matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-    latest_version, changelog_text = matches.last
-    major, minor, patch = latest_version.split('.').map(&:to_i)
-    version_code = 100000 * major + 1000 * minor + patch
-    File.write("metadata/android/en-US/#{version_code}.txt", changelog_text.strip)      
-  end
-
-  desc "Deploy a new version to Google Play - Beta"
-  lane :deployBeta do
-    build
-    metadata
-    upload_to_play_store(aab: 'build-android-release/addhoursandminutes.aab', track: 'beta', validate_only: true, skip_upload_changelogs: true)
+    sh('cmake --build ../build/build-linux-release')
   end
 end
 
