@@ -7,10 +7,10 @@ option(QTDEPLOY "Generate and run Qt deployment scripts" OFF)
 
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.4.4)
+project(addhoursandminutes VERSION 1.4.5)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(DISPLAY_NAME "Add Times")
-set(PROJECT_DATE 2024-07-11)
+set(PROJECT_DATE 2024-12-21)
 math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
