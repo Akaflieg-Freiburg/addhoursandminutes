@@ -49,7 +49,7 @@ platform :android do
   lane :metadata do
     # Update Changelog files
     matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-    latest_version, changelog_text = matches.last
+    latest_version, changelog_text = matches.first
     major, minor, patch = latest_version.split('.').map(&:to_i)
     version_code = 100000 * major + 1000 * minor + patch
     File.write("metadata/android/en-US/#{version_code}.txt", changelog_text.strip)      
@@ -67,6 +67,15 @@ platform :android do
     build
     metadata
     upload_to_play_store(aab: 'build/addhoursandminutes.aab', track: 'beta')
+  end
+
+  desc "Promote Beta to Release"
+  lane :promoteBetaToRelease do
+    matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
+    latest_version, changelog_text = matches.first
+    major, minor, patch = latest_version.split('.').map(&:to_i)
+    version_code = 100000 * major + 1000 * minor + patch
+    upload_to_play_store(track: 'beta', track_promote_to: 'production', version_code: version_code)
   end
 end
 
@@ -96,7 +105,7 @@ platform :linux do
 end
 
 
-platform :macos do
+platform :mac do
   desc "Build macOS Bundle"
   lane :build do
     # Clean up previous builds
