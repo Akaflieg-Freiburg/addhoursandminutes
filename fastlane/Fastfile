@@ -9,43 +9,39 @@ platform :android do
   lane :build do
     # Clean up previous builds
     FileUtils.rm_rf('../build/build-android-release')
+    FileUtils.rm_rf('../build/addhoursandminutes.apk')
+    FileUtils.rm_rf('../build/addhoursandminutes.aab')
 
     # Configure CMake build
     UI.message('Configuring CMake build...')
     qt6_android_dir = ENV['Qt6_DIR_ANDROID']
     cmake_config_cmd = [
-      "#{qt6_android_dir}_x86/bin/qt-cmake",
-      '-G Ninja',
+      "#{qt6_android_dir}_x86_64/bin/qt-cmake",
       '-DCMAKE_BUILD_TYPE:STRING=Release',
       '-DQT_ANDROID_BUILD_ALL_ABIS=ON',
+      '-DQT_ANDROID_SIGN_APK=ON',
+      '-DQT_ANDROID_SIGN_AAB=ON',
       '-S ..',
       '-B ../build/build-android-release'
     ].join(' ')
     sh(cmake_config_cmd)
 
-    # Build AAB
-    UI.message('Building Android App Bundle...')
-    sh('cmake --build ../build/build-android-release --target aab')
+    # Build APK
+    UI.message('Building and Signing Android Package...')
+    sh('cmake --build ../build/build-android-release --target apk')
+    apk_source = '../build/build-android-release/src/android-build/build/outputs/apk/release/android-build-release-signed.apk'
+    apk_dest = '../build/addhoursandminutes.apk'
+    FileUtils.mv(apk_source, apk_dest)
 
-    # Move AAB to a consistent location
+    # Build AAB
+    UI.message('Building and Signing Android App Bundle...')
+    sh('cmake --build ../build/build-android-release --target aab')
     aab_source = '../build/build-android-release/src/android-build/build/outputs/bundle/release/android-build-release.aab'
     aab_dest = '../build/addhoursandminutes.aab'
     FileUtils.mv(aab_source, aab_dest)
 
-    # Sign the AAB
-    UI.message('Signing Android App Bundle...')
-    keystore_file = ENV['ANDROID_KEYSTORE_FILE']
-    keystore_pass = ENV['ANDROID_KEYSTORE_PASS']
-
-    sh(
-      'jarsigner',
-      '-keystore', keystore_file,
-      '-storepass', keystore_pass,
-      aab_dest,
-      'Stefan Kebekus'
-    )
-
     # Verify and provide output path
+    UI.success("Signed APK file is available at #{File.expand_path(apk_dest)}")
     UI.success("Signed AAB file is available at #{File.expand_path(aab_dest)}")
   end
 
@@ -59,11 +55,18 @@ platform :android do
     File.write("metadata/android/en-US/#{version_code}.txt", changelog_text.strip)      
   end
 
+  desc "Validate a new version with Google Play"
+  lane :validate do
+    build
+    metadata
+    upload_to_play_store(aab: 'build/addhoursandminutes.aab', track: 'beta', validate_only: true)
+  end
+
   desc "Deploy a new version to Google Play - Beta"
   lane :deployBeta do
     build
     metadata
-    upload_to_play_store(aab: 'build/addhoursandminutes.aab', track: 'beta', skip_upload_changelogs: true)
+    upload_to_play_store(aab: 'build/addhoursandminutes.aab', track: 'beta')
   end
 end
 
