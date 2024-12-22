@@ -89,7 +89,7 @@ platform :linux do
     UI.message('Configuring CMake build...')
     sh(cmake_config_cmd)
 
-    # Build AAB
+    # Build linux binary
     UI.message('Building Linux Binary...')
     sh('cmake --build ../build/build-linux-release')
   end
