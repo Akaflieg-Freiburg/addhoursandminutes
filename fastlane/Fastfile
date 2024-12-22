@@ -18,7 +18,7 @@ platform :android do
       '-G Ninja',
       '-DCMAKE_BUILD_TYPE:STRING=Release',
       '-DQT_ANDROID_BUILD_ALL_ABIS=ON',
-      '-S .',
+      '-S ..',
       '-B ../build/build-android-release'
     ].join(' ')
     sh(cmake_config_cmd)
@@ -63,7 +63,7 @@ platform :android do
   lane :deployBeta do
     build
     metadata
-    upload_to_play_store(aab: '../build/addhoursandminutes.aab', track: 'beta', validate_only: true, skip_upload_changelogs: true)
+    upload_to_play_store(aab: 'build/addhoursandminutes.aab', track: 'beta', skip_upload_changelogs: true)
   end
 end
 
