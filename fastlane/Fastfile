@@ -2,7 +2,7 @@
 # You can find the documentation at https://docs.fastlane.tools
 
 
-default_platform(:linux)
+default_platform(:android)
 
 platform :android do
   desc "Build Android Binary"
