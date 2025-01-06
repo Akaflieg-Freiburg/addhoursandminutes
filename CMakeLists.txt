@@ -53,7 +53,7 @@ add_compile_definitions(GIT_COMMIT="${GIT_COMMIT}")
 
 
 # Include required packages
-find_package(Qt6 6.8 REQUIRED COMPONENTS Core LinguistTools Qml Quick QuickControls2 Svg)
+find_package(Qt6 6.7 REQUIRED COMPONENTS Core LinguistTools Qml Quick QuickControls2 Svg)
 set(QT_VERSION ${Qt6Core_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
@@ -61,7 +61,7 @@ qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES de es fr it pl)
 
 qt_policy(SET QTP0001 NEW)
 qt_policy(SET QTP0002 NEW)
-qt_policy(SET QTP0004 NEW)
+#qt_policy(SET QTP0004 NEW)
 
 
 # Subdirectories
