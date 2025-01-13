@@ -91,7 +91,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
         QT_ANDROID_TARGET_SDK_VERSION 34
         QT_ANDROID_MIN_SDK_VERSION 28
     )
-
+    qt_import_plugins(${PROJECT_NAME}
+        INCLUDE_BY_TYPE imageformats Qt::QSvgPlugin
+        EXCLUDE_BY_TYPE platforminputcontexts qmltooling
+    )
 endif ()
 
 
