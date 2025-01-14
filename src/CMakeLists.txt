@@ -72,6 +72,9 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
     if (Qt6Core_VERSION VERSION_EQUAL "6.8.1")
         message(FATAL_ERROR "Qt version 6.8.1 is known to have critical errors with multi-architecture Android. Please use a different version.")
     endif()
+    if(NOT ANDROID_PLATFORM STREQUAL "android-28")
+        message(FATAL_ERROR "ANDROID_PLATFORM must be set to android-28, is currently set to " ${ANDROID_PLATFORM})
+    endif()
 
     # Icons
     file(COPY ${CMAKE_SOURCE_DIR}/generatedSources/src/android DESTINATION .)
@@ -88,7 +91,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
         QT_ANDROID_TARGET_SDK_VERSION 34
         QT_ANDROID_MIN_SDK_VERSION 28
     )
-
+    qt_import_plugins(${PROJECT_NAME}
+        INCLUDE_BY_TYPE imageformats Qt::QSvgPlugin
+        EXCLUDE_BY_TYPE platforminputcontexts qmltooling
+    )
 endif ()
 
 
