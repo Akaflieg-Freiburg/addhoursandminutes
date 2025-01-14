@@ -1,0 +1,1 @@
+- Reduce size by removing unused plugins from Android package.
