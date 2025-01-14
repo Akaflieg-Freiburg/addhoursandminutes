@@ -69,6 +69,9 @@ qt_add_resources(
 #
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Android")
+    if (Qt6Core_VERSION VERSION_EQUAL "6.8.0")
+        message(FATAL_ERROR "Qt version 6.8.0 is known to have critical errors, the app frequently hangs on startup. Please use a different version.")
+    endif()
     if (Qt6Core_VERSION VERSION_EQUAL "6.8.1")
         message(FATAL_ERROR "Qt version 6.8.1 is known to have critical errors with multi-architecture Android. Please use a different version.")
     endif()
