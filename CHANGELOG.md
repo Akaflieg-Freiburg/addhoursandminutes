@@ -1,8 +1,14 @@
 # Changelog
 
+## 1.4.8 - 2025-07-02
+
+- The app now targets Android API 35.
+
+
 ## 1.4.7 - 2025-01-14
 
 - Reduce size by removing unused plugins from Android package.
+
 
 ## 1.4.6 - 2024-12-22
 
