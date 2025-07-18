@@ -29,6 +29,8 @@
 #include <QSettings>
 #include <QTranslator>
 
+using namespace Qt::Literals::StringLiterals;
+
 auto main(int argc, char *argv[]) -> int
 {
     QGuiApplication const app(argc, argv);
@@ -40,7 +42,7 @@ auto main(int argc, char *argv[]) -> int
         QGuiApplication::installTranslator(&translator);
     }
     QTranslator Qt_translator;
-    if (Qt_translator.load("qt_" + locale.left(2), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+    if (Qt_translator.load(u"qt_"_s + locale.left(2), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
     {
         QGuiApplication::installTranslator(&Qt_translator);
     }
@@ -69,7 +71,7 @@ auto main(int argc, char *argv[]) -> int
     engine.load(QStringLiteral("qrc:/qt/qml/gui/qml/main.qml"));
 
 #ifdef Q_OS_ANDROID
-    QNativeInterface::QAndroidApplication::hideSplashScreen();
+    QNativeInterface::QAndroidApplication::hideSplashScreen(1);
 #endif
 
     return QGuiApplication::exec();
