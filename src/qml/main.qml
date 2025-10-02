@@ -22,16 +22,15 @@
 import QtCore
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 
-import gui
-
-ApplicationWindow {
+Window {
     id: window
 
-    width: font.pixelSize*15*1.5
-    height: font.pixelSize*20*1.5
-    minimumWidth: font.pixelSize*12*1.5
-    minimumHeight: font.pixelSize*14*1.5
+    width: toolBar.font.pixelSize*15*1.5
+    height: toolBar.font.pixelSize*20*1.5
+    minimumWidth: toolBar.font.pixelSize*12*1.5
+    minimumHeight: toolBar.font.pixelSize*14*1.5
 
     Settings {
         property alias x: window.x
@@ -46,50 +45,59 @@ ApplicationWindow {
 
     visible: true
 
-    header: ToolBar {
-        id: toolBar
+    ColumnLayout {
+        anchors.fill: parent
 
-        height: toolButton.height+PlatformAdapter.safeInsetTop
-        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width
+        ToolBar {
+            id: toolBar
 
-        background: Rectangle { color: "teal" }
-
-        ToolButton {
-            id: toolButton
-
-            x: PlatformAdapter.safeInsetLeft
-            y: PlatformAdapter.safeInsetTop
-
+            Layout.fillWidth: true
             background: Rectangle { color: "teal" }
 
-            icon.source: "/images/ic_menu_24px.svg"
-            icon.color: "white"
+            RowLayout {
+                anchors.fill: parent
 
-            onClicked: mainMenu.open()
+                ToolButton {
+                    id: toolButton
 
-            Menu {
-                id: mainMenu
+                    background: Rectangle { color: "teal" }
 
-                MenuItem {
-                    icon.source: "/images/ic_help_24px.svg"
-                    text: qsTr("Help")
-                    onTriggered: helpDialog.open()
+                    icon.source: "/images/ic_menu_24px.svg"
+                    icon.color: "white"
+
+                    onClicked: mainMenu.open()
+
+                    Menu {
+                        id: mainMenu
+
+                        MenuItem {
+                            icon.source: "/images/ic_help_24px.svg"
+                            text: qsTr("Help")
+                            onTriggered: helpDialog.open()
+                        }
+
+                        MenuItem {
+                            icon.source: "/images/ic_info_24px.svg"
+                            text: qsTr("About")
+                            onTriggered: infoDialog.open()
+                        }
+                    }
                 }
 
-                MenuItem {
-                    icon.source: "/images/ic_info_24px.svg"
-                    text: qsTr("About")
-                    onTriggered: infoDialog.open()
+                Item {
+                    Layout.fillWidth: true
                 }
+
             }
         }
-    }
 
-    Calculator {
-        height: (Qt.platform.os === "android") ? (PlatformAdapter.wHeight-toolBar.height) : parent.height
-        width: (Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width
+        Calculator {
+            id: calculator
 
-        focus: true;
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            focus: true
+        }
     }
 
     LongTextDialog {
