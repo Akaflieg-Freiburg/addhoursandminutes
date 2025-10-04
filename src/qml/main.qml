@@ -39,6 +39,8 @@ Window {
         property alias height: window.height
     }
 
+    flags: (Qt.platform.os === "ios") ? Qt.ExpandedClientAreaHint : undefined
+
     title: qsTr("Add Times")
 
     visible: true
