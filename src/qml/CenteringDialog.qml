@@ -25,8 +25,8 @@ import QtQuick.Controls
 Dialog {
     parent: Overlay.overlay
 
-    property real avHeight: ((Qt.platform.os === "android") ? PlatformAdapter.wHeight : parent.height)-2*font.pixelSize-parent.SafeArea.margins.top-parent.SafeArea.margins.bottom
-    property real avWidth: ((Qt.platform.os === "android") ? PlatformAdapter.wWidth : parent.width)-2*font.pixelSize-parent.SafeArea.margins.left-parent.SafeArea.margins.right
+    property real avHeight: parent.height - 2*font.pixelSize - parent.SafeArea.margins.top - parent.SafeArea.margins.bottom
+    property real avWidth: parent.width - 2*font.pixelSize - parent.SafeArea.margins.left - parent.SafeArea.margins.right
 
     // We center the dialog manually, taking care of safe insets
     x: parent.SafeArea.margins.left + font.pixelSize + (avWidth-width)/2.0

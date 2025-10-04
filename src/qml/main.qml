@@ -41,8 +41,6 @@ Window {
 
     title: qsTr("Add Times")
 
-    flags: ((Qt.platform.os === "ios") || (Qt.platform.os === "android")) ? (Qt.MaximizeUsingFullscreenGeometryHint|Qt.Window) : Qt.Window
-
     visible: true
 
     ColumnLayout {
