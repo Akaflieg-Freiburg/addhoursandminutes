@@ -23,15 +23,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         submodules: true
-    - name: Install Qt for Desktop
-      uses: jurplel/install-qt-action@v4
-      with:
-        cache: 'true'
-        cache-key-prefix: 'install-qt-action-linux-host'
-        version: '6.9.*'
-    - name: Set QT_HOST_PATH
-      run: |
-        echo QT_HOST_PATH=$QT_ROOT_DIR >> $GITHUB_ENV
     - name: Install Qt for Android arm64
       uses: jurplel/install-qt-action@v4
       with:
@@ -39,7 +30,7 @@ jobs:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-android'
         target: 'android'
-        version: '6.9.*'
+        version: '6.9.3'
         arch: 'android_arm64_v8a'
     - name: Set up OpenJDK 17
       uses: actions/setup-java@v4
