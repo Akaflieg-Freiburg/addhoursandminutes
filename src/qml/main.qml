@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018 - 2023 by Stefan Kebekus                           *
+ *   Copyright (C) 2018 - 2025 by Stefan Kebekus                           *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,7 +17,6 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 
 import QtCore
 import QtQuick
@@ -178,7 +177,7 @@ Public License V3</a>.</p>
     }
 
     Shortcut {
-        sequence: StandardKey.Quit
+        sequences: [StandardKey.Quit]
         onActivated: Qt.quit()
     }
 

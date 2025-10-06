@@ -87,6 +87,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
 
     # Configure files
     configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
+    configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES
         QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android"
