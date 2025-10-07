@@ -125,13 +125,19 @@ endif ()
 #
 
 if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/ios/Info.plist")
+    set(bundle_resources
+        "ios/Assets.xcassets"
+    )
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE true
+        MACOSX_BUNDLE_GUI_IDENTIFIER ${PRODUCT_BUNDLE_IDENTIFIER}
+        XCODE_GENERATE_SCHEME ON
+        XCODE_SCHEME_LAUNCH_CONFIGURATION "Release"
+        MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/ios/Info.plist"
+    )
     set_target_properties(${PROJECT_NAME} PROPERTIES QT_IOS_LAUNCH_SCREEN "${CMAKE_CURRENT_SOURCE_DIR}/ios/LaunchScreen.storyboard")
 
     set(asset_catalog_path "ios/Assets.xcassets")
-    set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
-    set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
     set(privacy_manifest "${CMAKE_CURRENT_SOURCE_DIR}/ios/PrivacyInfo.xcprivacy")
 
     target_sources(${PROJECT_NAME} PRIVATE "${asset_catalog_path}")

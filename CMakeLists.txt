@@ -15,6 +15,11 @@ math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VE
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
 
+if(IOS)
+    set(PRODUCT_BUNDLE_IDENTIFIER de.akafliegfreiburg.addhoursandminutes)
+    set(CMAKE_XCODE_ATTRIBUTE_ASSETCATALOG_COMPILER_APPICON_NAME AppIcon)
+endif()
+
 # Find GIT repository data.
 if (EXISTS ${CMAKE_SOURCE_DIR}/.git)
     # Get the current working branch
