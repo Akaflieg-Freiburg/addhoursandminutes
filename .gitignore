@@ -6,3 +6,4 @@ build
 fastlane/README.md
 fastlane/api-key-googlePlay.json
 fastlane/report.xml
+CMakeLists_ios.txt
