@@ -428,13 +428,13 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             Layout.columnSpan: 3
-            Layout.minimumHeight: parent.SafeArea.margins.bottom
+            Layout.minimumHeight: window.SafeArea.margins.bottom
             color: "#e0e0e0"
         }
 
         Rectangle {
             Layout.fillWidth: true
-            Layout.minimumHeight: parent.SafeArea.margins.bottom
+            Layout.minimumHeight: window.SafeArea.margins.bottom
             Layout.maximumWidth: button1.Layout.maximumWidth
 
             color: "teal"
