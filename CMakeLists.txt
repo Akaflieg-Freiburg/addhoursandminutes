@@ -7,10 +7,10 @@ option(QTDEPLOY "Generate and run Qt deployment scripts" OFF)
 
 
 # Basic information about our project
-project(addhoursandminutes VERSION 1.4.8)
+project(addhoursandminutes VERSION 1.4.10)
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(DISPLAY_NAME "Add Times")
-set(PROJECT_DATE 2025-07-02)
+set(PROJECT_DATE 2025-10-28)
 math(EXPR PROJECT_VERSION_CODE 100000*${PROJECT_VERSION_MAJOR}+1000*${PROJECT_VERSION_MINOR}+${PROJECT_VERSION_PATCH})
 add_definitions( -DPROJECT_VERSION="${PROJECT_VERSION}" )
 
@@ -53,7 +53,7 @@ add_compile_definitions(GIT_COMMIT="${GIT_COMMIT}")
 
 
 # Include required packages
-find_package(Qt6 6.8 REQUIRED COMPONENTS Core LinguistTools Qml Quick QuickControls2 Svg)
+find_package(Qt6 6.9 REQUIRED COMPONENTS Core LinguistTools Qml Quick QuickControls2 Svg)
 set(QT_VERSION ${Qt6Core_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 

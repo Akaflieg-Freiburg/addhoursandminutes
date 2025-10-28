@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.10 - 2025-10-28
+
+- Comply with the 16kb page size requirement on newer Android devices.
+
+
 ## 1.4.8 - 2025-07-02
 
 - The app now targets Android API 35.

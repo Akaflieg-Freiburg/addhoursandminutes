@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-import gui
-
 import QtQuick
 import QtQuick.Layouts
 
@@ -136,7 +133,7 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.rowSpan: 8
-            Layout.minimumWidth: PlatformAdapter.safeInsetLeft
+            Layout.minimumWidth: parent.SafeArea.margins.left
             color: "#e0e0e0"
         }
 
@@ -175,7 +172,7 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.rowSpan: 8
-            Layout.minimumWidth: PlatformAdapter.safeInsetRight
+            Layout.minimumWidth: parent.SafeArea.margins.right
             color: "teal"
         }
 
@@ -431,13 +428,13 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             Layout.columnSpan: 3
-            Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+            Layout.minimumHeight: window.SafeArea.margins.bottom
             color: "#e0e0e0"
         }
 
         Rectangle {
             Layout.fillWidth: true
-            Layout.minimumHeight: PlatformAdapter.safeInsetBottom
+            Layout.minimumHeight: window.SafeArea.margins.bottom
             Layout.maximumWidth: button1.Layout.maximumWidth
 
             color: "teal"

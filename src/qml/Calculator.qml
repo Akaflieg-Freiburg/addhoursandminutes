@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-import gui
-
 import QtCore
 import QtQuick
 import QtQuick.Controls
@@ -164,8 +161,8 @@ Rectangle {
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
                 anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.leftMargin: PlatformAdapter.safeInsetLeft
-                anchors.rightMargin: PlatformAdapter.safeInsetRight
+                anchors.leftMargin: parent.SafeArea.margins.left
+                anchors.rightMargin: parent.SafeArea.margins.right
 
                 clip: true
 

@@ -26,12 +26,11 @@ jobs:
     - name: Install Qt for Android arm64
       uses: jurplel/install-qt-action@v4
       with:
-        aqtversion: ==3.1.*
+        aqtversion: '==3.2.*'
         cache: 'true'
         cache-key-prefix: 'install-qt-action-android'
-        modules: 'qt5compat qtconnectivity qthttpserver qtimageformats qtlocation qtmultimedia qtpositioning qtsensors qtserialport qtshadertools qtspeech qtwebsockets qtwebview'
         target: 'android'
-        version: '6.8.0'
+        version: '6.9.3'
         arch: 'android_arm64_v8a'
     - name: Set up OpenJDK 17
       uses: actions/setup-java@v4
