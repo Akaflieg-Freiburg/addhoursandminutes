@@ -1,0 +1,1 @@
+- Comply with the 16kb page size requirement on newer Android devices.
