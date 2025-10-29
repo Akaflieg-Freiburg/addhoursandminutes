@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.4.10 - 2025-10-28
+## 1.4.11 - 2025-10-29
 
 - Comply with the 16kb page size requirement on newer Android devices.
 

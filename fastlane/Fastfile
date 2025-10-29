@@ -166,7 +166,7 @@ lane :gitHubRelease do
   
   # Add assets to the release
   UI.message("Uploading Android APK and AAB files")
-  sh("gh release upload #{current_tag} ../build/enroute.apk ../build/enroute.aab")
+  sh("gh release upload #{current_tag} ../build/addhoursandminutes.apk ../build/addhoursandminutes.aab")
   
   # Clean up
   FileUtils.rm(notes_file)
