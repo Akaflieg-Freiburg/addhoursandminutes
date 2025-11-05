@@ -110,9 +110,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     message("CMAKE_OSX_DEPLOYMENT_TARGET: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 
     set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.icns")
-    set_source_files_properties(${app_icon_macos} PROPERTIES
-        MACOSX_PACKAGE_LOCATION "Resources")
+    set_source_files_properties(${app_icon_macos} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
     target_sources(${PROJECT_NAME} PRIVATE "${app_icon_macos}")
+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.entitlements PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+    target_sources(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.entitlements")
 
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE true
