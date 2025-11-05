@@ -130,8 +130,12 @@ platform :mac do
     UI.message('Compile MacOS Bundle and Sign ...')
     sh('cmake --build ../build/build-macos-release --target install')
   end
-end
 
+  desc "Upload to TestFlight"
+  lane :testFlight do
+    sh("xcrun productbuild --sign \"Akademische Fliegergruppe Freiburg i. Br. e. V.\" --component ../build/addhoursandminutes.app /Applications ../build/addhoursandminutes.pkg")
+  end
+end
 
 desc "Create GitHub Release, using SSH authentication"
 lane :gitHubRelease do
