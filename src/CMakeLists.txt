@@ -118,6 +118,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE true
         MACOSX_BUNDLE_BUNDLE_NAME "Add Times"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "de.akafliegfreiburg.addhoursandminutes"
         MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/macos/Info.plist"
         MACOSX_BUNDLE_ICON_FILE addhoursandminutes.icns
     )
@@ -160,8 +161,6 @@ qt_generate_deploy_qml_app_script(
     OUTPUT_SCRIPT deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
     MACOS_BUNDLE_POST_BUILD
-    DEPLOY_TOOL_OPTIONS
-    "-sign-for-notarization=Stefan Kebekus"
 )
 
 if ((CMAKE_SYSTEM_NAME STREQUAL "Darwin") OR ((CMAKE_SYSTEM_NAME STREQUAL "Linux") OR (CMAKE_SYSTEM_NAME STREQUAL "Windows")))
