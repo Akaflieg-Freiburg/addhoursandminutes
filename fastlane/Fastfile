@@ -104,7 +104,6 @@ platform :linux do
   end
 end
 
-
 platform :mac do
   desc "Build macOS Bundle (unsigned, unnotarized, and without provisioning profile)"
   lane :build do
@@ -117,14 +116,16 @@ platform :mac do
     sh("#{qt6_macos_dir}/bin/qt-cmake",
       '-G Ninja',
       '-DCMAKE_BUILD_TYPE:STRING=Release',
-      '-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64',
+      '-DCMAKE_C_COMPILER_LAUNCHER=ccache',
+      '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache',
       '-DCMAKE_INSTALL_PREFIX=../build/',
+      '-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64',
       '-DQTDEPLOY=ON',
       '-S ..',
       '-B ../build/build-macos-release'
     )
 
-    UI.message('Building macOS Binary...')
+    UI.message('Building MacOS Binary...')
     sh('cmake --build ../build/build-macos-release')
 
     UI.message('Compile MacOS Bundle...')
