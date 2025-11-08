@@ -105,7 +105,7 @@ platform :linux do
 end
 
 platform :mac do
-  desc "Build macOS Bundle (unsigned, unnotarized, and without provisioning profile)"
+  desc "Build MacOS Bundle (unsigned, unnotarized, and without provisioning profile)"
   lane :build do
     # Clean up previous builds
     FileUtils.rm_rf('../build/build-macos-release')
