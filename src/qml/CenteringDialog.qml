@@ -20,11 +20,11 @@
 
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Material
 
 
 Dialog {
     parent: Overlay.overlay
-
     property real avHeight: parent.height - 2*font.pixelSize - parent.SafeArea.margins.top - parent.SafeArea.margins.bottom
     property real avWidth: parent.width - 2*font.pixelSize - parent.SafeArea.margins.left - parent.SafeArea.margins.right
 
