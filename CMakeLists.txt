@@ -8,6 +8,8 @@ option(QTDEPLOY "Generate and run Qt deployment scripts" OFF)
 
 # Basic information about our project
 project(addhoursandminutes VERSION 1.4.11)
+set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}")
+set(MACOSX_BUNDLE_BUNDLE_VERSION 2) #MacOS Build Number -> increment manually
 set(APP_ID de.akaflieg_freiburg.cavok.add_hours_and_minutes)
 set(DISPLAY_NAME "Add Times")
 set(PROJECT_DATE 2025-10-29)
