@@ -1,10 +1,15 @@
 **/.DS_Store
 **/.qmlls.ini
 .vscode
+.idea
 CMakeLists.txt.user
+CMakeLists_ios.txt
+
 build
 build-webasm-release
+
 fastlane/README.md
 fastlane/api-key-googlePlay.json
 fastlane/report.xml
-CMakeLists_ios.txt
+fastlane/.env
+*.provisionprofile
