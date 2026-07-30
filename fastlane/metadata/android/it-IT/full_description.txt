@@ -1,0 +1,3 @@
+Una semplice app calcolatrice che somma tempi espressi in ore e minuti. Ti aiuta a registrare i tempi di funzionamento delle macchine, a sommare i tuoi tempi di volo come pilota o i tuoi tempi di guida come camionista.
+
+L'interfaccia utente è semplice, minimalista e funzionale. L'app non contiene pubblicità e non ti spia. Il programma è 100% Open Source ed è stato scritto senza interessi commerciali.

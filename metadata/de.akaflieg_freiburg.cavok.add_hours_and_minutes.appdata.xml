@@ -14,7 +14,7 @@
   <summary xml:lang="de">Rechner zum Addieren von Stunden und Minuten</summary>
   <summary xml:lang="es">Calculadora para sumar horas y minutos</summary>
   <summary xml:lang="fr">Calculatrice pour additionner les heures et les minutes</summary>
-  <summary xml:lang="it">Calcolatrice per aggiungere ore e minuti</summary>
+  <summary xml:lang="it">Calcolatrice per sommare ore e minuti</summary>
   <summary xml:lang="pl">Kalkulator do zliczania godzin i minut</summary>
   <description>
     <p>This calculator adds times given in hours and minutes.  It helps with the
@@ -25,20 +25,20 @@
     Zusammenrechnen von Flugzeiten für die Flugbücher von Piloten, oder bei
     Lenkzeiten von LKW-Fahrern.</p>
     <p xml:lang="es">Esta calculadora suma tiempos dados en horas y minutos.
-    Ayuda a registrar registro de tiempos de funcionamiento de máquinas, con la
-    adición de tiempos de vuelo para de vuelo de los pilotos, o los tiempos de
+    Ayuda a registrar los tiempos de funcionamiento de máquinas, a sumar los
+    tiempos de vuelo para los libros de vuelo de los pilotos, o los tiempos de
     conducción de los camioneros.</p>
     <p xml:lang="fr">Cette calculatrice additionne des temps donnés en heures et
     en minutes.  Elle facilite l'enregistrement des temps de fonctionnement des
     machines, l'addition des temps de vol pour les carnets de vol des pilotes,
-    ou les temps de conduite des chauffeurs routiers.</p> <p
-    xml:lang="it">Questa calcolatrice aggiunge tempi espressi in ore e minuti.
-    Aiuta a registrare i tempi di funzionamento delle macchine, ad aggiungere i
+    ou les temps de conduite des chauffeurs routiers.</p>
+    <p xml:lang="it">Questa calcolatrice somma tempi espressi in ore e minuti.
+    Aiuta a registrare i tempi di funzionamento delle macchine, a sommare i
     tempi di volo per i registri di volo dei piloti o i tempi di guida dei
     camionisti.</p>
-    <p xml:lang="pl">Ten kalkulator pozwala na zliczanie czasów podanych w
-    godinach i minutach. Pomaga przy zapisywaniu czasu lotu samolotem, z dodawaniem
-    czasu lotu ciągłego pilotów lub czasu jazdy kierowców ciężarówek.</p>
+    <p xml:lang="pl">Ten kalkulator dodaje czasy podane w godzinach i minutach.
+    Pomaga przy rejestrowaniu czasu pracy maszyn, przy sumowaniu czasu lotów do
+    książek lotów pilotów lub czasu jazdy kierowców ciężarówek.</p>
   </description>
   <content_rating type="oars-1.1" />
   <releases>
@@ -49,7 +49,12 @@
   </developer>
   <screenshots>
     <screenshot type="default">
-      <caption>Calculator in Action</caption>    
+      <caption>Calculator in Action</caption>
+      <caption xml:lang="de">Der Rechner in Aktion</caption>
+      <caption xml:lang="es">La calculadora en acción</caption>
+      <caption xml:lang="fr">La calculatrice en action</caption>
+      <caption xml:lang="it">La calcolatrice in azione</caption>
+      <caption xml:lang="pl">Kalkulator w akcji</caption>
       <image type="source">https://akaflieg-freiburg.github.io/addhoursandminutes/assets/images/screenshot-linux.png</image>
     </screenshot>
   </screenshots>

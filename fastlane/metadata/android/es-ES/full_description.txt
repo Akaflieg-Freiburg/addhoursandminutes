@@ -1,0 +1,3 @@
+Una sencilla aplicación de calculadora que suma tiempos dados en horas y minutos. Le ayuda a registrar tiempos de funcionamiento de máquinas, a sumar sus tiempos de vuelo como piloto o sus tiempos de conducción como camionero.
+
+La interfaz de usuario es sencilla, minimalista y funcional. La aplicación no contiene publicidad y no le espía. El programa es 100% de código abierto y ha sido escrito sin interés comercial.

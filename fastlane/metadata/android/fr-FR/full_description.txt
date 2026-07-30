@@ -1,0 +1,3 @@
+Une petite application de calculatrice qui additionne des temps donnés en heures et en minutes. Elle vous aide à enregistrer les temps de fonctionnement des machines, à additionner vos temps de vol comme pilote ou vos temps de conduite comme chauffeur routier.
+
+L'interface utilisateur est simple, minimaliste et fonctionnelle. L'application ne contient aucune publicité et ne vous espionne pas. Le programme est 100 % Open Source et a été écrit sans intérêt commercial.

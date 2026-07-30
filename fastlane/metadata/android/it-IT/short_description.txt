@@ -1,0 +1,1 @@
+Una semplice calcolatrice per sommare ore e minuti

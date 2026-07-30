@@ -1,1 +1,1 @@
-- Updates in the underlying libaries.
+- Updates in the underlying libraries.

@@ -1,0 +1,3 @@
+Prosta aplikacja-kalkulator, która dodaje czasy podane w godzinach i minutach. Pomaga w rejestrowaniu czasu pracy maszyn, w sumowaniu czasu lotów do książki lotów pilota lub czasu jazdy kierowcy ciężarówki.
+
+Interfejs użytkownika jest prosty, minimalistyczny i funkcjonalny. Aplikacja nie zawiera reklam i nie szpieguje użytkownika. Program jest w 100% oprogramowaniem Open Source i powstał bez celów komercyjnych.
