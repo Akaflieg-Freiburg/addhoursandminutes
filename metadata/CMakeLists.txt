@@ -11,7 +11,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
   CONFIGURE_FILE(${APP_ID}.appdata.xml ${APP_ID}.appdata.xml)
   INSTALL(FILES ${PROJECT_BINARY_DIR}/metadata/${APP_ID}.appdata.xml
     RENAME ${APP_ID}.appdata.xml
-    DESTINATION share/appdata)
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
   
   INSTALL(FILES ${PROJECT_SOURCE_DIR}/metadata/${APP_ID}.svg
     RENAME ${APP_ID}.svg

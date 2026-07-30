@@ -7,6 +7,9 @@ on:
       - ".gitignore"
       - "README.md"
       - "CHANGELOG.md"
+      - "docs/**"
+      - "fastlane/**"
+      - "propaganda/**"
       # ignore CI for other platforms
       - ".github/workflows/ios.yml"
       - ".github/workflows/linux.yml"
@@ -17,12 +20,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        submodules: true
     - name: Install Qt for Android arm64
       uses: jurplel/install-qt-action@v4
       with:

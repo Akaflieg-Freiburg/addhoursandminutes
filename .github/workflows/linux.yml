@@ -7,6 +7,9 @@ on:
       - ".gitignore"
       - "README.md"
       - "CHANGELOG.md"
+      - "docs/**"
+      - "fastlane/**"
+      - "propaganda/**"
       # ignore CI for other platforms
       - ".github/workflows/android.yml"
       - ".github/workflows/ios.yml"
@@ -17,13 +20,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout Enroute
+    - name: Checkout
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
-        fetch-depth: 0
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:

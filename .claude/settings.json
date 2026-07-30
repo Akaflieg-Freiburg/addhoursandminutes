@@ -21,7 +21,16 @@
       "Bash(timeout 6 /tmp/claude-1000/-home-kebekus-Software-projects-addhoursandminutes/c396492b-1a77-40bf-883e-d09f72d6e1f3/scratchpad/build-verify/src/addhoursandminutes)",
       "Bash(/home/kebekus/Software/buildsystems/Qt/6.11.1/gcc_64/bin/qmllint *.qml)",
       "Bash(XDG_CONFIG_HOME=/tmp/claude-1000/-home-kebekus-Software-projects-addhoursandminutes/ddfa567b-d0f5-4d64-abd4-818b812db6ca/scratchpad/cfg QT_QPA_PLATFORM=offscreen timeout 6 ./build-linux-debug/src/addhoursandminutes)",
-      "Bash(/home/kebekus/Software/buildsystems/Qt/6.11.1/gcc_64/bin/qmllint -I ../../build-linux-debug/src *.qml)"
+      "Bash(/home/kebekus/Software/buildsystems/Qt/6.11.1/gcc_64/bin/qmllint -I ../../build-linux-debug/src *.qml)",
+      "Bash(git rm *)",
+      "Bash(rm -f .gitmodules)",
+      "Read(//usr/bin/**)",
+      "Read(//usr/lib64/ccache/**)",
+      "Bash(ruby -c fastlane/Fastfile)",
+      "Bash(bash -n buildscript-linux-debug.sh)",
+      "Bash(bash -n buildscript-webasm.sh)",
+      "Bash(bash -n run-webasm.sh)",
+      "Bash(bash -n publish-webasm.sh)"
     ]
   }
 }

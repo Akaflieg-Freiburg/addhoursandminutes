@@ -43,7 +43,7 @@ fastlane flathubRelease     # generates flatpak manifest, opens PR against the f
 
 ## Versioning and releases
 
-- The single source of truth for the version is `project(addhoursandminutes VERSION x.y.z)` in the top-level `CMakeLists.txt` (also update `PROJECT_DATE` there). The Android `versionCode` is computed as `100000*major + 1000*minor + patch` — this formula is duplicated in `fastlane/Fastfile` (lanes `metadata` and `promoteBetaToRelease`); keep them in sync.
+- The single source of truth for the version is `project(addhoursandminutes VERSION x.y.z)` in the top-level `CMakeLists.txt`. The Android `versionCode` is computed as `100000*major + 1000*minor + patch` — this formula is duplicated in `fastlane/Fastfile` (helper `latest_changelog_entry`); keep them in sync.
 - `CHANGELOG.md` is machine-parsed by fastlane lanes (`## <version> - <date>` headings). The latest entry becomes the Play Store changelog (`fastlane android metadata` writes `fastlane/metadata/android/en-US/<versionCode>.txt`) and the GitHub release notes.
 - Play Store listing texts live in `fastlane/metadata/android/{en-US,de-DE}/`; AppStream/desktop metadata in `metadata/`.
 

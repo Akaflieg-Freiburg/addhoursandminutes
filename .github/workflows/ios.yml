@@ -7,6 +7,9 @@ on:
       - ".gitignore"
       - "README.md"
       - "CHANGELOG.md"
+      - "docs/**"
+      - "fastlane/**"
+      - "propaganda/**"
       # ignore CI for other platforms
       - ".github/workflows/android.yml"
       - ".github/workflows/linux.yml"
@@ -22,8 +25,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        submodules: true
     - name: Install Qt for Desktop
       uses: jurplel/install-qt-action@v4
       with:
@@ -34,7 +35,7 @@ jobs:
       run: |
         echo QT_HOST_PATH=$QT_ROOT_DIR >> $GITHUB_ENV
     - name: Install Qt for iOS
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
         cache-key-prefix: 'install-qt-action-ios'

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #
-# This script builds "Add Times" for webasm in release mode.
+# This script builds "Add Times" for webasm in release mode and runs the
+# result in a local browser.
 #
 # See https://github.com/Akaflieg-Freiburg/addhoursandminutes/wiki/Build-scripts
 #
@@ -34,38 +35,15 @@ set -e
 
 
 #
-# Clean up
+# Build
 #
 
-rm -rf build-webasm-release
-mkdir -p build-webasm-release
-cd build-webasm-release
-
-#
-# Setup paths
-#
-
-. $EMSDK/emsdk_env.sh
-
-#
-# Configure
-#
-
-$Qt6_DIR_WASM/bin/qt-cmake .. -GNinja
-
-#
-# Build the executable
-#
-
-ninja
-# GitHub pages does not support SVG, so we need to include a PNG here
-rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
-sed -i 's/qtlogo.svg/qtlogo.png/g' src/addhoursandminutes.html
-sed -i 's/320/200/g' src/addhoursandminutes.html
+./buildscript-webasm.sh
 
 
 #
 # Test-run the compiled program
 #
 
-emrun --browser=firefox src/addhoursandminutes.html 
+. $EMSDK/emsdk_env.sh
+emrun --browser=firefox build-webasm-release/src/addhoursandminutes.html

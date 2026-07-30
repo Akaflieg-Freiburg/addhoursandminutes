@@ -31,19 +31,5 @@ add_custom_target(flatpak-lint
   COMMENT "Linting flatpak build"
 )
 
-#
-# Publication
-#
-add_custom_target(flatpak-publish
-  COMMAND rm -rf de.akaflieg_freiburg.cavok.add_hours_and_minutes
-  COMMAND git clone --depth 1 --branch upstream git@github.com:flathub/de.akaflieg_freiburg.cavok.add_hours_and_minutes.git
-  COMMAND cp de.akaflieg_freiburg.cavok.add_hours_and_minutes.json de.akaflieg_freiburg.cavok.add_hours_and_minutes
-  COMMAND cd de.akaflieg_freiburg.cavok.add_hours_and_minutes
-  COMMAND git diff-index --quiet HEAD || git commit -am "New upstream release"
-  COMMAND git push
-  COMMAND gh pr create --title "New upstream release" --body "Please merge the following new upstream release"
-  COMMAND cd ..
-  COMMAND rm -rf de.akaflieg_freiburg.cavok.add_hours_and_minutes
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  COMMENT "Publishing flatpak"
-)
+# Note: publication to Flathub is handled by the fastlane lane
+# "flathubRelease"; see fastlane/Fastfile.

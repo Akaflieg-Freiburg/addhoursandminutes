@@ -7,6 +7,9 @@ on:
       - ".gitignore"
       - "README.md"
       - "CHANGELOG.md"
+      - "docs/**"
+      - "fastlane/**"
+      - "propaganda/**"
       # ignore CI for other platforms
       - ".github/workflows/android.yml"
       - ".github/workflows/ios.yml"
@@ -18,21 +21,19 @@ jobs:
   build:
 
     runs-on: macos-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        submodules: true 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
-        version: '6.9.*'
+        version: '6.9.3'
     - name: Configure
       run: |
         cmake -E make_directory build
-        $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_INSTALL_PREFIX=. -S . -B build
+        $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_INSTALL_PREFIX=. -S . -B build
     - name: Compile
       run: |
         cmake --build build

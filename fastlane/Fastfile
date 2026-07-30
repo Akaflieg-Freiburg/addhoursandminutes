@@ -2,6 +2,22 @@
 # You can find the documentation at https://docs.fastlane.tools
 
 
+# Parse the latest entry of CHANGELOG.md.
+# Returns [version, changelog_text, version_code].
+def latest_changelog_entry
+  matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
+  latest_version, changelog_text = matches.first
+  if latest_version.nil? || latest_version.empty?
+    UI.user_error!("Could not find version information in CHANGELOG.md")
+  end
+  major, minor, patch = latest_version.split('.').map(&:to_i)
+  # Keep this formula in sync with PROJECT_VERSION_CODE in the top-level
+  # CMakeLists.txt.
+  version_code = 100000 * major + 1000 * minor + patch
+  [latest_version, changelog_text.strip, version_code]
+end
+
+
 default_platform(:android)
 
 platform :android do
@@ -18,6 +34,8 @@ platform :android do
     cmake_config_cmd = [
       "#{qt6_android_dir}_x86_64/bin/qt-cmake",
       '-DCMAKE_BUILD_TYPE:STRING=Release',
+      '-DCMAKE_C_COMPILER_LAUNCHER=ccache',
+      '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache',
       '-DQT_ANDROID_BUILD_ALL_ABIS=ON',
       '-DQT_ANDROID_SIGN_APK=ON',
       '-DQT_ANDROID_SIGN_AAB=ON',
@@ -48,11 +66,8 @@ platform :android do
   desc "Updata Meta Data for Google Play"
   lane :metadata do
     # Update Changelog files
-    matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-    latest_version, changelog_text = matches.first
-    major, minor, patch = latest_version.split('.').map(&:to_i)
-    version_code = 100000 * major + 1000 * minor + patch
-    File.write("metadata/android/en-US/#{version_code}.txt", changelog_text.strip)      
+    _version, changelog_text, version_code = latest_changelog_entry
+    File.write("metadata/android/en-US/#{version_code}.txt", changelog_text)
   end
 
   desc "Validate a new version with Google Play"
@@ -71,10 +86,7 @@ platform :android do
 
   desc "Promote Beta to Release"
   lane :promoteBetaToRelease do
-    matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-    latest_version, changelog_text = matches.first
-    major, minor, patch = latest_version.split('.').map(&:to_i)
-    version_code = 100000 * major + 1000 * minor + patch
+    _version, _changelog_text, version_code = latest_changelog_entry
     upload_to_play_store(track: 'beta', track_promote_to: 'production', version_code: version_code)
   end
 end
@@ -91,6 +103,8 @@ platform :linux do
       "#{qt6_linux_dir}/bin/qt-cmake",
       '-G Ninja',
       '-DCMAKE_BUILD_TYPE:STRING=Release',
+      '-DCMAKE_C_COMPILER_LAUNCHER=ccache',
+      '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache',
       '-S ..',
       '-B ../build/build-linux-release'
     ].join(' ')
@@ -120,6 +134,7 @@ platform :mac do
       '-DCMAKE_CXX_COMPILER_LAUNCHER=ccache',
       '-DCMAKE_INSTALL_PREFIX=../build/',
       '-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64',
+      '-DCMAKE_OSX_DEPLOYMENT_TARGET=14.0',
       '-DQTDEPLOY=ON',
       '-S ..',
       '-B ../build/build-macos-release'
@@ -162,40 +177,34 @@ lane :gitHubRelease do
   sh("fastlane android build")
 
   # Extract version info from CHANGELOG.md
-  matches = File.read("../CHANGELOG.md").scan(/^## \s*\[?(.*?)\]?\s*-\s*.*?\n(.*?)(?=^## |\z)/m)
-  latest_version, changelog_text = matches.first
-  
-  # Ensure we have a valid version
-  if latest_version.nil? || latest_version.empty?
-    UI.user_error!("Could not find version information in CHANGELOG.md")
-  end
-  
+  latest_version, changelog_text, _version_code = latest_changelog_entry
+
   # Get the current git tag
   current_tag = "v#{latest_version}"
-  
+
   # Create the release using the GitHub CLI (gh)
   # First check if gh CLI is installed
   unless system("which gh > /dev/null 2>&1")
     UI.user_error!("GitHub CLI not found. Please install it: https://cli.github.com/")
   end
-  
+
   # Create a notes file for the release
   notes_file = "/tmp/release_notes_#{latest_version}.md"
-  File.write(notes_file, changelog_text.strip)
-  
+  File.write(notes_file, changelog_text)
+
   # Create the release using GitHub CLI (uses SSH authentication)
   UI.message("Creating GitHub release for version #{latest_version}")
   sh("gh release create #{current_tag} --title 'Version #{latest_version}' --notes-file #{notes_file}")
-  
+
   # Add assets to the release
   UI.message("Uploading Android APK and AAB files")
   sh("gh release upload #{current_tag} ../build/addhoursandminutes.apk ../build/addhoursandminutes.aab")
-  
+
   # Clean up
   FileUtils.rm(notes_file)
-  
+
   UI.success("Successfully created GitHub release for #{latest_version}")
-  UI.success("Release URL: https://github.com/YOUR_USERNAME/YOUR_REPO/releases/tag/#{current_tag}")
+  UI.success("Release URL: https://github.com/Akaflieg-Freiburg/addhoursandminutes/releases/tag/#{current_tag}")
 end
 
 
@@ -249,23 +258,17 @@ lane :flathubRelease do
     sh("git push --set-upstream origin #{branch_name}")
   end
   
-  # Create Pull Request using GitHub API
-  github_api_token = ENV["GITHUB_TOKEN"]
-  
-  # Ensure GitHub token is available
-  #unless github_api_token
-  #  UI.user_error!("Please set the GITHUB_TOKEN environment variable")
-  #end
-  
   # Get the commit message for additional context
-  commit_message = sh("git log -1 --pretty=%B").strip 
+  commit_message = sh("git log -1 --pretty=%B").strip
 
-  # Create PR using gh CLI
+  # Create PR using gh CLI. Pass the body via a file so that quotes in the
+  # commit message cannot break the shell command.
+  pr_body_file = File.expand_path("pr_body.md", clone_folder)
+  File.write(pr_body_file, "Updates the Flatpak manifest to latest commit #{commit_hash}\n\nSource commit message: #{commit_message}")
   Dir.chdir(clone_folder) do
-    pr_body = "Updates the Flatpak manifest to latest commit #{commit_hash}\n\nSource commit message: #{commit_message}"
-    sh("gh pr create --title 'Update manifest to #{commit_hash}' --body '#{pr_body}' --base master --head #{branch_name}")
+    sh("gh pr create --title 'Update manifest to #{commit_hash}' --body-file pr_body.md --base master --head #{branch_name}")
   end
-  
+
   # Clean up
   FileUtils.rm_rf(clone_folder)
 end

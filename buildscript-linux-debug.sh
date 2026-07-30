@@ -28,6 +28,12 @@
 # Run this script in the main directory tree.
 
 #
+# Fail on first error
+#
+
+set -e
+
+#
 # Clean
 #
 
@@ -40,11 +46,24 @@ rm -rf build-linux-debug
 mkdir build-linux-debug
 cd build-linux-debug
 
-export ASAN_OPTIONS=detect_leaks=0
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+# Use clang if available, the system default compiler otherwise
+if command -v clang > /dev/null; then
+    export CC=clang
+    export CXX=clang++
+fi
 
-$Qt6_DIR_LINUX/bin/qt-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ..
+# Enable sanitizers if the compiler can link against the sanitizer runtime
+# (requires libasan/libubsan to be installed)
+SANITIZE_FLAGS="-fsanitize=address,undefined"
+if ! echo 'int main(){}' | ${CXX:-c++} $SANITIZE_FLAGS -x c++ - -o /dev/null 2> /dev/null; then
+    echo "WARNING: sanitizer runtime not available, building without sanitizers"
+    SANITIZE_FLAGS=""
+fi
+
+$Qt6_DIR_LINUX/bin/qt-cmake -G Ninja \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_CXX_FLAGS="$SANITIZE_FLAGS" \
+    ..
 
 ninja
 cd ..

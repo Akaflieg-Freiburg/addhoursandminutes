@@ -5,6 +5,7 @@ CMakeLists.txt.user
 build
 build-linux-debug
 build-webasm-release
+flathub-repo
 fastlane/README.md
 fastlane/api-key-googlePlay.json
 fastlane/report.xml

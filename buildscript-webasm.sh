@@ -60,5 +60,4 @@ $Qt6_DIR_WASM/bin/qt-cmake .. -GNinja
 ninja
 # GitHub pages does not support SVG, so we need to include a PNG here
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
-sed -i 's/qtlogo.svg/qtlogo.png/g' src/addhoursandminutes.html
-sed -i 's/320/200/g' src/addhoursandminutes.html
+sed -i -e 's/qtlogo\.svg/qtlogo.png/g' -e 's/width="320"/width="200"/g' src/addhoursandminutes.html

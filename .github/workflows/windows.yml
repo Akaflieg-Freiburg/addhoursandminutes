@@ -7,6 +7,9 @@ on:
       - ".gitignore"
       - "README.md"
       - "CHANGELOG.md"
+      - "docs/**"
+      - "fastlane/**"
+      - "propaganda/**"
       # ignore CI for other platforms
       - ".github/workflows/android.yml"
       - ".github/workflows/ios.yml"
@@ -17,21 +20,19 @@ jobs:
   build:
 
     runs-on: windows-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        submodules: true 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
         cache: 'true'
-        version: '6.9.*'
+        version: '6.9.3'
     - name: Configure
       run: |
         cmake -E make_directory build
-        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_INSTALL_PREFIX:STRING=${{ github.workspace }}\addTimes -S . -B build
+        qt-cmake -DCMAKE_BUILD_TYPE:STRING=Release -DQTDEPLOY=ON -DCMAKE_INSTALL_PREFIX:STRING=${{ github.workspace }}\addTimes -S . -B build
     - name: Compile
       run: |
         cmake --build build

@@ -45,24 +45,11 @@ qt_add_resources(${PROJECT_NAME} "programicons"
 )
 
 
-qt_add_lrelease(
-    TS_FILES
-    addhoursandminutes_de.ts
-    addhoursandminutes_es.ts
-    addhoursandminutes_fr.ts
-    addhoursandminutes_it.ts
-    addhoursandminutes_pl.ts
-    QM_FILES_OUTPUT_VARIABLE qmFiles
-)
-qt_add_resources(
-    ${PROJECT_NAME}
-    translations_addhoursandminutes
-    BASE
-    ${CMAKE_CURRENT_BINARY_DIR}
-    PREFIX
-    i18n
-    FILES
-    ${qmFiles}
+# The .ts files are found automatically from I18N_TRANSLATED_LANGUAGES,
+# set via qt_standard_project_setup() in the top-level CMakeLists.txt.
+qt_add_translations(${PROJECT_NAME}
+    RESOURCE_PREFIX i18n
+    NO_GENERATE_PLURALS_TS_FILE
 )
 
 
@@ -85,12 +72,16 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Android")
     # Icons
     file(COPY ${CMAKE_SOURCE_DIR}/generatedSources/src/android DESTINATION .)
 
-    # Copy files into the Android directories
-    file(COPY ${CMAKE_SOURCE_DIR}/src/android DESTINATION .)
+    # Copy files into the Android directories. Using configure_file (rather
+    # than file(COPY)) makes CMake re-run and refresh the copies whenever one
+    # of the source files changes.
+    file(GLOB_RECURSE androidFiles RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CONFIGURE_DEPENDS android/*)
+    foreach(androidFile ${androidFiles})
+        configure_file(${androidFile} ${androidFile} COPYONLY)
+    endforeach()
 
     # Configure files
     configure_file(AndroidManifest.xml.in android/AndroidManifest.xml)
-    configure_file(android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java android/src/de/akaflieg_freiburg/cavok/add_hours_and_minutes/AndroidAdaptor.java COPYONLY)
 
     set_target_properties(${PROJECT_NAME} PROPERTIES
         QT_ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/android"
@@ -112,8 +103,9 @@ endif ()
 #
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "14.0")
-    message("CMAKE_OSX_DEPLOYMENT_TARGET: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    # Note: CMAKE_OSX_DEPLOYMENT_TARGET cannot be set here; it must be set
+    # before project(). Release builds pass it on the command line, see the
+    # fastlane mac lane and .github/workflows/macos.yml.
 
     set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.icns")
     set_source_files_properties(${app_icon_macos} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
