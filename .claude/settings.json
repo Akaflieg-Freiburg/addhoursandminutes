@@ -30,7 +30,20 @@
       "Bash(bash -n buildscript-linux-debug.sh)",
       "Bash(bash -n buildscript-webasm.sh)",
       "Bash(bash -n run-webasm.sh)",
-      "Bash(bash -n publish-webasm.sh)"
+      "Bash(bash -n publish-webasm.sh)",
+      "Bash(xargs -I{} gh run view {} --log-failed)",
+      "Bash(gh release *)",
+      "Bash(unzip -l /home/kebekus/Software/projects/addhoursandminutes/build/addhoursandminutes.apk)",
+      "Bash(awk '{print $1, $4}')",
+      "Bash(awk -F/ '{split\\($0,a,\" \"\\); abi=$2; print a[1], abi}')",
+      "Bash(awk '{sum[$2]+=$1} END {for \\(k in sum\\) printf \"%-20s %8.1f MB\\\\n\", k, sum[k]/1048576}')",
+      "Bash(sort -k2 -rn)",
+      "Bash(unzip -l /home/kebekus/Software/projects/addhoursandminutes/build/addhoursandminutes.apk \"lib/arm64-v8a/*\")",
+      "Bash(awk '{printf \"%8.2f MB  %s\\\\n\", $1/1048576, $2}')",
+      "Bash(unzip -v /home/kebekus/Software/projects/addhoursandminutes/build/addhoursandminutes.apk)",
+      "Bash(awk 'NR>3 {print $2, $8}')",
+      "Bash(awk '{ *)",
+      "Bash(awk '$2 ~ /^\\(Defl|Stored\\)/ { *)"
     ]
   }
 }
