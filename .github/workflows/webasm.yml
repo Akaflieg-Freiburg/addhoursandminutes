@@ -44,6 +44,8 @@ jobs:
       uses: seanmiddleditch/gha-setup-ninja@v5
     - name: Configure
       run: |
+        # aqt installs the wasm kit without executable bits on the bin/ scripts
+        chmod +x "$QT_ROOT_DIR"/bin/*
         export QT_HOST_PATH="$(readlink -f "$QT_ROOT_DIR/../gcc_64")"
         cmake -E make_directory build
         $QT_ROOT_DIR/bin/qt-cmake -DCMAKE_BUILD_TYPE:STRING=Release -S . -B build -G Ninja
