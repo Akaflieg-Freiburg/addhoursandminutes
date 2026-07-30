@@ -5,10 +5,7 @@
     package="de.akaflieg_freiburg.cavok.add_hours_and_minutes"
     android:versionName="${PROJECT_VERSION}"
     android:versionCode="${PROJECT_VERSION_CODE}${ABI_CODE}"
-    android:installLocation="auto">  
-  <uses-sdk
-      android:minSdkVersion="28"
-      android:targetSdkVersion="35"/>
+    android:installLocation="auto">
   <uses-permission
       android:name="android.permission.VIBRATE"/>
   <supports-screens

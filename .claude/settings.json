@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(env)",
+      "Read(//home/kebekus/Software/buildsystems/**)",
+      "Read(//opt/**)",
+      "Read(//home/kebekus/**)",
+      "Bash(cmake --build ../build/build-android-release --target apk)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(fastlane android *)",
+      "Bash(echo \"FASTLANE EXIT: $?\")",
+      "Bash(/home/kebekus/Software/buildsystems/android-sdk/build-tools/36.0.0/apksigner verify *)"
+    ]
+  }
+}
