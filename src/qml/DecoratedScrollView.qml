@@ -24,7 +24,7 @@ import QtQuick
 import QtQuick.Controls
 
 
-// This is a version of ListView that indicates if more elemenent can be seen through scrolling.
+// This is a version of ScrollView that indicates if more elements can be seen through scrolling.
 // The method "Component.onCompleted" adds two children to the ScrollView. This way,
 // the children are not scrolling, but shown on top of the ScrollView.
 

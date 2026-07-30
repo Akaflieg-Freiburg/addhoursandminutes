@@ -22,6 +22,8 @@ import QtCore
 import QtQuick
 import QtQuick.Controls
 
+import gui
+
 pragma ComponentBehavior: Bound
 
 
@@ -32,8 +34,6 @@ Rectangle {
     property string hoursEntered: ""
     property int totalMinutes: 0
     property int maxNumDigits: 6
-
-    property real fontpixelsize: (Qt.platform.os === "android") ? 1.6*Application.font.pixelSize :  1.2*Application.font.pixelSize
 
 
     SequentialAnimation {
@@ -115,17 +115,14 @@ Rectangle {
         property var splitView
     }
 
-    Timer {
-        interval: 10*1000
-        repeat: true
-        running: true
-        onTriggered: settings.splitView = splitView.saveState()
-    }
-
     SplitView {
         id: splitView
         anchors.fill: parent
         orientation: Qt.Vertical
+
+        // Persist the layout whenever the user finishes dragging the handle;
+        // Component.onDestruction alone is not reliable on mobile platforms
+        onResizingChanged: if (!resizing) settings.splitView = splitView.saveState()
 
         handle: Item {
             id: handleDelegate
@@ -159,8 +156,8 @@ Rectangle {
                 id: listView
 
                 anchors.fill: lvContainer
-                anchors.topMargin: 0.5*hoursAndMinutes.fontpixelsize
-                anchors.bottomMargin: 0.5*hoursAndMinutes.fontpixelsize
+                anchors.topMargin: 0.5*Style.fontPixelSize
+                anchors.bottomMargin: 0.5*Style.fontPixelSize
                 anchors.leftMargin: parent.SafeArea.margins.left
                 anchors.rightMargin: parent.SafeArea.margins.right
 
@@ -173,24 +170,24 @@ Rectangle {
                     required property string operator
                     required property string operand
 
-                    height: hoursAndMinutes.fontpixelsize*1.2
+                    height: Style.fontPixelSize*1.2
                     width: listView.width
 
                     Text {
                         id: operatorText
                         anchors.left: parent.left
-                        anchors.leftMargin: 2*hoursAndMinutes.fontpixelsize
+                        anchors.leftMargin: 2*Style.fontPixelSize
                         color: "teal"
                         text: delegateParent.operator
-                        font.pixelSize: hoursAndMinutes.fontpixelsize
+                        font.pixelSize: Style.fontPixelSize
                         font.family: "Monospace"
                     }
                     Text {
                         id: operandText
                         anchors.right: parent.right
-                        anchors.rightMargin: 2*hoursAndMinutes.fontpixelsize
+                        anchors.rightMargin: 2*Style.fontPixelSize
                         text: delegateParent.operand
-                        font.pixelSize: hoursAndMinutes.fontpixelsize
+                        font.pixelSize: Style.fontPixelSize
                         font.family: "Monospace"
                         font.bold: delegateParent.isSum
                     }
@@ -230,17 +227,17 @@ Rectangle {
 
                 var carryOver = ""
 
-                if (hoursEntered.length > 0) {
-                    carryOver = hoursEntered.charAt(hoursEntered.length-1)
-                    hoursEntered = hoursEntered.substring(0, hoursEntered.length-1)
+                if (hoursAndMinutes.hoursEntered.length > 0) {
+                    carryOver = hoursAndMinutes.hoursEntered.charAt(hoursAndMinutes.hoursEntered.length-1)
+                    hoursAndMinutes.hoursEntered = hoursAndMinutes.hoursEntered.substring(0, hoursAndMinutes.hoursEntered.length-1)
                 }
-                if (minutesEntered.length === 1) {
-                    minutesEntered = ""
+                if (hoursAndMinutes.minutesEntered.length === 1) {
+                    hoursAndMinutes.minutesEntered = ""
                 } else {
-                    minutesEntered = carryOver+minutesEntered.charAt(0)
+                    hoursAndMinutes.minutesEntered = carryOver+hoursAndMinutes.minutesEntered.charAt(0)
                 }
 
-                listView.model.get(i).operand = printCurrentLine()
+                listView.model.get(i).operand = hoursAndMinutes.printCurrentLine()
             }
 
             onClearPressed: {
@@ -251,7 +248,7 @@ Rectangle {
                 listView.model.clear()
                 clearAnimation.start()
 
-                listView.model.append({"operator": "", "operand": "0"})
+                listView.model.append({"operator": "", "operand": "0", "isSum": false})
                 listView.positionViewAtEnd()
             }
 
@@ -266,11 +263,11 @@ Rectangle {
 
                 // If the current line is the result of a computation, insert a blank line and start a new computation
                 if (listView.model.get(i).operator === "=") {
-                    listView.model.append({"operator": "", "operand": ""})
-                    listView.model.append({"operator": "", "operand": digit})
-                    minutesEntered = digit
-                    hoursEntered = ""
-                    totalMinutes = 0
+                    listView.model.append({"operator": "", "operand": "", "isSum": false})
+                    listView.model.append({"operator": "", "operand": digit, "isSum": false})
+                    hoursAndMinutes.minutesEntered = digit
+                    hoursAndMinutes.hoursEntered = ""
+                    hoursAndMinutes.totalMinutes = 0
 
                     // Position the view at the end
                     listView.positionViewAtEnd()
@@ -279,23 +276,23 @@ Rectangle {
 
                 // In all other cases, add the digit entered to the current lines. Shift
                 // strings around, so that "1:23" + "x" becomes "12:3x"
-                if (minutesEntered === "") {
+                if (hoursAndMinutes.minutesEntered === "") {
                     if (digit !== "0") {
-                        minutesEntered = digit
+                        hoursAndMinutes.minutesEntered = digit
                     }
-                } else if (minutesEntered.length === 1) {
-                    if (minutesEntered === "0") {
-                        minutesEntered = digit
+                } else if (hoursAndMinutes.minutesEntered.length === 1) {
+                    if (hoursAndMinutes.minutesEntered === "0") {
+                        hoursAndMinutes.minutesEntered = digit
                     } else {
-                        minutesEntered = minutesEntered + digit
+                        hoursAndMinutes.minutesEntered = hoursAndMinutes.minutesEntered + digit
                     }
                 } else {
-                    hoursEntered = hoursEntered + minutesEntered.charAt(0)
-                    minutesEntered = minutesEntered.charAt(1) + digit
+                    hoursAndMinutes.hoursEntered = hoursAndMinutes.hoursEntered + hoursAndMinutes.minutesEntered.charAt(0)
+                    hoursAndMinutes.minutesEntered = hoursAndMinutes.minutesEntered.charAt(1) + digit
                 }
 
                 // Update display
-                listView.model.get(i).operand = printCurrentLine()
+                listView.model.get(i).operand = hoursAndMinutes.printCurrentLine()
 
                 // Position the view at the end
                 listView.positionViewAtEnd()
@@ -304,28 +301,38 @@ Rectangle {
             onOperatorPressed: (opCode) => {
                 // Index of current line
                 var i = listView.model.count - 1
+
+                // If nothing has been entered on the current line yet, replace its pending operator instead of opening another line
+                if ((opCode === "+" || opCode === "-")
+                        && (listView.model.get(i).operator === "+" || listView.model.get(i).operator === "-")
+                        && hoursAndMinutes.minutesEntered === "" && hoursAndMinutes.hoursEntered === "") {
+                    listView.model.get(i).operator = opCode
+                    return
+                }
+
                 if (listView.model.get(i).operator !== "=") {
-                    listView.model.get(i).operand = convertToHoursAndMinutes(getMinutesForCurrentLine())
+                    listView.model.get(i).operand = hoursAndMinutes.convertToHoursAndMinutes(hoursAndMinutes.getMinutesForCurrentLine())
                 }
 
                 // Check operator of line, and adjust totalMinutes accordingly
                 if (listView.model.get(i).operator === "") {
-                    totalMinutes = getMinutesForCurrentLine()
+                    hoursAndMinutes.totalMinutes = hoursAndMinutes.getMinutesForCurrentLine()
                 } else if (listView.model.get(i).operator === "+") {
-                    totalMinutes = totalMinutes + getMinutesForCurrentLine()
+                    hoursAndMinutes.totalMinutes = hoursAndMinutes.totalMinutes + hoursAndMinutes.getMinutesForCurrentLine()
                 } else if (listView.model.get(i).operator === "-") {
-                    totalMinutes = totalMinutes - getMinutesForCurrentLine()
+                    hoursAndMinutes.totalMinutes = hoursAndMinutes.totalMinutes - hoursAndMinutes.getMinutesForCurrentLine()
                 }
-                minutesEntered = ""
-                hoursEntered = ""
+                hoursAndMinutes.minutesEntered = ""
+                hoursAndMinutes.hoursEntered = ""
 
-                if (Math.floor(Math.abs(totalMinutes/60)) > Math.pow(10,maxNumDigits+1)-1) {
-                    listView.model.append({"operator": "E", "operand": qsTr("Overflow")})
-                    listView.model.append({"operator": "", "operand": ""})
-                    listView.model.append({"operator": "", "operand": "0"})
-                    minutesEntered = ""
-                    hoursEntered = ""
-                    totalMinutes = 0
+                // Sums may grow one digit beyond the maxNumDigits entry limit; only larger values are treated as overflow
+                if (Math.floor(Math.abs(hoursAndMinutes.totalMinutes/60)) > Math.pow(10,hoursAndMinutes.maxNumDigits+1)-1) {
+                    listView.model.append({"operator": "E", "operand": qsTr("Overflow"), "isSum": false})
+                    listView.model.append({"operator": "", "operand": "", "isSum": false})
+                    listView.model.append({"operator": "", "operand": "0", "isSum": false})
+                    hoursAndMinutes.minutesEntered = ""
+                    hoursAndMinutes.hoursEntered = ""
+                    hoursAndMinutes.totalMinutes = 0
 
                     listView.positionViewAtEnd()
                     blinkAnimation.start()
@@ -333,10 +340,10 @@ Rectangle {
                 }
 
                 if (opCode === "+" || opCode === "-") {
-                    listView.model.append({"operator": opCode, "operand": "0"})
+                    listView.model.append({"operator": opCode, "operand": "0", "isSum": false})
                 } else if (opCode === "=") {
                     if (listView.model.get(i).operator !== "=") {
-                        listView.model.append({"operator": opCode, "operand": convertToHoursAndMinutes(totalMinutes), "isSum": true})
+                        listView.model.append({"operator": opCode, "operand": hoursAndMinutes.convertToHoursAndMinutes(hoursAndMinutes.totalMinutes), "isSum": true})
                     }
                 }
 

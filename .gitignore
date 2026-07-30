@@ -3,6 +3,7 @@
 .vscode
 CMakeLists.txt.user
 build
+build-linux-debug
 build-webasm-release
 fastlane/README.md
 fastlane/api-key-googlePlay.json

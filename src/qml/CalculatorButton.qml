@@ -18,10 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Layouts
 
+import gui
+
 Button {
+    id: calculatorButton
+
     Layout.fillHeight: true
     Layout.minimumHeight: implicitHeight
     Layout.maximumHeight: 1.5*implicitHeight
@@ -29,5 +34,18 @@ Button {
     Layout.maximumWidth: 1.5*implicitWidth
     Layout.fillWidth: true
 
-    font.pixelSize: hoursAndMinutes.fontpixelsize
+    font.pixelSize: Style.fontPixelSize
+
+    // Show the button as pressed for a moment, used as visual feedback for physical key presses
+    function flash() {
+        down = true
+        flashTimer.restart()
+    }
+
+    Timer {
+        id: flashTimer
+
+        interval: 100
+        onTriggered: calculatorButton.down = undefined
+    }
 }

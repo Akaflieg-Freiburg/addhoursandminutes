@@ -22,36 +22,57 @@ package de.akaflieg_freiburg.cavok.add_hours_and_minutes;
 
 import android.content.*;
 import android.os.*;
-//import android.view.*;
 
 
-public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity 
+public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
 {
-  private static AndroidAdaptor m_instance;
+  private static Context m_context;
   private static Vibrator m_vibrator;
-    
-  public AndroidAdaptor() 
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
   {
-    m_instance = this;
+    super.onCreate(savedInstanceState);
+    m_context = getApplicationContext();
   }
 
   // Vibrate once, very briefly
-  public static void vibrateBrief() 
+  public static void vibrateBrief()
   {
-    if (m_vibrator == null)
-    {
-        m_vibrator = (Vibrator) m_instance.getSystemService(Context.VIBRATOR_SERVICE);
-    }
-    m_vibrator.vibrate(10);
+    vibrate(10);
   }
 
   // Vibrate once, for a longer period
-  public static void vibrateError() 
+  public static void vibrateError()
+  {
+    vibrate(200);
+  }
+
+  private static void vibrate(long milliseconds)
   {
     if (m_vibrator == null)
     {
-        m_vibrator = (Vibrator) m_instance.getSystemService(Context.VIBRATOR_SERVICE);
+      if (m_context == null)
+      {
+        return;
+      }
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+      {
+        VibratorManager manager = (VibratorManager) m_context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+        if (manager != null)
+        {
+          m_vibrator = manager.getDefaultVibrator();
+        }
+      }
+      else
+      {
+        m_vibrator = (Vibrator) m_context.getSystemService(Context.VIBRATOR_SERVICE);
+      }
     }
-    m_vibrator.vibrate(200);
+    if (m_vibrator == null || !m_vibrator.hasVibrator())
+    {
+      return;
+    }
+    m_vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
   }
 }

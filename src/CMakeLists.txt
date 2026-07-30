@@ -8,6 +8,8 @@ qt_add_executable(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Quick Qt6::QuickControls2 Qt6::Svg)
 
+set_source_files_properties(qml/Style.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 qt_add_qml_module(${PROJECT_NAME}
     URI gui
     VERSION 1.0
@@ -18,6 +20,7 @@ qt_add_qml_module(${PROJECT_NAME}
     qml/DecoratedScrollView.qml
     qml/Keypad.qml
     qml/LongTextDialog.qml
+    qml/Style.qml
     qml/main.qml
     SOURCES
     platformAdapter.cpp

@@ -21,6 +21,8 @@
 import QtQuick
 import QtQuick.Layouts
 
+import gui
+
 Item {
     id: keypad
 
@@ -32,88 +34,50 @@ Item {
 
     signal operatorPressed(opCode: string)
 
+    readonly property list<CalculatorButton> digitButtons: [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9]
+
     Component.onCompleted: forceActiveFocus()
 
     focus: true
 
     Keys.onPressed: function (event) {
-        if (event.key === Qt.Key_0) {
-            digitPressed("0")
-            button0.down = true
-            button0Timer.running = true
+        if (event.key >= Qt.Key_0 && event.key <= Qt.Key_9) {
+            const digit = event.key - Qt.Key_0
+            keypad.digitPressed(digit.toString())
+            keypad.digitButtons[digit].flash()
             event.accepted = true
-        } else if (event.key === Qt.Key_1) {
-            digitPressed("1")
-            button1.down = true
-            button1Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_2) {
-            digitPressed("2")
-            button2.down = true
-            button2Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_3) {
-            digitPressed("3")
-            button3.down = true
-            button3Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_4) {
-            digitPressed("4")
-            button4.down = true
-            button4Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_5) {
-            digitPressed("5")
-            button5.down = true
-            button5Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_6) {
-            digitPressed("6")
-            button6.down = true
-            button6Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_7) {
-            digitPressed("7")
-            button7.down = true
-            button7Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_8) {
-            digitPressed("8")
-            button8.down = true
-            button8Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_9) {
-            digitPressed("9")
-            button9.down = true
-            button9Timer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_Plus) {
-            operatorPressed("+")
-            buttonPlus.down = true
-            buttonPlusTimer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_Minus) {
-            operatorPressed("-")
-            buttonMinus.down = true
-            buttonMinusTimer.running = true
-            event.accepted = true
-        } else if ((event.key === Qt.Key_Equal || event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
-            operatorPressed("=")
-            buttonEquals.down = true
-            buttonEqualsTimer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_Delete || event.key === Qt.Key_C) {
-            clearPressed()
-            buttonClear.down = true
-            buttonClearTimer.running = true
-            event.accepted = true
-        } else if (event.key === Qt.Key_Backspace) {
-            backspacePressed()
-            buttonClear.down = true
-            buttonClearTimer.running = true
-            event.accepted = true
-            event.accepted = true
+            return
         }
+
+        switch (event.key) {
+        case Qt.Key_Plus:
+            keypad.operatorPressed("+")
+            buttonPlus.flash()
+            break
+        case Qt.Key_Minus:
+            keypad.operatorPressed("-")
+            buttonMinus.flash()
+            break
+        case Qt.Key_Equal:
+        case Qt.Key_Enter:
+        case Qt.Key_Return:
+            keypad.operatorPressed("=")
+            buttonEquals.flash()
+            break
+        case Qt.Key_Delete:
+            keypad.clearPressed()
+            buttonClear.flash()
+            break
+        // Like a short press of the C button, the C key deletes a single digit; only Delete resets the calculator
+        case Qt.Key_C:
+        case Qt.Key_Backspace:
+            keypad.backspacePressed()
+            buttonClear.flash()
+            break
+        default:
+            return
+        }
+        event.accepted = true
     }
 
     implicitHeight: grid.implicitHeight
@@ -203,12 +167,6 @@ Item {
             text: "7"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("7")
-
-            Timer {
-                id: button7Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -216,12 +174,6 @@ Item {
             text: "8"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("8")
-
-            Timer {
-                id: button8Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -229,29 +181,16 @@ Item {
             text: "9"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("9")
-
-            Timer {
-                id: button9Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
             id: buttonClear
             palette { button: "teal"; buttonText: "white"}
             text: "C"
-            palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.backspacePressed()
             onPressAndHold: {
                 keypad.clearPressed()
                 PlatformAdapter.vibrateBrief()
-            }
-
-            Timer {
-                id: buttonClearTimer
-                interval: 100;
-                onTriggered: parent.down = undefined
             }
         }
 
@@ -263,12 +202,6 @@ Item {
             text: "4"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("4")
-
-            Timer {
-                id: button4Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -276,12 +209,6 @@ Item {
             text: "5"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("5")
-
-            Timer {
-                id: button5Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -289,12 +216,6 @@ Item {
             text: "6"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("6")
-
-            Timer {
-                id: button6Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -302,12 +223,6 @@ Item {
             palette { button: "teal"; buttonText: "white"}
             text: "-"
             onClicked: keypad.operatorPressed("-")
-
-            Timer {
-                id: buttonMinusTimer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
 
@@ -318,13 +233,6 @@ Item {
             text: "1"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("1")
-
-            Timer {
-                id: button1Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
-
         }
 
         CalculatorButton {
@@ -332,12 +240,6 @@ Item {
             text: "2"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("2")
-
-            Timer {
-                id: button2Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
@@ -345,26 +247,13 @@ Item {
             text: "3"
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("3")
-
-            Timer {
-                id: button3Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
         CalculatorButton {
             id: buttonPlus
             palette { button: "teal"; buttonText: "white"}
             text: "+"
-            palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.operatorPressed("+")
-
-            Timer {
-                id: buttonPlusTimer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
 
@@ -379,27 +268,13 @@ Item {
 
             palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.digitPressed("0")
-
-            Timer {
-                id: button0Timer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
-
         }
 
         CalculatorButton {
             id: buttonEquals
             palette { button: "teal"; buttonText: "white"}
             text: "="
-            palette { button: "#e0e0e0"; buttonText: "black"}
             onClicked: keypad.operatorPressed("=")
-
-            Timer {
-                id: buttonEqualsTimer
-                interval: 100;
-                onTriggered: parent.down = undefined
-            }
         }
 
 
@@ -428,13 +303,13 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             Layout.columnSpan: 3
-            Layout.minimumHeight: window.SafeArea.margins.bottom
+            Layout.minimumHeight: parent.SafeArea.margins.bottom
             color: "#e0e0e0"
         }
 
         Rectangle {
             Layout.fillWidth: true
-            Layout.minimumHeight: window.SafeArea.margins.bottom
+            Layout.minimumHeight: parent.SafeArea.margins.bottom
             Layout.maximumWidth: button1.Layout.maximumWidth
 
             color: "teal"

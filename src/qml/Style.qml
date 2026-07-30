@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2018-2025 by Stefan Kebekus                             *
+ *   Copyright (C) 2026 by Stefan Kebekus                                  *
  *   stefan.kebekus@math.uni-freiburg.de                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,24 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#pragma once
+pragma Singleton
 
-#include <QObject>
-#include <QQmlEngine>
+import QtQuick
 
-class PlatformAdapter : public QObject
-{
-    Q_OBJECT
-    QML_ELEMENT
-    QML_SINGLETON
-
-public:
-    explicit PlatformAdapter(QObject *parent = nullptr);
-
-public slots:
-    /* On Android and iOS, make the device briefly vibrate. On other platforms, this does nothing. */
-    static void vibrateBrief();
-
-    /* On Android, make the device vibrate once for a longer period; on iOS, play an alert sound. On other platforms, this does nothing. */
-    static void vibrateError();
-};
+QtObject {
+    readonly property real fontPixelSize: (Qt.platform.os === "android") ? 1.6*Application.font.pixelSize : 1.2*Application.font.pixelSize
+}

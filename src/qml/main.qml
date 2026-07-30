@@ -64,6 +64,8 @@ Window {
                     icon.source: "/images/ic_menu_24px.svg"
                     icon.color: "white"
 
+                    Accessible.name: qsTr("Menu")
+
                     onClicked: mainMenu.open()
 
                     Menu {
@@ -112,7 +114,7 @@ Window {
 
 <h4>Reset</h4>
 
-<p>To reset the calculator, press and hold the key <strong>C</strong>.</p>
+<p>To reset the calculator, press and hold the <strong>C</strong> key.</p>
 
 <h4>Resize</h4>
 
@@ -132,20 +134,19 @@ Window {
 <h4>Version %1</h4>
 
 <p>This is a simple calculator app that adds times given in hours and minutes.
-  It helps with the recording of machine running times, with the addition of
-  flight times in your pilot's flight log, or your driving times as a truck
-  driver.</p>
+  It helps you record machine running times, add up the flight times in your
+  pilot logbook, or track your driving times as a truck driver.</p>
 
 <ul style='margin-left:-25px;'>
 <li>Simple, elegant and functional</li>
 <li>No ads</li>
-<li>No commerical 'pro' version</li>
+<li>No commercial 'pro' version</li>
 <li><a href='https://akaflieg-freiburg.github.io/addhoursandminutes/privacy'>Does not spy on you</a></li>
 <li><a href='https://github.com/Akaflieg-Freiburg/addhoursandminutes'>100% Open Source</a></li>
 <li>Written without commercial interest</li>
 </ul>
 
-<p>This app is available for a variety of
+<p>This app is available on a variety of
 platforms. <a href='https://akaflieg-freiburg.github.io/addhoursandminutes'>
 Have a look at the homepage.</a></p>
 

@@ -18,15 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QFile>
-#include <QFont>
 #include <QGuiApplication>
+#include <QIcon>
 #include <QLibraryInfo>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQuickStyle>
-#include <QQuickView>
-#include <QSettings>
+#include <QScreen>
 #include <QTranslator>
 
 using namespace Qt::Literals::StringLiterals;
@@ -50,24 +48,29 @@ auto main(int argc, char *argv[]) -> int
     // Set application parameters
     QCoreApplication::setOrganizationName(QStringLiteral("Akaflieg Freiburg"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("akaflieg_freiburg.de"));
-    QCoreApplication::setApplicationName( QCoreApplication::translate("C++ Main Program", "Add Times", "Application Name") );
+    // The application name determines where QSettings are stored and must not depend
+    // on the locale; the translated name goes into applicationDisplayName instead.
+    QCoreApplication::setApplicationName(QStringLiteral("Add Times"));
+    QGuiApplication::setApplicationDisplayName( QCoreApplication::translate("C++ Main Program", "Add Times", "Application Name") );
     QGuiApplication::setWindowIcon(QIcon(":/icon.png"));
     QGuiApplication::setDesktopFileName(QStringLiteral("de.akaflieg_freiburg.cavok.add_hours_and_minutes"));
 
 #if defined(Q_OS_WINDOWS)
-    QQuickStyle::setStyle(u"Universal"_qs);
+    QQuickStyle::setStyle(u"Universal"_s);
 #endif
 
     // Start QML Engine
     QQmlApplicationEngine engine;
 
-    // Attach FirstRunNotifier
+    // Make project version available to QML
     engine.rootContext()->setContextProperty(QStringLiteral("projectVersion"), PROJECT_VERSION);
 
     // Make screen available to QML
     engine.rootContext()->setContextProperty(QStringLiteral("primaryScreen"), QGuiApplication::primaryScreen());
 
     // Now load the QML code
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
+                     &app, []() { QCoreApplication::exit(-1); }, Qt::QueuedConnection);
     engine.load(QStringLiteral("qrc:/qt/qml/gui/qml/main.qml"));
 
 #ifdef Q_OS_ANDROID

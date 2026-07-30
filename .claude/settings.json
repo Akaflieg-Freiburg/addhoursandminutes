@@ -15,7 +15,13 @@
       "Bash(python3 -c \"import json; d=json.load\\(open\\('/home/kebekus/Software/projects/addhoursandminutes/build/build-android-release/src/android-addhoursandminutes-deployment-settings.json'\\)\\); [print\\(k,':',v\\) for k,v in d.items\\(\\) if 'version' in k.lower\\(\\)]\")",
       "Bash(head -20 /home/kebekus/Software/buildsystems/Qt/6.11.1/android_x86_64/src/android/templates/AndroidManifest.xml)",
       "Read(//home/kebekus/Software/buildsystems/Qt/6.11.1/android_x86_64/src/android/templates/**)",
-      "Bash(xargs -I{} sh -c 'echo \"--- {}\"; head -25 {}')"
+      "Bash(xargs -I{} sh -c 'echo \"--- {}\"; head -25 {}')",
+      "Bash(./buildscript-linux-debug.sh)",
+      "Bash(cmake --build /tmp/claude-1000/-home-kebekus-Software-projects-addhoursandminutes/c396492b-1a77-40bf-883e-d09f72d6e1f3/scratchpad/build-verify)",
+      "Bash(timeout 6 /tmp/claude-1000/-home-kebekus-Software-projects-addhoursandminutes/c396492b-1a77-40bf-883e-d09f72d6e1f3/scratchpad/build-verify/src/addhoursandminutes)",
+      "Bash(/home/kebekus/Software/buildsystems/Qt/6.11.1/gcc_64/bin/qmllint *.qml)",
+      "Bash(XDG_CONFIG_HOME=/tmp/claude-1000/-home-kebekus-Software-projects-addhoursandminutes/ddfa567b-d0f5-4d64-abd4-818b812db6ca/scratchpad/cfg QT_QPA_PLATFORM=offscreen timeout 6 ./build-linux-debug/src/addhoursandminutes)",
+      "Bash(/home/kebekus/Software/buildsystems/Qt/6.11.1/gcc_64/bin/qmllint -I ../../build-linux-debug/src *.qml)"
     ]
   }
 }
