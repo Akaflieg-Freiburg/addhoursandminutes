@@ -9,7 +9,12 @@
       "Bash(echo \"EXIT: $?\")",
       "Bash(fastlane android *)",
       "Bash(echo \"FASTLANE EXIT: $?\")",
-      "Bash(/home/kebekus/Software/buildsystems/android-sdk/build-tools/36.0.0/apksigner verify *)"
+      "Bash(/home/kebekus/Software/buildsystems/android-sdk/build-tools/36.0.0/apksigner verify *)",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/home/kebekus/Software/projects/addhoursandminutes/build/build-android-release/src/android-addhoursandminutes-deployment-settings.json'\\)\\); [print\\(k,':',v\\) for k,v in d.items\\(\\) if 'package' in k.lower\\(\\) or 'version' in k.lower\\(\\)]\")",
+      "Bash(/home/kebekus/Software/buildsystems/android-sdk/build-tools/36.0.0/aapt dump *)",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/home/kebekus/Software/projects/addhoursandminutes/build/build-android-release/src/android-addhoursandminutes-deployment-settings.json'\\)\\); [print\\(k,':',v\\) for k,v in d.items\\(\\) if 'version' in k.lower\\(\\)]\")",
+      "Bash(head -20 /home/kebekus/Software/buildsystems/Qt/6.11.1/android_x86_64/src/android/templates/AndroidManifest.xml)",
+      "Read(//home/kebekus/Software/buildsystems/Qt/6.11.1/android_x86_64/src/android/templates/**)"
     ]
   }
 }

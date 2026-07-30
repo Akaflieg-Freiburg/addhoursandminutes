@@ -1,10 +1,9 @@
 <?xml version='1.0'?>
 
-<manifest 
+<manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.akaflieg_freiburg.cavok.add_hours_and_minutes"
-    android:versionName="${PROJECT_VERSION}"
-    android:versionCode="${PROJECT_VERSION_CODE}${ABI_CODE}"
+    android:versionName="-- %%INSERT_VERSION_NAME%% --"
+    android:versionCode="-- %%INSERT_VERSION_CODE%% --"
     android:installLocation="auto">
   <uses-permission
       android:name="android.permission.VIBRATE"/>
