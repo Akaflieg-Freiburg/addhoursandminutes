@@ -14,6 +14,7 @@ on:
       - ".github/workflows/android.yml"
       - ".github/workflows/ios.yml"
       - ".github/workflows/macos.yml"
+      - ".github/workflows/webasm.yml"
       - ".github/workflows/windows.yml"
 
 jobs:
