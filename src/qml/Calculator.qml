@@ -161,8 +161,8 @@ Rectangle {
                 anchors.fill: lvContainer
                 anchors.topMargin: 0.5*Style.fontPixelSize
                 anchors.bottomMargin: 0.5*Style.fontPixelSize
-                anchors.leftMargin: parent.SafeArea.margins.left
-                anchors.rightMargin: parent.SafeArea.margins.right
+                anchors.leftMargin: hoursAndMinutes.SafeArea.margins.left
+                anchors.rightMargin: hoursAndMinutes.SafeArea.margins.right
 
                 clip: true
 
@@ -209,6 +209,14 @@ Rectangle {
 
         Keypad {
             id: keypad
+
+            // The insets must be read from the root item, not from the keypad
+            // or its children: the root's geometry is independent of the
+            // SplitView layout, so these bindings cannot feed back into the
+            // keypad's implicitHeight and trigger a polish loop.
+            safeAreaLeft: hoursAndMinutes.SafeArea.margins.left
+            safeAreaRight: hoursAndMinutes.SafeArea.margins.right
+            safeAreaBottom: hoursAndMinutes.SafeArea.margins.bottom
 
             SplitView.minimumHeight: implicitHeight
             SplitView.maximumHeight: 2*implicitHeight

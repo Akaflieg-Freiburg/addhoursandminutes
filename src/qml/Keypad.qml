@@ -26,6 +26,15 @@ import gui
 Item {
     id: keypad
 
+    // Safe-area insets, to be set by the instantiating item. They must come
+    // from an item whose geometry does not depend on this keypad: reading
+    // SafeArea.margins of the grid below would feed back into implicitHeight,
+    // and thus into the geometry that the SplitView assigns to the keypad,
+    // causing an endless polish loop between SplitView and GridLayout.
+    property real safeAreaLeft: 0
+    property real safeAreaRight: 0
+    property real safeAreaBottom: 0
+
     signal backspacePressed()
 
     signal clearPressed()
@@ -97,7 +106,7 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.rowSpan: 8
-            Layout.minimumWidth: parent.SafeArea.margins.left
+            Layout.minimumWidth: keypad.safeAreaLeft
             color: Style.keypad
         }
 
@@ -136,7 +145,7 @@ Item {
         Rectangle {
             Layout.fillHeight: true
             Layout.rowSpan: 8
-            Layout.minimumWidth: parent.SafeArea.margins.right
+            Layout.minimumWidth: keypad.safeAreaRight
             color: Style.teal
         }
 
@@ -303,13 +312,13 @@ Item {
         Rectangle {
             Layout.fillWidth: true
             Layout.columnSpan: 3
-            Layout.minimumHeight: parent.SafeArea.margins.bottom
+            Layout.minimumHeight: keypad.safeAreaBottom
             color: Style.keypad
         }
 
         Rectangle {
             Layout.fillWidth: true
-            Layout.minimumHeight: parent.SafeArea.margins.bottom
+            Layout.minimumHeight: keypad.safeAreaBottom
             Layout.maximumWidth: button1.Layout.maximumWidth
 
             color: Style.teal
