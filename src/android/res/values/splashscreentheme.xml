@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="SplashScreenTheme">
+  <!-- The DayNight parent matters beyond the splash screen: Qt keeps this theme
+       for the lifetime of the activity and reads its colors (style extraction,
+       system bar defaults) on every light/dark change. There is no NoActionBar
+       variant of this theme, so the action bar is disabled explicitly. -->
+  <style name="SplashScreenTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
     <item
       name="android:windowBackground">@drawable/splash
     </item>

@@ -61,3 +61,6 @@ ninja
 # GitHub pages does not support SVG, so we need to include a PNG here
 rsvg-convert --width=200 --height=200 ../metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg -o src/qtlogo.png
 sed -i -e 's/qtlogo\.svg/qtlogo.png/g' -e 's/width="320"/width="200"/g' src/addhoursandminutes.html
+# Make the loading page follow the system color scheme; the app itself follows
+# it via Qt. The color matches Style.display in src/qml/Style.qml.
+sed -i -e 's|</style>|  @media (prefers-color-scheme: dark) { html, body { background-color: #121212; color: #eff0f2 } }\n    </style>|' src/addhoursandminutes.html

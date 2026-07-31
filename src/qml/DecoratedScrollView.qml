@@ -35,6 +35,8 @@ ScrollView {
         id: topItem
 
         Label {
+            id: topLabel
+
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.leftMargin: 4*font.pixelSize
@@ -42,6 +44,7 @@ ScrollView {
             anchors.rightMargin: 4*font.pixelSize
 
             background: Rectangle {
+                color: topLabel.palette.window
                 opacity: 0.9
             }
 
@@ -60,6 +63,8 @@ ScrollView {
         id: bottomItem
 
         Label {
+            id: bottomLabel
+
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.leftMargin: 4*font.pixelSize
@@ -67,6 +72,7 @@ ScrollView {
             anchors.rightMargin: 4*font.pixelSize
 
             background: Rectangle {
+                color: bottomLabel.palette.window
                 opacity: 0.9
             }
 

@@ -20,12 +20,30 @@
 
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Material
+
+import gui
 
 
 Dialog {
     parent: Overlay.overlay
     property real avHeight: parent.height - 2*font.pixelSize - parent.SafeArea.margins.top - parent.SafeArea.margins.bottom
     property real avWidth: parent.width - 2*font.pixelSize - parent.SafeArea.margins.left - parent.SafeArea.margins.right
+
+    // Qt does not push a system color scheme change into existing popups;
+    // these bindings keep the dialog colors current. Palette-based styles use
+    // the palette, the Material style uses Material.background.
+    Material.background: Style.popupWindow
+    palette {
+        window: Style.popupWindow
+        windowText: Style.popupWindowText
+        text: Style.popupText
+        base: Style.popupWindow
+        button: Style.popupButton
+        buttonText: Style.popupButtonText
+        mid: Style.popupMid
+        dark: Style.popupDark
+    }
 
     // We center the dialog manually, taking care of safe insets
     x: parent.SafeArea.margins.left + font.pixelSize + (avWidth-width)/2.0

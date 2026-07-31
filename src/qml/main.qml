@@ -21,10 +21,19 @@
 import QtCore
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Material
 import QtQuick.Layouts
+
+import gui
 
 Window {
     id: window
+
+    // An explicit binding rather than Material.System: only explicitly themed
+    // Material objects register for system color scheme updates, so with the
+    // System default from qtquickcontrols2.conf, existing menus and dialogs
+    // would keep their colors when the scheme changes while the app runs.
+    Material.theme: Style.isDark ? Material.Dark : Material.Light
 
     width: toolBar.font.pixelSize*15*1.5
     height: toolBar.font.pixelSize*20*1.5
@@ -42,6 +51,8 @@ Window {
 
     title: qsTr("Add Times")
 
+    color: Style.display
+
     visible: true
 
     ColumnLayout {
@@ -51,7 +62,7 @@ Window {
             id: toolBar
 
             Layout.fillWidth: true
-            background: Rectangle { color: "teal" }
+            background: Rectangle { color: Style.teal }
 
             RowLayout {
                 anchors.fill: parent
@@ -59,10 +70,10 @@ Window {
                 ToolButton {
                     id: toolButton
 
-                    background: Rectangle { color: "teal" }
+                    background: Rectangle { color: Style.teal }
 
                     icon.source: "/images/ic_menu_24px.svg"
-                    icon.color: "white"
+                    icon.color: Style.tealText
 
                     Accessible.name: qsTr("Menu")
 
@@ -70,6 +81,22 @@ Window {
 
                     Menu {
                         id: mainMenu
+
+                        // Qt does not push a system color scheme change into
+                        // existing popups; these bindings keep the menu colors
+                        // current. Palette-based styles use the palette, the
+                        // Material style uses Material.background.
+                        Material.background: Style.popupWindow
+                        palette {
+                            window: Style.popupWindow
+                            windowText: Style.popupWindowText
+                            text: Style.popupText
+                            base: Style.popupWindow
+                            button: Style.popupButton
+                            buttonText: Style.popupButtonText
+                            mid: Style.popupMid
+                            dark: Style.popupDark
+                        }
 
                         MenuItem {
                             icon.source: "/images/ic_help_24px.svg"

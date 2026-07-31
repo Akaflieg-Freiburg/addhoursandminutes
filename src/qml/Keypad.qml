@@ -98,7 +98,7 @@ Item {
             Layout.fillHeight: true
             Layout.rowSpan: 8
             Layout.minimumWidth: parent.SafeArea.margins.left
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -106,7 +106,7 @@ Item {
             Layout.fillWidth: true
             Layout.rowSpan: 8
             Layout.minimumWidth: 0
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -114,7 +114,7 @@ Item {
             Layout.fillWidth: true
             Layout.columnSpan: 3
             Layout.minimumHeight: 0
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -122,7 +122,7 @@ Item {
             Layout.fillWidth: true
             Layout.minimumHeight: 0
             Layout.maximumWidth: button1.Layout.maximumWidth
-            color: "teal"
+            color: Style.teal
         }
 
         Rectangle {
@@ -130,14 +130,14 @@ Item {
             Layout.fillWidth: true
             Layout.rowSpan: 8
             Layout.minimumWidth: 0
-            color: "teal"
+            color: Style.teal
         }
 
         Rectangle {
             Layout.fillHeight: true
             Layout.rowSpan: 8
             Layout.minimumWidth: parent.SafeArea.margins.right
-            color: "teal"
+            color: Style.teal
         }
 
 
@@ -148,7 +148,7 @@ Item {
             Layout.fillWidth: true
             Layout.columnSpan: 3
             Layout.minimumHeight: 0
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -156,7 +156,7 @@ Item {
             Layout.fillWidth: true
             Layout.minimumHeight: 0
             Layout.maximumWidth: button1.Layout.maximumWidth
-            color: "teal"
+            color: Style.teal
         }
 
 
@@ -165,27 +165,27 @@ Item {
         CalculatorButton {
             id: button7
             text: "7"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("7")
         }
 
         CalculatorButton {
             id: button8
             text: "8"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("8")
         }
 
         CalculatorButton {
             id: button9
             text: "9"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("9")
         }
 
         CalculatorButton {
             id: buttonClear
-            palette { button: "teal"; buttonText: "white"}
+            palette { button: Style.teal; buttonText: Style.tealText }
             text: "C"
             onClicked: keypad.backspacePressed()
             onPressAndHold: {
@@ -200,27 +200,27 @@ Item {
         CalculatorButton {
             id: button4
             text: "4"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("4")
         }
 
         CalculatorButton {
             id: button5
             text: "5"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("5")
         }
 
         CalculatorButton {
             id: button6
             text: "6"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("6")
         }
 
         CalculatorButton {
             id: buttonMinus
-            palette { button: "teal"; buttonText: "white"}
+            palette { button: Style.teal; buttonText: Style.tealText }
             text: "-"
             onClicked: keypad.operatorPressed("-")
         }
@@ -231,27 +231,27 @@ Item {
         CalculatorButton {
             id: button1
             text: "1"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("1")
         }
 
         CalculatorButton {
             id: button2
             text: "2"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("2")
         }
 
         CalculatorButton {
             id: button3
             text: "3"
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("3")
         }
 
         CalculatorButton {
             id: buttonPlus
-            palette { button: "teal"; buttonText: "white"}
+            palette { button: Style.teal; buttonText: Style.tealText }
             text: "+"
             onClicked: keypad.operatorPressed("+")
         }
@@ -266,13 +266,13 @@ Item {
             Layout.columnSpan: 3
             Layout.maximumWidth: -1
 
-            palette { button: "#e0e0e0"; buttonText: "black"}
+            palette { button: Style.keypad; buttonText: Style.keypadText }
             onClicked: keypad.digitPressed("0")
         }
 
         CalculatorButton {
             id: buttonEquals
-            palette { button: "teal"; buttonText: "white"}
+            palette { button: Style.teal; buttonText: Style.tealText }
             text: "="
             onClicked: keypad.operatorPressed("=")
         }
@@ -285,7 +285,7 @@ Item {
             Layout.fillWidth: true
             Layout.columnSpan: 3
             Layout.minimumHeight: 0
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -294,7 +294,7 @@ Item {
             Layout.minimumHeight: 0
             Layout.maximumWidth: button1.Layout.maximumWidth
 
-            color: "teal"
+            color: Style.teal
         }
 
 
@@ -304,7 +304,7 @@ Item {
             Layout.fillWidth: true
             Layout.columnSpan: 3
             Layout.minimumHeight: parent.SafeArea.margins.bottom
-            color: "#e0e0e0"
+            color: Style.keypad
         }
 
         Rectangle {
@@ -312,7 +312,7 @@ Item {
             Layout.minimumHeight: parent.SafeArea.margins.bottom
             Layout.maximumWidth: button1.Layout.maximumWidth
 
-            color: "teal"
+            color: Style.teal
         }
     }
 

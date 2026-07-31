@@ -1,5 +1,6 @@
 **/.DS_Store
 **/.qmlls.ini
+.claude/settings.local.json
 .vscode
 CMakeLists.txt.user
 build

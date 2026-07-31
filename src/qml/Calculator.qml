@@ -35,19 +35,22 @@ Rectangle {
     property int totalMinutes: 0
     property int maxNumDigits: 6
 
+    color: Style.display
 
+    // The animations must end on Style.display, the same value the color binding
+    // produces, so that a flash leaves the themed background intact.
     SequentialAnimation {
         id: blinkAnimation
 
-        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "red"; duration: 50}
-        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
+        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: Style.error; duration: 50}
+        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: Style.display; duration: 50}
     }
 
     SequentialAnimation {
         id: clearAnimation
 
-        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "teal"; duration: 50}
-        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: "white"; duration: 50}
+        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: Style.teal; duration: 50}
+        PropertyAnimation {target: hoursAndMinutes; properties: "color"; to: Style.display; duration: 50}
     }
 
     function convertToHoursAndMinutes(minutes) {
@@ -132,7 +135,7 @@ Rectangle {
             Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                color: "teal"
+                color: Style.teal
                 width: 24
                 height: 3
                 radius: height
@@ -177,7 +180,7 @@ Rectangle {
                         id: operatorText
                         anchors.left: parent.left
                         anchors.leftMargin: 2*Style.fontPixelSize
-                        color: "teal"
+                        color: Style.accent
                         text: delegateParent.operator
                         font.pixelSize: Style.fontPixelSize
                         font.family: "Monospace"
@@ -186,6 +189,7 @@ Rectangle {
                         id: operandText
                         anchors.right: parent.right
                         anchors.rightMargin: 2*Style.fontPixelSize
+                        color: Style.displayText
                         text: delegateParent.operand
                         font.pixelSize: Style.fontPixelSize
                         font.family: "Monospace"

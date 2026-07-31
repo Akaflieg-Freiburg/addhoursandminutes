@@ -35,6 +35,13 @@ qt_add_resources(${PROJECT_NAME} "imageresources"
     images/ic_info_24px.svg
 )
 
+# Qt Quick Controls looks for this file at :/qtquickcontrols2.conf
+qt_add_resources(${PROJECT_NAME} "controlsconf"
+    PREFIX "/"
+    FILES
+    qtquickcontrols2.conf
+)
+
 set_source_files_properties(${CMAKE_SOURCE_DIR}/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.svg PROPERTIES QT_RESOURCE_ALIAS icon.svg)
 set_source_files_properties(${CMAKE_SOURCE_DIR}/generatedSources/metadata/de.akaflieg_freiburg.cavok.add_hours_and_minutes.png PROPERTIES QT_RESOURCE_ALIAS icon.png)
 qt_add_resources(${PROJECT_NAME} "programicons"

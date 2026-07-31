@@ -8,9 +8,6 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
-        <key>UIUserInterfaceStyle</key>
-        <string>Light</string>
-
 	<key>CFBundleName</key>
 	<string></string>
 

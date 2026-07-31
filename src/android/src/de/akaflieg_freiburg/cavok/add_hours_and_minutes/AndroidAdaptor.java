@@ -21,7 +21,9 @@
 package de.akaflieg_freiburg.cavok.add_hours_and_minutes;
 
 import android.content.*;
+import android.content.res.*;
 import android.os.*;
+import android.view.*;
 
 
 public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
@@ -34,6 +36,52 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
   {
     super.onCreate(savedInstanceState);
     m_context = getApplicationContext();
+  }
+
+  @Override
+  public void setContentView(View view, ViewGroup.LayoutParams params)
+  {
+    super.setContentView(view, params);
+    // Qt calls this method from QtActivityDelegate.setUpLayout() and applies
+    // its own status bar appearance right afterwards, so post rather than call
+    // directly.
+    new Handler(Looper.getMainLooper()).post(this::setLightStatusBarIcons);
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig)
+  {
+    super.onConfigurationChanged(newConfig);
+    setLightStatusBarIcons();
+  }
+
+  // The status bar sits on the teal toolbar, which is dark in both color
+  // schemes, so the status bar icons must always be light. The theme attribute
+  // windowLightStatusBar cannot express this: Qt overrides it to match the
+  // system color scheme on startup and on every light/dark change
+  // (QtActivityDelegateBase.handleUiModeChange()), so the appearance is
+  // re-applied after each of these points.
+  @SuppressWarnings("deprecation")
+  private void setLightStatusBarIcons()
+  {
+    Window window = getWindow();
+    if (window == null)
+    {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+    {
+      WindowInsetsController controller = window.getInsetsController();
+      if (controller != null)
+      {
+        controller.setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS);
+      }
+    }
+    else
+    {
+      View decor = window.getDecorView();
+      decor.setSystemUiVisibility(decor.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
   }
 
   // Vibrate once, very briefly

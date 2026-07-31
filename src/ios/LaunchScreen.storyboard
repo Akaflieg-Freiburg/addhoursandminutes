@@ -32,7 +32,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IpJ-1o-Mkg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fm2-nA-OED"/>
                             <constraint firstItem="IpJ-1o-Mkg" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fvX-dL-lFf"/>
@@ -46,5 +46,8 @@
     </scenes>
     <resources>
         <image name="Launch" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
