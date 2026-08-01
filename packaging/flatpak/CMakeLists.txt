@@ -5,6 +5,15 @@
 configure_file(${APP_ID}.json ${APP_ID}.json)
 
 #
+# Sample build and linter targets require flatpak tooling, which only
+# exists on Linux. The manifest above is generated on all platforms; it
+# is needed by the fastlane lane "flathubRelease".
+#
+if (NOT CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    return()
+endif ()
+
+#
 # Sample build
 #
 add_custom_target(flatpak-binary

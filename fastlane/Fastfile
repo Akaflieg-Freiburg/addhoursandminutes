@@ -211,23 +211,30 @@ end
 desc "Create Flathub test build for release"
 lane :flathubRelease do
   # Clean up previous builds
-  FileUtils.rm_rf('../build/build-linux-release')
-  
-  # Configure CMake build
-  qt6_linux_dir = ENV['Qt6_DIR_LINUX']
+  build_dir = '../build/build-flathub-manifest'
+  FileUtils.rm_rf(build_dir)
+
+  # The CMake configure step is only needed so that configure_file generates
+  # the flatpak manifest; the manifest itself is platform-independent. Use
+  # the Qt kit of the host platform.
+  qt6_dir_var = FastlaneCore::Helper.mac? ? 'Qt6_DIR_MACOS' : 'Qt6_DIR_LINUX'
+  qt6_dir = ENV[qt6_dir_var]
+  if qt6_dir.nil? || qt6_dir.empty?
+    UI.user_error!("Environment variable #{qt6_dir_var} is not set")
+  end
   cmake_config_cmd = [
-    "#{qt6_linux_dir}/bin/qt-cmake",
+    "#{qt6_dir}/bin/qt-cmake",
     '-G Ninja',
     '-DCMAKE_BUILD_TYPE:STRING=Release',
     '-S ..',
-    '-B ../build/build-linux-release'
+    "-B #{build_dir}"
   ].join(' ')
-  
+
   # Execute CMake configuration
   sh(cmake_config_cmd)
-  
-  manifest_path = '../build/build-linux-release/packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json'
- 
+
+  manifest_path = File.expand_path("#{build_dir}/packaging/flatpak/de.akaflieg_freiburg.cavok.add_hours_and_minutes.json")
+
   # Get current git commit hash
   commit_hash = sh("git rev-parse --short HEAD").strip
   

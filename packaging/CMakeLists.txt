@@ -19,6 +19,4 @@ add_custom_target(tar
 # Prepare TAR Flatpak distribution
 #
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    add_subdirectory(flatpak)
-endif ()
+add_subdirectory(flatpak)
