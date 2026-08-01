@@ -91,6 +91,77 @@ platform :android do
   end
 end
 
+platform :ios do
+  desc "Configure iOS build (generates the Xcode project; archiving/signing happens in the TestFlight lane)"
+  lane :build do
+    # Clean up previous builds
+    FileUtils.rm_rf('../build/build-ios-release')
+    FileUtils.rm_rf('../build/addhoursandminutes.ipa')
+
+    UI.message('Configuring CMake build...')
+    qt6_ios_dir = ENV['Qt6_DIR_IOS']
+    if qt6_ios_dir.nil? || qt6_ios_dir.empty?
+      UI.user_error!('Environment variable Qt6_DIR_IOS is not set')
+    end
+    sh("#{qt6_ios_dir}/bin/qt-cmake",
+      '-G Xcode',
+      '-DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM=9DX97T4PBT',
+      '-DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_STYLE=Automatic',
+      '-S ..',
+      '-B ../build/build-ios-release'
+    )
+  end
+
+  desc "Update metadata for the App Store"
+  lane :metadata do
+    _version, changelog_text, _version_code = latest_changelog_entry
+    FileUtils.mkdir_p('metadata/ios/en-US')
+    File.write('metadata/ios/en-US/release_notes.txt', changelog_text)
+  end
+
+  desc "Upload to TestFlight"
+  lane :TestFlight do
+    build
+
+    # Archive, sign and export the ipa from the Xcode project that the build
+    # lane generated. Signing uses Xcode automatic signing; the certificates
+    # and provisioning profiles are created on demand.
+    build_app(
+      project: 'build/build-ios-release/addhoursandminutes.xcodeproj',
+      scheme: 'addhoursandminutes',
+      configuration: 'Release',
+      export_method: 'app-store',
+      output_directory: 'build',
+      output_name: 'addhoursandminutes.ipa',
+      xcargs: '-allowProvisioningUpdates',
+      export_xcargs: '-allowProvisioningUpdates'
+    )
+
+    upload_to_testflight(
+      app_identifier: "de.akafliegfreiburg.addhoursandminutes",
+      ipa: "build/addhoursandminutes.ipa"
+    )
+  end
+
+  desc "Submit the latest TestFlight build for App Store review"
+  lane :promoteBetaToRelease do
+    metadata
+    latest_version, _changelog_text, version_code = latest_changelog_entry
+    upload_to_app_store(
+      app_identifier: 'de.akafliegfreiburg.addhoursandminutes',
+      app_version: latest_version,
+      build_number: version_code.to_s,
+      metadata_path: './fastlane/metadata/ios',
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      submit_for_review: true,
+      automatic_release: true,
+      force: true,
+      submission_information: { add_id_info_uses_idfa: false }
+    )
+  end
+end
+
 platform :linux do
   desc "Build Linux Binary"
   lane :build do

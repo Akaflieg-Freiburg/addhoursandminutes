@@ -21,7 +21,7 @@
 	<string>$(EXECUTABLE_NAME)</string>
 
 	<key>CFBundleVersion</key>
-	<string>0.0.1</string>
+	<string>${PROJECT_VERSION_CODE}</string>
 
 	<key>CFBundleShortVersionString</key>
         <string>${PROJECT_VERSION}</string>
