@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0 - 2026-08-01
+
+- The app now supports dark mode.
+- Minor improvements in the user interface, updates in the underlying libraries.
+
+
 ## 1.4.11 - 2025-10-29
 
 - Comply with the 16kb page size requirement on newer Android devices.
