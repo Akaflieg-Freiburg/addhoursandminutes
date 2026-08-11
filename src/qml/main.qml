@@ -26,8 +26,21 @@ import QtQuick.Layouts
 
 import gui
 
-Window {
+ApplicationWindow {
     id: window
+
+    // Desktop platforms get a menu bar, and the burger button in the tool bar is
+    // hidden there. Everywhere else it is the other way round. Note that Qt 6
+    // reports macOS as "osx" and not as "macos".
+    readonly property bool isMacOS: Qt.platform.os === "osx"
+    readonly property bool hasMenuBar: isMacOS
+                                       || (Qt.platform.os === "linux")
+                                       || (Qt.platform.os === "windows")
+
+    // Height that the menu bar takes away from the window content. Zero on macOS,
+    // where the menu bar is a native one that lives outside of the window, and on
+    // the platforms where there is no menu bar at all.
+    readonly property real menuBarHeight: mainMenuBar.visible ? mainMenuBar.height : 0
 
     // An explicit binding rather than Material.System: only explicitly themed
     // Material objects register for system color scheme updates, so with the
@@ -36,9 +49,9 @@ Window {
     Material.theme: Style.isDark ? Material.Dark : Material.Light
 
     width: toolBar.font.pixelSize*15*1.5
-    height: toolBar.font.pixelSize*20*1.5
+    height: toolBar.font.pixelSize*20*1.5 + menuBarHeight
     minimumWidth: toolBar.font.pixelSize*12*1.5
-    minimumHeight: toolBar.font.pixelSize*14*1.5
+    minimumHeight: toolBar.font.pixelSize*14*1.5 + menuBarHeight
 
     Settings {
         property alias x: window.x
@@ -52,8 +65,98 @@ Window {
     title: qsTr("Add Times")
 
     color: Style.display
+    // ApplicationWindow paints a styled background item on top of the window
+    // color; without this override the two would disagree in dark mode.
+    background: Rectangle { color: Style.display }
 
     visible: true
+
+    // Menu bar for desktop computers. On macOS this becomes the native menu bar
+    // in the system menu. Qt moves the items whose text begins with "About" or
+    // "Quit" into the application menu there, and hides the menus that are left
+    // empty afterwards - so the "File" menu below shows up on Linux and Windows
+    // only, and needs no explicit platform check of its own.
+    menuBar: MenuBar {
+        id: mainMenuBar
+
+        visible: window.hasMenuBar
+
+        // Colored like the menus that drop out of it, for the same reasons as
+        // the burger menu further below. Palette-based styles use the palette,
+        // the Material style uses Material.background.
+        Material.background: Style.popupWindow
+        palette {
+            window: Style.popupWindow
+            windowText: Style.popupWindowText
+            text: Style.popupText
+            base: Style.popupWindow
+            // Palette-based styles paint the menu bar in the button color. Use
+            // the popup background instead, so that the bar reads as a menu
+            // surface rather than as a strip of buttons.
+            button: Style.popupWindow
+            buttonText: Style.popupButtonText
+            mid: Style.popupMid
+            dark: Style.popupDark
+        }
+
+        Menu {
+            title: qsTr("File")
+
+            Material.background: Style.popupWindow
+            palette {
+                window: Style.popupWindow
+                windowText: Style.popupWindowText
+                text: Style.popupText
+                base: Style.popupWindow
+                button: Style.popupButton
+                buttonText: Style.popupButtonText
+                mid: Style.popupMid
+                dark: Style.popupDark
+            }
+
+            Action {
+                // On macOS this item is moved into the application menu, where
+                // the platform substitutes its own localized "Quit <app>" for
+                // the text below. Qt recognizes the item by its wording, and
+                // only the untranslated English one is matched in every locale
+                // - so the text is deliberately not translated there.
+                text: window.isMacOS ? "Quit" : qsTr("Quit")
+                shortcut: StandardKey.Quit
+                onTriggered: Qt.quit()
+            }
+        }
+
+        // AppKit adds its search field to the menu titled "Help", provided that
+        // the title matches its own translation of that word.
+        Menu {
+            title: qsTr("Help")
+
+            Material.background: Style.popupWindow
+            palette {
+                window: Style.popupWindow
+                windowText: Style.popupWindowText
+                text: Style.popupText
+                base: Style.popupWindow
+                button: Style.popupButton
+                buttonText: Style.popupButtonText
+                mid: Style.popupMid
+                dark: Style.popupDark
+            }
+
+            Action {
+                text: qsTr("Help")
+                onTriggered: helpDialog.open()
+            }
+
+            // No separator above this item: on macOS the item moves into the
+            // application menu, and a separator would be left dangling.
+            Action {
+                // Untranslated on macOS for the same reason as "Quit" above.
+                text: window.isMacOS ? "About" : qsTr("About")
+                onTriggered: infoDialog.open()
+            }
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -62,13 +165,21 @@ Window {
             id: toolBar
 
             Layout.fillWidth: true
-            background: Rectangle { color: Style.teal }
+            background: Rectangle {
+                color: Style.teal
+                // The tool bar is empty where the menu bar takes over, and its
+                // height comes from the burger button alone. Without an implicit
+                // height of its own, the teal band would collapse there.
+                implicitHeight: toolButton.implicitHeight
+            }
 
             RowLayout {
                 anchors.fill: parent
 
                 ToolButton {
                     id: toolButton
+
+                    visible: !window.hasMenuBar
 
                     background: Rectangle { color: Style.teal }
 
@@ -202,11 +313,6 @@ Public License V3</a>.</p>
         // qmllint enable
 
         standardButtons: DialogButtonBox.Ok
-    }
-
-    Shortcut {
-        sequences: [StandardKey.Quit]
-        onActivated: Qt.quit()
     }
 
 }

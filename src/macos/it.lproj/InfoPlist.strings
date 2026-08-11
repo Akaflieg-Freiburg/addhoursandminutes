@@ -1,0 +1,3 @@
+/* Localized bundle name. Qt reads CFBundleName for the macOS
+   application menu, and the Finder and the Dock use it as well. */
+CFBundleName = "Calcolo con i tempi";

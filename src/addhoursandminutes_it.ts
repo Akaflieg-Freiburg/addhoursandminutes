@@ -13,7 +13,7 @@
 <context>
     <name>Calculator</name>
     <message>
-        <location filename="qml/Calculator.qml" line="+330"/>
+        <location filename="qml/Calculator.qml" line="+342"/>
         <source>Overflow</source>
         <translation>Overflow</translation>
     </message>
@@ -21,8 +21,8 @@
 <context>
     <name>DecoratedScrollView</name>
     <message>
-        <location filename="qml/DecoratedScrollView.qml" line="+52"/>
-        <location line="+25"/>
+        <location filename="qml/DecoratedScrollView.qml" line="+55"/>
+        <location line="+28"/>
         <source>more</source>
         <translation>altro</translation>
     </message>
@@ -30,24 +30,37 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="qml/main.qml" line="+43"/>
-        <location line="+89"/>
+        <location filename="qml/main.qml" line="+65"/>
+        <location line="+205"/>
         <source>Add Times</source>
         <translation>Somma tempi</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-81"/>
         <source>Menu</source>
         <translation>Menu</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="-57"/>
+        <location line="+15"/>
+        <location line="+67"/>
         <location line="+32"/>
         <source>Help</source>
         <translation>Aiuto</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-143"/>
+        <source>File</source>
+        <translation>File</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Quit</source>
+        <translation>Esci</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <location line="+65"/>
         <source>About</source>
         <translation>Informazioni</translation>
     </message>

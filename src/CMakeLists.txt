@@ -120,6 +120,18 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.entitlements PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
     target_sources(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/macos/addhoursandminutes.entitlements")
 
+    # Localized bundle names, so that the application menu, the Finder and the
+    # Dock use the same translated app name as the rest of the user interface.
+    # Qt takes the name of the application menu from CFBundleName and not from
+    # QGuiApplication::applicationDisplayName(), so the translation has to be
+    # supplied to the bundle itself. Keep these in sync with the app name in
+    # metadata/*.desktop, metadata/*.appdata.xml and fastlane/metadata.
+    foreach (language de es fr it pl)
+        set(info_plist_strings "${CMAKE_CURRENT_SOURCE_DIR}/macos/${language}.lproj/InfoPlist.strings")
+        set_source_files_properties(${info_plist_strings} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources/${language}.lproj")
+        target_sources(${PROJECT_NAME} PRIVATE "${info_plist_strings}")
+    endforeach ()
+
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE true
         MACOSX_BUNDLE_BUNDLE_NAME "Add Times"
