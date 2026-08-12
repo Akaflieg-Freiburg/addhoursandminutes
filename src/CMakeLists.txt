@@ -126,8 +126,14 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     # QGuiApplication::applicationDisplayName(), so the translation has to be
     # supplied to the bundle itself. Keep these in sync with the app name in
     # metadata/*.desktop, metadata/*.appdata.xml and fastlane/metadata.
+    #
+    # The sources deliberately live in lproj/<language>/ and not in
+    # <language>.lproj/: the Xcode generator gives source paths that contain an
+    # .lproj directory a localization treatment of its own and would nest the
+    # result twice. This way the placement is left entirely to CMake and comes
+    # out the same under every generator.
     foreach (language de es fr it pl)
-        set(info_plist_strings "${CMAKE_CURRENT_SOURCE_DIR}/macos/${language}.lproj/InfoPlist.strings")
+        set(info_plist_strings "${CMAKE_CURRENT_SOURCE_DIR}/macos/lproj/${language}/InfoPlist.strings")
         set_source_files_properties(${info_plist_strings} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources/${language}.lproj")
         target_sources(${PROJECT_NAME} PRIVATE "${info_plist_strings}")
     endforeach ()
@@ -164,6 +170,17 @@ if (CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set_source_files_properties(${asset_catalog_path} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
     set_property(TARGET "${PROJECT_NAME}" APPEND PROPERTY RESOURCE "${privacy_manifest}")
+
+    # Localized app names for the home screen, mirroring the macOS section
+    # above, including the reason why the sources live in lproj/<language>/.
+    # Two differences: iOS bundles are flat, so the .lproj directories go to the
+    # bundle root rather than into a Resources subdirectory, and the localized
+    # key is CFBundleDisplayName, which is the one the Info.plist defines here.
+    foreach (language de es fr it pl)
+        set(info_plist_strings "${CMAKE_CURRENT_SOURCE_DIR}/ios/lproj/${language}/InfoPlist.strings")
+        set_source_files_properties(${info_plist_strings} PROPERTIES MACOSX_PACKAGE_LOCATION "${language}.lproj")
+        target_sources(${PROJECT_NAME} PRIVATE "${info_plist_strings}")
+    endforeach ()
 endif()
 
 
