@@ -26,7 +26,7 @@ import QtQuick.Layouts
 
 import gui
 
-ApplicationWindow {
+Window {
     id: window
 
     // Desktop platforms get a menu bar, and the burger button in the tool bar is
@@ -41,6 +41,13 @@ ApplicationWindow {
     // where the menu bar is a native one that lives outside of the window, and on
     // the platforms where there is no menu bar at all.
     readonly property real menuBarHeight: mainMenuBar.visible ? mainMenuBar.height : 0
+
+    // Height of the teal tool bar on the platforms that have a menu bar. It is
+    // empty there, because the menu bar has taken the place of the burger
+    // button. Zero hides it altogether; a few pixels leave a teal divider
+    // between the menu bar and the calculator. Elsewhere the tool bar holds the
+    // burger button and sizes itself.
+    readonly property real desktopToolBarHeight: 0
 
     // An explicit binding rather than Material.System: only explicitly themed
     // Material objects register for system color scheme updates, so with the
@@ -65,9 +72,6 @@ ApplicationWindow {
     title: qsTr("Add Times")
 
     color: Style.display
-    // ApplicationWindow paints a styled background item on top of the window
-    // color; without this override the two would disagree in dark mode.
-    background: Rectangle { color: Style.display }
 
     visible: true
 
@@ -76,8 +80,20 @@ ApplicationWindow {
     // "Quit" into the application menu there, and hides the menus that are left
     // empty afterwards - so the "File" menu below shows up on Linux and Windows
     // only, and needs no explicit platform check of its own.
-    menuBar: MenuBar {
+    //
+    // The menu bar is an ordinary child item and the window is a plain Window,
+    // not an ApplicationWindow. A MenuBar creates the native macOS menu bar on
+    // its own and does not have to be assigned to ApplicationWindow.menuBar.
+    // ApplicationWindow would also absorb the safe area margins of the window
+    // and report none of them to its content item, which breaks the tool bar
+    // under the status bar of a phone, as well as the safe area handling of
+    // the keypad.
+    MenuBar {
         id: mainMenuBar
+
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
 
         visible: window.hasMenuBar
 
@@ -160,17 +176,23 @@ ApplicationWindow {
 
     ColumnLayout {
         anchors.fill: parent
+        anchors.topMargin: window.menuBarHeight
 
         ToolBar {
             id: toolBar
 
             Layout.fillWidth: true
+
+            // Hidden rather than merely empty, so that the layout does not keep
+            // its spacing for it.
+            visible: !window.hasMenuBar || (window.desktopToolBarHeight > 0)
+
             background: Rectangle {
                 color: Style.teal
-                // The tool bar is empty where the menu bar takes over, and its
-                // height comes from the burger button alone. Without an implicit
-                // height of its own, the teal band would collapse there.
-                implicitHeight: toolButton.implicitHeight
+                // Where the burger button is hidden there is nothing left to
+                // give the bar a height, so it takes one from here. Everywhere
+                // else the button sizes the bar, as it always has.
+                implicitHeight: window.hasMenuBar ? window.desktopToolBarHeight : 0
             }
 
             RowLayout {
