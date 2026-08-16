@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0 - 2026-08-16
+
+- On desktop computers, the app now has a menu bar, with entries for help, for information about the app, and for quitting it. The menu button in the toolbar is no longer needed there.
+- On Macs, the app now uses the translated app name in the application menu, in the Finder and in the Dock.
+- On iPhones and iPads, the app now uses the translated app name on the home screen, and follows the language settings of the device.
+
+
 ## 1.5.0 - 2026-08-01
 
 - The app now supports dark mode.
