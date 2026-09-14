@@ -178,6 +178,13 @@ Window {
         anchors.fill: parent
         anchors.topMargin: window.menuBarHeight
 
+        Rectangle {
+            height: 0.5
+            Layout.fillWidth: true
+            visible: Qt.platform.os === "linux"
+            color: Style.teal
+        }
+
         ToolBar {
             id: toolBar
 
