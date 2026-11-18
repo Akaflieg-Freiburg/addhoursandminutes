@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0 - 2026-11-18
+
+- On older Android devices, the status bar now matches the app's colors.
+- Updates in the underlying libraries.
+
+
 ## 1.5.0 - 2026-08-01
 
 - The app now supports dark mode.
