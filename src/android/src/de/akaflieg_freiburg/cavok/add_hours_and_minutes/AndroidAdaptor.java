@@ -114,7 +114,7 @@ public class AndroidAdaptor extends org.qtproject.qt.android.bindings.QtActivity
       }
       else
       {
-        m_vibrator = (Vibrator) m_context.getSystemService(Context.VIBRATOR_SERVICE);
+        m_vibrator = m_context.getSystemService(Vibrator.class);
       }
     }
     if (m_vibrator == null || !m_vibrator.hasVibrator())
