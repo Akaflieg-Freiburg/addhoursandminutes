@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Matches Style.teal in src/qml/Style.qml (light scheme) -->
+  <color name="statusBar">#FF008080</color>
+</resources>

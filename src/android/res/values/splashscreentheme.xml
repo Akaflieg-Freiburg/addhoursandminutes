@@ -7,6 +7,11 @@
   <style name="SplashScreenTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
     <item name="android:windowActionBar">false</item>
     <item name="android:windowNoTitle">true</item>
+    <!-- Below API 35 the app does not draw behind the status bar; Qt colors
+         the status bar with this attribute on startup and on every light/dark
+         change. From API 35 on, edge-to-edge is enforced, the attribute is
+         ignored, and the teal toolbar extends behind the status bar. -->
+    <item name="android:statusBarColor">@color/statusBar</item>
     <item
       name="android:windowBackground">@drawable/splash
     </item>
