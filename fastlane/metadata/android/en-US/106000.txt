@@ -1,0 +1,2 @@
+- On older Android devices, the status bar now matches the app's colors.
+- Updates in the underlying libraries.
